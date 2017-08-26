@@ -17,7 +17,7 @@ public:
 
 private:
 	// Node Pointer(s)
-	Node* next = nullptr;
+	Node* next;
 
 	// Payload Contents
 	std::string name;

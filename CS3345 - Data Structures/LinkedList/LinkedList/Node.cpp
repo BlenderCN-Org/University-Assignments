@@ -4,11 +4,13 @@
 // Default Constr
 Node::Node() {
 	name = "";
+	next = nullptr;
 }
 
 // Constr w/ string input, sets name param to string input
 Node::Node(std::string s) {
 	name = s;
+	next = nullptr;
 }
 
 // Virtual Destr
