@@ -5,6 +5,8 @@
 #include "LinkedList.h"
 #include "Node.h"
 
+using namespace std;
+
 int main()
 {
 	LinkedList *l = new LinkedList();
@@ -14,6 +16,8 @@ int main()
 	l->print();
 	l->remove("Merry");
 	l->print();
+
+	cout << l->has("World") << endl;
 	
 	return 0;
 }
