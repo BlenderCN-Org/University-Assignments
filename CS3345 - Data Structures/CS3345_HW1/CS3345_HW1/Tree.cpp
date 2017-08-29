@@ -4,13 +4,10 @@
 // Constructor
 Tree::Tree() {
 	root = nullptr;
-	nodes = 0;
-	level = 0;
 }
 
 // Virtual Destructor
 Tree::~Tree() {
-
 }
 
 // Returns the Root Node
