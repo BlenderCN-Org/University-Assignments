@@ -15,11 +15,12 @@ public:
 
 	// Utility Functons
 	void insert(int);
-	Node* reallocate();
+	void reallocate();
 	void print();
 	void minHeapify();
 
 private:
+	// Variables
 	int size;
 	int capacity;
 	int level;

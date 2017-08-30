@@ -24,3 +24,4 @@ int Node::getValue() {
 void Node::setValue(int v) {
 	value = v;
 }
+
