@@ -33,28 +33,24 @@ int Heap::getLevel() {
 void Heap::insert(int v) {
 
 	// If HEAD is null
-	if (minHeap[0].getValue() == -1) {
-		cout << "Inserting @ HEAD" << endl;
+	if (minHeap[0].getValue() == -1) {		
 		minHeap[0] = *new Node(v);
-		level++; // BC Level 0 is now FULL
+		level++; 
 	}
 	// if HEAD is NOT null
 	else {
 		// i (first spot in level) = 2^level - 1, while its less than all the nodes in that level, i++ until node is found
-		for (int i = pow(2,level)-1; i < (pow(2, level) - 1) + pow(2, level); i++) {
+		for (int i = pow(2, level) - 1; i < (pow(2, level) - 1) + pow(2, level); i++) {
 			if (minHeap[i].getValue() == -1) {
-				minHeap[i] = *new Node(v);
-				cout << "Inserting @:: " << i << endl;				
-				if (i == (pow(2, level) - 1) + pow(2, level) - 1) {
-					level++;
-				}
+				minHeap[i] = *new Node(v);	
+				if (i == (pow(2, level) - 1) + pow(2, level) - 1) {	level++; }
+				if (v < minHeap[0].getValue()) { minHeapify(i);	}
 				break;
 			}
 		}
 	}
+	size++;	
 
-	size++;
-	
 	if (size >= capacity / 2) {
 		reallocate();
 	}
@@ -63,9 +59,8 @@ void Heap::insert(int v) {
 // Reallocates memory and instinitates a new array
 void Heap::reallocate() {
 
-	capacity *= 2;
-	int newCapacity = 2 * capacity;
-	Node* newHeap = new Node[newCapacity];
+	capacity *= 2;	
+	Node* newHeap = new Node[capacity];
 	for (int i = 0; i < size; i++) {
 		newHeap[i] = minHeap[i];
 	}
@@ -73,8 +68,18 @@ void Heap::reallocate() {
 }
 
 // Makes sure the heap follows the min-heap ruleset
-void Heap::minHeapify() {
+void Heap::minHeapify(int loc) {
+	int parentloc = -1;
 
+	while (parentloc != 0) {
+		parentloc = round((loc / 2.0)) - 1;
+		
+		int tmp = minHeap[loc].getValue();
+		minHeap[loc].setValue(minHeap[parentloc].getValue());
+		minHeap[parentloc].setValue(tmp);
+
+		loc = parentloc;
+	}
 }
 
 // Outprints the tree

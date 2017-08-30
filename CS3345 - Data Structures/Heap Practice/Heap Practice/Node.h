@@ -9,10 +9,12 @@ public:
 	Node(int);
 	~Node();
 
+	// Get & Set Functions
 	int getValue();
 	void setValue(int);
 
 private:
+	// Payload
 	int value;
 };
 

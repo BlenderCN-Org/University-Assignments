@@ -9,14 +9,11 @@ int main()
 {
 	
 	Heap* h = new Heap();
-	h->insert(8);	
-	h->insert(2);
-	h->insert(3);
-	h->insert(6);
-	h->insert(10);
-	h->insert(9);
-	h->insert(7);
-	h->print();
+	h->insert(20);	
+	h->insert(18);	
+	h->insert(22);
+	h->insert(4);
+	h->print(); std::cout << std::endl;
 
 	std::cout << std::endl;
 

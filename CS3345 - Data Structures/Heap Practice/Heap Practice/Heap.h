@@ -17,7 +17,7 @@ public:
 	void insert(int);
 	void reallocate();
 	void print();
-	void minHeapify();
+	void minHeapify(int);
 
 private:
 	// Variables
