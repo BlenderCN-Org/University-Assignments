@@ -15,20 +15,25 @@ CircularArrayQueue::~CircularArrayQueue() {
 
 
 // Enqueues a value in the queue if there is room
+//	** Always keeps one space empty
+//	** Modulo returns spaces left
 void CircularArrayQueue::enqueue(int value) {
 	if (read == (write + 1) % (size)) {
-		printf("Queue is Full\n");
+		printf("Queue is Full, no enqueue\n");
+		return;
 	}
 
 	arr[write] = *new Node(value);
 	write = (write + 1) % (size);
 }
 
-// Dequeues the queue, returning the first val
+// Dequeues the queue, returning the first val, else returns -1
+//	** 
 int CircularArrayQueue::dequeue() {
 
 	if (read == write) {
-		printf("Queue is Empty\n");
+		printf("Queue is Empty, No dequeue\n");
+		return -1;
 	}
 
 	int val = arr[read].getValue();
@@ -39,12 +44,12 @@ int CircularArrayQueue::dequeue() {
 
 // Outprints the Array
 void CircularArrayQueue::printQueue() {
-	std::stringstream ss;	
+	std::stringstream ss;
 	ss << "[";
 	for (int i = read; ((i) % size) != write; i++) {
-		ss <<  arr[i].toString();
-		if(((i + 1) % size) != write)
-			ss << " , ";    
+		ss << arr[i].toString();
+		if ((i + 1) % size != write)
+			ss << " , ";
 	}
 	ss << "]";
 	std::cout << ss.str() << std::endl;
