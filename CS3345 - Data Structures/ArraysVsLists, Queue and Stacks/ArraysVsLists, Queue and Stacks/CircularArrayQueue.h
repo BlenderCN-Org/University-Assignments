@@ -1,5 +1,8 @@
 #pragma once
 #include "Node.h"
+#include <iostream>
+#include <string>
+#include <sstream>
 class CircularArrayQueue
 {
 public:
@@ -8,8 +11,8 @@ public:
 	~CircularArrayQueue();
 
 	// Insertion and Deletion Functions
-	void enqueue();
-	void dequeue();
+	void enqueue(int);
+	int dequeue();
 
 	// Utility Functions
 	void printQueue();
