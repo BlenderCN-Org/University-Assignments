@@ -3,6 +3,19 @@
 
 using namespace std;
 
+/*	Insertion and deletion in a heap is O(log n), while in a BST is O(n)
+	 When you say heap, minheap is implied, so you must say maxheap if you have a maxheap
+	
+	Heap:
+		Implimentation is a priority queue, Data Structure is a heap
+		Building a heap is typically  O(n * log(n)), however floyd can make it O(n)
+		** Not included in this code **, but deletemin works like priority queue's dequeue, returning the value of min	 
+*/
+
+/*
+	In heapify, you bubble up if inserted node is smaller than it's parent
+*/
+
 // Default Constructor
 Heap::Heap() {
 	size = 0;
@@ -30,6 +43,7 @@ int Heap::getLevel() {
 }
 
 // Inserts a new element into the heap, following leftmost rule ordering
+//	Similar to Enqueue from priority queue origins
 void Heap::insert(int v) {
 
 	// If HEAD is null
@@ -44,7 +58,7 @@ void Heap::insert(int v) {
 			if (minHeap[i].getValue() == -1) {
 				minHeap[i] = *new Node(v);	
 				if (i == (pow(2, level) - 1) + pow(2, level) - 1) {	level++; }
-				if (v < minHeap[0].getValue()) { minHeapify(i);	}
+				if (v < minHeap[0].getValue()) { minHeapify(i);	} // CHANGE THIS
 				break;
 			}
 		}

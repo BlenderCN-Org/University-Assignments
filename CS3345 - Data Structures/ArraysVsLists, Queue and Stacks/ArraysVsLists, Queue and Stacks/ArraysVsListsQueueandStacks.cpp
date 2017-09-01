@@ -10,18 +10,20 @@ using namespace std;
 int main()
 {	
 	CircularArrayQueue *CAQ = new CircularArrayQueue(5);
+	// Testing EMPTY
+	CAQ->dequeue();
+
+	// Testing Enqueue
 	CAQ->enqueue(3);
 	CAQ->enqueue(6);
 	CAQ->enqueue(2);
 	CAQ->enqueue(1);
-	CAQ->printQueue();
+	CAQ->printQueue(); 
 
-	// Wierd Part
+	// Testing FULL
 	CAQ->enqueue(5);
-	CAQ->printQueue();
 
-	cout << endl;
-	
+	// Testing Removal
 	cout << "Removed:: " << CAQ->dequeue() << endl;
 	CAQ->printQueue();
 	cout << "Removed:: " << CAQ->dequeue() << endl;
@@ -30,8 +32,14 @@ int main()
 	CAQ->printQueue();
 	cout << "Removed:: " << CAQ->dequeue() << endl;
 	CAQ->printQueue();
-
 	CAQ->dequeue();
+
+	// Other Testing
+	CAQ->enqueue(4);
+	CAQ->enqueue(2);
+	CAQ->dequeue();
+	CAQ->enqueue(7);
+	CAQ->printQueue();
 
     return 0;
 }

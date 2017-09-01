@@ -2,7 +2,6 @@
 //
 
 #include "stdafx.h"
-#include "Node.h"
 #include "Heap.h"
 
 int main()
@@ -11,7 +10,6 @@ int main()
 	Heap* h = new Heap();
 	h->insert(20);	
 	h->insert(18);	
-	h->insert(22);
 	h->insert(4);
 	h->print(); std::cout << std::endl;
 
