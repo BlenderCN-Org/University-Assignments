@@ -23,6 +23,14 @@ Heap::Heap() {
 	level = 0;
 	minHeap = new Node[capacity];
 }
+
+Heap::Heap(int c) {
+	size = 0;	
+	capacity = c;
+	level = 0;
+	minHeap = new Node[capacity];
+}
+
 // Virtual Destructor
 Heap::~Heap() {
 }
@@ -54,10 +62,10 @@ void Heap::insert(int v) {
 	// if HEAD is NOT null
 	else {
 		// i (first spot in level) = 2^level - 1, while its less than all the nodes in that level, i++ until node is found
-		for (int i = pow(2, level) - 1; i < (pow(2, level) - 1) + pow(2, level); i++) {
+		for (int i = size; i < size + pow(2, level); i++) {
 			if (minHeap[i].getValue() == -1) {
 				minHeap[i] = *new Node(v);	
-				if (i == (pow(2, level) - 1) + pow(2, level) - 1) {	level++; }
+				if (i == size + size - 1) {	level++; }
 				if (v < minHeap[0].getValue()) { minHeapify(i);	} // CHANGE THIS
 				break;
 			}

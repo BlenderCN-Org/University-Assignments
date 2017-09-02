@@ -3,17 +3,22 @@
 
 #include "stdafx.h"
 #include "Heap.h"
+#include <chrono>
+typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
 	
-	Heap* h = new Heap();
-	h->insert(20);	
-	h->insert(18);	
-	h->insert(4);
-	h->print(); std::cout << std::endl;
+	std::chrono::time_point<std::chrono::system_clock> m_StartTime = std::chrono::system_clock::now();
 
-	std::cout << std::endl;
+	Heap* h = new Heap();
+	for (int i = 1; i < 10000; i++) {
+		h->insert(i);
+	}	
+
+	std::chrono::time_point<std::chrono::system_clock> m_EndTime = std::chrono::system_clock::now();
+	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(m_EndTime - m_StartTime).count() << "ms" << std::endl;
+
 
 	return 0;
 }

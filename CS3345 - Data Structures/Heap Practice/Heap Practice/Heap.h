@@ -6,6 +6,7 @@ class Heap
 public:
 	// Default Constructors / Destructors
 	Heap();
+	Heap(int);
 	~Heap();
 
 	// Get and Set Methods
