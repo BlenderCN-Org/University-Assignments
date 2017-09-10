@@ -66,7 +66,7 @@ void Heap::insert(int v) {
 			if (minHeap[i].getValue() == -1) {
 				minHeap[i] = *new Node(v);	
 				if (i == size + size - 1) {	level++; }
-				if (v < minHeap[0].getValue()) { minHeapify(i);	} // CHANGE THIS
+				minHeapify(i);
 				break;
 			}
 		}
@@ -95,10 +95,16 @@ void Heap::minHeapify(int loc) {
 
 	while (parentloc != 0) {
 		parentloc = round((loc / 2.0)) - 1;
-		
+
+		if (minHeap[parentloc].getValue() <= minHeap[loc].getValue()) {
+			break;
+		}
+
 		int tmp = minHeap[loc].getValue();
 		minHeap[loc].setValue(minHeap[parentloc].getValue());
 		minHeap[parentloc].setValue(tmp);
+
+		
 
 		loc = parentloc;
 	}

@@ -1,3 +1,4 @@
-﻿  Heap Practice.cpp
+﻿  Heap.cpp
+d:\documents\university-assignments\cs3345 - data structures\heap practice\heap practice\heap.cpp(97): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Heap Practice.vcxproj -> D:\Documents\University-Assignments\CS3345 - Data Structures\Heap Practice\x64\Debug\Heap Practice.exe
   Heap Practice.vcxproj -> D:\Documents\University-Assignments\CS3345 - Data Structures\Heap Practice\x64\Debug\Heap Practice.pdb (Partial PDB)
