@@ -1,12 +1,1 @@
-0 |
-    0 | 0 | 
-            0 | 0 | 0 | 0 |
-                            0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-
-____________________________________________________________
-0
-   1
-	    3
-			    7
-
-** OVERLOAD NODE OPERATOR ==
+Professor Andy Clark @ Oxford in UK, UI Contant Lenses : Google, Microsoft, etc. patents 
