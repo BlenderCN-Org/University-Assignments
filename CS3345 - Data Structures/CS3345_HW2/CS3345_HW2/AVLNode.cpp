@@ -2,11 +2,62 @@
 #include "AVLNode.h"
 
 
-AVLNode::AVLNode()
-{
+AVLNode::AVLNode() {	
+	key = 0;	
+	value = 0;
+	height = 0;
+	left = nullptr;
+	right = nullptr;;
+}
+
+AVLNode::AVLNode(int val, int h) {
+	key = 0;
+	value = val;
+	height = h;
+	left = nullptr;
+	right = nullptr;;
 }
 
 
-AVLNode::~AVLNode()
-{
+AVLNode::~AVLNode(){
+}
+
+AVLNode* AVLNode::getRight() {
+	return right;
+}
+
+AVLNode* AVLNode::getLeft() {
+	return left;
+}
+
+void AVLNode::setLeft(AVLNode* cur) {
+	left = cur;
+}
+
+void AVLNode::setRight(AVLNode* cur) {
+	right = cur;
+}
+
+int AVLNode::getHeight() {
+	return height;
+}
+
+int AVLNode::getKey() {
+	return key;
+}
+
+int AVLNode::getValue() {
+	return value;
+}
+
+void AVLNode::setHeight(int val) {
+	height = val;
+}
+
+void AVLNode::setKey(int val) {
+	key = val;
+}
+
+void AVLNode::setValue(int val) {
+	value = val;
 }

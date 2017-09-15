@@ -1,0 +1,6 @@
+﻿  CS3345HW2.cpp
+  BinarySearchTree.cpp
+  Generating Code...
+d:\documents\university-assignments\cs3345 - data structures\cs3345_hw2\cs3345_hw2\binarysearchtree.cpp(41): warning C4715: 'BinarySearchTree::insert': not all control paths return a value
+  CS3345_HW2.vcxproj -> D:\Documents\University-Assignments\CS3345 - Data Structures\CS3345_HW2\Debug\CS3345_HW2.exe
+  CS3345_HW2.vcxproj -> D:\Documents\University-Assignments\CS3345 - Data Structures\CS3345_HW2\Debug\CS3345_HW2.pdb (Partial PDB)
