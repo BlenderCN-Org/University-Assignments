@@ -148,12 +148,14 @@
   <ItemGroup>
     <ClInclude Include="AVLNode.h" />
     <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="Book.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AVLNode.cpp" />
     <ClCompile Include="BinarySearchTree.cpp" />
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="CS3345HW2.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

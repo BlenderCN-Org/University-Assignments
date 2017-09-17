@@ -10,13 +10,11 @@ using std::endl;
 int main()
 {
 	BinarySearchTree* bst = new BinarySearchTree();
-	bst->setHead(bst->insert(bst->getHead(),10,0));
-	cout << bst->getHead()->getHeight() << endl;
-	bst->insert(bst->getHead(), 12, 0);
-	bst->insert(bst->getHead(), 7, 0);
-	bst->insert(bst->getHead(), 5, 0);
-	bst->insert(bst->getHead(), 9, 0);
-	bst->insert(bst->getHead(), 1, 0);
+	bst->insert(12);
+	bst->insert(7);
+	bst->insert(5);
+	bst->insert(9);
+	bst->insert(1);
 	bst->print(bst->getHead());
 	cout << endl;
     return 0;

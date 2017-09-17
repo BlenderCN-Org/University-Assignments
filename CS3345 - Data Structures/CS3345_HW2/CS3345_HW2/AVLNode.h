@@ -1,4 +1,6 @@
 #pragma once
+#include "Book.h"
+
 class AVLNode
 {
 public:
@@ -11,14 +13,14 @@ public:
 	AVLNode* getRight();	
 	AVLNode* getLeft();
 
-	int getValue();
+	Book* getValue();
 	int getHeight();
 	int getKey();
 
 	void setRight(AVLNode*);
 	void setLeft(AVLNode*);
 
-	void setValue(int);
+	void setValue(Book*);
 	void setKey(int);
 	void setHeight(int);
 
@@ -27,7 +29,7 @@ private:
 	int key;
 
 	// Node's value
-	int value;
+	Book* value;
 
 	// Node's current height
 	int height;
