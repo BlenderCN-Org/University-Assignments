@@ -21,63 +21,32 @@ void BinarySearchTree::setHead(AVLNode* cur) {
 	head = cur;
 }
 
-void BinarySearchTree::insert(int val) {
-	/*
+void BinarySearchTree::insert(int key) {
+	setHead(insert(key, getHead()));
+}
+
+AVLNode* BinarySearchTree::insert(int key, AVLNode* cur) {
 	if (cur == nullptr) {
-		numNodes++;		
-		return new AVLNode(val, curHeight);
+		cur = new AVLNode(key);
+	}
+	else if (key < cur->getKey()) {
+		cur->setLeft(insert(key, cur->getLeft()));
+	}
+	else if (key > cur->getKey()) {
+		cur->setRight(insert(key, cur->getRight()));
 	}
 
-	if (val < cur->getKey()) {
-		curHeight++;
-		if (curHeight > maxHeight) { maxHeight = curHeight; }		
-		cur->setLeft(insert(cur->getLeft(), val, curHeight));
-	}
-	else if (val > cur->getKey()) {
-		curHeight++;
-		if (curHeight > maxHeight) { maxHeight = curHeight; }
-		cur->setRight(insert(cur->getRight(), val, curHeight));
-	}
-	*/
 
-	AVLNode* cur = getHead();
-	AVLNode* parent = new AVLNode();
-	numNodes++;
-	int curHeight = 0;
+	cur->setHeight(greaterHeight(height(cur->getLeft()), height(cur->getRight())) + 1);
+	return cur;
+}
 
-	if (getHead() == nullptr) { 
-		setHead(new AVLNode(val, curHeight));
-		cout << "Inserted new Value:: " << val << " with Height:: " << curHeight << endl;
-		cout << numNodes << " , " << maxHeight << endl;
-		return;
-	}
-	
-	while (cur != nullptr) {
-		parent = cur;
-		if (val < cur->getKey()) {
-			cur = cur->getLeft();
-			curHeight++;
-		}
-		else {
-			cur = cur->getRight();
-			curHeight++;
-		}
-	}	
+int BinarySearchTree::greaterHeight(int x, int y) {
+	return x > y ? x : y;
+}
 
-	if (val < parent->getKey()) {
-		cout << "Inserted Value:: " << val << " at Height:: " << curHeight << endl;
-		parent->setLeft(new AVLNode(val, curHeight));
-	}
-	else {
-		cout << "Inserted Value:: " << val << " at Height:: " << curHeight << endl;
-		parent->setRight(new AVLNode(val, curHeight));
-	}
-	
-	if (!verifyAVLTree()) { fixAVLTree(); }
-
-	if (curHeight > maxHeight) { maxHeight = curHeight; }
-	cout << numNodes << " , " << maxHeight << endl << endl;
-
+int BinarySearchTree::height(AVLNode* cur) {
+	return (cur == nullptr) ? -1 : cur->getHeight();
 }
 
 void BinarySearchTree::print(AVLNode* cur) {
@@ -86,18 +55,7 @@ void BinarySearchTree::print(AVLNode* cur) {
 	}
 
 	print(cur->getLeft());
-	std::cout << cur->getKey() << "   ";
+	std::cout << cur->getKey() << ", " << cur->getHeight() << "   ";
 	print(cur->getRight());
-
-}
-
-bool BinarySearchTree::verifyAVLTree() {
-	bool verify;
-	numNodes >= pow(2, maxHeight + 1) - 1 ? verify = true : verify = false;
-	return verify;
-
-}
-
-void BinarySearchTree::fixAVLTree() {
 
 }

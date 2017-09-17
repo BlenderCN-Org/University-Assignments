@@ -14,7 +14,9 @@ int main()
 	bst->insert(7);
 	bst->insert(13);
 	bst->insert(9);
-	bst->insert(1);
+	bst->insert(4);
+	bst->insert(3);
+	bst->insert(2);
 	bst->print(bst->getHead());	
 	cout << endl;
     return 0;

@@ -5,15 +5,15 @@
 AVLNode::AVLNode() {	
 	key = 0;	
 	value = nullptr;
-	height = 0;
+	height = 1;
 	left = nullptr;
 	right = nullptr;;
 }
 
-AVLNode::AVLNode(int k, int h) {
+AVLNode::AVLNode(int k) {
 	key = k;
 	value = nullptr;
-	height = h;
+	height = 0;
 	left = nullptr;
 	right = nullptr;;
 }

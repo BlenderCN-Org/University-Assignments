@@ -6,7 +6,7 @@ class AVLNode
 public:
 	// Constructors / Destructors
 	AVLNode();
-	AVLNode(int,int);
+	AVLNode(int);
 	~AVLNode();	
 	
 	// Get / Set Functions
