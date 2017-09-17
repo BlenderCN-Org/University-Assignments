@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "BinarySearchTree.h"
 
+using std::cout;
+using std::endl;
+
 BinarySearchTree::BinarySearchTree() {
 	head = nullptr;
 	numNodes = 0;
 	maxHeight = 0;
 }
-
 
 BinarySearchTree::~BinarySearchTree() {
 }
@@ -19,7 +21,7 @@ void BinarySearchTree::setHead(AVLNode* cur) {
 	head = cur;
 }
 
-AVLNode* BinarySearchTree::insert(int val) {
+void BinarySearchTree::insert(int val) {
 	/*
 	if (cur == nullptr) {
 		numNodes++;		
@@ -39,31 +41,42 @@ AVLNode* BinarySearchTree::insert(int val) {
 	*/
 
 	AVLNode* cur = getHead();
+	AVLNode* parent = new AVLNode();
+	numNodes++;
 	int curHeight = 0;
-	if (cur == nullptr) {
-		setHead(cur);
+
+	if (getHead() == nullptr) { 
+		setHead(new AVLNode(val, curHeight));
+		cout << "Inserted new Value:: " << val << " with Height:: " << curHeight << endl;
+		cout << numNodes << " , " << maxHeight << endl;
+		return;
+	}
+	
+	while (cur != nullptr) {
+		parent = cur;
+		if (val < cur->getKey()) {
+			cur = cur->getLeft();
+			curHeight++;
+		}
+		else {
+			cur = cur->getRight();
+			curHeight++;
+		}
+	}	
+
+	if (val < parent->getKey()) {
+		cout << "Inserted Value:: " << val << " at Height:: " << curHeight << endl;
+		parent->setLeft(new AVLNode(val, curHeight));
 	}
 	else {
-		while (cur != nullptr) {
-			if (val < cur->getKey()) {
-				curHeight++;
-				if (cur->getLeft() == nullptr) {
-					cur->setLeft(new AVLNode(val,curHeight));
-					break;
-				}
-				else {
-					cur = cur->getLeft();
-				}
-				if (curHeight > maxHeight) { maxHeight = curHeight; }
-			}
-			else if (val > cur->getKey()) {
-				curHeight++;
-				if (cur->getRight() == nullptr) {
-					
-				}
-			}
-		}
+		cout << "Inserted Value:: " << val << " at Height:: " << curHeight << endl;
+		parent->setRight(new AVLNode(val, curHeight));
 	}
+	
+	if (!verifyAVLTree()) { fixAVLTree(); }
+
+	if (curHeight > maxHeight) { maxHeight = curHeight; }
+	cout << numNodes << " , " << maxHeight << endl << endl;
 
 }
 
@@ -80,6 +93,11 @@ void BinarySearchTree::print(AVLNode* cur) {
 
 bool BinarySearchTree::verifyAVLTree() {
 	bool verify;
-	!(numNodes >= pow(2, maxHeight)) ? (verify = false) : (verify = true);
-	return verify; 
+	numNodes >= pow(2, maxHeight + 1) - 1 ? verify = true : verify = false;
+	return verify;
+
+}
+
+void BinarySearchTree::fixAVLTree() {
+
 }

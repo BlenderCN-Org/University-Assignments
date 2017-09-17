@@ -10,10 +10,11 @@ public:
 	AVLNode* getHead();
 	void setHead(AVLNode*);
 
-	AVLNode* insert(int);
+	void insert(int);
 	void print(AVLNode*);
-
 	bool verifyAVLTree();
+
+	void fixAVLTree();
 
 private:
 	AVLNode* head;
