@@ -10,7 +10,9 @@ message_temp:	.space		128
 m1:		.asciiz 	" words "
 m2:		.asciiz 	" characters\n"
 
-
+# Exit Data
+exitPrompt:	.asciiz		"Leaving? :(\n"
+exitMessage:	.asciiz		"Goodbye!"
 .text
 
 main:
@@ -20,6 +22,9 @@ main:
 	la $a2, messageBuffer
 	li $v0, 54
 	syscall
+	
+	beq $a1, -2, exitprogram
+	beq $a1, -3, exitprogram
 	
 # First Print : Full string
 	la $a0, message
@@ -56,7 +61,13 @@ main:
 
 	j main
 
-# Program Exit
+exitprogram:
+	li $v0, 59
+	la $a0, exitPrompt
+	la $a1, exitMessage
+	syscall
+	
+	
 	li $v0, 10
 	syscall
 	
