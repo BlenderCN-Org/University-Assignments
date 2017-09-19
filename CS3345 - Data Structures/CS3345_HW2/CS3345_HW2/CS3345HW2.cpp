@@ -11,11 +11,8 @@ int main()
 {
 	BinarySearchTree* bst = new BinarySearchTree();
 	bst->insert(12);
-	bst->print(bst->getHead()); cout << endl;
-	bst->insert(14);
-	bst->print(bst->getHead()); cout << endl;
-	bst->insert(16);	
-	bst->print(bst->getHead());	cout << endl;
+	bst->insert(4);
+	bst->insert(7);	
     return 0;
 }
 

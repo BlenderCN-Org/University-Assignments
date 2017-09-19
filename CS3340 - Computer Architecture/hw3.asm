@@ -35,15 +35,11 @@ main:
 # Start len(message, counter)		
 	la $t0, message
 	li $t1, -1	
-	jal len
-		
-# Start wordcount(message, counter)
-	la $t0, message
 	la $t2, 1
-	jal wordcount
+	jal lenWC
 	
 #Outprinting Information
-	move $a0,, $t2
+	move $a0, $s2
 	li $v0, 1
 	syscall
 	
@@ -51,7 +47,7 @@ main:
 	la $a0, m1
 	syscall
 	
-	move $a0, $t1
+	move $a0, $s1
 	li $v0, 1
 	syscall 
 	
@@ -72,29 +68,27 @@ exitprogram:
 	syscall
 	
 	
-len: # Returns length of string
-	len_loop:
+lenWC: # Returns length of string to $s1 and wordcount to $s2
+	add $s0, $0, $0
+	
+	# Main Loops
+	loop:
 		lb $a0, 0($t0)
-		beqz $a0, len_done
+		beqz $a0, done
 		addi $t0, $t0, 1
-		addi $t1, $t1, 1		
-		j len_loop	
-		
-	len_done:					
-		jr	$ra
-		
-wordcount: # Returns how many words are in the string
-	wordcount_loop:		
-		lb $a0, 0($t0)
-		beqz $a0, wordcount_done
-		beq $a0, 32, L1
-		addi $t0, $t0, 1
-		j wordcount_loop
+		addi $t1, $t1, 1
+		beq $a0, 32, L1		
+		j loop
+	
+	# if (string[x] = " "), signifying more than 1 word
 	L1:
 		addi $t2, $t2, 1
-		addi $t0, $t0, 1
-		j wordcount_loop
-		
-	wordcount_done:		
-		jr 	$ra
+		j loop	
+	
+	# Exits the loop	
+	done:
+		la $s1, ($t1)
+		la $s2, ($t2)					
+		jr	$ra
+
 		

@@ -45,22 +45,26 @@ AVLNode* BinarySearchTree::insert(int key, AVLNode* cur) {
 
 	// Left Left 
 	if (balance > 1 && key < cur->getLeft()->getKey()) {
+		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Right Rotation" << endl;
 		return rotateRight(cur);
 	}
 	
 	// Right Right
 	if (balance < -1 && key > cur->getRight()->getKey()) {
+		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Left Rotation" << endl;
 		return rotateLeft(cur);
 	}
 
 	// Left Right
 	if (balance > 1 && key > cur->getLeft()->getKey()) {
+		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Left-Right Rotation" << endl;
 		cur->setLeft(rotateLeft(cur->getLeft()));
 		return rotateRight(cur);
 	}
 
 	// Right Left
 	if (balance < -1 && key < cur->getRight()->getKey()) {
+		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Right-Left Rotation" << endl;
 		cur->setRight(rotateRight(cur->getRight()));
 		return rotateLeft(cur);
 	}
@@ -82,7 +86,7 @@ void BinarySearchTree::print(AVLNode* cur) {
 	}
 
 	print(cur->getLeft());
-	std::cout << cur->getKey() << ", " << cur->getHeight() << "   ";
+	cout << cur->getKey() << ", " << cur->getHeight() << "   ";
 	print(cur->getRight());
 
 }
