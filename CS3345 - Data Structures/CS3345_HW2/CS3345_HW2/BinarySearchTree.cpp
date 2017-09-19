@@ -59,3 +59,35 @@ void BinarySearchTree::print(AVLNode* cur) {
 	print(cur->getRight());
 
 }
+
+AVLNode* BinarySearchTree::rotateRight(AVLNode* cur) {
+	AVLNode* tmp = cur->getLeft();
+	cur->setLeft(tmp->getRight());
+	tmp->setRight(cur);
+
+	return tmp;
+}
+
+AVLNode* BinarySearchTree::rotateLeft(AVLNode* cur) {
+	AVLNode* tmp = cur->getRight();
+	cur->setRight(tmp->getLeft());
+	tmp->setLeft(cur);
+
+	return tmp;
+}
+
+AVLNode* BinarySearchTree::rotateDoubleLeftRight(AVLNode* cur) {
+	cur->setLeft(rotateLeft(cur->getLeft()));
+	AVLNode* tmp = rotateRight(cur);
+	return tmp;
+}
+
+AVLNode* BinarySearchTree::rotateDoubleRightLeft(AVLNode* cur) {
+	cur->setRight(rotateRight(cur->getRight()));
+	AVLNode* tmp = rotateLeft(cur);
+	return tmp;
+}
+
+int BinarySearchTree::balance(AVLNode* cur) {
+	return 0;
+}

@@ -7,9 +7,10 @@
 int main()
 {
 	BinarySearchTree* bst = new BinarySearchTree();
-	bst->insert(2);
-	bst->insert(5);
 	bst->insert(7);
+	bst->insert(9);
+	bst->insert(4);
+	bst->insert(1);
 
 	bst->printTree(bst->getHead());
 
