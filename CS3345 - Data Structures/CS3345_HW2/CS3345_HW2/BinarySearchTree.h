@@ -16,14 +16,13 @@ public:
 
 	// AVL Helper Functions
 	int height(AVLNode*);
-	int balance(AVLNode*);
+	int getBalance(AVLNode*);
 	int greaterHeight(int, int);
 
 	// AVL Rotation Functions
 	AVLNode* rotateRight(AVLNode* cur);
 	AVLNode* rotateLeft(AVLNode* cur);
-	AVLNode* rotateDoubleLeftRight(AVLNode* cur);
-	AVLNode* rotateDoubleRightLeft(AVLNode* cur);
+
 private:
 	AVLNode* head;
 	int maxHeight;

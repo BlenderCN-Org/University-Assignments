@@ -35,14 +35,41 @@ AVLNode* BinarySearchTree::insert(int key, AVLNode* cur) {
 	else if (key > cur->getKey()) {
 		cur->setRight(insert(key, cur->getRight()));
 	}
-
+	else {
+		return cur;
+	}
 
 	cur->setHeight(greaterHeight(height(cur->getLeft()), height(cur->getRight())) + 1);
+
+	int balance = getBalance(cur);
+
+	// Left Left 
+	if (balance > 1 && key < cur->getLeft()->getKey()) {
+		return rotateRight(cur);
+	}
+	
+	// Right Right
+	if (balance < -1 && key > cur->getRight()->getKey()) {
+		return rotateLeft(cur);
+	}
+
+	// Left Right
+	if (balance > 1 && key > cur->getLeft()->getKey()) {
+		cur->setLeft(rotateLeft(cur->getLeft()));
+		return rotateRight(cur);
+	}
+
+	// Right Left
+	if (balance < -1 && key < cur->getRight()->getKey()) {
+		cur->setRight(rotateRight(cur->getRight()));
+		return rotateLeft(cur);
+	}
+
 	return cur;
 }
 
 int BinarySearchTree::greaterHeight(int x, int y) {
-	return x > y ? x : y;
+	return (x > y) ? x : y;
 }
 
 int BinarySearchTree::height(AVLNode* cur) {
@@ -61,33 +88,36 @@ void BinarySearchTree::print(AVLNode* cur) {
 }
 
 AVLNode* BinarySearchTree::rotateRight(AVLNode* cur) {
-	AVLNode* tmp = cur->getLeft();
-	cur->setLeft(tmp->getRight());
-	tmp->setRight(cur);
+	AVLNode* x = cur->getLeft();
+	AVLNode* y = x->getRight();
 
-	return tmp;
+	x->setRight(cur);
+	cur->setLeft(y);
+	
+	cur->setHeight(greaterHeight(height(cur->getLeft()), height(cur->getRight())) + 1);
+	x->setHeight(greaterHeight(height(x->getLeft()), height(x->getRight())) + 1);
+
+	return x;
 }
 
 AVLNode* BinarySearchTree::rotateLeft(AVLNode* cur) {
-	AVLNode* tmp = cur->getRight();
-	cur->setRight(tmp->getLeft());
-	tmp->setLeft(cur);
+	AVLNode* x = cur->getRight();
+	AVLNode* y = x->getLeft();
 
-	return tmp;
+	x->setLeft(cur);
+	cur->setRight(y);
+
+	cur->setHeight(greaterHeight(height(cur->getLeft()), height(cur->getRight())) + 1);
+	x->setHeight(greaterHeight(height(x->getLeft()), height(x->getRight())) + 1);
+
+	return x;
 }
 
-AVLNode* BinarySearchTree::rotateDoubleLeftRight(AVLNode* cur) {
-	cur->setLeft(rotateLeft(cur->getLeft()));
-	AVLNode* tmp = rotateRight(cur);
-	return tmp;
-}
-
-AVLNode* BinarySearchTree::rotateDoubleRightLeft(AVLNode* cur) {
-	cur->setRight(rotateRight(cur->getRight()));
-	AVLNode* tmp = rotateLeft(cur);
-	return tmp;
-}
-
-int BinarySearchTree::balance(AVLNode* cur) {
-	return 0;
+int BinarySearchTree::getBalance(AVLNode* cur) {
+	if (cur == nullptr) {
+		return 0;
+	}
+	else {
+		return height(cur->getLeft()) - height(cur->getRight());
+	}
 }
