@@ -35,7 +35,7 @@ main:
 # Start len(message, counter)		
 	la $t0, message
 	li $t1, -1	
-	la $t2, 1
+	li $t2, 1
 	jal lenWC
 	
 #Outprinting Information
@@ -69,15 +69,16 @@ exitprogram:
 	
 	
 lenWC: # Returns length of string to $s1 and wordcount to $s2
-	add $s0, $0, $0
 	
 	# Main Loops
 	loop:
-		lb $a0, 0($t0)
-		beqz $a0, done
+		addi $sp, $sp, -4
+		lb $s0, 0($t0)
+		sw $s0, 0($sp)
+		beqz $s0, done
 		addi $t0, $t0, 1
 		addi $t1, $t1, 1
-		beq $a0, 32, L1		
+		beq $s0, 32, L1		
 		j loop
 	
 	# if (string[x] = " "), signifying more than 1 word
