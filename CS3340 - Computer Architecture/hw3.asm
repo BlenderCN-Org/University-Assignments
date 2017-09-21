@@ -25,12 +25,7 @@ main:
 	
 	beq $a1, -2, exitprogram
 	beq $a1, -3, exitprogram
-	
-# First Print : Full string
-	la $a0, message
-	li $v0, 4
-	syscall
-	
+	beq $a1, -4, exitprogram	
 	
 # Start len(message, counter)		
 	la $t0, message
@@ -39,6 +34,12 @@ main:
 	jal lenWC
 	
 #Outprinting Information
+	# Prints String
+	move $a0, $s0
+	li $v0, 4
+	syscall
+	
+	#Prints WC
 	move $a0, $s2
 	li $v0, 1
 	syscall
@@ -47,6 +48,7 @@ main:
 	la $a0, m1
 	syscall
 	
+	#Prints Length
 	move $a0, $s1
 	li $v0, 1
 	syscall 
@@ -69,12 +71,11 @@ exitprogram:
 	
 	
 lenWC: # Returns length of string to $s1 and wordcount to $s2
-	
+	addi $sp, $sp, -4
+	sw $t0, ($sp)
 	# Main Loops
 	loop:
-		addi $sp, $sp, -4
-		lb $s0, 0($t0)
-		sw $s0, 0($sp)
+		lb $s0, ($t0)		
 		beqz $s0, done
 		addi $t0, $t0, 1
 		addi $t1, $t1, 1
@@ -88,6 +89,9 @@ lenWC: # Returns length of string to $s1 and wordcount to $s2
 	
 	# Exits the loop	
 	done:
+		lw $s0, ($sp)
+		addi $sp, $sp, 4	
+		
 		la $s1, ($t1)
 		la $s2, ($t2)					
 		jr	$ra
