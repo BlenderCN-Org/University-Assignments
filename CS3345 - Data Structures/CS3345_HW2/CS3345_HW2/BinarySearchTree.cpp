@@ -21,19 +21,19 @@ void BinarySearchTree::setHead(AVLNode* cur) {
 	head = cur;
 }
 
-void BinarySearchTree::insert(int key) {
-	setHead(insert(key, getHead()));
+void BinarySearchTree::insert(int key, std::string name) {
+	setHead(insert(key, getHead(),name));
 }
 
-AVLNode* BinarySearchTree::insert(int key, AVLNode* cur) {
+AVLNode* BinarySearchTree::insert(int key, AVLNode* cur,std::string name) {
 	if (cur == nullptr) {
-		cur = new AVLNode(key);
+		cur = new AVLNode(key, new Book(key, name));
 	}
 	else if (key < cur->getKey()) {
-		cur->setLeft(insert(key, cur->getLeft()));
+		cur->setLeft(insert(key, cur->getLeft(),name));
 	}
 	else if (key > cur->getKey()) {
-		cur->setRight(insert(key, cur->getRight()));
+		cur->setRight(insert(key, cur->getRight(),name));
 	}
 	else {
 		return cur;
@@ -45,26 +45,26 @@ AVLNode* BinarySearchTree::insert(int key, AVLNode* cur) {
 
 	// Left Left 
 	if (balance > 1 && key < cur->getLeft()->getKey()) {
-		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Right Rotation" << endl;
+		cout << "Imbalance occured at insertion of ISBN: " << key << ", fixed by Right Rotation" << endl;
 		return rotateRight(cur);
 	}
 	
 	// Right Right
 	if (balance < -1 && key > cur->getRight()->getKey()) {
-		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Left Rotation" << endl;
+		cout << "Imbalance occured at insertion of ISBN: " << key << ", fixed by Left Rotation" << endl;
 		return rotateLeft(cur);
 	}
 
 	// Left Right
 	if (balance > 1 && key > cur->getLeft()->getKey()) {
-		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Left-Right Rotation" << endl;
+		cout << "Imbalance occured at insertion of ISBN: " << key << ", fixed by Left-Right Rotation" << endl;
 		cur->setLeft(rotateLeft(cur->getLeft()));
 		return rotateRight(cur);
 	}
 
 	// Right Left
 	if (balance < -1 && key < cur->getRight()->getKey()) {
-		cout << "Imbalance occured at insertion of AVLNode of key: " << key << ", fixed by Right-Left Rotation" << endl;
+		cout << "Imbalance occured at insertion of ISBN: " << key << ", fixed by Right-Left Rotation" << endl;
 		cur->setRight(rotateRight(cur->getRight()));
 		return rotateLeft(cur);
 	}

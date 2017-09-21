@@ -6,30 +6,28 @@ class AVLNode
 public:
 	// Constructors / Destructors
 	AVLNode();
-	AVLNode(int);
+	AVLNode(int, Book*);
 	~AVLNode();	
 	
 	// Get / Set Functions
-	AVLNode* getRight();	
-	AVLNode* getLeft();
 
-	Book* getValue();
+	AVLNode* getRight();	
+	AVLNode* getLeft();	
 	int getHeight();
 	int getKey();
 
 	void setRight(AVLNode*);
-	void setLeft(AVLNode*);
-
-	void setValue(Book*);
+	void setLeft(AVLNode*);	
 	void setKey(int);
 	void setHeight(int);
+	void setBook(int, std::string);
 
 private:
-	// Where the node is
+	// Where the node is. ISBN Number
 	int key;
 
 	// Node's value
-	Book* value;
+	Book* book;
 
 	// Node's current height
 	int height;
