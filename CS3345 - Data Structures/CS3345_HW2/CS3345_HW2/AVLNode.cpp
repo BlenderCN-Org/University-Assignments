@@ -18,7 +18,6 @@ AVLNode::AVLNode(int k) {
 	right = nullptr;;
 }
 
-
 AVLNode::~AVLNode(){
 }
 
