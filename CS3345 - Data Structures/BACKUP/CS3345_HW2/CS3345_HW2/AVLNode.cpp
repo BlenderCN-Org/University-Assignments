@@ -4,18 +4,26 @@
 
 AVLNode::AVLNode() {	
 	key = 0;	
-	value = nullptr;
+	book = nullptr;
 	height = 1;
 	left = nullptr;
-	right = nullptr;;
+	right = nullptr;
 }
 
 AVLNode::AVLNode(int k) {
 	key = k;
-	value = nullptr;
+	book = nullptr;
 	height = 0;
 	left = nullptr;
-	right = nullptr;;
+	right = nullptr;
+}
+
+AVLNode::AVLNode(int k, Book* b) {
+	key = k;
+	book = b;
+	height = 0;
+	left = nullptr;
+	right = nullptr;
 }
 
 AVLNode::~AVLNode(){
@@ -45,10 +53,6 @@ int AVLNode::getKey() {
 	return key;
 }
 
-Book* AVLNode::getValue() {
-	return value;
-}
-
 void AVLNode::setHeight(int val) {
 	height = val;
 }
@@ -57,6 +61,6 @@ void AVLNode::setKey(int val) {
 	key = val;
 }
 
-void AVLNode::setValue(Book* val) {
-	value = val;
+void AVLNode::setBook(int key, std::string n) {
+	book = new Book(key, n);
 }

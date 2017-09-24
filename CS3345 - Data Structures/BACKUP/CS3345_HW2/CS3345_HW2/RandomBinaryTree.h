@@ -7,7 +7,9 @@ public:
 	~RandomBinaryTree();
 
 	void createTree();
-	bool verifyBST(AVLNode*);
+	bool verifyBST();
+	bool verifyBST(AVLNode*,int,int);
+	bool verifyAVL();
 	bool verifyAVL(AVLNode*);
 
 	AVLNode* getHead();

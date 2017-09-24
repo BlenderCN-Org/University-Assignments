@@ -17,7 +17,7 @@ RandomBinaryTree::~RandomBinaryTree() {
 void RandomBinaryTree::createTree() {
 	srand((int)time(0));
 
-	int tree_val = round((rand() % 100) + 40);
+	int tree_val = round((rand() % 20) + 1);
 	int node_val;
 	for (int i = 0; i < tree_val; i++) {
 		node_val = rand() % 100;		
@@ -25,42 +25,38 @@ void RandomBinaryTree::createTree() {
 	}
 }
 
-bool RandomBinaryTree::verifyBST(AVLNode* cur) {
-	if (cur == nullptr || getHead() == nullptr) {
+bool RandomBinaryTree::verifyBST() {
+	return verifyBST(getHead(), INT_MIN, INT_MAX);
+}
+
+bool RandomBinaryTree::verifyBST(AVLNode* cur, int l, int r) {
+	if (cur == nullptr) {
+		return true;
+	}
+
+	if (cur->getKey() < l || cur->getKey() > r) {
 		return false;
 	}
-	verifyBST(cur->getLeft());
-	if (cur->getLeft() != nullptr) {
-		if (cur->getLeft()->getKey() >= cur->getKey()) {
-			return false;
-		}
-	}
-	if (cur->getRight() != nullptr) {
-		if (cur->getRight()->getKey() <= cur->getKey()) {
-			return false;
-		}
-	}
-	verifyBST(cur->getRight());
+	return verifyBST(cur->getLeft(), l, cur->getKey()) && verifyBST(cur->getRight(), cur->getKey(), r);
+}
 
-	return true;
-	
+bool RandomBinaryTree::verifyAVL() {
+	if (verifyBST()) {
+		return verifyAVL(getHead());
+	}
+	else {
+		return false;
+	}		
 }
 
 bool RandomBinaryTree::verifyAVL(AVLNode* cur) {
-	if (verifyBST(getHead())) {
-		if (cur == nullptr || getHead() == nullptr) {
-			return false;
-		}
-		verifyAVL(cur->getLeft());
-		if (abs(getBalance(cur)) >= 2) {
-			return false;
-		}
-		verifyAVL(cur->getRight());
+	if (cur == nullptr) {
 		return true;
 	}
-	else
+	if (abs(getBalance(cur)) >= 2 ) {
 		return false;
-		return false;	
+	}
+	return verifyAVL(cur->getLeft()) && verifyAVL(cur->getRight());
 }
 
 AVLNode* RandomBinaryTree::getHead() {
@@ -76,7 +72,7 @@ void RandomBinaryTree::insert(int key) {
 }
 
 AVLNode* RandomBinaryTree::insert(int key, AVLNode* cur) {	
-	float lor = rand() % 2;
+	int lor = rand() % 2;
 
 	if (cur == nullptr) {
 		cur = new AVLNode(key);

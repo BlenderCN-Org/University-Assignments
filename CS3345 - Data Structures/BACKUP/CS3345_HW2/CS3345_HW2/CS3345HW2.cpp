@@ -4,20 +4,33 @@
 #include "stdafx.h"
 #include "BinarySearchTree.h"
 #include "RandomBinaryTree.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
 
 using std::cout;
 using std::endl;
+using std::cin;
+using std::string;
 
 int main()
 {
-	/* REGULAR ASSIGNMENT */
+	/* REGULAR ASSIGNMENT */	
 	
 	BinarySearchTree* bst = new BinarySearchTree();
-	bst->insert(12);
-	bst->insert(4);
-	bst->insert(7);		
+	freopen("book_data.txt", "r", stdin);
 
+	int tmpISBN;
+	char tmpNAME[64];
+
+	while (scanf("%i %[^\n]", &tmpISBN, &tmpNAME) == 2) {
+		bst->insert(tmpISBN, tmpNAME);		
+	}	
+
+	bst->print(bst->getHead());
 	cout << endl; cout << endl; cout << endl;
+	
 
 	/* EXTRA CREDIT : RANDOM BINARY TREE */
 	
@@ -25,17 +38,15 @@ int main()
 	rbt->createTree();
 	rbt->print(rbt->getHead());	cout << endl; cout << endl;
 
-	if (rbt->verifyBST(rbt->getHead()))
+	if (rbt->verifyBST())
 		cout << "IS A BST" << endl;
 	else
 		cout << "NOT A BST" << endl;
 
-	if (rbt->verifyAVL(rbt->getHead())) {
-		cout << "IS A AVL" << endl;
-	}
+	if (rbt->verifyAVL()) 
+		cout << "IS A AVL" << endl; 
 	else
-		cout << "NOT A AVL" << endl;
-
+		cout << "NOT A AVL" << endl;	
 
     return 0;
 }
