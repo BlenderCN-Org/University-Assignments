@@ -19,34 +19,45 @@ int main()
 	/* REGULAR ASSIGNMENT */	
 	
 	BinarySearchTree* bst = new BinarySearchTree();
-	freopen("book_data.txt", "r", stdin);
 
+	// These next few lines redirect input from STDIN to the file 'book_data.txt', read data from the file 'book_data.txt' and create a binary search tree with it
+	// Also prints the tree with an 'IN-ORDER' traversal after each insertion, giving the ISBN and the Node*'s height
+
+	cout << "::REGULAR ASSIGNMENT::" << endl << endl;
+
+	freopen("book_data.txt", "r", stdin);
 	int tmpISBN;
-	char tmpNAME[64];
+	char tmpNAME[1024];
 
 	while (scanf("%i %[^\n]", &tmpISBN, &tmpNAME) == 2) {
-		bst->insert(tmpISBN, tmpNAME);		
-	}	
+		bst->insert(tmpISBN, tmpNAME);
+		cout << "Tree Outprint after Insertion of ISBN: " << tmpISBN << endl;
+		bst->print(bst->getHead()); cout << endl;
+	}		
 
-	bst->print(bst->getHead());
 	cout << endl; cout << endl; cout << endl;
-	
 
-	/* EXTRA CREDIT : RANDOM BINARY TREE */
-	
+
+	/* EXTRA CREDIT | RANDOM BINARY TREE */	
+
 	RandomBinaryTree* rbt = new RandomBinaryTree();
+
+	cout << "::EXTRA CREDIT | RANDOM BINARY TREE::" << endl << endl;
+
+	// Creates a random binary tree, with nodes 'n' 1 <= n <= 20, and keys 'k' 0 <= k <= 99	
 	rbt->createTree();
-	rbt->print(rbt->getHead());	cout << endl; cout << endl;
 
+	// Calls VerifyBST(), and prints 'IS A BST' if true, 'NOT A BST' if false
 	if (rbt->verifyBST())
-		cout << "IS A BST" << endl;
+		cout << "Random Binary Tree 'rbt' IS a BST" << endl;
 	else
-		cout << "NOT A BST" << endl;
+		cout << "Random Binary Tree 'rbt' IS NOT a BST" << endl;
 
-	if (rbt->verifyAVL()) 
-		cout << "IS A AVL" << endl; 
+	// Calls VarifyAVL(), and prints 'IS A AVL' if true, 'NOT A AVL' if false
+	if (rbt->verifyAVL())
+		cout << "Random Binary Tree 'rbt' IS a AVL Tree" << endl << endl;
 	else
-		cout << "NOT A AVL" << endl;	
+		cout << "Random Binary Tree 'rbt' IS NOT a AVL Tree" << endl << endl;
 
     return 0;
 }

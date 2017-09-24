@@ -11,12 +11,10 @@ public:
 	~AVLNode();
 	
 	// Get / Set Functions
-
 	AVLNode* getRight();	
 	AVLNode* getLeft();	
 	int getHeight();
 	int getKey();
-
 	void setRight(AVLNode*);
 	void setLeft(AVLNode*);	
 	void setKey(int);
@@ -35,6 +33,7 @@ private:
 
 	// Left node pointer
 	AVLNode* left;
+
 	// Right node pointer
 	AVLNode* right;
 

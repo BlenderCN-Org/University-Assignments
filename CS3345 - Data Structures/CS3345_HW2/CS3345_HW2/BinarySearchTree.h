@@ -4,15 +4,17 @@
 class BinarySearchTree
 {
 public:
+	// Constructors / Destructors
 	BinarySearchTree();
 	~BinarySearchTree();
 
+	// Get / Set Functions
 	AVLNode* getHead();
 	void setHead(AVLNode*);
 
+	// Recursive Tree Insertion functions
 	void insert(int,std::string);
 	AVLNode* insert(int, AVLNode*, std::string);
-	void print(AVLNode*);
 
 	// AVL Helper Functions
 	int height(AVLNode*);
@@ -23,9 +25,11 @@ public:
 	AVLNode* rotateRight(AVLNode* cur);
 	AVLNode* rotateLeft(AVLNode* cur);
 
+	// Prints the Tree in an 'IN-ORDER' Traversal
+	void print(AVLNode*);
+
 private:
-	AVLNode* head;
-	int maxHeight;
-	int numNodes;
+	// 'Head' or 'Root' ptr node
+	AVLNode* head;	
 };
 

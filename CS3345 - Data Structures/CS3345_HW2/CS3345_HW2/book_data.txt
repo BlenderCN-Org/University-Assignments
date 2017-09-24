@@ -1,6 +1,6 @@
-1000009 Grapes of Wrath
-1021512 Google Book
-1024214 Stupid Computer-Book
-1040014 Lazy
+1009 Grapes of Wrath
+1112 Flowers for Algernon
+1894 Animal Farm
+1345 East of Eden
 
 # ABOVE ARE TEST CASES, PUT OWN CASES IN HERE
