@@ -30,9 +30,7 @@ int main()
 	char tmpNAME[1024];
 
 	while (scanf("%i %[^\n]", &tmpISBN, &tmpNAME) == 2) {
-		bst->insert(tmpISBN, tmpNAME);
-		cout << "Tree Outprint after Insertion of ISBN: " << tmpISBN << endl;
-		bst->print(bst->getHead()); cout << endl;
+		bst->insert(tmpISBN, tmpNAME);		
 	}		
 
 	cout << endl; cout << endl; cout << endl;
