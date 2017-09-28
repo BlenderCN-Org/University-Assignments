@@ -1,33 +1,67 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HashMap {
 	
 	public static HashNode[] LinearProbing;
+	private static int LinearSize;
+	public static int LinearInvestigation;
+	public static long LinearTime;
+	
 	public static HashNode[] QuadraticProbing;
+	private static int QuadraticSize;
+	public static int QuadraticInvestigation;
+	public static long QuadraticTime;
+	
 	public static HashNode[][] SeperateChaining;
+	public static int ChainingSize;
+	public static int ChainingInvestigation;
+	public static long ChainingTime;
+	
 	public static HashNode[] DoubleHashing;
+	private static int DoubleSize;
+	public static int DoubleInvestigation;
+	public static long DoubleTime;
+	
+	private static ArrayList<Integer> prime_list;
+	private static int prime_hashval;
+	private static int primePos;
 	
 	public HashMap() {
 		LinearProbing = new HashNode[2];
+		LinearSize = 0;
+		LinearInvestigation = 0;
+		LinearTime = 0;
+		
 		QuadraticProbing = new HashNode[2];
+		QuadraticSize = 0;
+		QuadraticInvestigation = 0;
+		QuadraticTime = 0;
+		
 		SeperateChaining = new HashNode[2][1];
+		ChainingSize = 0;
+		ChainingInvestigation = 0;
+		ChainingTime = 0;
+		
 		DoubleHashing = new HashNode[2];
+		DoubleSize = 0;
+		DoubleInvestigation = 0;
+		DoubleTime = 0;
+		
+		prime_list = getPrime(155286*2);
+		primePos = 0;
+		prime_hashval = prime_list.get(primePos);
 	}
 	
-	public void insert(String key, String type, String def) {
-		//insertLinearProbing(key, type, def);
-		//insertQuadraticProbing(key, type, def);
-		//insertSeperateChaining(key, type, def);
-		insertDoubleHashing(key, type, def);
-	}
-	
-	private void insertLinearProbing(String key, String type, String def) {
+	public void insertLinearProbing(String key, String type, String def) {
+		long startTime = System.nanoTime();
+		
 		int hash = 1; // Starting HASH at a prime number, to produce more unique results
 		int linear_probe = 0;
 		
 		// Initial Hash
 		for(int i = 0; i < key.length(); i++) {
-			hash = 3 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
+			hash = 31 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
 		}
 		
 		hash = Math.abs((hash + linear_probe) % LinearProbing.length);
@@ -35,20 +69,26 @@ public class HashMap {
 		while(LinearProbing[hash] != null) {					
 			hash = Math.abs((hash + linear_probe) % LinearProbing.length);		
 			linear_probe++;
+			LinearInvestigation++;
 		}
 		LinearProbing[hash] = new HashNode(key, type, def);		
+		LinearSize++;
 		
-		if(getNumElements(LinearProbing) >= LinearProbing.length) {
+		if(LinearSize >= LinearProbing.length) {
 			HashNode[] newTable = new HashNode[LinearProbing.length*2];
 			for(int i = 0; i < LinearProbing.length; i++) {
 				newTable[i] = LinearProbing[i];
 			}
 			LinearProbing = newTable;
 		}
+		
+		long endTime = System.nanoTime();
+		LinearTime += (endTime - startTime)/1000000;
 	}
 	
-	// Need to fix issue w/ Overlapping (Ya know, cause quadratic can go to the same value alot) <- that isnt actually a comment I would keep btw, its like 12:01am, I have a test tmrw 'technically today' and I'm tired so pls dont hate
-	private void insertQuadraticProbing(String key, String type, String def) {
+	public void insertQuadraticProbing(String key, String type, String def) {
+		long startTime = System.nanoTime();
+		
 		int hash = 1; // Starting HASH at a prime number, to produce more unique results
 		int quadratic_probe = 0;
 		
@@ -60,22 +100,29 @@ public class HashMap {
 		hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);
 		int parentHash = hash;
 		while(QuadraticProbing[hash] != null) {					
-			hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);
-			quadratic_probe++;				
+			hash = Math.abs((hash + quadratic_probe*quadratic_probe++) % QuadraticProbing.length);
+			quadratic_probe++;
+			QuadraticInvestigation++;
 		}
 		
-		QuadraticProbing[hash] = new HashNode(key, type, def);		
+		QuadraticProbing[hash] = new HashNode(key, type, def);
+		QuadraticSize++;
 		
-		if(getNumElements(QuadraticProbing) >= QuadraticProbing.length) {
+		if(QuadraticSize >= QuadraticProbing.length/2) {
 			HashNode[] newTable = new HashNode[QuadraticProbing.length*2];
 			for(int i = 0; i < QuadraticProbing.length; i++) {
 				newTable[i] = QuadraticProbing[i];
 			}
 			QuadraticProbing = newTable;
 		}
+		
+		long endTime = System.nanoTime();
+		QuadraticTime += (endTime - startTime)/1000000;
 	}
 	
-	private void insertSeperateChaining(String key, String type, String def) {
+	public void insertSeperateChaining(String key, String type, String def) {
+		long startTime = System.nanoTime();
+		
 		int hash = 1; // Starting HASH at a prime number, to produce more unique results				    
 		
 		// Initial Hash
@@ -83,13 +130,16 @@ public class HashMap {
 			hash = 3 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
 		}		
 		hash = Math.abs(hash % SeperateChaining.length);
-
+		
+		ChainingInvestigation++;
+		
 		if(SeperateChaining[hash] == null) {
 			SeperateChaining[hash] = new HashNode[2];
 			SeperateChaining[hash][0] = new HashNode(key, type, def); 
+			ChainingSize++;
 		} else {
 			SeperateChaining[hash][getFreeSpace(SeperateChaining[hash])] = new HashNode(key, type, def);
-			if(getNumElements(SeperateChaining[hash]) >= SeperateChaining[hash].length) {
+			if(getNumElements(SeperateChaining[hash]) >= SeperateChaining[hash].length/2) {
 				HashNode[] newTable = new HashNode[SeperateChaining[hash].length*2];
 				for(int i = 0; i < SeperateChaining[hash].length; i++) {
 					newTable[i] = SeperateChaining[hash][i];
@@ -98,7 +148,7 @@ public class HashMap {
 			}
 		}
 		
-		if(getNumElements(SeperateChaining) >= SeperateChaining.length/2) {
+		if(ChainingSize >= SeperateChaining.length/2) {
 			HashNode[][] tmp = new HashNode[SeperateChaining.length*2][];
 			for(int i = 0; i < SeperateChaining.length; i++) {
 				
@@ -112,48 +162,73 @@ public class HashMap {
 			}
 			SeperateChaining = tmp;
 		}
+		
+		long endTime = System.nanoTime();
+		ChainingTime += (endTime - startTime)/1000000;
 	}
 	
-	private void insertDoubleHashing(String key, String type, String def) {
-		int fhash = 1; // Starting HASH at a prime number, to produce more unique results	
-		int ghash = 1; // Starting HASH at a prime number, to produce more unique results	
+	public void insertDoubleHashing(String key, String type, String def) {
 		
-		// Initial Hash 
+		long startTime = System.nanoTime();
+		
+		int primaryHash = 0;
+		
 		for(int i = 0; i < key.length(); i++) {
-			fhash = 3 * fhash + key.charAt(i); // 31 is prime, and helps to produce more unique results
-		}		
-		ghash = Math.abs(getClosestPrime(DoubleHashing) - fhash % DoubleHashing.length);
+			primaryHash = 3 * primaryHash + key.charAt(i);
+		}
 		
-		fhash = Math.abs((fhash + ghash) % DoubleHashing.length);		
-		while(DoubleHashing[fhash] != null) {
-			fhash = Math.abs((fhash + ghash) % DoubleHashing.length);
-		}		
-		DoubleHashing[fhash] = new HashNode(key, type, def);
+		if(prime_list.get(primePos+1) < DoubleSize) {
+			prime_hashval = prime_list.get(primePos+1);
+			primePos++;
+		}
 		
+		int hash1 = Math.abs(primaryHash % DoubleHashing.length);
+		int hash2 = Math.abs(prime_hashval - primaryHash % prime_hashval);
+		
+		while(DoubleHashing[hash1] != null) {
+			hash1 += hash2;
+			hash1 %= DoubleHashing.length;
+			DoubleInvestigation++;
+		}
+		
+		DoubleHashing[hash1] = new HashNode(key, type, def);
+		DoubleSize++;
+
+		if(DoubleSize >= DoubleHashing.length/2) {
+			HashNode[] newTable = new HashNode[DoubleHashing.length*2];
+			for(int i = 0; i < DoubleHashing.length; i++) {
+				newTable[i] = DoubleHashing[i];
+			}
+			DoubleHashing = newTable;
+		}
+		
+		long endTime = System.nanoTime();
+		DoubleTime += (endTime - startTime)/1000000;
 	}
 	
-	private int getClosestPrime(HashNode[] array) {
+	private ArrayList<Integer> getPrime(int prime_limit) {
 		// Use Sieve of Eratosthenes for primes : *Thanks Project Euler!*		
-		Boolean[] sieve = new Boolean[array.length];
+		Boolean[] sieve = new Boolean[prime_limit];
 		Arrays.fill(sieve, true);
 		
-		for(int i = 2; i < (int)Math.sqrt(array.length); i++) {
+		for(int i = 2; i < (int)Math.sqrt(prime_limit); i++) {
 			if(sieve[i]) {
-				for(int j = (int)Math.pow(i,2); j < array.length; j += i) {
+				for(int j = (int)Math.pow(i,2); j < prime_limit; j += i) {
 					sieve[j] = false;
 				}
 			}
 		}
 		
 		int prime = -1;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		
 		for(int i = sieve.length-1; i > 0; i--) {
 			if(sieve[i]) {
-				prime = i;
-				break;
+				list.add(0,i);
 			}
 		}
 		
-		return prime;
+		return list;
 	}
 
 	private int getFreeSpace(HashNode[] array) {
@@ -164,17 +239,8 @@ public class HashMap {
 		}		
 		return -1; // Should never get to this point
 	}
-
-	private int getNumElements(HashNode[] array) {		
-		int numElements = 0;
-		for(HashNode node : array) {
-			if(node != null) // Should never get past array.length/2
-				numElements++;
-		}		
-		return numElements;
-	}
 	
-	private int getNumElements(HashNode[][] array) {		
+	private int getNumElements(HashNode[] array) {		
 		int numElements = 0;
 		for(int i = 0; i < array.length; i++) {
 			if(array[i] != null) {
