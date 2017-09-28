@@ -10,15 +10,15 @@ public class HashMap {
 	public HashMap() {
 		LinearProbing = new HashNode[2];
 		QuadraticProbing = new HashNode[2];
-		SeperateChaining = new HashNode[2][0];
+		SeperateChaining = new HashNode[2][1];
 		DoubleHashing = new HashNode[2];
 	}
 	
 	public void insert(String key, String type, String def) {
 		//insertLinearProbing(key, type, def);
-		insertQuadraticProbing(key, type, def);
+		//insertQuadraticProbing(key, type, def);
 		//insertSeperateChaining(key, type, def);
-		//insertDoubleHashing(key, type, def);
+		insertDoubleHashing(key, type, def);
 	}
 	
 	private void insertLinearProbing(String key, String type, String def) {
@@ -54,13 +54,13 @@ public class HashMap {
 		
 		// Initial Hash
 		for(int i = 0; i < key.length(); i++) {
-			hash = 3 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
+			hash = 1 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
 		}
 		
 		hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);
 		int parentHash = hash;
 		while(QuadraticProbing[hash] != null) {					
-			hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);		
+			hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);
 			quadratic_probe++;				
 		}
 		
@@ -96,6 +96,21 @@ public class HashMap {
 				}
 				SeperateChaining[hash] = newTable;
 			}
+		}
+		
+		if(getNumElements(SeperateChaining) >= SeperateChaining.length/2) {
+			HashNode[][] tmp = new HashNode[SeperateChaining.length*2][];
+			for(int i = 0; i < SeperateChaining.length; i++) {
+				
+				int len = 0;
+				if(SeperateChaining[i] != null) { len = SeperateChaining[i].length;	} 
+				else { len = 0;	}
+				
+				for(int j = 0; j < len; j++) {
+					tmp[i] = SeperateChaining[i];					
+				}
+			}
+			SeperateChaining = tmp;
 		}
 	}
 	
@@ -153,10 +168,19 @@ public class HashMap {
 	private int getNumElements(HashNode[] array) {		
 		int numElements = 0;
 		for(HashNode node : array) {
-			if(node == null) // Should never get past array.length/2
-				break;
-			numElements++;
+			if(node != null) // Should never get past array.length/2
+				numElements++;
 		}		
+		return numElements;
+	}
+	
+	private int getNumElements(HashNode[][] array) {		
+		int numElements = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] != null) {
+				numElements++;
+			}
+		}
 		return numElements;
 	}
 

@@ -40,9 +40,9 @@ public class MainActivity {
 			mHashMap.insert(key, type, def);
 		}
 		
-		mBufferedReader.close();
+		mBufferedReader.close();	
 		
-		System.out.println(Arrays.toString(mHashMap.getQuadraticProbing()));
+		System.out.println(Arrays.toString(mHashMap.getDoubleHashing()));
 		
 		// JAVA.SWING ELEMENTS
 		/*
