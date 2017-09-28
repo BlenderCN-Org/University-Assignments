@@ -1,0 +1,4 @@
+'hood|NOUN|(slang) a neighborhood
+'s_gravenhage|NOUN|the site of the royal residence and the de facto capital in the western part of the Netherlands; seat of the International Court of Justice
+.22|NOUN|a .22 caliber firearm (pistol or rifle)
+0|NOUN|a mathematical element that when added to another number yields the same number
