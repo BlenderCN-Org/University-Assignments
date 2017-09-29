@@ -92,7 +92,7 @@ public class MainActivity {
 			mJLayeredPane.setLayout(null);			
 			mJLayeredPane.setPreferredSize(new Dimension(640,240));	
 			
-		BackgroundTop = makeColoredLabel(5, 5, 625, 75, Color.CYAN, Color.BLACK);
+		BackgroundTop = makeColoredLabel(5, 5, 625, 75, Color.LIGHT_GRAY, Color.BLACK);
 		mJLayeredPane.add(BackgroundTop, new Integer(0));
 			  
 		BackgroundBottom = makeColoredLabel(5, 85, 625, 105, Color.LIGHT_GRAY, Color.BLACK);
@@ -106,12 +106,17 @@ public class MainActivity {
 		
 		JTextPane tmp = new JTextPane();
 		if(mHashMap.LinearSize == 155285) {
-			
+			tmp.setForeground(Color.GREEN);
+			tmp.setText("HASHMAPS LOADED");
 		}
 		else {
-			tmp.setText("HashMaps Failed :(");
-			tmp.
+			tmp.setForeground(Color.RED);
+			tmp.setText("HASHMAPS FAILED");
 		}
+		tmp.setBackground(Color.LIGHT_GRAY);
+		tmp.setFont(new Font("Arial", Font.BOLD, 12));
+		tmp.setBounds(500, 10, 125, 20);
+		mJLayeredPane.add(tmp, new Integer(3));
 						
 		mJFrame.setLocationByPlatform(true);
 		mJFrame.pack();
