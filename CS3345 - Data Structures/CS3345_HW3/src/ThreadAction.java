@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ThreadAction implements Runnable {
@@ -11,15 +13,17 @@ public class ThreadAction implements Runnable {
 	String def;
 	
 	Thread t;
+	FileWriter fw;
 	
 	public ThreadAction (String threadName, int threadType, HashMap mHashMap, 
-						 String key, String type, String def) {
+						 String key, String type, String def, FileWriter fw) {
 		this.threadName = threadName;
 		this.threadType = threadType;
 		this.mHashMap = mHashMap;
 		this.key = key;
 		this.type = type;
 		this.def = def;
+		this.fw = fw;
 	}
 
 	@Override
@@ -46,7 +50,12 @@ public class ThreadAction implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//System.out.println("Ending Thread: " + threadName);
+		try {
+			fw.write("Ending Thread: " + threadName + "\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void start () {

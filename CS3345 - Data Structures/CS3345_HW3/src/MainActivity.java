@@ -8,7 +8,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
@@ -32,7 +34,8 @@ public class MainActivity {
 	
 	public static void main(String[] args) throws Exception {
 		
-		ArrayList<ThreadAction> ActionList = new ArrayList<ThreadAction>();
+		FileWriter fw = new FileWriter("results.txt");
+		
 		ExecutorService es = Executors.newCachedThreadPool();
 		
 		// Variable Setup
@@ -49,24 +52,24 @@ public class MainActivity {
 			type = mLine.substring(0,mLine.indexOf("|")); mLine = mLine.substring(mLine.indexOf("|")+1);
 			def = mLine;
 		
-			t1 = new ThreadAction("Linear Probing: " + key, 1, mHashMap, key, type, def);
-			es.execute(t1);
+			//t1 = new ThreadAction("Linear Probing: " + key, 1, mHashMap, key, type, def, fw);
+			//es.execute(t1);
 					
-			t2 = new ThreadAction("Quadratic Probing: " + key, 2, mHashMap, key, type, def);
+			t2 = new ThreadAction("Quadratic Probing: " + key, 2, mHashMap, key, type, def, fw);
 			es.execute(t2);
 				
-			t3 = new ThreadAction("Seperate Chaining: " + key, 3, mHashMap, key, type, def);
-			es.execute(t3);
+			//t3 = new ThreadAction("Seperate Chaining: " + key, 3, mHashMap, key, type, def, fw);
+			//es.execute(t3);
 			
-			t4 = new ThreadAction("Double Hashing: " + key, 4,  mHashMap, key, type, def);
-			es.execute(t4);
+			//t4 = new ThreadAction("Double Hashing: " + key, 4,  mHashMap, key, type, def, fw);
+			//es.execute(t4);
 		}
 		
 		es.shutdown();
 		boolean finished = es.awaitTermination(2, TimeUnit.MINUTES);
 		// All tasks should be done...
-						
-		System.out.println("---Investigation Complexity---");
+		
+		System.out.println("\n--Investigation Complexity--");
 		
 		System.out.println("avg. Linear-Probing Investigations: " + mHashMap.LinearInvestigation);
 		System.out.println("avg. Quadratic-Probing Investigations: " + mHashMap.QuadraticInvestigation);

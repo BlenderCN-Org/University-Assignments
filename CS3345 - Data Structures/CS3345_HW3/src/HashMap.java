@@ -38,7 +38,7 @@ public class HashMap {
 		QuadraticInvestigation = 0;
 		QuadraticTime = 0;
 		
-		SeperateChaining = new HashNode[2][1];
+		SeperateChaining = new HashNode[1][2];
 		ChainingSize = 0;
 		ChainingInvestigation = 0;
 		ChainingTime = 0;
@@ -134,9 +134,9 @@ public class HashMap {
 		ChainingInvestigation++;
 		
 		if(SeperateChaining[hash] == null) {
+			ChainingSize++;
 			SeperateChaining[hash] = new HashNode[2];
 			SeperateChaining[hash][0] = new HashNode(key, type, def); 
-			ChainingSize++;
 		} else {
 			SeperateChaining[hash][getFreeSpace(SeperateChaining[hash])] = new HashNode(key, type, def);
 			if(getNumElements(SeperateChaining[hash]) >= SeperateChaining[hash].length/2) {
