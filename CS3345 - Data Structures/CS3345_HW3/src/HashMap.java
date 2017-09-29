@@ -6,28 +6,28 @@ public class HashMap {
 	ArrayList<String> KeySet;
 	
 	public static HashNode[] LinearProbing;
-	public static int LinearSize;
-	public static int LinearInvestigation;
-	public static long LinearTime;
+	public int LinearSize;
+	public int LinearInvestigation;
+	public long LinearTime;
 	
 	public static HashNode[] QuadraticProbing;
-	public static int QuadraticSize;
-	public static int QuadraticInvestigation;
-	public static long QuadraticTime;
+	public int QuadraticSize;
+	public int QuadraticInvestigation;
+	public long QuadraticTime;
 	
 	public static HashNode[][] SeperateChaining;
-	public static int ChainingSize;
-	public static int ChainingInvestigation;
-	public static long ChainingTime;
+	public int ChainingSize;
+	public int ChainingInvestigation;
+	public long ChainingTime;
 	
 	public static HashNode[] DoubleHashing;
-	public static int DoubleSize;
-	public static int DoubleInvestigation;
-	public static long DoubleTime;
+	public int DoubleSize;
+	public int DoubleInvestigation;
+	public long DoubleTime;
 	
 	private static ArrayList<Integer> prime_list;
-	private static int prime_hashval;
-	private static int primePos;
+	private int prime_hashval;
+	private int primePos;
 	
 	public HashMap() {
 		LinearProbing = new HashNode[2];
@@ -230,8 +230,7 @@ public class HashMap {
 				}
 			}
 		}
-		
-		int prime = -1;
+				
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
 		for(int i = sieve.length-1; i > 0; i--) {
@@ -249,6 +248,7 @@ public class HashMap {
 	
 	private int getFreeSpace(HashNode[] array) {
 		for(int i = 0; i < array.length; i++) {
+			ChainingInvestigation++;
 			if(array[i] == null) {
 				return i;
 			}

@@ -7,11 +7,18 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 
+import javax.annotation.Resource;
 import javax.swing.*;
+
+import javafx.scene.input.KeyCode;
 
 public class MainActivity {
 	
@@ -45,8 +52,9 @@ public class MainActivity {
 		// Variable Setup
 		mHashMap = new HashMap();
 		
-		// HASHING SETUP
-		BufferedReader mBufferedReader = new BufferedReader(new FileReader("dictionary.txt"));
+		// HASHING SETUP		
+		InputStream input = MainActivity.class.getResourceAsStream("/dictionary.txt");		
+		BufferedReader mBufferedReader = new BufferedReader(new InputStreamReader(input));
 		String mLine = "";
 		
 		
@@ -212,6 +220,33 @@ public class MainActivity {
 	private static JTextField makeTextField(int xpos, int ypos, int width, int height) {
 		JTextField tmp = new JTextField();				
 			tmp.setBounds(xpos, ypos, width, height);
+			tmp.addKeyListener(new KeyListener() {
+
+				@Override
+				public void keyTyped(KeyEvent e) {
+					// Do Nothing					
+				}
+
+				@Override
+				public void keyPressed(KeyEvent e) {					
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						String UserText = mSearchBar.getText();	
+						UserText = UserText.replaceAll(" ", "_");
+						UserText = UserText.toLowerCase();				
+						if(UserText != "" && mHashMap.getKeySet().contains(UserText)) {					
+							UpdateDefinition(UserText.toUpperCase(),mHashMap.find(UserText, 1));
+						} else {
+							UpdateDefinition(":ERROR:","The word/phrase you inputted isnt not a word, or I cannot find the word in my dictionary. Please enter another word or try again.");
+						}
+					}
+				}
+
+				@Override
+				public void keyReleased(KeyEvent e) {
+					// Do Nothing				
+				}
+				
+			});
 			
 		return tmp;
 	}
