@@ -3,6 +3,8 @@ import java.util.Arrays;
 
 public class HashMap {
 	
+	ArrayList<String> KeySet;
+	
 	public static HashNode[] LinearProbing;
 	public static int LinearSize;
 	public static int LinearInvestigation;
@@ -51,6 +53,8 @@ public class HashMap {
 		prime_list = getPrime(155286*2);
 		primePos = 0;
 		prime_hashval = prime_list.get(primePos);
+		
+		KeySet = new ArrayList<String>();
 	}
 	
 	public void insertLinearProbing(String key, String type, String def) {
@@ -67,11 +71,11 @@ public class HashMap {
 		hash = Math.abs((hash + linear_probe) % LinearProbing.length);
 		
 		while(LinearProbing[hash] != null) {					
-			hash = Math.abs((hash + linear_probe) % LinearProbing.length);		
-			linear_probe++;
+			hash = Math.abs((hash + linear_probe++) % LinearProbing.length);		
 			LinearInvestigation++;
 		}
-		LinearProbing[hash] = new HashNode(key, type, def);		
+		LinearProbing[hash] = new HashNode(key, type, def);
+		KeySet.add(key);
 		LinearSize++;
 		
 		if(LinearSize >= LinearProbing.length/2) {
@@ -85,7 +89,7 @@ public class HashMap {
 		long endTime = System.nanoTime();
 		LinearTime += (endTime - startTime)/1000000;
 	}
-	
+
 	public void insertQuadraticProbing(String key, String type, String def) {
 		long startTime = System.nanoTime();
 		
@@ -106,6 +110,7 @@ public class HashMap {
 		}
 		
 		QuadraticProbing[hash] = new HashNode(key, type, def);
+		KeySet.add(key);
 		QuadraticSize++;
 		
 		try {
@@ -136,6 +141,7 @@ public class HashMap {
 		hash = Math.abs(hash % SeperateChaining.length);
 		
 		ChainingInvestigation++;
+		KeySet.add(key);
 		
 		if(SeperateChaining[hash] == null) {
 			ChainingSize++;
@@ -143,13 +149,14 @@ public class HashMap {
 			SeperateChaining[hash][0] = new HashNode(key, type, def); 
 		} else {
 			SeperateChaining[hash][getFreeSpace(SeperateChaining[hash])] = new HashNode(key, type, def);
-			if(getNumElements(SeperateChaining[hash]) >= SeperateChaining[hash].length/2) {
-				HashNode[] newTable = new HashNode[SeperateChaining[hash].length*2];
-				for(int i = 0; i < SeperateChaining[hash].length; i++) {
-					newTable[i] = SeperateChaining[hash][i];
-				}
-				SeperateChaining[hash] = newTable;
+		}
+		
+		if(getNumElements(SeperateChaining[hash]) >= SeperateChaining[hash].length/2) {
+			HashNode[] newTable = new HashNode[SeperateChaining[hash].length*2];
+			for(int i = 0; i < SeperateChaining[hash].length; i++) {
+				newTable[i] = SeperateChaining[hash][i];
 			}
+			SeperateChaining[hash] = newTable;
 		}
 		
 		if(ChainingSize >= SeperateChaining.length/2) {
@@ -196,6 +203,7 @@ public class HashMap {
 		}
 		
 		DoubleHashing[hash1] = new HashNode(key, type, def);
+		KeySet.add(key);
 		DoubleSize++;
 
 		if(DoubleSize >= DoubleHashing.length/2) {
@@ -235,6 +243,10 @@ public class HashMap {
 		return list;
 	}
 
+	public ArrayList<String> getKeySet(){
+		return KeySet;
+	}
+	
 	private int getFreeSpace(HashNode[] array) {
 		for(int i = 0; i < array.length; i++) {
 			if(array[i] == null) {
@@ -254,6 +266,96 @@ public class HashMap {
 		return numElements;
 	}
 
+	public String find(String key, int type) {
+		
+		int hash = 1;
+		
+		// Linear Probing
+		switch(type) {
+			case 1:
+				hash = 1;
+				int linear_probe = 0;				
+				
+				for(int i = 0; i < key.length(); i++) {
+					hash = 3 * hash + key.charAt(i);
+				}				
+				hash = Math.abs((hash + linear_probe) % LinearProbing.length);
+				
+				while(true) {
+					if(LinearProbing[hash] != null) {
+						if(LinearProbing[hash].name .equals(key)) {
+							return "(" + LinearProbing[hash].type + ") " +  LinearProbing[hash].def;
+						}
+					}
+					hash = Math.abs((hash + linear_probe++) % LinearProbing.length);		
+				}				
+				
+		// Quadratic Probing
+			case 2:
+				hash = 1;
+				int quadratic_probe = 0;				
+				
+				for(int i = 0; i < key.length(); i++) {
+					hash = 1 * hash + key.charAt(i);
+				}				
+				hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);				
+				
+				while(true) {
+					if(QuadraticProbing[hash] != null) {
+						if(QuadraticProbing[hash].name .equals(key)) {
+							return "(" + QuadraticProbing[hash].type + ") " +  QuadraticProbing[hash].def;
+						}
+					}
+					hash = Math.abs((hash + quadratic_probe*quadratic_probe++) % QuadraticProbing.length);
+				}				
+				
+			// Seperate  Chaining
+			case 3:
+				hash = 1;    
+				
+				for(int i = 0; i < key.length(); i++) {
+					hash = 3 * hash + key.charAt(i);
+				}		
+				hash = Math.abs(hash % SeperateChaining.length);
+				
+				for(int i = 0; i < SeperateChaining.length; i++) {
+					if(SeperateChaining[i] != null) {
+						for(int j = 0; j < SeperateChaining[i].length; j++) {
+							if(SeperateChaining[i][j] != null) {
+								if(SeperateChaining[i][j].name.equals(key)) {
+									return "(" + SeperateChaining[i][j].type + ") " +  SeperateChaining[i][j].def; 
+								}
+							}	
+						}
+					}
+				}
+				break;
+				
+			// Double Hashing
+			case 4:
+				int primaryHash = 0;
+				
+				for(int i = 0; i < key.length(); i++) {
+					primaryHash = 3 * primaryHash + key.charAt(i);
+				}				
+				
+				int hash1 = Math.abs(primaryHash % DoubleHashing.length);
+				int hash2 = Math.abs(prime_hashval - primaryHash % prime_hashval);
+				
+
+				while(true) {
+					if(DoubleHashing[hash1] != null) {
+						if(DoubleHashing[hash1].name .equals(key)) {
+							return "(" + DoubleHashing[hash1].type + ") " +  DoubleHashing[hash1].def;
+						}
+					}
+					hash1 += hash2;
+					hash1 %= DoubleHashing.length;
+				}	
+		}		
+		return "";			
+	}
+	
 	public HashNode[] getLinearProbing() {
 		return LinearProbing;
 	}
