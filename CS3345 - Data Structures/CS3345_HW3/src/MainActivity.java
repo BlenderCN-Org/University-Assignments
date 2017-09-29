@@ -5,6 +5,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -22,21 +23,17 @@ import javax.swing.*;
 public class MainActivity {
 	
 	private static JFrame mJFrame;
-	private static JPanel mJPanel;
+	private static JLayeredPane mJLayeredPane;
+	
+	private static JLabel BackgroundTop;
+	private static JLabel BackgroundBottom;
+	
 	private static JTextField mSearchBar;
 	private static JButton mSearchButton;
+	
 	private static HashMap mHashMap;
 	
-	private static ThreadAction t1;
-	private static ThreadAction t2;
-	private static ThreadAction t3;
-	private static ThreadAction t4;
-	
 	public static void main(String[] args) throws Exception {
-		
-		FileWriter fw = new FileWriter("results.txt");
-		
-		ExecutorService es = Executors.newCachedThreadPool();
 		
 		// Variable Setup
 		mHashMap = new HashMap();
@@ -52,21 +49,11 @@ public class MainActivity {
 			type = mLine.substring(0,mLine.indexOf("|")); mLine = mLine.substring(mLine.indexOf("|")+1);
 			def = mLine;
 		
-			//t1 = new ThreadAction("Linear Probing: " + key, 1, mHashMap, key, type, def, fw);
-			//es.execute(t1);
-					
-			t2 = new ThreadAction("Quadratic Probing: " + key, 2, mHashMap, key, type, def, fw);
-			es.execute(t2);
-				
-			//t3 = new ThreadAction("Seperate Chaining: " + key, 3, mHashMap, key, type, def, fw);
-			//es.execute(t3);
-			
-			//t4 = new ThreadAction("Double Hashing: " + key, 4,  mHashMap, key, type, def, fw);
-			//es.execute(t4);
+			mHashMap.insertLinearProbing(key, type, def);
+			mHashMap.insertQuadraticProbing(key, type, def);
+			mHashMap.insertSeperateChaining(key, type, def);
+			mHashMap.insertDoubleHashing(key, type, def);
 		}
-		
-		es.shutdown();
-		boolean finished = es.awaitTermination(2, TimeUnit.MINUTES);
 		// All tasks should be done...
 		
 		System.out.println("\n--Investigation Complexity--");
@@ -85,38 +72,62 @@ public class MainActivity {
 		
 		System.out.println("\n--Space Complexity--");
 		
-		System.out.println("Total Linear-Probing Elements: " + mHashMap.getLinearProbing().length);
-		System.out.println("Total Quadratic-Probing Elements: " + mHashMap.getQuadraticProbing().length);
-		System.out.println("Total Seperate-Chaining Elements: " + mHashMap.getSeperateChaining().length);
-		System.out.println("Total Double-Hashing Elements: " + mHashMap.getDoubleHashing().length);
+		System.out.println("Total Linear-Probing Elements: " + mHashMap.LinearSize);
+		System.out.println("Total Quadratic-Probing Elements: " + mHashMap.QuadraticSize);
+		System.out.println("Total Seperate-Chaining Elements: " + mHashMap.ChainingSize);
+		System.out.println("Total Double-Hashing Elements: " + mHashMap.DoubleSize);
 		
 		mBufferedReader.close();
-		System.exit(0);
 		
 		// JAVA.SWING ELEMENTS	
 		
-		/*
 		 mJFrame = new JFrame("Dictionary.exe");
 			mJFrame.setResizable(false);			
-			mJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+			mJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			mJFrame.setPreferredSize(new Dimension(640,240));
 					
-		mJPanel = new JPanel();
-			mJPanel.setOpaque(true);
-			mJPanel.setBackground(Color.GRAY);
-			mJPanel.setLayout(null);			
-			mJPanel.setPreferredSize(new Dimension(640,240));		
+		mJLayeredPane = mJFrame.getLayeredPane();
+			mJLayeredPane.setOpaque(true);
+			mJLayeredPane.setBackground(Color.GRAY);
+			mJLayeredPane.setLayout(null);			
+			mJLayeredPane.setPreferredSize(new Dimension(640,240));	
 			
-		mSearchBar = makeTextField(40, 80, 170, 25);
-		mJPanel.add(mSearchBar);
+		BackgroundTop = makeColoredLabel(5, 5, 625, 75, Color.CYAN, Color.BLACK);
+		mJLayeredPane.add(BackgroundTop, new Integer(0));
+			  
+		BackgroundBottom = makeColoredLabel(5, 85, 625, 105, Color.LIGHT_GRAY, Color.BLACK);
+	    mJLayeredPane.add(BackgroundBottom, new Integer(0));
+			
+		mSearchBar = makeTextField(40, (BackgroundTop.getY()+BackgroundTop.getHeight())/2 - 10, 170, 25);
+		mJLayeredPane.add(mSearchBar, new Integer(2));
 				
 		mSearchButton = makeButton(mSearchBar.getX() + mSearchBar.getWidth() + 10, mSearchBar.getY(), 85, mSearchBar.getHeight(), "SEARCH", "Arial", Font.BOLD, 12, 0);		
-		mJPanel.add(mSearchButton);					
-				
-		mJFrame.getContentPane().add(mJPanel);		
+		mJLayeredPane.add(mSearchButton, new Integer(2));
+		
+		JTextPane tmp = new JTextPane();
+		if(mHashMap.LinearSize == 155285) {
+			
+		}
+		else {
+			tmp.setText("HashMaps Failed :(");
+			tmp.
+		}
+						
 		mJFrame.setLocationByPlatform(true);
 		mJFrame.pack();
 		mJFrame.setVisible(true);
-	*/
+
+	}
+	
+	private static JLabel makeColoredLabel(int xpos, int ypos, int width, int height, Color backgroundColor, Color borderColor) {
+		JLabel label = new JLabel();
+			label.setOpaque(true);
+	        label.setBackground(backgroundColor);
+	        label.setForeground(borderColor);
+	        label.setBorder(BorderFactory.createLineBorder(borderColor));
+	        label.setBounds(xpos, ypos, width, height);
+	        
+		return label;
 	}
 	
 	private static JTextField makeTextField(int xpos, int ypos, int width, int height) {
@@ -145,6 +156,8 @@ public class MainActivity {
 		switch(listener_type) {
 		
 			case 0:
+				String UserText = mSearchBar.getText();
+				// Search Here
 				break;
 			default:
 				break;

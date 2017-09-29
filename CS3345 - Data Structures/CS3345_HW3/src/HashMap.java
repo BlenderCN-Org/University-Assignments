@@ -4,12 +4,12 @@ import java.util.Arrays;
 public class HashMap {
 	
 	public static HashNode[] LinearProbing;
-	private static int LinearSize;
+	public static int LinearSize;
 	public static int LinearInvestigation;
 	public static long LinearTime;
 	
 	public static HashNode[] QuadraticProbing;
-	private static int QuadraticSize;
+	public static int QuadraticSize;
 	public static int QuadraticInvestigation;
 	public static long QuadraticTime;
 	
@@ -19,7 +19,7 @@ public class HashMap {
 	public static long ChainingTime;
 	
 	public static HashNode[] DoubleHashing;
-	private static int DoubleSize;
+	public static int DoubleSize;
 	public static int DoubleInvestigation;
 	public static long DoubleTime;
 	
@@ -61,7 +61,7 @@ public class HashMap {
 		
 		// Initial Hash
 		for(int i = 0; i < key.length(); i++) {
-			hash = 31 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
+			hash = 3 * hash + key.charAt(i); // 31 is prime, and helps to produce more unique results
 		}
 		
 		hash = Math.abs((hash + linear_probe) % LinearProbing.length);
@@ -74,7 +74,7 @@ public class HashMap {
 		LinearProbing[hash] = new HashNode(key, type, def);		
 		LinearSize++;
 		
-		if(LinearSize >= LinearProbing.length) {
+		if(LinearSize >= LinearProbing.length/2) {
 			HashNode[] newTable = new HashNode[LinearProbing.length*2];
 			for(int i = 0; i < LinearProbing.length; i++) {
 				newTable[i] = LinearProbing[i];
@@ -98,22 +98,26 @@ public class HashMap {
 		}
 		
 		hash = Math.abs((hash + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length);
-		int parentHash = hash;
+		
+		
 		while(QuadraticProbing[hash] != null) {					
 			hash = Math.abs((hash + quadratic_probe*quadratic_probe++) % QuadraticProbing.length);
-			quadratic_probe++;
 			QuadraticInvestigation++;
 		}
 		
 		QuadraticProbing[hash] = new HashNode(key, type, def);
 		QuadraticSize++;
 		
-		if(QuadraticSize >= QuadraticProbing.length/2) {
-			HashNode[] newTable = new HashNode[QuadraticProbing.length*2];
-			for(int i = 0; i < QuadraticProbing.length; i++) {
-				newTable[i] = QuadraticProbing[i];
+		try {
+			if(QuadraticSize >= QuadraticProbing.length/2) {
+				HashNode[] newTable = new HashNode[QuadraticProbing.length*2];
+				for(int i = 0; i < QuadraticProbing.length; i++) {
+					newTable[i] = QuadraticProbing[i];
+				}
+				QuadraticProbing = newTable;
 			}
-			QuadraticProbing = newTable;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		long endTime = System.nanoTime();
