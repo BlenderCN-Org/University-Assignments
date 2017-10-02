@@ -234,7 +234,7 @@ public class MainActivity {
 						UserText = UserText.replaceAll(" ", "_");
 						UserText = UserText.toLowerCase();				
 						if(UserText != "" && mHashMap.getKeySet().contains(UserText)) {					
-							UpdateDefinition(UserText.toUpperCase(),mHashMap.find(UserText, 1));
+							UpdateDefinition(UserText.toUpperCase(),mHashMap.find(UserText, 4));
 						} else {
 							UpdateDefinition(":ERROR:","The word/phrase you inputted isnt not a word, or I cannot find the word in my dictionary. Please enter another word or try again.");
 						}
@@ -272,7 +272,7 @@ public class MainActivity {
 				UserText = UserText.replaceAll(" ", "_");
 				UserText = UserText.toLowerCase();				
 				if(UserText != "" && mHashMap.getKeySet().contains(UserText)) {					
-					UpdateDefinition(UserText.toUpperCase(),mHashMap.find(UserText, 1));
+					UpdateDefinition(UserText.toUpperCase(),mHashMap.find(UserText, 3));
 				} else {
 					UpdateDefinition(":ERROR:","The word/phrase you inputted isnt not a word, or I cannot find the word in my dictionary. Please enter another word or try again.");
 				}
