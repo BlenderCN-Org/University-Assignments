@@ -10,15 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
-
-import javax.annotation.Resource;
 import javax.swing.*;
-
-import javafx.scene.input.KeyCode;
 
 public class MainActivity {
 	
@@ -92,10 +87,10 @@ public class MainActivity {
 		
 		System.out.println("\n--Space Complexity--");
 		
-		System.out.println("Total Linear-Probing Elements: " + mHashMap.LinearSize);
-		System.out.println("Total Quadratic-Probing Elements: " + mHashMap.QuadraticSize);
-		System.out.println("Total Seperate-Chaining Elements: " + mHashMap.ChainingSize);
-		System.out.println("Total Double-Hashing Elements: " + mHashMap.DoubleSize);
+		System.out.println("Total Linear-Probing Elements: " + mHashMap.LinearSize + "/" + mHashMap.getLinearProbing().length);
+		System.out.println("Total Quadratic-Probing Elements: " + mHashMap.QuadraticSize + "/" + mHashMap.getQuadraticProbing().length);
+		System.out.println("Total Seperate-Chaining Elements: " + mHashMap.ChainingSize + "/" + mHashMap.getSeperateChaining().length);
+		System.out.println("Total Double-Hashing Elements: " + mHashMap.DoubleSize + "/" + mHashMap.getDoubleHashing().length);
 		
 		mBufferedReader.close();
 
@@ -259,7 +254,7 @@ public class MainActivity {
 	}
 
 	private static void selectionButtonPressed(int listener_type) {		
-		switch(listener_type) {		
+		switch(listener_type) {
 			case 0:
 				String UserText = mSearchBar.getText();	
 				UserText = UserText.replaceAll(" ", "_");
