@@ -1,6 +1,0 @@
-1000009 Grapes of Wrath
-1021512 Google Book
-1024214 Stupid Computer-Book
-1040014 Lazy
-
-# ABOVE ARE TEST CASES, PUT OWN CASES IN HERE
