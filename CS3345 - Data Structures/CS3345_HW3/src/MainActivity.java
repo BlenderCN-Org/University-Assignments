@@ -108,7 +108,7 @@ public class MainActivity {
 			mJLayeredPane.setPreferredSize(new Dimension(640,370));	
 			
 		BackgroundTop = makeColoredLabel(5, 5, 625, 75, Color.LIGHT_GRAY, Color.BLACK);
-		mJLayeredPane.add(BackgroundTop, new Integer(0));
+		mJLayeredPane.add(BackgroundTop,  (0));
 			  
 		BackgroundMiddle = makeColoredLabel(5, 85, 625, 120, Color.LIGHT_GRAY, Color.BLACK);
 	    mJLayeredPane.add(BackgroundMiddle, new Integer(0));
