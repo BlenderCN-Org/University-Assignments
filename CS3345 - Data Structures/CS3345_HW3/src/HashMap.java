@@ -3,32 +3,40 @@ import java.util.Arrays;
 
 public class HashMap {
 	
+	// Contains all the Keys
 	ArrayList<String> KeySet;
 	
+	// Linear Probing Variables
 	public static HashNode[] LinearProbing;
 	public int LinearSize;
 	public int LinearInvestigation;
 	public long LinearTime;
 	
+	// Quadratic Probing Variables
 	public static HashNode[] QuadraticProbing;
 	public int QuadraticSize;
 	public int QuadraticInvestigation;
 	public long QuadraticTime;
 	
+	// Seperate Chaining Variables
 	public static HashNode[][] SeperateChaining;
 	public int ChainingSize;
 	public int ChainingInvestigation;
-	public long ChainingTime;
+	public long ChainingTime;	
 	
+	// Double Hashing Variables
 	public static HashNode[] DoubleHashing;
 	public int DoubleSize;
 	public int DoubleInvestigation;
 	public long DoubleTime;
 	
+	// Prime Values
 	private static ArrayList<Integer> prime_list;
 	private int prime_hashval;
 	private int primePos;
 	
+	
+	// Default Constructor
 	public HashMap() {
 		LinearProbing = new HashNode[2];
 		LinearSize = 0;
@@ -57,12 +65,14 @@ public class HashMap {
 		KeySet = new ArrayList<String>();
 	}
 	
+	// Insert By Linear Probing
 	public void insertLinearProbing(String key, String type, String def) {
 		long startTime = System.nanoTime();
 		
 		int linear_probe = 0;
 		int hash = (hash(key) + linear_probe) % LinearProbing.length; // Starting HASH at a prime number, to produce more unique results
 		
+		// Begins Linear Probing
 		while(LinearProbing[hash] != null) {					
 			hash = Math.abs((hash + linear_probe++) % LinearProbing.length);		
 			LinearInvestigation++;
@@ -71,6 +81,7 @@ public class HashMap {
 		KeySet.add(key);
 		LinearSize++;
 		
+		// Resizing and ReHashing when Lambda is > .5 as per open addressing standards
 		if((double)LinearSize/(double)LinearProbing.length > .5) {
 			HashNode[] newTable = new HashNode[getClosestPrime(LinearProbing.length*2)];
 			int newHash = -1;
@@ -94,22 +105,24 @@ public class HashMap {
 		long endTime = System.nanoTime();
 		LinearTime += (endTime - startTime)/1000000;
 	}
-
+	
+	// Insert By Quadratic Probing
 	public void insertQuadraticProbing(String key, String type, String def) {
 		long startTime = System.nanoTime();
 		
 		int quadratic_probe = 0;
 		int hash = (hash(key) + (int)Math.pow(quadratic_probe, 2)) % QuadraticProbing.length ; // Starting HASH at a prime number, to produce more unique results
-			
+		
+		// Beings Quadratic Probing
 		while(QuadraticProbing[hash] != null) {					
 			hash = Math.abs((hash + quadratic_probe*quadratic_probe++) % QuadraticProbing.length);
 			QuadraticInvestigation++;
 		}
 		
 		QuadraticProbing[hash] = new HashNode(key, type, def);
-		KeySet.add(key);
 		QuadraticSize++;
 		
+		// Resizing and ReHashing when Lambda is > .5 as per open addressing standards
 		if((double)QuadraticSize/(double)QuadraticProbing.length >= .5) {
 			HashNode[] newTable = new HashNode[getClosestPrime(QuadraticProbing.length*2)];
 			int newHash = -1;
@@ -132,14 +145,15 @@ public class HashMap {
 		QuadraticTime += (endTime - startTime)/1000000;
 	}
 	
+	// Insert By Seperate Chaining
 	public void insertSeperateChaining(String key, String type, String def) {
 		long startTime = System.nanoTime();
 		
 		int hash = hash(key) % SeperateChaining.length;
 		
-		ChainingInvestigation++;
-		KeySet.add(key);
+		ChainingInvestigation++;		
 		
+		// Beings Seperate Chaining
 		if(SeperateChaining[hash] == null) {
 			ChainingSize++;
 			SeperateChaining[hash] = new HashNode[2];
@@ -148,6 +162,7 @@ public class HashMap {
 			SeperateChaining[hash][getFreeSpace(SeperateChaining[hash])] = new HashNode(key, type, def);
 		}
 		
+		// Resizes rows when they become too large
 		if(getNumElements(SeperateChaining[hash]) >= SeperateChaining[hash].length/2) {
 			HashNode[] newTable = new HashNode[SeperateChaining[hash].length*2];
 			for(int i = 0; i < SeperateChaining[hash].length; i++) {
@@ -156,7 +171,8 @@ public class HashMap {
 			SeperateChaining[hash] = newTable;
 		}
 		
-		if(ChainingSize >= SeperateChaining.length/2) {
+		// Resizing when table size is too large
+		if(ChainingSize >= SeperateChaining.length/2) {			
 			HashNode[][] tmp = new HashNode[SeperateChaining.length*2][];
 			for(int i = 0; i < SeperateChaining.length; i++) {
 				
@@ -168,13 +184,14 @@ public class HashMap {
 					tmp[i] = SeperateChaining[i];					
 				}
 			}
-			SeperateChaining = tmp;
+			SeperateChaining = tmp;		
 		}
 		
 		long endTime = System.nanoTime();
 		ChainingTime += (endTime - startTime)/1000000;
 	}
 	
+	// Insert By Double Hashing
 	public void insertDoubleHashing(String key, String type, String def) {
 		
 		long startTime = System.nanoTime();
@@ -187,6 +204,7 @@ public class HashMap {
 		int hash1 = hash(key) % DoubleHashing.length;
 		int hash2 = Math.abs(prime_hashval - hash1 % prime_hashval);
 		
+		// Begin double hashing
 		while(DoubleHashing[hash1] != null) {
 			hash1 += hash2;
 			hash1 %= DoubleHashing.length;
@@ -194,10 +212,9 @@ public class HashMap {
 		}
 		
 		DoubleHashing[hash1] = new HashNode(key, type, def);
-		KeySet.add(key);
 		DoubleSize++;
 
-
+		// Resizing and ReHashing when Lambda is > .5 as per open addressing standards
 		if((double)DoubleSize/(double)DoubleHashing.length >= .5) {
 			HashNode[] newTable = new HashNode[getClosestPrime(DoubleHashing.length*2)];
 			int newHash = -1;
@@ -221,6 +238,7 @@ public class HashMap {
 		DoubleTime += (endTime - startTime)/1000000;
 	}
 	
+	// Using Sieve of Erathosothenes (thanks project euler) to get primes closest to a specific number 'prime_limit'
 	private int getClosestPrime(int prime_limit) {
 		// Use Sieve of Eratosthenes for primes : *Thanks Project Euler!*
 		Boolean[] sieve = new Boolean[prime_limit];
@@ -244,6 +262,7 @@ public class HashMap {
 		
 	}
 	
+	// returns a ArrayList of Primes, primarly for cache'ing' values for doublehashing, from the 'prime_limit'
 	private ArrayList<Integer> getPrime(int prime_limit) {
 		// Use Sieve of Eratosthenes for primes : *Thanks Project Euler!*		
 		Boolean[] sieve = new Boolean[prime_limit];
@@ -268,10 +287,12 @@ public class HashMap {
 		return list;
 	}
 
+	// Returns all the keys in the sets
 	public ArrayList<String> getKeySet(){
 		return KeySet;
 	}
 	
+	// For Seperate Chaining, returns the open spot in the matrix of row 'array'
 	private int getFreeSpace(HashNode[] array) {
 		for(int i = 0; i < array.length; i++) {
 			ChainingInvestigation++;
@@ -282,6 +303,7 @@ public class HashMap {
 		return -1; // Should never get to this point
 	}
 	
+	// returns the length of the row 'array' in a martix
 	private int getNumElements(HashNode[] array) {		
 		int numElements = 0;
 		for(int i = 0; i < array.length; i++) {
@@ -291,7 +313,16 @@ public class HashMap {
 		}
 		return numElements;
 	}
-
+	
+	/*
+	 * Find method that takes 2 values, key and type
+	 * 	Key = KeyValue to find
+	 * 	Type = Which method to use:
+	 * 			1: Linear Probing
+	 * 			2: Quadratic Probing
+	 * 			3: Seperate Chaining
+	 * 			4: Double Hashing
+	 */	
 	public String find(String key, int type) {
 		
 		int hash = 1;
@@ -382,6 +413,7 @@ public class HashMap {
 		return "";			
 	}
 	
+	// Quickly Hashes a string based on its char values
 	public int hash(String key) {
 		int hash = 1;
 		for(int i = 0; i < key.length(); i++) {
@@ -390,18 +422,22 @@ public class HashMap {
 		return Math.abs(hash);
 	}
 	
+	// Returns the Linear Probing HashArray
 	public HashNode[] getLinearProbing() {
 		return LinearProbing;
 	}
 	
+	// Returns the Quadratic Probing HashArray
 	public HashNode[] getQuadraticProbing() {
 		return QuadraticProbing;
 	}
 	
+	// Returns the SeperateChaining HashMatrix
 	public HashNode[][] getSeperateChaining() {
 		return SeperateChaining;
 	}
 	
+	// Returns the Double hashing HashArray
 	public HashNode[] getDoubleHashing() {
 		return DoubleHashing;
 	}
