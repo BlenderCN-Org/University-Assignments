@@ -105,7 +105,7 @@ public class MainActivity {
 		System.out.println("Total Seperate-Chaining Elements: " + mHashMap.ChainingSize + "/" + mHashMap.getSeperateChaining().length);
 		System.out.println("Total Double-Hashing Elements: " + mHashMap.DoubleSize + "/" + mHashMap.getDoubleHashing().length);
 		
-		mBufferedReader.close();		
+		mBufferedReader.close();	
 
 		// JAVA.SWING ELEMENTS	
 		
