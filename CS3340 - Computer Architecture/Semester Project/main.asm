@@ -1,97 +1,143 @@
 	.data
-# Bitmap Specifications
-# Unit Width in Pixels: 2
-# Unit Height in Pixels: 2
-# Disply Width in Pixels: 128
-# Display Height in Pixels: 128
-# Base Address for display: 0x100100000 (static data)
-color_red:		.word	0x00FF0000 # Red's HexCode
+filename:	.asciiz	"data.txt"
+newline:	.asciiz "\n"
+buffer:		.space	128
 
-Player_Pos:		.word	8064 # Starts at Center if Screen
+red:		.word	0x00FF0000
+yellow:		.word	0x00FFFF00
+green:		.word	0x0000FFFF
+purple:		.word	0x00006400
 
-GameSpeed:		.word	200
-Direction:		.word 	1
-# Up:	 0
-# Right: 1 
-# Down:  2 
-# Left:  3
-
-KeyCode.w:		.byte	'w'
-KeyCode.a:		.byte	'a'
-KeyCode.s:		.byte	's'
-KeyCode.d:		.byte	'd'
-
-zero:			.word 	0
-one:			.word 	1
+startAddress:   .word 	0x10010004
 
 	.text
-BeginGame:
-	lw $s7, color_red
 	
-	lw $s0, zero	# Black
-	lw $s1, one	# Snake
-	
-	lw $s2, Player_Pos
-	
-	# Snake Pointers in Array
-	la $t3, Board	
-	lw $t4, HeadPointer
-	lw $t5, TailPointer
-	
-	# Loads the keycodes into $t0 - $t4
-	lb $t6, KeyCode.w
-	lb $t7, KeyCode.a
-	lb $t8, KeyCode.s
-	lb $t9, KeyCode.d
-	
-InputCheck:
-	# Pauses Slightly to apply keyboard input and so it doesnt go too fast :/
-	lw $a0, GameSpeed
-	jal Pause
-	
-	# Keyboard Input
-	li $t0, 0xFFFF0000 		# Reciever Controller for 'Keyboard and Display', check if input has channged
-	beqz $t0, InputCheck 		# Checks if the ready bit has been toggled to 1	
+	# Sets the Accumulators to 0
+	li $s1, 0 # Gryffindor House	$s1
+	li $s2, 0 # Hufflepuff House?	$s2
+	li $s3, 0 # Ravenclaw House?	$s3
+	li $s4, 0 # Slytherin House?	$s4
 
-Input: # Draws Line in path
-	lb $t0, 0xFFFF0004 # Gets Key From Input	
-	
-MoveUp: # If Movement is UP:
-	bne $t0, $t6, MoveLeft	# IF NOT UP, CHECK LEFT
-	jal ValidUp
-MoveLeft: # If Movement is LEFT:
-	bne $t0, $t7, MoveDown # IF FNOT LEFT, CHECK DOWN
-	jal ValidLeft
-MoveDown: # If Movement is DOWN:
-	bne $t0, $t8, MoveRight #IF NOT DOWN, CHECK RIGHT
-	jal ValidDown
-MoveRight: # If Movement is RIGHT: 
-	jal ValidRight
-		
-	# Debugging Print
-	li $v0, 11 			
-	lb $a0, 0xFFFF0004
+	li $t8, 0	# Iterator
+	li $t9, 700	# Max number of lines in the file
+
+# Opens Data File
+	li $v0, 13
+	la $a0, filename
+	li $a1, 0
+	li $a2, 0
 	syscall
+	move $s0, $v0 # File Pointer
 	
-	# Looper
-	j InputCheck			# Repeats
-		
-Pause:
-	li $v0, 32 #syscall value for sleep
-	syscall
-	jr $ra
+read:	# Read from File
+
+	# Resets Registers
+	add $a0, $zero, $zero
+	add $a1, $zero, $zero
+
+	# Read File Syscall
+	li $v0, 14
+	move $a0, $s0
+	la $a1, buffer
+	li $a2, 6
+	syscall	
 	
-ValidUp: # Checks if you can move up, if not it ends
+	# Checks for issues / loops position
+	bltz $v0, create
+	
+	jal proc	
+	bge $t8, $t9, create
+	
+	# Adds to the accumulators
+	addi $t8, $t8, 1
+	j read
+	
+proc: # Processes the string, updates the school values
+	
+	la $a1, buffer	# Loads the line into $a1
+	
+	# Gryffindor House	
+	lb $a0, 0($a1)	
+	subi $a0, $a0, 48
+	add $s1, $s1, $a0	
+	
+	# Hufflepuff House?
+	lb $a0, 1($a1)	
+	subi $a0, $a0, 48
+	add $s2, $s2, $a0
+	
+	# Ravenclaw House?
+	lb $a0, 2($a1)
+	subi $a0, $a0, 48
+	add $s3, $s3, $a0	
+	
+	# Slytherin House?
+	lb $a0, 3($a1)	
+	subi $a0, $a0, 48
+	add $s4, $s4, $a0
+	
+	jr $ra # returns to spot in function
+	
+create: # Displays a on a 1024x512 graph
 
-ValidLeft:  # Checks if you can move left, if not it ends
-
-ValidDown:  # Checks if you can move down, if not it ends
-
-ValidRight:  # Checks if you can move right, if not it ends
+	# 128 units,  8 per space + 8 for a single side -> 40 total white-space
+	# 1024 units (8x), 64 per space + 64 for a single side -> 320 total white space
+	#	- 176 pixels per bar (width)
+	#	- Height is going to be 1:1
+	
+	add $a0, $zero, $zero	
+	add $a1, $zero, $zero	
+	add $t0, $zero, $zero	
+	add $t1, $zero, $zero
+	
+	li $t0, 0
+	li $t1, 524288
+	la $a0, startAddress
+	
+	
+create_lp:
+	# if x (> 63, and < 239) and y (< 511, and > {511-number}), Draw Gryffindor House (RED)
+	# if x (> 303, and < 479) and y (< 511, and > {511-number}), Draw Hufflepuff House? (YELLOW)
+	# if x (> 543, and < 719) and y (< 511, and > {511-number}), Draw Ravenclaw House? (Blue)
+	# if x (> 783, and < 959) and y (< 511, and > {511-number}), Draw Slytherin  House? (Grreen)
 	
 exit:
-	li $v0, 10
+	# Prints out the corresponding values per team
+	li $v0, 1
+	move $a0, $s1	
 	syscall
 	
 	
+	# Prints out the final points
+	li $v0, 4
+	la $a0, newline
+	syscall
+
+	li $v0, 1
+	move $a0, $s2	
+	syscall
 	
+	li $v0, 4
+	la $a0, newline
+	syscall
+	
+	li $v0, 1
+	move $a0, $s3
+	syscall
+	
+	li $v0, 4
+	la $a0, newline
+	syscall
+	
+	li $v0, 1
+	move $a0, $s4
+	syscall
+
+#Syscall to close the file
+	li   $v0, 16	
+	move $a0, $s0     
+	syscall            
+	
+#Syscall to exit the program
+	li $v0, 10
+	syscall
