@@ -1,0 +1,16 @@
+
+.data
+red:		.word	0x00FF0000
+yellow:		.word	0x00FFFF00
+purple:		.word	0x00006400
+green:		.word	0x0000FFFF
+
+startAddress:   .word 	0x10010000
+
+
+.text
+lw $t0, green
+la $a0, startAddress
+
+loop:
+	
