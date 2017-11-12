@@ -1,16 +1,79 @@
+	.data
+filename:	.asciiz	"data.txt"
+newline:	.asciiz "\n"
 
-.data
+
 red:		.word	0x00FF0000
 yellow:		.word	0x00FFFF00
 purple:		.word	0x00006400
 green:		.word	0x0000FFFF
 
-startAddress:   .word 	0x10010000
+startAddress:   .word 	0x10040000
 
+	.text
+		
+	# Sets the Accumulators to 0
+	li $s1, 244 # Gryffindor House	$s1
+	li $s2, 312 # Hufflepuff House?	$s2
+	li $s3, 412 # Ravenclaw House?	$s3
+	li $s4, 132 # Slytherin House?	$s4
 
-.text
-lw $t0, green
-la $a0, startAddress
-
-loop:
 	
+create: # Displays a on a 1024x512 grap	
+	# Loading the Colors
+	lw $t4, red
+	lw $t5, yellow
+	lw $t6, purple
+	lw $t7, green
+	
+	# Load the board
+	la $a0, startAddress
+			
+	li $t1, 0 # Iterator
+	li $t2, 1024 # MAX ROW LEN
+	li $t3, 0 # Current Height
+
+create_graph:
+
+	bgt $t3, 511, exit
+	preloop:
+		div $t1, $t2
+		mfhi $t0
+	slyth:
+		bgt $t0, 896, postloop
+		blt $t0, 800, raven
+		blt $t3, $s4, postloop
+		sw $t7, ($a0)
+		j postloop
+	raven:
+		bgt $t0, 672, postloop
+		blt $t0, 576, huffl
+		blt $t3, $s3, postloop
+		sw $t6, ($a0)
+		j postloop
+	huffl:
+		bgt $t0, 448, postloop
+		blt $t0, 352, gryph
+		blt $t3, $s2, postloop
+		sw $t5, ($a0)
+		j postloop
+	gryph:
+		bgt $t0, 224, postloop
+		blt $t0, 128, postloop
+		blt $t3, $s1, postloop
+		sw $t4, ($a0)
+		j postloop
+	
+	postloop:
+		addi $a0, $a0, 4
+		addi $t1, $t1, 1
+		bne $t0, 0, postjump
+		addi $t3, $t3, 1
+	postjump:
+		j create_graph
+
+
+exit:
+	#Syscall to exit the program
+	li $v0, 10
+	syscall
