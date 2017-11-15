@@ -115,72 +115,154 @@ create_vert_graph:
 	li $t1, 0 # Total Iterator
 	li $a1, 1024 # X Moduluo Value
 	li $a2, 32 # Y Moduluo Value
-	li $t3,-1 # Y-Pos
+	li $t3, -1 # Y-Pos
 	
 	la $a0, startAddress # Address of the Board	
 	
 	
-create_vert_graph_loop:	
+	create_vert_graph_loop:	
 	
-	create_vert_graph_preloop:
-		bgt $t3, 512, exit
+		create_vert_graph_preloop:
+			bgt $t3, 512, create_inter_bound
 		
-		div $t1, $a1
-		mfhi $t0
+			div $t1, $a1
+			mfhi $t0
 		
-		div $t3, $a2
-		mfhi $t2
+			div $t3, $a2
+			mfhi $t2
 		
-	create_vert_graph_bounds:
-		bne $t2, 0, create_vert_graph_slyth
-		bgt $t0, 15, create_vert_graph_slyth
+		create_vert_graph_bounds:
+			bne $t2, 0, create_vert_graph_slyth
+			bgt $t0, 15, create_vert_graph_slyth
 		
-		sw  $t9, ($a0)
+			sw  $t9, ($a0)
 	
-	create_vert_graph_slyth: 
-		bgt $t0, 896, create_vert_graph_postloop
-		blt $t0, 800, create_vert_graph_raven
-		blt $t3, $s4, create_vert_graph_postloop
+		create_vert_graph_slyth: 
+			bgt $t0, 896, create_vert_graph_postloop
+			blt $t0, 800, create_vert_graph_raven
+			blt $t3, $s4, create_vert_graph_postloop
 		
-		sw $t8, ($a0)
-		j create_vert_graph_postloop
+			sw $t8, ($a0)
+			j create_vert_graph_postloop
 			
-	create_vert_graph_raven:
-		bgt $t0, 672, create_vert_graph_postloop
-		blt $t0, 576, create_vert_graph_huffl
-		blt $t3, $s3, create_vert_graph_postloop
+		create_vert_graph_raven:
+			bgt $t0, 672, create_vert_graph_postloop
+			blt $t0, 576, create_vert_graph_huffl
+			blt $t3, $s3, create_vert_graph_postloop
 		
-		sw $t7, ($a0)
-		j create_vert_graph_postloop
+			sw $t7, ($a0)
+			j create_vert_graph_postloop
 	
-	create_vert_graph_huffl:
-		bgt $t0, 448, create_vert_graph_postloop
-		blt $t0, 352, create_vert_graph_gryph
-		blt $t3, $s2, create_vert_graph_postloop
+		create_vert_graph_huffl:
+			bgt $t0, 448, create_vert_graph_postloop
+			blt $t0, 352, create_vert_graph_gryph
+			blt $t3, $s2, create_vert_graph_postloop
+			
+			sw $t6, ($a0)
+			j create_vert_graph_postloop	
 		
-		sw $t6, ($a0)
-		j create_vert_graph_postloop	
+		create_vert_graph_gryph:
+			bgt $t0, 224, create_vert_graph_postloop
+			blt $t0, 128, create_vert_graph_postloop
+			blt $t3, $s1, create_vert_graph_postloop
 		
-	create_vert_graph_gryph:
-		bgt $t0, 224, create_vert_graph_postloop
-		blt $t0, 128, create_vert_graph_postloop
-		blt $t3, $s1, create_vert_graph_postloop
-		
-		sw $t5, ($a0)
-		j create_vert_graph_postloop
+			sw $t5, ($a0)
+			j create_vert_graph_postloop
 	
-	create_vert_graph_postloop:
-		addi $t1, $t1, 1
-		addi $a0, $a0, 4
-		bne $t0, 0, create_vert_graph_postjump
-		addi $t3, $t3, 1		
+		create_vert_graph_postloop:
+			addi $t1, $t1, 1
+			addi $a0, $a0, 4
+			bne $t0, 0, create_vert_graph_postjump
+			addi $t3, $t3, 1		
 	
-	create_vert_graph_postjump:
-		j create_vert_graph_preloop
+		create_vert_graph_postjump:
+			j create_vert_graph_preloop
+
+
+create_inter_bound:
+
+	create_inter_bound_loop:
+
+		create_inter_bound_preloop:
+			bgt $t3, 530, exit
+		
+			div $t1, $a1
+			mfhi $t0
+		
+		create_inter_bound_check:
+			bne $t3, 530, create_inter_bound_postloop
+			sw $t9, ($a0)
+	
+		create_inter_bound_postloop:
+			addi $t1, $t1, 1
+			addi $a0, $a0, 4
+			bne $t0, 0, create_inter_bound_preloop
+			addi $t3, $t3, 1
+			
+		create_inter_bound_postjump:
+			j create_inter_bound_preloop
+
+
+create_hori_graph:
+	
+	# Clearing values before use
+	add $a0, $zero, $zero	
+	add $a1, $zero, $zero	
+	add $a2, $zero, $zero
+	add $t0, $zero, $zero	
+	add $t1, $zero, $zero
+	add $t2, $zero, $zero	
+	add $t3, $zero, $zero
+	add $t4, $zero, $zero
+	add $t5, $zero, $zero	
+	add $t6, $zero, $zero
+	add $t7, $zero, $zero
+	add $t8, $zero, $zero	
+	add $t9, $zero, $zero
+		
+	# Normalizing the Averages
+	li $t9, 512
+	sub $s1, $t9, $s1
+	sub $s2, $t9, $s2
+	sub $s3, $t9, $s3
+	sub $s4, $t9, $s4
+		
+	# Loading the Colors
+	lw $t5, red
+	lw $t6, yellow
+	lw $t7, purple
+	lw $t8, green
+	lw $t9, white
+	
+	li $t0, 0 # X-Pos
+	li $t1, 0 # Total Iterator
+	li $a1, 1024 # X Moduluo Value
+	li $a2, 32 # Y Moduluo Value
+	li $t3, -1 # Y-Pos
+	
+	la $a0, startAddress # Address of the Board	
+		
+	create_hori_graph_loop:	
+	
+		create_hori_graph_preloop:
+		
+		create_hori_graph_bounds:
+	
+		create_hori_graph_slyth: 
+	
+		create_hori_graph_raven:
+	
+		create_hori_graph_huffl:
+	
+		create_hori_graph_gryph:
+	
+		create_hori_graph_postloop:
+	
+		create_hori_graph_postjump:
+			j create_hori_graph_preloop				
 		
 exit:
 #Syscall to close the file
-# More lienspl commit
 	li   $v0, 16	
 	move $a0, $s0     
 	syscall            
