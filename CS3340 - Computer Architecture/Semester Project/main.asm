@@ -1,12 +1,14 @@
 	.data
 filename:	.asciiz	"data.txt"
 newline:	.asciiz "\n"
-buffer:		.space	128
+buffer:		.space 2
 
-red:		.word	0x00FF0000
-yellow:		.word	0x00FFFF00
-purple:		.word	0x00006400
-green:		.word	0x0000FFFF
+		.align	2
+red:		.word	0xFFDC143C
+yellow:		.word	0xFFFFFF66
+purple:		.word	0xFF800080
+green:		.word	0xFF006400
+white:		.word	0xFFF0FFFF
 
 startAddress:   .word 	0x10010000
 
@@ -43,10 +45,10 @@ read:	# Read from File
 	syscall	
 	
 	# Checks for issues / loops position
-	bltz $v0, create
+	bltz $v0, create_vert_graph
 	
 	jal proc	
-	bge $t8, $t9, create
+	bge $t8, $t9, create_vert_graph
 	
 	# Adds to the accumulators
 	addi $t8, $t8, 1
@@ -78,101 +80,105 @@ proc: # Processes the string, updates the school values
 	
 	jr $ra # returns to spot in function
 	
-create: # Displays a on a 1024x512 graph
-
-	# 128 units,  8 per space + 8 for a single side -> 40 total white-space
-	# 1024 units (8x), 64 per space + 64 for a single side -> 320 total white space
-	#	- 176 pixels per bar (width)
-	#	- Height is going to be 1:1
+create_vert_graph: 	
 	
+	# Clearing values before use
 	add $a0, $zero, $zero	
 	add $a1, $zero, $zero	
+	add $a2, $zero, $zero
 	add $t0, $zero, $zero	
 	add $t1, $zero, $zero
-	
-	#  Sets the $S-Values to the new actual values
+	add $t2, $zero, $zero	
+	add $t3, $zero, $zero
+	add $t4, $zero, $zero
+	add $t5, $zero, $zero	
+	add $t6, $zero, $zero
+	add $t7, $zero, $zero
+	add $t8, $zero, $zero	
+	add $t9, $zero, $zero
+		
+	# Normalizing the Averages
+	li $t9, 512
 	sub $s1, $t9, $s1
 	sub $s2, $t9, $s2
 	sub $s3, $t9, $s3
-	sub $s4, $t9, $s4	
-	
+	sub $s4, $t9, $s4
+		
 	# Loading the Colors
-	lw $t3, red
+	lw $t5, red
+	lw $t6, yellow
+	lw $t7, purple
+	lw $t8, green
+	lw $t9, white
 	
-	# Bounds per house
-	li $t7, 0
-	li $t8, 0
+	li $t0, 0 # X-Pos
+	li $t1, 0 # Total Iterator
+	li $a1, 1024 # X Moduluo Value
+	li $a2, 32 # Y Moduluo Value
+	li $t3,-1 # Y-Pos
 	
-	li $t0, 0 # Iterator
-	li $t2, 0 # Y Value
-	li $s5, 1024 # Moduluo Val
 	la $a0, startAddress # Address of the Board	
 	
-create_lp:
-	# Each Pixel -> 32x32 : 3 blocks per bar, recalculate: >>>
-	#	5 Sections of WhiteSpace:
-	#		Spanning 128 len long each (or 4 blocks)
 	
-	# $t1 is x value
-	# $t2 is y value
+create_vert_graph_loop:	
 	
-	# Just draw based on position;
-	#	i.e. go to first col pos, draw row, repeat until col pos = 511	
+	create_vert_graph_preloop:
+		bgt $t3, 512, exit
+		
+		div $t1, $a1
+		mfhi $t0
+		
+		div $t3, $a2
+		mfhi $t2
+		
+	create_vert_graph_bounds:
+		bne $t2, 0, create_vert_graph_slyth
+		bgt $t0, 15, create_vert_graph_slyth
+		
+		sw  $t9, ($a0)
 	
-	div $t0, $s5 # Moduluo to get X
-	mfhi $t1 # X Value
-	
-	gryph: # Starts @ 128
+	create_vert_graph_slyth: 
+		bgt $t0, 896, create_vert_graph_postloop
+		blt $t0, 800, create_vert_graph_raven
+		blt $t3, $s4, create_vert_graph_postloop
 		
-	# WhiteSpace starts @ 224
-		
-	huffl: # Starts @ 352
-		
-		
-	# WhiteSpace start @ 448
+		sw $t8, ($a0)
+		j create_vert_graph_postloop
 			
-	raven: # Starts @ 576
+	create_vert_graph_raven:
+		bgt $t0, 672, create_vert_graph_postloop
+		blt $t0, 576, create_vert_graph_huffl
+		blt $t3, $s3, create_vert_graph_postloop
 		
-	# WhiteSpace starts @ 672	
-		
-	slyth: # Starts @ 800
-		
-		
-	# WhiteSpace starts @ 896
+		sw $t7, ($a0)
+		j create_vert_graph_postloop
 	
-	end:
+	create_vert_graph_huffl:
+		bgt $t0, 448, create_vert_graph_postloop
+		blt $t0, 352, create_vert_graph_gryph
+		blt $t3, $s2, create_vert_graph_postloop
+		
+		sw $t6, ($a0)
+		j create_vert_graph_postloop	
+		
+	create_vert_graph_gryph:
+		bgt $t0, 224, create_vert_graph_postloop
+		blt $t0, 128, create_vert_graph_postloop
+		blt $t3, $s1, create_vert_graph_postloop
+		
+		sw $t5, ($a0)
+		j create_vert_graph_postloop
+	
+	create_vert_graph_postloop:
+		addi $t1, $t1, 1
+		addi $a0, $a0, 4
+		bne $t0, 0, create_vert_graph_postjump
+		addi $t3, $t3, 1		
+	
+	create_vert_graph_postjump:
+		j create_vert_graph_preloop
+		
 exit:
-	# Prints out the corresponding values per team
-	li $v0, 1
-	move $a0, $s1	
-	syscall
-	
-	
-	# Prints out the final points
-	li $v0, 4
-	la $a0, newline
-	syscall
-
-	li $v0, 1
-	move $a0, $s2	
-	syscall
-	
-	li $v0, 4
-	la $a0, newline
-	syscall
-	
-	li $v0, 1
-	move $a0, $s3
-	syscall
-	
-	li $v0, 4
-	la $a0, newline
-	syscall
-	
-	li $v0, 1
-	move $a0, $s4
-	syscall
-
 #Syscall to close the file
 	li   $v0, 16	
 	move $a0, $s0     
