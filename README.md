@@ -1,2 +1,2 @@
-# Coding-Exercises
-A compilation of coding exercises from sources such as "Project Euler", and CodeJams
+# University Assignments
+A compilation of coding assignemnets given by the university
