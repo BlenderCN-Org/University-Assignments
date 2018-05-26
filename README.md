@@ -1,2 +1,2 @@
 # University Assignments
-A compilation of coding assignemnets given by the university
+A compilation of coding assignemnets given by the university, UT Dallas
