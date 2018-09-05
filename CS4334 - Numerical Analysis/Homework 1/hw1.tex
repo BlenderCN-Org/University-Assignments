@@ -35,7 +35,7 @@ In total, storing values until we have stored an \(x^5\) will net us a total of 
 		\item[] \(p(x) = x^5 * (x^5 * (x^5 *( x^5 *(x^5 * (2) + 0) +7) -1)+4)-1\)
 	\end{itemize}
 		
-Expanding \(p(x)\) with Horner's method and storing the calculations prior to the functions evaluation nets us a total of \textbf{8 multiplications} and \textbf{5 additions or subtractions}.\\ \\ \\
+Expanding \(p(x)\) with Horner's method and storing the calculations prior to the functions evaluation nets us a total of \fbox{8 multiplications and 5 additions or subtractions}.\\ \\ \\
 
 	\item Convert the binary number 101101.000$\overline{1011}$ to decimal form. \\
 	
@@ -57,12 +57,77 @@ From the \textsc{right}, we could normally multiply by a base 2 number algorithm
 		\item[] $x = \frac{11}{120} \approx .091\overline{6}$
 	\end{itemize}
 	
-Thus our final base 10 decimal number is a concatenation of our \textsc{left} and \textsc{right} numbers, which is \textbf{$45.091\overline{6}$}.\\
+Thus our final base 10 decimal number is a concatenation of our \textsc{left} and \textsc{right} numbers, which is \fbox{$45.091\overline{6}$}.\\
 
 	\item Consider the decimal number $-26.1$. Convert this number to binary form, then determine the machine representation of this number in double precision. Give the entire set in hexadecimal form. \\
 	
+	To convert this decimal number to binary, we must convert both sides of the radix point using the divide and multiply algorithm:
 	
+	\begin{center}
+	\begin{tabular}{ c c }
+	Left of Radix Point   & Right of Radix Point  \\
+	$26\div2 = 13r0$ & $.1 * 2 = .2 r0$  \\ 
+ 	$13\div2 = 6r1$  & $.2 * 2 = .4 r0$  \\  
+ 	$6\div2 = 3r0$   & $.4 * 2 = .8 r0$  \\
+ 	$3\div2 = 1r1$   & $.8 * 2 = 1.6 r1$ \\
+ 	$1\div2 = 0r1$   & $.6 * 2 = 1.2 r1$ \\
+ 					 & $.2 * 2 = 4 r0$ \\
+ 	 				 & continuing... \\
+ 					 
+	\end{tabular}
+	\end{center}
 
+Thus given by applying the algorithm, we obtain a binary number of -11010.0$\overline{0011}$ for part (a). Now, to determine the machine representation of this binary number in double precision, we must find out 3 things; the sign bit, the exponent bits, and the mantissa. 
+
+	\begin{itemize}
+		\item The sign bit is easy. Since we have a negative number our sign bit is set to 1.
+		\item For the exponent, we must first normalize the binary number, and add an offset of 1023 to our exponent to obtain the correct number for the computer:
+			\begin{itemize}
+				\item[] Given, e = 11010.0$\overline{0011} * 2^0$
+				\item[] Then we normalize, e = 1.10100$\overline{0011} * 2^4$
+				\item[] Then we add an offset to our exponent, 1023 + 4 = 1027 
+				\item[] Then we convert to binary, $(1027)_{10} = (10000000011)_2$
+			\end{itemize}
+		
+		\item For the mantissa, we put in the numbers after our normalized radix point and check for rounding:
+			\begin{itemize}
+				\item[] Let $m$ be the mantissa
+				\item[] Given $m$ = $|_{0}$ 1010 $|$ 0001 $|$ 1001 $|$ 1001 $|$ 1001 $|$ ... $|$ 1001 $_{52}|_{53}$ 1001 $|$ ...
+				\item[] Then we round $m$. Since the $53^{nd}$ bit is a 1, and there are non-zero bits after it, we add a 1 to the $52^{nd}$ bit.
+				\item[] Thus our $m$ = $|_{0}$ 1010 $|$ 0001 $|$ 1001 $|$ 1001 $|$ 1001 $|$ ... $|$ 1010 $_{52}|$
+			\end{itemize}
+			
+		\item To finalize the problem, we must concatenate our sign bit, exponent bits, and mantissa bits and convert the entire double precision expression to hexadecimal: 
+			\begin{itemize}
+				\item[] Let $s, e, m$ = the sign bit, exponent bits, and mantissa respectively.
+				\item[] Let $d$ = the concatenation of $s, e, $ and $m$, equivalently $d$ = $s + e + m$.
+				\item[] $d$ = 1100$|$0000$|$0011$|$1010$|$0001$|$1001$|$1001$|$1001$|$1001$|$1001$|$1001$|$1001$|$1001$|$1001$|$1010
+				\item[] Converting to hexadecimal, $d$ = C03A1999999999A
+			\end{itemize}
+			
+	\end{itemize}
+
+Thus, our final binary number and double precision hexadecimal number are \fbox{-11010.0$\overline{0011}$} and \fbox{C03A1999999999A} respectively.\\
+
+	\item Suppose a certain computer stores decimal numbers (instead of binary) by chopping (instead of rounding) each normalized decimal number to 6 significant digits, i.e., $d_0.d_1d_2d_3d_4d_5$, where $d_0 \neq 0$. Find an upper bound on the relative error from this chopping. \\ 
+	
+	To find the relative error for this computer, we define relative error to be $|\frac{x -x_c}{x}|$, where $x, x_c$ are an exact number and an approximate number respectively.	
+		\begin{itemize}
+			\item[] Let $x = d_0.d_1d_2d_3d_4d_5 * 10^p$ be exact.
+			\item[] Let $x_c = fl(x) = d_0.d_1d_2d_3d_4d_5 * 10^p$ be approximate.
+			\item[] Then, our relative error becomes $|\frac{x-x_c}{x}|$ = $|\frac{0.d_1d_2d_3d_4d_5}{9.d_1d_2d_3d_4d_5}|$.
+			\item[] Then, we try to find an upper bound to our error by finding the maximum value of the numerator $n_{max}$, and minimum value of the denominator $d_{min}$, which are $n_{max}$ = 0.00009 and $d_{min}$ = 9.00000.
+			\item[] This results in the relative error of  $|\frac{0.00009}{9}| = 0.00001 = 10^{-6}$.
+		\end{itemize}
+		Therefore, similarly to the example in class, we determine that the upper bound of relative error for chopping roundoff error is $10^{-6}$, or more generally, $10^{-p}$, where p is the significant digits of your system.\\
+		
+		\item Show how roundoff error can propagate through multiplication, given $x_c, y_c$ are approximate values and $x,y$ are exact values. Also, let $x_c = x + \epsilon$ and $y_c = y + \epsilon$. \\
+	
+	To find the roundoff error propagation, we must substitute in the values for $x_c$ and $y_c$ and solve to find a representation that has an error of $\frac{1}{2} \epsilon_{mach}$.
+		\begin{itemize}
+			\item[]
+		\end{itemize}
+		
 \end{enumerate}
 
 \end{document}
