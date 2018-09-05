@@ -16,4 +16,5 @@ coef = [-1,0,0,0,0,4,0,0,0,0,-1,0,0,0,0,7,0,0,0,0,0,0,0,0,0,2];
 x = -2;
 
 % C code that prints / formats the answer for readability. 
-sprintf('Evaluation of p(%i): %f\n', x, nest(degree,coef,x))
+clc
+fprintf('Evaluation of p(%i): %f\n', x, nest(degree,coef,x))

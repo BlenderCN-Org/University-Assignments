@@ -3,12 +3,31 @@
 \usepackage[margin=1.0in]{geometry}
 \usepackage{tabto}
 \usepackage{amsmath}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
 
 \begin{document}
 
 \title{CS / MATH 4334 : Numerical Analysis\\Homework Assignment 1}
 \author{Matthew McMillian\\mgm160130@utdallas.edu}
 \maketitle
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
 
 \section*{Theoretical Problems}
 
@@ -111,23 +130,133 @@ Thus, our final binary number and double precision hexadecimal number are \fbox{
 
 	\item Suppose a certain computer stores decimal numbers (instead of binary) by chopping (instead of rounding) each normalized decimal number to 6 significant digits, i.e., $d_0.d_1d_2d_3d_4d_5$, where $d_0 \neq 0$. Find an upper bound on the relative error from this chopping. \\ 
 	
-	To find the relative error for this computer, we define relative error to be $|\frac{x -x_c}{x}|$, where $x, x_c$ are an exact number and an approximate number respectively.	
+	To find the relative error for this computer, we define relative error to be $|\cfrac{x -x_c}{x}|$, where $x, x_c$ are an exact number and an approximate number respectively.	
 		\begin{itemize}
 			\item[] Let $x = d_0.d_1d_2d_3d_4d_5 * 10^p$ be exact.
 			\item[] Let $x_c = fl(x) = d_0.d_1d_2d_3d_4d_5 * 10^p$ be approximate.
-			\item[] Then, our relative error becomes $|\frac{x-x_c}{x}|$ = $|\frac{0.d_1d_2d_3d_4d_5}{9.d_1d_2d_3d_4d_5}|$.
+			\item[] Then, our relative error becomes $|\cfrac{x-x_c}{x}|$ = $|\cfrac{0.d_1d_2d_3d_4d_5}{9.d_1d_2d_3d_4d_5}|$.
 			\item[] Then, we try to find an upper bound to our error by finding the maximum value of the numerator $n_{max}$, and minimum value of the denominator $d_{min}$, which are $n_{max}$ = 0.00009 and $d_{min}$ = 9.00000.
-			\item[] This results in the relative error of  $|\frac{0.00009}{9}| = 0.00001 = 10^{-6}$.
+			\item[] This results in the relative error of  $|\cfrac{0.00009}{9}| = 0.00001 = 10^{-6}$.
 		\end{itemize}
-		Therefore, similarly to the example in class, we determine that the upper bound of relative error for chopping roundoff error is $10^{-6}$, or more generally, $10^{-p}$, where p is the significant digits of your system.\\
+		Therefore, similarly to the example in class, we determine that the upper bound of relative error for chopping roundoff error is \fbox{$10^{-6}$}, or more generally, $10^{-p}$, where p is the significant digits of your system.\\
 		
 		\item Show how roundoff error can propagate through multiplication, given $x_c, y_c$ are approximate values and $x,y$ are exact values. Also, let $x_c = x + \epsilon$ and $y_c = y + \epsilon$. \\
 	
 	To find the roundoff error propagation, we must substitute in the values for $x_c$ and $y_c$ and solve to find a representation that has an error of $\frac{1}{2} \epsilon_{mach}$.
 		\begin{itemize}
-			\item[]
+			\item[] Given \tabto{1.5cm} $|\cfrac{x_cy_c - xy}{xy}|$ = $|\cfrac{(x + \epsilon_x)(y + \epsilon_y) - xy}{xy}|$ = $|\cfrac{xy + x\epsilon_y + y\epsilon_x + \epsilon_x\epsilon_y - xy}{xy}|$ = \\
+			\item[] \tabto{1.5cm} $|\cfrac{x\epsilon_y + y\epsilon_x + \epsilon_x\epsilon_y}{xy}|$ = $|\cfrac{\epsilon_y}{y} + \cfrac{\epsilon_x}{x} + \cfrac{\epsilon_x\epsilon_y}{xy}|$ = $|\cfrac{\epsilon_y}{y}| + |\cfrac{\epsilon_x}{x}| + |\cfrac{\epsilon_x\epsilon_y}{xy}|$ = \\
+			\item[] \tabto{1.5cm} $2^{-53} + 2^{-53} + (2^{-53})^2 \approx 2^{-52} + 2^{-106} \leq \frac{1}{2}\epsilon_{mach}$ = $2^{-53}$
 		\end{itemize}
 		
-\end{enumerate}
+	Thus we have proven that the multiplication roundoff error has a bounded error of \fbox{$2^{-52} + 2^{-106}$} $\leq \frac{1}{2}\epsilon_{mach}$. \\
+
+	\item Let $x = 12345$, $y = 777.76$, and $z = 0.000321123$. Compute $(x-y)*z$ using floating point arithmetic while rounding to 4 significant digits with the usual rounding rules. \\
+	We evaluate this expression using PEMDAS rules:
+	\begin{itemize}
+		\item[] $(x-y)$: 
+			\begin{itemize} 
+				\item[] Given $x = 12345$ and $y = 777.76$, we normalize each variable.
+				\item[] $x_{norm} = 1.235 * 10^4$, $y_{norm} = 7.778 * 10^2$.
+				\item[] $(x_{norm} - y_{norm})$ = $(1.245*10^4 - 7.778*10^2) = 1.157*10^4 = \gamma$		
+			\end{itemize}	
+		\item[] $(\gamma)*z$:
+			\begin{itemize} 
+				\item[] Given $\gamma = 1.157*10^4$ and $z = 0.0003213$
+				\item[] $\gamma = \gamma_{norm} = 1.158*10^4$, $z_{norm} = 0.000 * 10^4$
+				\item[] $(\gamma_{norm}) * (z_{norm}) = (1.157 * 10^4 * 0.000*10^4) = 0.000$.
+			\end{itemize}	
+	\end{itemize}
+
+Thus, our resulting answer of $(x-y)*z = \fbox{0.000}$. \\
+
+	\item Consider the function $f(x) = \cfrac{cos(2x) - 1}{2x^2}$. Explain why it is problematic for computational math of x near certain values, use algebra or trigonometric identities to fix the function, then find the first three terms of an approximation of $cos(x) = \Sigma^{\infty}_{k=0} \frac{(-1)^kx^{2k}}{(2k)!}$. \\
+	
+	a.) The original function of $f(x)$ is problematic for specific values of $x$ since it can introduce loss of significance. Consider if we get an $x$ value such that $cos(x)$ is extremely close to 1, but not exactly 1. This would introduce \fbox{loss of significance} since we could lose important bit information due to rounding in the subtraction operation. \\ \\
+	b.) To fix this error, we can substitute $cos(x)$ with a trig identity equivalent to get rid of the $-1$.
+	\begin{itemize}
+		\item[] By trig identity, $cos(x) \equiv 1 - 2sin^2(x)$.
+		\item[] Substituting this in, we obtain $f(x) = \cfrac{1-2sin^2(x) - 1}{2x^2}$ = \fbox{$\cfrac{-sin^2(x)}{x^2}$}.
+	\end{itemize}
+
+	We have eliminated the subtraction operator in our equation, thus we can now safely use $f(x)$ computationally. \\
+	
+	c.) To find an approximation of $f(x)$ that is less error prone, we can find the first 3 non-zero terms of the Maclaurin series $cos(x) = \Sigma^{\infty}_{k=0} \frac{(-1)^kx^{2k}}{(2k)!}$.
+	\begin{itemize}
+		\item[] $k=0:$ \tabto{2cm} $\cfrac{(-1)^0x^{(2*0)}}{(2*0)!}$ = 1.\\
+		\item[] $k=1:$ \tabto{2cm} $\cfrac{(-1)^1x^{(2*1)}}{(2*1)!}$ = $\cfrac{-x^2}{2}$.\\
+		\item[] $k=2:$ \tabto{2cm} $\cfrac{(-1)^2x^{(2*2)}}{(2*2)!}$ = $\cfrac{x^4}{24}$.
+	\end{itemize}
+	
+	Thus, assuming $x \neq 0$, the first 3 terms are the first non-zero terms of $f(x)$ are \fbox{$1$, $\cfrac{-x^2}{2}$, and $\cfrac{x^4}{24}$}.
+	\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+\end{enumerate} 
+
+\section*{MatLab Problems}
+
+	\begin{enumerate}
+	
+	\item[] Problem 1 : nest.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{nest.m}
+	
+	\item[] Problem 1 : nest-script.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{hw1_1.m}	
+	
+	$>>$ nest-script.m 
+	\begin{framed}
+	Evaluation of p(-2): -67339393.000000
+	\end{framed}
+	
+	\item[] Problem 2 : arctanseries.m \noindent\rule{\textwidth}{1.0pt} 
+	\lstinputlisting{arctanseries.m}	
+	
+	\item[] Problem 2 : expseries-script.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{hw1_2.m}	
+	
+	$>>$ expseries-script.m 
+	\begin{framed}
+a)\\
+  \tabto{0.5cm}1.a) Actual. value of pi from MatLab = 3.141593e+00\\
+   \tabto{0.5cm}1.b) Approx. value of pi using Maclaurin series: 4arctan(1) = 3.141597e+00\\
+   \tabto{0.5cm}2) Absolute Error: 4.140539e-06\\
+   \tabto{0.5cm}3) Relative Error: 1.317974e-06\\
+   \tabto{0.5cm}4) Number of 'k' terms needed to approx. in single percision: 16777216\\
+b)\\
+   \tabto{0.5cm}Eventually the next value in the series becomes extremely small (since k is constantly increasing in the denominator, the next value to be added in the series will be small). This is the result of the phenomenon SWAMPING, since we are trying to add two numbers whose sizes are very different (one large and one extremely small). Therefore, the percision will eventually lose track of the very small values computed due to the rounding and computational limitations.
+	\end{framed}
+	\item[] Problem 3 : quadroots.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{quadroots.m}	
+	
+		\item[] Problem 3 : quadscript.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{hw1_3.m}	
+		
+	$>>$ quadscript.m
+	\begin{framed}
+		Function Roots (Computational):\\
+function1(x1): 9.999999999000000e+04\\
+function1(x2): 1.000000000100000e-05\\
+function2(x1): -1.000000000100000e-05\\
+function2(x2): -9.999999999000000e+04\\
+\\
+Function Actuals (With Computational Roots):\\
+function1(x1): 0.000000000000000e+00\\
+function1(x2): 0.000000000000000e+00\\
+function2(x1): 0.000000000000000e+00\\
+function2(x2): 0.000000000000000e+00\\
+\\
+Function Roots (Non-Computational):\\
+function1(x1): 9.999999999000000e+04\\
+function1(x2): 1.000000338535756e-05\\
+function2(x1): -1.000000338535756e-05\\
+function2(x2): -9.999999999000000e+04\\
+\\
+Function Actuals (Backwards Errors With Non-Computational Roots):\\
+function1(x1): 0.000000000000000e+00\\
+function1(x2): 3.384357558644524e-07\\
+function2(x1): 3.384357558644524e-07\\
+function2(x2): 0.000000000000000e+00\\
+	\end{framed}	
+	
+	\end{enumerate}
 
 \end{document}
