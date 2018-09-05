@@ -21,16 +21,16 @@
 	\item Figure 1.2 presents many relationships among the data. Starting from the top...
 	\begin{enumerate}
 		\item STUDENT is linked to GRADE REPORT by the student number column.
-		\item COURSE is linked to SECTION by the course number column. Course is also linked to PREREQUISITE through the course number and prerequisite number, as those data elements could consist of anything within the course number column.
+		\item COURSE is linked to SECTION by the course number column. Course is also 				linked to PREREQUISITE through the course number and prerequisite number, as those 		data elements could consist of anything within the course number column.
 		\item SECTION is linked to GRADE REPORT by the section identifier column.	
 	\end{enumerate}
 	
-	\item Some integrity constraints could occur when changing the section number inside of the SECTION data-table, section identifier column. Changing this here would require the developer to make sure that he/she updates that section number everywhere else within the database. Failing to do so could disrupt the integrity of the database. Similarly with COURSE NUMBER within the COURSE data-table, failing to update that value in other tables within the database could result in loss of integrity.
+	\item Some integrity constraints could occur when changing the section number inside 		of the SECTION data-table, section identifier column. Changing this here would require 	the developer to make sure that he/she updates that section number everywhere else 			within the database. Failing to do so could disrupt the integrity of the database. 			Similarly with COURSE NUMBER within the COURSE data-table, failing to update that 			value in other tables within the database could result in loss of integrity.
 	
 	\item 
 	\begin{enumerate}
-		\item If 'CS' is changed to 'CSSE', the Major column within STUDENT, the Department and  Course number columns within COURSE, the Course number within SECTION, and both the Course number and  Prerequisite number columns within PREREQUISITE would need to be changed in order to correctly update the database.
-		\item In order to simplify the data such that only one column would need to be updated in accordance with part (a), you could remove the Department from COURSE, since that information is available in the Course number column. However, different sections require different identifiers, such as the Course number in SECTION. You could remove the Course number from COURSE, but it wouldn't be ideal to lose that information. Subsequently, PREREQUISITE needs the course identifiers in both columns. In conclusion, you cannot restructure the table so that only one column needs to be updated without losing data along the way.
+		\item If 'CS' is changed to 'CSSE', the Major column within STUDENT, the 					Department and  Course number columns within COURSE, the Course number within 				SECTION, and both the Course number and  Prerequisite number columns within 				PREREQUISITE would need to be changed in order to correctly update the database.
+		\item In order to simplify the data such that only one column would need to be 				updated in accordance with part (a), you could remove the Department from COURSE, 			since that information is available in the Course number column. However, 					different sections require different identifiers, such as the Course number in 				SECTION. You could remove the Course number from COURSE, but it wouldn't be ideal 			to lose that information. Subsequently, PREREQUISITE needs the course identifiers 			in both columns. In conclusion, you cannot restructure the table so that only one 			column needs to be updated without losing data along the way.
 	\end{enumerate}
 	
 \end{enumerate}
