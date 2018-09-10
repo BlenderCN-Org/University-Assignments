@@ -1,0 +1,62 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/cpu.cpp
+cpu.h
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/cpu.h
+
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/cpu.h
+iostream
+-
+cstdio
+-
+cstdlib
+-
+unistd.h
+-
+sys/types.h
+-
+
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/memory.cpp
+memory.h
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/memory.h
+
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/memory.h
+iostream
+-
+string
+-
+stdio.h
+-
+cstdlib
+-
+unistd.h
+-
+sys/types.h
+-
+
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/main.cpp
+iostream
+-
+cstdio
+-
+cstdlib
+-
+unistd.h
+-
+sys/types.h
+-
+sys/types.h
+-
+fstream
+-
+core/cpu.h
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/cpu.h
+core/memory.h
+D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/core/memory.h
+
