@@ -28,7 +28,10 @@ void memory::init() {
         std::istringstream iss(s);
         std::vector<std::string> tokens(std::istream_iterator<std::string>{iss},
                                         std::istream_iterator<std::string>());
-        if (tokens.size() > 2) { // Save Operation
+        if(s == "EXIT"){
+            exit(0);
+        }
+        else if (tokens.size() > 2) { // Save Operation
             int address = stoi(tokens.at(1));
             int v = stoi(tokens.at(2));
             _write(address, v);

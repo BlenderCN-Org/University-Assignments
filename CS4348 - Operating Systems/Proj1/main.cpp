@@ -59,7 +59,7 @@ int main() {
         printf("Child Begun\n");
 
         // Load data Memory
-        std::ifstream file("sample.txt");
+        std::ifstream file("sample_m.txt");
         int tmp_stk_ptr = 2000 - 1;
 
         for (std::string line; getline(file, line);) {

@@ -29,7 +29,7 @@ void cpu::init() {
 }
 
 void cpu::execute_instruction(int instruction_number) {
-    (this->*instructions[instruction_number])();
+    (this->*instructions[instruction_number-1])();
 }
 
 void cpu::load_value() {
@@ -202,6 +202,7 @@ void cpu::iret() {
 
 void cpu::end() {
     std::cout << "Exit Instruction Called" << std::endl;
+    write_to_pipe();
     alive = false;
     exit(0);
 }
@@ -220,5 +221,11 @@ void cpu::write_to_pipe(int a) {
 void cpu::write_to_pipe(int a, int v) {
     std::ostringstream stream;
     stream << a << " " << v;
+    write(write_pipe[WRITE_FD], stream.str().c_str(), stream.str().length() + 1);
+}
+
+void cpu::write_to_pipe() {
+    std::ostringstream stream;
+    stream << "EXIT";
     write(write_pipe[WRITE_FD], stream.str().c_str(), stream.str().length() + 1);
 }

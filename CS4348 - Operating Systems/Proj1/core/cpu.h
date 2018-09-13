@@ -104,6 +104,8 @@ private:
 
     void write_to_pipe(int, int);
 
+    void write_to_pipe();
+
     typedef void (cpu::*InstructionSet)();
 
     InstructionSet instructions[31] = {
