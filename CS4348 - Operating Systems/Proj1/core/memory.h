@@ -7,25 +7,32 @@
 
 #include <iostream>
 #include <string>
-#include <stdio.h>
+#include <iterator>
+#include <vector>
+#include <sstream>
+#include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
 #include <sys/types.h>
 
 class memory {
 public:
-    memory(int *);
+    explicit memory(int *, int *);
 
-    int fd[2];
+    int read_pipe[2];
+    int write_pipe[2];
 
     int _read(int);
 
-    void _write(int, std::string);
-
-private:
-    std::string storage[2000] = {};
+    void _write(int, int);
 
     void init();
+
+private:
+    int storage[2000] = {};
+    bool alive = false;
+
+    std::string read_from_pipe();
 };
 
 

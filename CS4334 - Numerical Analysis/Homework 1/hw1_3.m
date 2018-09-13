@@ -12,7 +12,7 @@ function2 = [1, power(10,5), 1];
 % Clearing the console and outputting the results.
 clc
 fprintf("Function Roots (Computational):\n")
-fprintf("function1(x1): %0.15e\nfunction1(x2): %0.15e\nfunction2(x1): %0.15e\nfunction2(x2): %0.15e\n", function1_x1, function1_x2, function2_x1, function2_x2)
+fprintf("function1-x1: %0.15e\nfunction1-x2: %0.15e\nfunction2-x1: %0.15e\nfunction2-x2: %0.15e\n", function1_x1, function1_x2, function2_x1, function2_x2)
 
 % Calculating the real soulutions for function 1 and function 2 using the
 % roots obtained in the previous part.
@@ -33,7 +33,7 @@ fprintf("function2(x1): %0.15e\nfunction2(x2): %0.15e\n", function2_solution1, f
 
 % Printing the restults.
 fprintf("\nFunction Roots (Non-Computational):\n")
-fprintf("function1(x1): %0.15e\nfunction1(x2): %0.15e\nfunction2(x1): %0.15e\nfunction2(x2): %0.15e\n", function1_ncomp_x1, function1_ncomp_x2, function2_ncomp_x1, function2_ncomp_x2)
+fprintf("function1-x1: %0.15e\nfunction1-x2: %0.15e\nfunction2-x1: %0.15e\nfunction2-x2: %0.15e\n", function1_ncomp_x1, function1_ncomp_x2, function2_ncomp_x1, function2_ncomp_x2)
 
 % Calculating the solutions of the 'non' computational roots and
 % retrieving their errors.

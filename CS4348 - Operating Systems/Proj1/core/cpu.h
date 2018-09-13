@@ -3,6 +3,9 @@
 //
 
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <random>
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -14,11 +17,14 @@
 
 class cpu {
 public:
-    explicit cpu(int *);
+    explicit cpu(int *, int *);
 
-    int fd[2];
+    int read_pipe[2];
+    int write_pipe[2];
 
-    void init(int);
+    void init();
+
+    void execute_instruction(int);
 
 private:
     int PC;
@@ -28,15 +34,86 @@ private:
     int X;
     int Y;
 
-    using InstructionSet = void (cpu::*)(int);
+    bool alive = false;
+
+    void load_value();
+
+    void load_address();
+
+    void load_indr_address();
+
+    void load_id_x();
+
+    void load_id_y();
+
+    void load_sp_x();
+
+    void store_address();
+
+    void get();
+
+    void put_port();
+
+    void add_x();
+
+    void add_y();
+
+    void sub_x();
+
+    void sub_y();
+
+    void copy_to_x();
+
+    void copy_from_x();
+
+    void copy_to_y();
+
+    void copy_from_y();
+
+    void copy_to_sp();
+
+    void copy_from_sp();
+
+    void jump_address();
+
+    void jump_if_equal_address();
+
+    void jump_if_not_equal_address();
+
+    void call_address();
+
+    void ret();
+
+    void inc_x();
+
+    void inc_y();
+
+    void push();
+
+    void pop();
+
+    void syscall();
+
+    void iret();
+
+    void end();
+
+    int read_from_pipe();
+
+    void write_to_pipe(int);
+
+    void write_to_pipe(int, int);
+
+    typedef void (cpu::*InstructionSet)();
+
     InstructionSet instructions[31] = {
             &cpu::load_value,
-            &cpu::load_addr,
-            &cpu::load_indr_addr,
+            &cpu::load_address,
+            &cpu::load_indr_address,
             &cpu::load_id_x,
             &cpu::load_id_y,
             &cpu::load_sp_x,
-            &cpu::store_addr,
+            &cpu::store_address,
             &cpu::get,
             &cpu::put_port,
             &cpu::add_x,
@@ -48,86 +125,20 @@ private:
             &cpu::copy_to_y,
             &cpu::copy_from_y,
             &cpu::copy_to_sp,
-            &cpu:: copy_from_sp,
-            &cpu::jump_addr,
-            &cpu:: jump_if_equal_addr,
-            &cpu:: jump_if_not_equal_addr,
-            &cpu::call_addr,
-            &cpu:: ret,
-            &cpu:: inc_x,
-            &cpu:: inc_y,
-            &cpu:: push,
-            &cpu::  pop,
-            &cpu:: syscall,
+            &cpu::copy_from_sp,
+            &cpu::jump_address,
+            &cpu::jump_if_equal_address,
+            &cpu::jump_if_not_equal_address,
+            &cpu::call_address,
+            &cpu::ret,
+            &cpu::inc_x,
+            &cpu::inc_y,
+            &cpu::push,
+            &cpu::pop,
+            &cpu::syscall,
             &cpu::iret,
             &cpu::end
     };
-
-    void load_value(int);
-
-    void load_addr(int);
-
-    void load_indr_addr(int);
-
-    void load_id_x(int);
-
-    void load_id_y(int);
-
-    void load_sp_x(int);
-
-    void store_addr(int);
-
-    void get(int);
-
-    void put_port(int);
-
-    void add_x(int);
-
-    void add_y(int);
-
-    void sub_x(int);
-
-    void sub_y(int);
-
-    void copy_to_x(int);
-
-    void copy_from_x(int);
-
-    void copy_to_y(int);
-
-    void copy_from_y(int);
-
-    void copy_to_sp(int);
-
-    void copy_from_sp(int);
-
-    void jump_addr(int);
-
-    void jump_if_equal_addr(int);
-
-    void jump_if_not_equal_addr(int);
-
-    void call_addr(int);
-
-    void ret(int);
-
-    void inc_x(int);
-
-    void inc_y(int);
-
-    void push(int);
-
-    void pop(int);
-
-    void syscall(int);
-
-    void iret(int);
-
-    void end(int);
-
-    std::string read_from_pipe(int);
-
-    void write_to_pipe(std::string);
 
 };
 

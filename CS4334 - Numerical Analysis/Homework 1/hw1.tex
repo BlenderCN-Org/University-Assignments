@@ -30,6 +30,7 @@
 }
 
 \section*{Theoretical Problems}
+\pagebreak
 
 \begin{enumerate}
 
@@ -191,82 +192,5 @@ Thus, our resulting answer of $(x-y)*z = \fbox{0.000}$. \\
 	Thus, assuming $x \neq 0$, the first 3 terms are the first non-zero terms of $f(x)$ are \fbox{$1$, $\cfrac{-x^2}{2}$, and $\cfrac{x^4}{24}$}.
 	\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
 \end{enumerate} 
-
-\section*{MatLab Problems}
-
-	\begin{enumerate}
-	
-	\item[] Problem 1 : nest.m \noindent\rule{\textwidth}{1.0pt} \\
-	\lstinputlisting{nest.m}
-	
-	\item[] Problem 1 : nest-script.m \noindent\rule{\textwidth}{1.0pt} \\
-	\lstinputlisting{hw1_1.m}	
-	
-	$>>$ nest-script.m 
-	\begin{framed}
-	Evaluation of p(-2): -67339393.000000
-	\end{framed}
-	
-	\end{enumerate}
-	
-\pagebreak	
-	
-	\begin{enumerate}
-	\item[] Problem 2 : arctanseries.m \noindent\rule{\textwidth}{1.0pt} \\
-	\lstinputlisting{arctanseries.m}	
-	
-	\item[] Problem 2 : expseries-script.m \noindent\rule{\textwidth}{1.0pt} \\
-	\lstinputlisting{hw1_2.m}	
-
-	$>>$ expseries-script.m 
-	\begin{framed}
-a)\\
-  \tabto{0.5cm}1.a) Actual. value of pi from MatLab = 3.141593e+00\\
-   \tabto{0.5cm}1.b) Approx. value of pi using Maclaurin series: 4arctan(1) = 3.141597e+00\\
-   \tabto{0.5cm}2) Absolute Error: 4.140539e-06\\
-   \tabto{0.5cm}3) Relative Error: 1.317974e-06\\
-   \tabto{0.5cm}4) Number of 'k' terms needed to approx. in single percision: 16777216\\
-b)\\
-   \tabto{0.5cm}Eventually the next value in the series becomes extremely small (since k is constantly increasing in the denominator, the next value to be added in the series will be small). This is the result of the phenomenon SWAMPING, since we are trying to add two numbers whose sizes are very different (one large and one extremely small). Therefore, the percision will eventually lose track of the very small values computed due to the rounding and computational limitations.	
-	\end{framed}
-	\end{enumerate}
-
-	\pagebreak
-
-	\begin{enumerate}
-	\item[] Problem 3 : quadroots.m \noindent\rule{\textwidth}{1.0pt} \\
-	\lstinputlisting{quadroots.m}	
-	
-		\item[] Problem 3 : quadscript.m \noindent\rule{\textwidth}{1.0pt} \\
-	\lstinputlisting{hw1_3.m}	
-		
-	$>>$ quadscript.m
-	\begin{framed}
-		Function Roots (Computational):\\
-function1(x1): 9.999999999000000e+04\\
-function1(x2): 1.000000000100000e-05\\
-function2(x1): -1.000000000100000e-05\\
-function2(x2): -9.999999999000000e+04\\
-\\
-Function Actuals (With Computational Roots):\\
-function1(x1): 0.000000000000000e+00\\
-function1(x2): 0.000000000000000e+00\\
-function2(x1): 0.000000000000000e+00\\
-function2(x2): 0.000000000000000e+00\\
-\\
-Function Roots (Non-Computational):\\
-function1(x1): 9.999999999000000e+04\\
-function1(x2): 1.000000338535756e-05\\
-function2(x1): -1.000000338535756e-05\\
-function2(x2): -9.999999999000000e+04\\
-\\
-Function Actuals (Backwards Errors With Non-Computational Roots):\\
-function1(x1): 0.000000000000000e+00\\
-function1(x2): 3.384357558644524e-07\\
-function2(x1): 3.384357558644524e-07\\
-function2(x2): 0.000000000000000e+00\\
-	\end{framed}	
-	
-	\end{enumerate}
 
 \end{document}
