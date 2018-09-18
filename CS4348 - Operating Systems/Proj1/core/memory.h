@@ -12,6 +12,8 @@
 #include <sstream>
 #include <cstdio>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 #include <unistd.h>
 #include <sys/types.h>
 
@@ -19,8 +21,8 @@ class memory {
 public:
     explicit memory(int *, int *);
 
-    int read_pipe[2];
-    int write_pipe[2];
+    int *read_pipe;
+    int *write_pipe;
 
     int _read(int);
 

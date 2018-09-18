@@ -15,21 +15,28 @@ cpu::cpu(int *read, int *write) {
     X = 0;
     Y = 0;
 
-    read_pipe[READ_FD] = read[READ_FD];
-    write_pipe[WRITE_FD] = write[WRITE_FD];
+    read_pipe = read;
+    write_pipe = write;
 };
 
-void cpu::init() {
+void cpu::init(int interrupt_count) {
     alive = true;
-    int v = -1;
     while (alive) {
-        v = read_from_pipe();
-        execute_instruction(v);
+        write_to_pipe(PC++);
+        IR = read_from_pipe();
+        execute_instruction();
+
+        if(PC % interrupt_count == 0) {
+            // Do Interrupt...
+        }
     }
 }
 
-void cpu::execute_instruction(int instruction_number) {
-    (this->*instructions[instruction_number-1])();
+void cpu::execute_instruction() {
+    if (IR == 50) {
+        IR = 31;
+    }
+    (this->*instructions[IR - 1])();
 }
 
 void cpu::load_value() {
@@ -105,7 +112,7 @@ void cpu::put_port() {
     if (v == 1) {
         printf("%i\n", AC);
     } else if (v == 2) {
-        printf("%s\n", std::to_string(AC).c_str());
+        printf("%c\n", (char) AC);
     }
 }
 
@@ -169,7 +176,7 @@ void cpu::jump_if_not_equal_address() {
 }
 
 void cpu::call_address() {
-    std::cout << "Called Address Function!" << std::endl;
+//    std::cout << "Called Address Function!" << std::endl;
 }
 
 void cpu::ret() {
@@ -200,19 +207,27 @@ void cpu::iret() {
 
 }
 
+void cpu::handle_interrupt(int t) {
+
+}
+
 void cpu::end() {
-    std::cout << "Exit Instruction Called" << std::endl;
+//    std::cout << "Exit Instruction Called" << std::endl;
     write_to_pipe();
     alive = false;
     exit(0);
 }
 
 int cpu::read_from_pipe() {
-    int v = read(read_pipe[READ_FD], &v, sizeof(v));
+//    std::cout << "Parent: Attempting to read from pipe..." << std::endl;
+    int v = 0;
+    read(read_pipe[READ_FD], &v, sizeof(v));
+//    std::cout << "Parent: Read: " << v << std::endl;
     return v;
 }
 
 void cpu::write_to_pipe(int a) {
+//    std::cout << "Parent: Wrote: " << a << "..." << std::endl;
     std::ostringstream stream;
     stream << a;
     write(write_pipe[WRITE_FD], stream.str().c_str(), stream.str().length() + 1);

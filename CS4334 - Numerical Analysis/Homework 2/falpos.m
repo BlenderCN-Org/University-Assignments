@@ -20,12 +20,12 @@ count = 0;
 cits = zeros(MAXIT,1);
 
 %evaluate func. at a and b
-fa = fbisect(a);
-fb = fbisect(b);
+fa = (a-2)^2 + 1 - (1-((a-2)^2/(4)))^0.5 - 1;
+fb = (b-2)^2 + 1 - (1-((b-2)^2/(4)))^0.5 - 1;
 
 %stop if not appropriate interval
 if sign(fa)*sign(fb) >= 0 
-    
+    fprintf("Not appropiate interval\n")
     return
     
 end
@@ -34,10 +34,10 @@ end
 while abs(b-a)/2 >= TOL & count < MAXIT
    
     %get midpoint(root estimate)
-    c = (a + b)/2;
+    c = ffalpos(a, b);
     
     %eval. func at midpoint
-    fc = fbisect(c);
+    fc = (c-2)^2 + 1 - (1-((c-2)^2/(4)))^0.5 - 1;
     
     %stop if f(c)=0
     if fc == 0
@@ -68,7 +68,7 @@ end
     count = count + 1;
 
 %get final midpoint(root estimate)
-    c = (a+b)/2;
+    c = ffalpos(a,b);
     
 %add to vector of iterates
 cits(count) = c;

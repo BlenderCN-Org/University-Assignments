@@ -6,6 +6,9 @@
 #include <string>
 #include <sstream>
 #include <random>
+#include <thread>
+#include <chrono>
+#include <cstring>
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -19,12 +22,12 @@ class cpu {
 public:
     explicit cpu(int *, int *);
 
-    int read_pipe[2];
-    int write_pipe[2];
+    int *read_pipe;
+    int *write_pipe;
 
-    void init();
+    void init(int);
 
-    void execute_instruction(int);
+    void execute_instruction();
 
 private:
     int PC;
@@ -35,6 +38,8 @@ private:
     int Y;
 
     bool alive = false;
+
+    void handle_interrupt(int);
 
     void load_value();
 

@@ -8,12 +8,14 @@
 #include "memory.h"
 
 memory::memory(int *read, int *write) {
-    read_pipe[READ_FD] = read[0];
-    write_pipe[WRITE_FD] = write[1];
+    read_pipe = read;
+    write_pipe = write;
 }
 
 int memory::_read(int address) {
-    write(write_pipe[WRITE_FD], &storage[address], sizeof(storage[address]));
+//    std::cout << "Child: Wrote to pipe: " << storage[address] << "..." << std::endl;
+    int v = storage[address];
+    write(write_pipe[WRITE_FD], &v, sizeof(v));
 }
 
 void memory::_write(int address, int v) {
@@ -28,30 +30,31 @@ void memory::init() {
         std::istringstream iss(s);
         std::vector<std::string> tokens(std::istream_iterator<std::string>{iss},
                                         std::istream_iterator<std::string>());
-        if(s == "EXIT"){
+        if (s == "EXIT") {
             exit(0);
-        }
-        else if (tokens.size() > 2) { // Save Operation
-            int address = stoi(tokens.at(1));
-            int v = stoi(tokens.at(2));
+        } else if (tokens.size() > 1) { // Save Operation
+            int address = stoi(tokens.at(0));
+            int v = stoi(tokens.at(1));
             _write(address, v);
-        } else if (tokens.size() == 2) { // Load Operation
-            int address = stoi(tokens.at(1));
+        } else if (tokens.size() == 1) { // Load Operation
+            int address = stoi(tokens.at(0));
             _read(address);
         }
+//        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 }
 
 std::string memory::read_from_pipe() {
+//    std::cout << "Child: Attempting to read from pipe..." << std::endl;
     std::string s;
     char ch;
     while (read(read_pipe[READ_FD], &ch, 1) > 0) {
         if (ch != 0)
             s.push_back(ch);
         else {
-            std::cout << s << '\n';
             break;
         }
     }
+//    std::cout << "Child: Read: " << s << std::endl;
     return s;
 }

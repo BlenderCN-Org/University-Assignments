@@ -13,9 +13,15 @@
 
 #define READ_FD     0
 #define WRITE_FD    1
-#define NULL_ADDR   (-1)
 
-int main() {
+int main(int argc, char *argv[]) {
+
+    int interrupt_count;
+    if(argc == 1) {
+        interrupt_count = 1; // Fail here on final release
+    } else {
+        interrupt_count = atoi(argv[1]);
+    }
 
     pid_t m_pid = 0;
     cpu *cpu1 = nullptr;
@@ -23,8 +29,9 @@ int main() {
 
     int fd_1[2];
     int fd_2[2];
+    int fd_3[2];
 
-    if (pipe(fd_1) == -1 || pipe(fd_2) == -1) {
+    if (pipe(fd_1) == -1 || pipe(fd_2) == -1 || pipe(fd_3)) {
         perror("Error Creating Pipe, exiting....");
         return 0;
     }
@@ -40,7 +47,7 @@ int main() {
 
         std::string s;
         char ch;
-        while (read(fd_1[READ_FD], &ch, 1) > 0) {
+        while (read(fd_3[READ_FD], &ch, 1) > 0) {
             if (ch != 0)
                 s.push_back(ch);
             else {
@@ -53,14 +60,14 @@ int main() {
             printf("Memory Loaded!\n");
         }
 
-        cpu1->init();
+        cpu1->init(interrupt_count);
 
     } else if (m_pid > 0) {
         printf("Child Begun\n");
 
         // Load data Memory
-        std::ifstream file("sample_m.txt");
-        int tmp_stk_ptr = 2000 - 1;
+        std::ifstream file("sample.txt");
+        int tmp_stk_ptr = 0;
 
         for (std::string line; getline(file, line);) {
             std::string value = line.substr(0, line.find(' '));
@@ -69,13 +76,13 @@ int main() {
                 tmp_stk_ptr = stoi(address);
             } else if (value != "\n" && value != "\r") {
                 memory1->_write(tmp_stk_ptr, stoi(value));
-                tmp_stk_ptr--;
+                tmp_stk_ptr++;
             }
         }
 
         // Let the CPU know that the data has been loaded into memory
         std::string s = "DONE";
-        write(fd_1[WRITE_FD], s.c_str(), s.length() + 1);
+        write(fd_3[WRITE_FD], s.c_str(), s.length() + 1);
 
         memory1->init();
 
