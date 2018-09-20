@@ -13,7 +13,7 @@ memory::memory(int *read, int *write) {
 }
 
 int memory::_read(int address) {
-//    std::cout << "Child: Wrote to pipe: " << storage[address] << "..." << std::endl;
+//    std::cout << "Child: Wrote: " << storage[address] << std::endl;
     int v = storage[address];
     write(write_pipe[WRITE_FD], &v, sizeof(v));
 }
@@ -30,6 +30,7 @@ void memory::init() {
         std::istringstream iss(s);
         std::vector<std::string> tokens(std::istream_iterator<std::string>{iss},
                                         std::istream_iterator<std::string>());
+//        std::cout << "Tokens.size(): " << tokens.size() << std::endl;
         if (s == "EXIT") {
             exit(0);
         } else if (tokens.size() > 1) { // Save Operation
@@ -40,7 +41,6 @@ void memory::init() {
             int address = stoi(tokens.at(0));
             _read(address);
         }
-//        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 }
 

@@ -20,12 +20,12 @@
 
 class cpu {
 public:
-    explicit cpu(int *, int *);
+    explicit cpu(int *, int *, bool, int);
 
     int *read_pipe;
     int *write_pipe;
 
-    void init(int);
+    void init();
 
     void execute_instruction();
 
@@ -37,9 +37,12 @@ private:
     int X;
     int Y;
 
-    bool alive = false;
+    bool alive;
+    bool kernel_mode;
+    bool scheduler;
+    int instruction_counter;
+    int timer;
 
-    void handle_interrupt(int);
 
     void load_value();
 
@@ -91,13 +94,15 @@ private:
 
     void inc_x();
 
-    void inc_y();
+    void dec_x();
 
     void push();
 
     void pop();
 
     void syscall();
+
+    void syscall_timer();
 
     void iret();
 
@@ -139,7 +144,7 @@ private:
             &cpu::call_address,
             &cpu::ret,
             &cpu::inc_x,
-            &cpu::inc_y,
+            &cpu::dec_x,
             &cpu::push,
             &cpu::pop,
             &cpu::syscall,

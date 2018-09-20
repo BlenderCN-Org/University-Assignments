@@ -16,13 +16,6 @@
 
 int main(int argc, char *argv[]) {
 
-    int interrupt_count;
-    if(argc == 1) {
-        interrupt_count = 1; // Fail here on final release
-    } else {
-        interrupt_count = atoi(argv[1]);
-    }
-
     pid_t m_pid = 0;
     cpu *cpu1 = nullptr;
     memory *memory1 = nullptr;
@@ -39,7 +32,12 @@ int main(int argc, char *argv[]) {
     m_pid = fork();
     int status;
 
-    cpu1 = new cpu(fd_1, fd_2);
+    if(argc != 1) {
+        std::cout << "Will print every " << atoi(argv[1]) << " instructions" << std::endl;
+        cpu1 = new cpu(fd_1, fd_2, true, atoi(argv[1]));
+    } else {
+        cpu1 = new cpu(fd_1, fd_2, false, -1);   }
+
     memory1 = new memory(fd_2, fd_1);
 
     if (m_pid == 0) {
@@ -60,7 +58,7 @@ int main(int argc, char *argv[]) {
             printf("Memory Loaded!\n");
         }
 
-        cpu1->init(interrupt_count);
+        cpu1->init();
 
     } else if (m_pid > 0) {
         printf("Child Begun\n");
@@ -71,10 +69,11 @@ int main(int argc, char *argv[]) {
 
         for (std::string line; getline(file, line);) {
             std::string value = line.substr(0, line.find(' '));
+//            std::cout << value << std::endl;
             if (value.find('.') != -1) {
                 std::string address = value.substr(value.find('.') + 1);
                 tmp_stk_ptr = stoi(address);
-            } else if (value != "\n" && value != "\r") {
+            } else if (value != "\n" && value != "\r" && value != "") {
                 memory1->_write(tmp_stk_ptr, stoi(value));
                 tmp_stk_ptr++;
             }
