@@ -10,8 +10,8 @@ TOL = .000001;
 MAXIT = 50;
 
 %initial bracket
-a = ;
-b = ;
+a = a;
+b = b;
 
 %keep track of number of iterations
 count = 0;

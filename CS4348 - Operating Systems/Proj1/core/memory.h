@@ -19,21 +19,30 @@
 
 class memory {
 public:
+    // Constructor
     explicit memory(int *, int *);
 
+    // Pipes
     int *read_pipe;
     int *write_pipe;
 
+    // Writes an value from a specified address
     int _read(int);
 
+    // Saves a value to memory
     void _write(int, int);
 
+    // Function that runs the MEMORY
     void init();
 
 private:
+    // Array that stores data
     int storage[2000] = {};
+
+    // If the MEMORY is alive
     bool alive = false;
 
+    // Helper function that reads from pipe
     std::string read_from_pipe();
 };
 

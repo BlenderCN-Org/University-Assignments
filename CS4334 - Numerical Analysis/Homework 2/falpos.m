@@ -3,15 +3,18 @@
 
 format long e
 
-%chosen error tolerance (TOL)
+% chosen error tolerance (TOL)
 TOL = .000001;
 
-%choose max number of iterations
+% choose max number of iterations
 MAXIT = 50;
 
-%initial bracket
-a = 2;
-b = 4;
+% initial bracket
+% Calcuated from simplifying (f-g)(x)
+% There exists a root since f(a)f(b) < 0, and
+% f(a) > 0, f(b) < 0;
+a = 1;
+b = 2;
 
 %keep track of number of iterations
 count = 0;
@@ -20,8 +23,8 @@ count = 0;
 cits = zeros(MAXIT,1);
 
 %evaluate func. at a and b
-fa = (a-2)^2 + 1 - (1-((a-2)^2/(4)))^0.5 - 1;
-fb = (b-2)^2 + 1 - (1-((b-2)^2/(4)))^0.5 - 1;
+fa = 4*a^4 - 32*a^3 + 97*a^2 - 132*a + 64;
+fb = 4*b^4 - 32*b^3 + 97*b^2 - 132*b + 64;
 
 %stop if not appropriate interval
 if sign(fa)*sign(fb) >= 0 
@@ -31,13 +34,13 @@ if sign(fa)*sign(fb) >= 0
 end
 
 %stop loop when error less than TOL or MAXIT reached
-while abs(b-a)/2 >= TOL & count < MAXIT
+while abs(b-a)/2 >= TOL && count < MAXIT
    
     %get midpoint(root estimate)
     c = ffalpos(a, b);
     
     %eval. func at midpoint
-    fc = (c-2)^2 + 1 - (1-((c-2)^2/(4)))^0.5 - 1;
+    fc = 4*c^4 - 32*c^3 + 97*c^2 - 132*c + 64;
     
     %stop if f(c)=0
     if fc == 0

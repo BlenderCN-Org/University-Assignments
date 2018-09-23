@@ -24,18 +24,28 @@ while 1
    
      % Error and Tolerance
     ef = abs((xf-xp)/(xf));
+    fprintf("%f\n",ef)
     if(ef < TOL)
         break
-    end
+    end    
+   
+    relerr = [relerr, ef/ep];
+    relerr2 = [relerr2, ef/ep^2];
     
-    
-    
-     xp = xf;
-     ep = ef;
+    xp = xf;
+    ep = ef;
     
 end
 
 % Ouprinting the resulting iterates
 clc
-fprintf("Iterates::")
+fprintf("Iterates::\n")
 iterates'
+
+fprintf("Error 1::\n")
+relerr'
+
+fprintf("Error 2::\n")
+relerr2'
+
+fprintf("")

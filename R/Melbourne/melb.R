@@ -1,4 +1,5 @@
-
+install.packages("naniar")
+install.packages("data.table")
 install.packages("mice")
 install.packages("glmnet")
 install.packages("Metrics")
@@ -13,11 +14,15 @@ library(tidyr)
 library(fastDummies)
 
 # Utility Setup ====
-setwd("~/R/Melbourne")
+setwd("~/University-Assignments/R/Melbourne")
 
 Mode <- function(x) {
   ux <- na.omit(unique(x) )
   tab <- tabulate(match(x, ux)); ux[tab == max(tab) ]
+}
+
+invlog.trans <- function(x) {
+  (10^(x))-1
 }
 
 # Loading Data ====
@@ -28,8 +33,8 @@ dt.test <- read_csv('test.csv')
 dt.test$SalePrice = rep(0,length(dt.test$Id))
 dt.test <- data.frame(dt.test)
 
-dt = rbindlist(list(dt.train, dt.test), use.names = TRUE)
-#dt = dt.train
+#dt = rbindlist(list(dt.train, dt.test), use.names = TRUE)
+dt = dt.train
 #dt = dt.test
 dt <- data.frame(dt)
 
@@ -64,6 +69,8 @@ for(title in colnames(dt[, names(dt) != 'SalePrice'])) {
 }
 remove(title)
 
+dt[, "TotalSF"] = dt[, "TotalBsmtSF"] + dt[, "X1stFlrSF"] + dt[, "X2ndFlrSF"]
+
 dt[dt$MasVnrArea == 0, "MasVnrType"] <- "NM"
 dt[dt$MasVnrType == "NM", "MasVnrArea"] <- 0
 
@@ -76,8 +83,6 @@ dt[dt$YearBuilt < 1950 | dt$YearBuilt > 2010, "YearBuilt"] <- mean(as.numeric(dt
 dt[dt$YearRemodAdd < 1950 | dt$YearRemodAdd > 2010, "YearRemodAdd"] <- mean(as.numeric(dt[dt$YearRemodAdd >= 1950 & dt$YearRemodAdd <= 2010, "YearRemodAdd"]), na.rm=TRUE)
 dt[dt$MoSold < 0 | dt$MoSold > 12, "MoSold"] <- mean(as.numeric(dt[dt$MoSold >= 0 & dt$MoSold <= 12, "MoSold"]), na.rm=TRUE)
 
-vis_miss(dt)
-
 col_numeric = c()
 col_cat = c()
 
@@ -88,19 +93,23 @@ for(name in colnames(dt)) {
     col_cat <- c(col_cat, name)
   }
 }
+dt[,col_numeric] <- lapply(dt[,col_numeric], function(x) {log10(1+x)})
 
-dt[,col_numeric] <- scale(dt[,col_numeric])
-dt$LotArea
 dt <- dummy_cols(dt)
+for(name in colnames(dt)) {
+  if(!is.numeric(dt[1, name])) {
+    dt[,name] <- NULL
+  }
+}
 
 # Feature Selection ====
 x = model.matrix(SalePrice~., dt)[,-1]
 y = dt$SalePrice
 
 set.seed(1)
-train = array(1:(length(dt.train$Id) + length(dt.test$Id)))
-train[1:length(dt.train$Id)] = TRUE
-#train = sample(1:nrow(x), nrow(x)/2)
+#train = array(1:(length(dt.train$Id) + length(dt.test$Id)))
+#train[1:length(dt.train$Id)] = TRUE
+train = sample(1:nrow(x), nrow(x)/2)
 test = (-train)
 y.test = y[test]
 
@@ -114,7 +123,11 @@ bestlam= cv.out$lambda.min
 # Lasso Model Prediction  / Testing
 lasso.mod = glmnet(x[train,], y[train], alpha=1)
 lasso.pred = predict(lasso.mod, s=bestlam, newx=x[test,])
-rmse(y.test, lasso.pred)
+rmsle(y.test, invlog.trans(lasso.pred))
+
+#lasso.pred <- invlog.trans(lasso.pred)
+#invlog.trans(y[1])
+#lasso.pred[1]
 
 # File Output
 dt.out <- as.data.frame(lasso.pred)
