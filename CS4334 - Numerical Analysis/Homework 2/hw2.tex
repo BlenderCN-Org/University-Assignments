@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tabto}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\begin{document}
+
+\title{CS / MATH 4334 : Numerical Analysis\\Homework Assignment 2}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\section*{Theoretical Problems}
+\pagebreak
+
+\begin{enumerate}
+	\item Sauer, ed. 3: $\#$2c, p. 31. (Sauer, ed. 2: $\#$2c, p. 29)  Also, apply the minimum number of iterations
+of the Bisection Method needed to find an approximate root with an absolute error of at most
+1/16. Give this final root approximation.\\ \\	
+	(a) Prove by IVT that a root exists within some interval. \\ The intermediate value theorem (IVT) states if we have $f(a) < 0$, and $f(b) > 0$ $\rightarrow$ $\exists c$ s.t. $f(c) = 0$. Consider an a,b $\in$ $\mathbb{R}$. Let a = 0.75, b = 1.75. Evaluate in the function $f(a) = f(0.75) \approx -2.73 < 0$ and $f(b) = f(1.75) \approx 0.622 > 0$. \fbox{Thus by IVT $\exists c$ s.t. $f(c) = 0$ within $(0.75, 1.75)$}. \\ \\
+	 (b) Given an error of $e = 1/16$, find the number of iterations needed for the bisection method to get a root approximate. \\
+	 The error for bisection is defined as $|r-x_i| = \frac{b-a}{2^{n+1}}$. This can be simplified to $|r-x_i| = 1/16 = \frac{1.75-0.75}{2^{n+1}} = \frac{1}{2^{n+1}}$. Thus, if we take $n=3$ we obtain our desired error. \fbox{Thus we need 3 iterations to obtain our desired error}. \\ \\
+	 (c) Find an approximation for $r$ by perform the function evaluations. \\
+	 1.) $c_0$ = 0.75, $c_1$ = 1.75, $c_m$ = 1.25, $f(c_m) = -1.21 < 0$ \\
+	 2.) $c_0$ = 1.25, $c_1$ = 1.75, $c_m$ = 1.50, $f(c_m) = -0.34 < 0$ \\
+	 3.) $c_0$ = 1.50, $c_1$ = 1.75, $c_m$ = 1.625, $f(c_m) = 0.126 > 0$ \\
+	 After 3 iterations, we obtain an approximate value for the root \fbox{$r$ = 1.625} \\ \\
+	 
+	 \item ) Use the Bisection Theorem (from your notes, same as Eq. 1.1, Sauer, p.30 (p.28 ed.2)) to find the
+minimum number of iterations n of the Bisection Method needed to achieve an approximation
+with absolute error less than $10^{-17}$ to the solution of f(x) = 0 lying on the initial interval [-3,3]. (Assume that $f(-3)f(3) < 0$, and that the root is unique on [-3,3]). \\ \\
+Given the bisection error theorem, $|r-x_i| = \frac{b-a}{2^{n+1}}$, we plug in our values given in the problem to obtain $|r-x_i| = \frac{3-(-3)}{2^{n+1}}$ =  $|r-x_i| = \frac{6}{2^{n+1}}$. We can rearrange to obtain:
+	\begin{enumerate}
+		\item[] $6*10^{17} = 2^{n+1}$.
+		\item[] $log_{10}(6*10^{17}) = log_{10}(2^{n+1})$.
+		\item[] $log_{10}(6*10^{17}) = (n+1)log_{10}(2)$.
+		\item[] $\frac{log_{10}(6*10^{17}}{log_{10}(2)}$ - 1 = $n$		
+	\end{enumerate}
+	\fbox{$n \approx$ 58.01 = 59 iterations to obtain our desired error.} \pagebreak
+	
+	\item Use the Existence and Uniqueness Theorem discussed in class to show that g(x) = $e^{-x}sin(x)+\frac{1}{2}$ has a fixed point and that is is unique (and stable) on [$\frac{1}{2}, \pi$]. Carefully show all work. \\ \\
+	To determine existence, we evaluate all critical points and endpoints of $g(x)$. To determine uniqueness, we evaluate all critical points and endpoints of $g^{'}(x)$. \\ \\
+	(a) Existence
+	\begin{itemize}
+		\item[] $g(x)$ = $e^{-x}sin(x)+\frac{1}{2}$
+		\item[] $g^{'}(x)$ = $-e^{-x}sin(x) + e^{-x}cos(x)$ ( There is a cp at x = $\frac{\pi}{4}$ )
+	\end{itemize}
+	Checking the endpoints and cps:
+	\begin{itemize}
+		\item[] $|$ $g(\frac{1}{2})$ $|$ $\approx 0.79079 < 1$
+		\item[] $|$ $g(\frac{\pi}{4})$ $|$ $\approx 0.82240 < 1$
+		\item[] $|$ $g(\pi)$ $|$ $\approx 0.778 < 1$
+	\end{itemize}
+	\fbox{Choose $k = 0.9$. Since $k < 1$ and all cps $<$ than $k$, there exists a fixed point on $g(x)$.} \\ \\
+	(b) Uniqueness
+	\begin{itemize}
+		\item[] $g^{'}(x)$ = $-e^{-x}sin(x) + e^{-x}cos(x)$
+		\item[] $g^{''}(x)$ = $e^{-x}sin(x) - e^{-x}cos(x) - e^{-x}cos(x) - e^{-x}sin(x)$
+		\item[] $g^{''}(x)$ = $-2e^{-x}cos(x)$ ( There is a cp at x = $\frac{\pi}{2}$ )	
+	\end{itemize}
+		Checking the endpoints and critical point:
+	\begin{itemize}
+		\item[] $|$ $g^{'}(\frac{1}{2})$ $|$ $\approx 0.24149 < 1$
+		\item[] $|$ $g^{'}(\frac{\pi}{2})$ $|$ $\approx 0.20788 < 1$
+		\item[] $|$ $g^{'}(\pi)$ $|$ $\approx 0.04321 < 1$
+	\end{itemize}
+	\fbox{Choose $k = 0.4$. Since $k < 1$ and all cps $<$ than $k$, there exists a unique fixed point on $g(x)$.} \\ \\
+	\item Find the set of all initial guesses for which the Fixed-Point Iteration $x_{i+1} = \frac{1}{4} - x_{i}^2$ converges to a stable fixed point. \\ \\
+	By quadratic formula:
+	\begin{itemize}
+		\item[] $x_{i+1} = \frac{1}{4} - x_{i}^2$
+		\item[] $x = \frac{1}{4} - x^2$
+		\item[] $0 = \frac{1}{4} - x - x^2$
+		\item[] $r_1,r_2$ = $\frac{-(-1) \frac{+}{} \sqrt[]{(-1)^2 - 4(-1)(\frac{1}{4})}}{2(-1)}$ = \fbox{$\frac{-1 \frac{+}{} \sqrt[]{2}}{2}$}
+	\end{itemize}
+	We analyze the behavior of the roots at the derivative:
+	\begin{itemize}
+		\item[] $|$ $f^{'}(r_1)$ $|$ = $|$ $1 - \sqrt[]{2}$ $|$ $\approx 0.414 < 1$ \fbox{$\rightarrow r_1$ is stable.}
+		\item[] $|$ $f^{'}(r_2)$ $|$ = $|$ $1 + \sqrt[]{2}$ $|$ $> 1$ \fbox{$\rightarrow r_2$ is NOT stable.}
+	\end{itemize}
+	To determine the domain of x values in such that the initial guess $x_0$ converges to a fixed point, we can imagine the maximum endpoint in which the largest square encapsulating the fixed points. In this case, the range of \fbox{$x_0$ = [-1.2, 1.2]} creates the largest square surrounding the fixed points and thus it is our domain of values. \\ \\
+	\item Both fixed point iterations given have the same positive fixed point: \\
+	$p_n$ = $p_{n-1} - \cfrac{p_{n-1}^4-2}{7p_{n-1}^3}$ \\
+	$p_n$ = $\sqrt[3]{\cfrac{2}{p_{n-1}}}$ \\ \\
+	Find the exact positive fixed point, and determine which method will converge more rapidly. \\ \\
+	(a) Determining the positive fixed point
+	\begin{itemize}
+		\item[] $p$ = $\sqrt[3]{\frac{2}{p}}$
+		\item[] $p^3$ = $\frac{2}{p}$ $\rightarrow$ $p^4$ = 2 $\rightarrow$ $p$ = $\sqrt[4]{2}$.
+	\end{itemize}
+	Therefore our \fbox{positive fixed point is $\sqrt[4]{2}$}. \\ \\
+	(b) Determining which method will converge faster \\ \\
+	We analyze the derivatives to find which method has a higher multiplicity (which one converges to 0 faster).
+	\begin{itemize}
+		\item[] $f(p)$ = $p - \cfrac{p^4-2}{7p^3}$ ; $f^{'}(p)$ = $1 - \cfrac{4p^3*7p^4 - 21p^3(p^4-2)}{(7p^3)^2}$ $\approx$ $c$ - $\cfrac{1}{cp^4}$, where c is an arbitrary constant.
+		\item[] $g(p)$ = $\sqrt[3]{\cfrac{2}{p_{n-1}}}$ ; $f^{'}(p)$ = $c - \frac{1}{c^2}$
+	\end{itemize}
+	Since $f(p)$ has a greater denominator value (it approaches 0 faster), we can conclude that \fbox{the first equation $f(p)$ will converge faster}.
+	\pagebreak
+	\item Recall from class that, for a simple root $r$ of $f(x)$, we used Taylor series centered at iterate $x_i$ to find the error relation between the $i$th iterate and the ($i+1$)st iterate.\\ \\
+	(a) Use Eq. (1) to find a (short) Taylor series for $f^{'}(x)$.
+	\begin{itemize}
+		\item[] Given, f(r) = $f(x_i) + f^{'}(x_i)(r-x_i) + \frac{1}{2} f^{''}(c_i) (r-x_i)^2$
+		\item[] Taking the derivative, 0 = $f^{'}(x_i) + f^{''}(c_i) (r-x_i)$ $\rightarrow$ \fbox{$f^{'}(x_i) = -f^{''}(c_i) (x-x_i)$ }
+	\end{itemize}
+	(b) Evaluate your equation at $r$
+	\begin{itemize}
+		\item[] \fbox{$-f^{''}(c_i) (r-x_i)$}
+	\end{itemize}
+	(c) Combine your result with part (b)to find a new relation, and determine the new M and P.
+	\begin{itemize}
+		\item[] Plugging into the error function, $e_{i+1} = \frac{f^{''}(c_i)}{2f^{'}(x_i)} e_i^2$ = $\frac{f^{''}(c_i)}{2f^{'}(x_i)} e_i^2$ = $\frac{1}{2}e_i$.
+	\end{itemize}
+	Thus we have a \fbox{$M$ = $\frac{1}{2}$ and a $P$ = $1$}.\\ \\	
+	\item Find all values of B such that $x_{i+1} = x_i - \frac{f(x_i)}{Bf^{'}(x_i)}$ will be a stable fixed point iteration. \\ \\
+	Newtons method's stable fixed points is dependent on the derivative of the function. In this case, \fbox{for and $B > 0$, then newton's method will converge to a stable fixed point}.
+\end{enumerate} 
+\end{document}

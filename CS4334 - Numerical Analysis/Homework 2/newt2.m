@@ -1,5 +1,7 @@
 format long e
 
+clc
+
 % Tolerance Level
 TOL = 10^(-6);
 
@@ -51,8 +53,12 @@ relerr2'
 fprintf("Since the derivative of the function is non-zero, we can determine that there are multiple roots.\n")
 
 v = round(iterates(length(iterates)), 3);
-fp = 30000*((v)/12 + 1)^(59);
-mult = 1/fp;
+mult = (147500 * (1 + (v/12))^58)/2*fpnewt(v);
+
+rofc = (mult-1)/mult;
 
 fprintf("Iterates:: %d\n", v)
 fprintf("Multiplicity:: %d\n", mult)
+fprintf("Rate of Convergence:: %d\n", rofc)
+
+fprintf("We have determined that we have a rate of convergence of approx: 1, therefore we have linear convergence for this newton's method.\n")
