@@ -1,0 +1,14 @@
+// Like #1 but add and subtract values to spell 'hello world'
+
+// values to spell hello world listed below
+72
+-3
+-7
+0
+3
+-47
+55
+-8
+3
+-6
+-8

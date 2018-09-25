@@ -48,4 +48,11 @@ relerr'
 fprintf("Error 2::\n")
 relerr2'
 
-fprintf("")
+fprintf("Since the derivative of the function is non-zero, we can determine that there are multiple roots.\n")
+
+v = round(iterates(length(iterates)), 3);
+fp = 30000*((v)/12 + 1)^(59);
+mult = 1/fp;
+
+fprintf("Iterates:: %d\n", v)
+fprintf("Multiplicity:: %d\n", mult)

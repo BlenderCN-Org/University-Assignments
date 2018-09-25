@@ -39,8 +39,7 @@ int main(int argc, char *argv[]) {
 
 
     // Initialize the CPU and MEMORY objects
-    if (argc != 1) {
-        std::cout << "Will print every " << atoi(argv[1]) << " instructions" << std::endl;
+    if (argc != 2) {
         cpu1 = new cpu(fd_1, fd_2, true, atoi(argv[2]));
     } else {
         cpu1 = new cpu(fd_1, fd_2, false, -1);
@@ -50,7 +49,6 @@ int main(int argc, char *argv[]) {
 
     // Parent process, the CPU
     if (m_pid == 0) {
-//        printf("Parent Begun\n");
 
         // Read from the pipe to see if the memory has finished loading
         std::string s;
@@ -59,7 +57,6 @@ int main(int argc, char *argv[]) {
             if (ch != 0)
                 s.push_back(ch);
             else {
-                std::cout << s << '\n';
                 break;
             }
         }
@@ -76,7 +73,6 @@ int main(int argc, char *argv[]) {
     }
     // Child process, the MEMORY
     else if (m_pid > 0) {
-//        printf("Child Begun\n");
 
         // Load data into Memory
         std::ifstream file(filename);
