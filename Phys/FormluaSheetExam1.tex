@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tikz}
+\usepackage{tabto}
+\usetikzlibrary{automata,positioning}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\title{PHYS226 : Electricity and Magnetism}
+\maketitle
+
+
+\begin{enumerate}
+	\item[] Electric Forces ::
+	\begin{enumerate}
+		\item[] $F_{ab}$ = $k_e\cfrac{q_aq_b}{d^2}$
+		\item[] $E$ = $k_e\cfrac{q}{r^2}$
+		\item[] $E$ = $\cfrac{F_e}{q_b}$
+		\item[] $\tau = p * E$ = $(qE)(dsin(\phi))$\\
+	\end{enumerate}
+	\item[] Ring of Charge ::
+	\begin{enumerate}
+		\item[] $\lambda$ = $\cfrac{Q}{2\pi a}$ : $dQ = \lambda ds$ : $a$ is the height from the origin to the top of the ring.
+		\item[] $dE$ = $k \cfrac{dQ}{x^2 + a^2}$ : $x$ is the distance from the origin to the point charge.
+		\item[] $dE$ = $k \cfrac{\lambda x}{(x^2 + a^2)^{\frac{3}{2}}}ds$ : Simplified $dE_x$
+		\item[] $E$ = $k\cfrac{Qx}{(x^2 + a^2)^{\frac{3}{2}}}$ \\
+	\end{enumerate}
+	\item[] Uniformly Charged Disk ::
+	\begin{enumerate}
+		\item[] $dQ$ = $\sigma dA$ = $2\pi \sigma rdr$ : $\sigma$ is the charge per unit area.
+		\item[] $dE_x = k\cfrac{2\pi \sigma rx}{(x^2 + a^2)^{\frac{3}{2}}}dr$
+		\item[] $E_x$ = $\cfrac{\sigma}{2\epsilon_0}[1 - \frac{1}{\sqrt[]{R^2/x^2 + 1}}]$
+		\item[] $E$ = $\cfrac{\sigma}{2\epsilon_0}$ : for R $>>$ x
+	\end{enumerate}
+	\pagebreak
+	\item[] Potential Energy and Work :: 
+	\begin{enumerate}
+		\item[] $W = U_a - U_b$ = $-(U_b - U_a) = -\Delta U$
+		\item[] $\Delta U$ = $q_0Ed$
+		\item[] $W_{a \rightarrow b} = Fd = -q_0Ed$
+		\item[] $W_{a \rightarrow b} = \int_a^b Fcos\phi$ $dl$
+		\item[] $U = \cfrac{kq_aq_b}{r}$	
+		\item[] $V = \cfrac{U}{q_0}$
+		\item[] $V_a - V_b = -(V_b - V_a) = -\cfrac{\Delta U}{q_0} = \cfrac{W_{a \rightarrow b}}{q_0}$
+		\item[] $V = \cfrac{\lambda}{2\pi \epsilon_0}ln\cfrac{R}{r}$ : For infinite line charge.
+		\item[] $V = k\cfrac{Q}{\sqrt[]{x^2 + a^2}}$ : For ring of charge.
+		\item[] $E = \cfrac{V}{d}$
+		\item[] $E = -\Delta V$
+		\item[] $q\cfrac{V}{d} = mg$ \\
+	\end{enumerate}
+	\item[] Electric Flux :: 
+	\begin{enumerate}
+		\item[] $\Phi_E = EA = EAcos(\theta) = \cfrac{q_{encl}}{\epsilon_0} = \oint E*da$
+		\item[] Charge Density $\lambda$ = $\cfrac{Q}{L}$
+	\end{enumerate}
+
+\end{enumerate}
+\end{document}
