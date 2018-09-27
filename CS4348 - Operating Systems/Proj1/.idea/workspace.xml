@@ -12,15 +12,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="792a0fb5-e8de-45ee-a083-4fbc760e3268" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/sample1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw2matlab.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw3.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/hw3.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/newt2.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 2/newt2.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sample5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_m.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phys/FormluaSheetExam1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../Phys/FormluaSheetExam1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phys/FormluaSheetExam1.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../Phys/FormluaSheetExam1.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phys/FormluaSheetExam1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../Phys/FormluaSheetExam1.tex" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,38 +41,40 @@
     <session id="-876365218">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cpp" value="7735" />
           <entry key="h" value="1981" />
-          <entry key="txt" value="757" />
+          <entry key="txt" value="2048" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="ObjectiveC" value="9716" />
-          <entry key="PLAIN_TEXT" value="757" />
+          <entry key="PLAIN_TEXT" value="2048" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="txt" value="10" />
+          <entry key="h" value="1" />
+          <entry key="txt" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="10" />
+          <entry key="ObjectiveC" value="1" />
+          <entry key="PLAIN_TEXT" value="12" />
         </counts>
       </usages-collector>
     </session>
@@ -78,16 +87,34 @@
             <entry file="file://$PROJECT_DIR$/sample1.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="340">
-                  <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+                  <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sample5.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="357">
+                  <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/core/cpu.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="523">
+                  <caret line="188" column="29" lean-forward="true" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/sample5.txt">
+            <entry file="file://$PROJECT_DIR$/readme.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+                <state relative-caret-position="170">
+                  <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
                 </state>
               </provider>
             </entry>
@@ -95,7 +122,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/sample4.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="865">
+                <state relative-caret-position="901">
                   <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
                 </state>
               </provider>
@@ -108,8 +135,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/core/cpu.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="406">
-                  <caret line="313" column="32" selection-start-line="313" selection-start-column="16" selection-end-line="313" selection-end-column="32" />
+                <state relative-caret-position="375">
+                  <caret line="220" column="12" lean-forward="true" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -117,7 +144,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/core/memory.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="842">
+                <state relative-caret-position="1071">
                   <caret line="63" selection-start-line="63" selection-end-line="63" />
                 </state>
               </provider>
@@ -172,7 +199,6 @@
         <option value="$PROJECT_DIR$/Core/cpu.cpp" />
         <option value="$PROJECT_DIR$/Core/memory.cpp" />
         <option value="$PROJECT_DIR$/sample_m" />
-        <option value="$PROJECT_DIR$/sample_m.txt" />
         <option value="$PROJECT_DIR$/core/cpu.h" />
         <option value="$PROJECT_DIR$/core/cpu.cpp" />
         <option value="$PROJECT_DIR$/core/memory.h" />
@@ -183,7 +209,9 @@
         <option value="$PROJECT_DIR$/sample2.txt" />
         <option value="$PROJECT_DIR$/sample3.txt" />
         <option value="$PROJECT_DIR$/sample4.txt" />
+        <option value="$PROJECT_DIR$/sample_m.txt" />
         <option value="$PROJECT_DIR$/sample5.txt" />
+        <option value="$PROJECT_DIR$/readme.txt" />
       </list>
     </option>
   </component>
@@ -196,7 +224,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="259" />
     <option name="y" value="35" />
-    <option name="width" value="1420" />
+    <option name="width" value="1421" />
     <option name="height" value="1001" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -293,16 +321,17 @@
       <workItem from="1537640154238" duration="5267000" />
       <workItem from="1537725877351" duration="2875000" />
       <workItem from="1537823903510" duration="3222000" />
+      <workItem from="1537996332200" duration="2188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79166000" />
+    <option name="totallyTimeSpent" value="81354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1577" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14154048" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14351547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -331,41 +360,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/cpu.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/memory.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="842">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="86" column="49" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample_m.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/cpu.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="313" column="32" selection-start-line="313" selection-start-column="16" selection-end-line="313" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -390,24 +388,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sample1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sample4.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
+        <state relative-caret-position="901">
           <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample1.txt">
+    <entry file="file://$PROJECT_DIR$/core/memory.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="1071">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample_m.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/cpu.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="188" column="29" lean-forward="true" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/cpu.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="220" column="12" lean-forward="true" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sample5.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+        <state relative-caret-position="357">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
         </state>
       </provider>
     </entry>

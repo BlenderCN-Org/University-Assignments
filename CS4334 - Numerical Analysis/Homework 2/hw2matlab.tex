@@ -72,17 +72,75 @@
 	
 	\item[] Problem 2 : newt2.m \noindent\rule{\textwidth}{1.0pt} \\
 	\lstinputlisting{newt2.m}	
+	
+		\item[] Problem 2 : fnewt.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{fnewt.m}
+	
+		\item[] Problem 2 : fpnewt.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{fpnewt.m}		
 
 	$>>$ newt2.m 
 	\begin{framed}
-a)\\
-  \tabto{0.5cm}1.a) Actual. value of pi from MatLab = 3.141593e+00\\
-   \tabto{0.5cm}1.b) Approx. value of pi using Maclaurin series: 4arctan(1) = 3.141597e+00\\
-   \tabto{0.5cm}2) Absolute Error: 4.140539e-06\\
-   \tabto{0.5cm}3) Relative Error: 1.317974e-06\\
-   \tabto{0.5cm}4) Number of 'k' terms needed to approx. in single percision: 16777216\\
-b)\\
-   \tabto{0.5cm}Eventually the next value in the series becomes extremely small (since k is constantly increasing in the denominator, the next value to be added in the series will be small). This is the result of the phenomenon SWAMPING, since we are trying to add two numbers whose sizes are very different (one large and one extremely small). Therefore, the percision will eventually lose track of the very small values computed due to the rounding and computational limitations.	
+Iterates::
+
+ans =
+
+     1.767085782124950e+00\\
+     1.538624098431182e+00\\
+     1.315274752139667e+00\\
+     1.098538133852653e+00\\
+     8.915239987248459e-01\\
+     6.999922093683941e-01\\
+     5.329629816329148e-01\\
+     4.012834512079965e-01\\
+     3.132961399003459e-01\\
+     2.696854759245819e-01\\
+     2.582949829973730e-01\\
+     2.575434526842937e-01\\
+     2.575402738874424e-01\\
+     2.575402738307063e-01\\
+
+Error 1::
+
+ans =
+
+     1.318069672854064e-01\\
+     1.126529257184075e+00\\
+     1.143634792453416e+00\\
+     1.161847033275790e+00\\
+     1.176927760096816e+00\\
+     1.178367340962222e+00\\
+     1.145375182200481e+00\\
+     1.047060053412795e+00\\
+     8.558506476282967e-01\\
+     5.757979815791652e-01\\
+     2.727039364615275e-01\\
+     6.617126557971360e-02\\
+     4.229817522440887e-03\\
+
+Error 2::
+
+ans =
+
+     1.318069672854064e-01\\
+     8.546811146521263e+00\\
+     7.702053241592080e+00\\
+     6.841963471527189e+00\\
+     5.965304965421256e+00\\
+     5.074739283541284e+00\\
+     4.186008531733245e+00\\
+     3.340997594141816e+00\\
+     2.608140388188166e+00\\
+     2.050242044110255e+00\\
+     1.686383195908350e+00\\
+     1.500523816401236e+00\\
+     1.449524776306588e+00\\
+
+Since the derivative of the function is non-zero, we can determine that there are multiple roots. Also, we can determine that there is linear convergence since the error decreases at a somewhat linear rate.\\
+Iterates:: 2.580000e-01\\
+Multiplicity:: 4.692627e+05\\
+Rate of Convergence:: 9.999979e-01\\
+We have determined that we have a rate of convergence of approx: 1, therefore we have linear convergence for this newton's method.
 	\end{framed}
 	\end{enumerate}
 
