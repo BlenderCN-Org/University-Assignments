@@ -50,10 +50,10 @@ relerr'
 fprintf("Error 2::\n")
 relerr2'
 
-fprintf("Since the derivative of the function is non-zero, we can determine that there are multiple roots.\n")
+fprintf("Since the derivative of the function is non-zero, we can determine that there are multiple roots.  Also, we can determine that there is linear convergence since the error decreases at a somewhat linear rate.\n")
 
 v = round(iterates(length(iterates)), 3);
-mult = (147500 * (1 + (v/12))^58)/2*fpnewt(v);
+mult = fnewt(v)/2*fpnewt(v);
 
 rofc = (mult-1)/mult;
 

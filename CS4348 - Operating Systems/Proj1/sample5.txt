@@ -1,14 +1,32 @@
-// Like #1 but add and subtract values to spell 'hello world'
-
-// values to spell hello world listed below
-72
--3
--7
+.0
+1 // Load 0 into the AC
 0
-3
--47
-55
--8
-3
--6
--8
+14 // Put 0 into X
+8 // Loads a random number into the AC
+12 // AC -= X
+9  // Print to screen as int
+1
+25 // Increase X
+18
+1  // Load newline
+10
+9  // Output newline
+2
+19
+22 // Jump is AC != 0
+5
+50 // Exit the program
+
+
+.1000
+8
+9  // Print to screen as int
+1
+18 // SP = AC
+1  // Load newline
+10
+9  // Output newline
+2
+19 // AC = SP
+10 // Increase X 1 times
+30
