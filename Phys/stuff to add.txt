@@ -1,0 +1,6 @@
+\item[] Capacitors and Capacitance :: 
+	\begin{enumerate}
+		\item[] $U$ = $\frac{1}{2}\cfrac{Q^2}{C} = \frac{1}{2}QV = \frac{1}{2}CV^2$
+		\item[] Capacitors in series : $C_{eq}^{-1} = \cfrac{1}{C_1} + \cfrac{1}{C_2} + ...$
+		\item[] Capacitors in parallel : $C_{eq} = C_1 + C_2 + ...$
+		\item[] $C = \cfrac{Q}{V}$
