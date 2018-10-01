@@ -42,11 +42,12 @@ void cpu::init() {
         IR = read_from_pipe();
         execute_instruction();
 
-        if (scheduler && !kernel_mode && instruction_counter > 0 && (instruction_counter % timer == 0)) {
+        if (scheduler && !kernel_mode && instruction_counter > 0 && instruction_counter == timer) {
             syscall_timer();
             instruction_counter++;
+            instruction_counter = 0;
         }
-        if(scheduler && !kernel_mode) {
+        if (scheduler && !kernel_mode) {
             instruction_counter++;
         }
     }
@@ -201,6 +202,11 @@ void cpu::copy_from_sp() {
 void cpu::jump_address() {
     write_to_pipe(PC++);
     int v = read_from_pipe();
+
+    if (!kernel_mode && v > 999) {
+        printf("Memory violation: accessing system address > 1000 (int array 999) in user mode\n");
+        end();
+    }
 
     PC = v;
 }

@@ -1,4 +1,1 @@
-"D:\IDES\CLion 2017.3.4\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1"
--- Configuring done
--- Generating done
--- Build files have been written to: D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj1/cmake-build-debug
+CMakeLists.txt not found in D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1 Select CMakeLists.txt file...

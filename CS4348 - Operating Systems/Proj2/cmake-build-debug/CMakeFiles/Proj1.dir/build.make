@@ -42,10 +42,10 @@ RM = "D:\IDES\CLion 2017.3.4\bin\cmake\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1"
+CMAKE_SOURCE_DIR = "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug"
+CMAKE_BINARY_DIR = "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Proj1.dir/depend.make
@@ -58,16 +58,16 @@ include CMakeFiles/Proj1.dir/flags.make
 
 CMakeFiles/Proj1.dir/main.cpp.obj: CMakeFiles/Proj1.dir/flags.make
 CMakeFiles/Proj1.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Proj1.dir/main.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Proj1.dir\main.cpp.obj -c "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Proj1.dir/main.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Proj1.dir\main.cpp.obj -c "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\main.cpp"
 
 CMakeFiles/Proj1.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proj1.dir/main.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\main.cpp" > CMakeFiles\Proj1.dir\main.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\main.cpp" > CMakeFiles\Proj1.dir\main.cpp.i
 
 CMakeFiles/Proj1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/main.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\main.cpp" -o CMakeFiles\Proj1.dir\main.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\main.cpp" -o CMakeFiles\Proj1.dir\main.cpp.s
 
 CMakeFiles/Proj1.dir/main.cpp.obj.requires:
 
@@ -82,16 +82,16 @@ CMakeFiles/Proj1.dir/main.cpp.obj.provides.build: CMakeFiles/Proj1.dir/main.cpp.
 
 CMakeFiles/Proj1.dir/core/memory.cpp.obj: CMakeFiles/Proj1.dir/flags.make
 CMakeFiles/Proj1.dir/core/memory.cpp.obj: ../core/memory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Proj1.dir/core/memory.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Proj1.dir\core\memory.cpp.obj -c "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\core\memory.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Proj1.dir/core/memory.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Proj1.dir\core\memory.cpp.obj -c "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\core\memory.cpp"
 
 CMakeFiles/Proj1.dir/core/memory.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proj1.dir/core/memory.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\core\memory.cpp" > CMakeFiles\Proj1.dir\core\memory.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\core\memory.cpp" > CMakeFiles\Proj1.dir\core\memory.cpp.i
 
 CMakeFiles/Proj1.dir/core/memory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/core/memory.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\core\memory.cpp" -o CMakeFiles\Proj1.dir\core\memory.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\core\memory.cpp" -o CMakeFiles\Proj1.dir\core\memory.cpp.s
 
 CMakeFiles/Proj1.dir/core/memory.cpp.obj.requires:
 
@@ -106,16 +106,16 @@ CMakeFiles/Proj1.dir/core/memory.cpp.obj.provides.build: CMakeFiles/Proj1.dir/co
 
 CMakeFiles/Proj1.dir/core/cpu.cpp.obj: CMakeFiles/Proj1.dir/flags.make
 CMakeFiles/Proj1.dir/core/cpu.cpp.obj: ../core/cpu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Proj1.dir/core/cpu.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Proj1.dir\core\cpu.cpp.obj -c "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\core\cpu.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Proj1.dir/core/cpu.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Proj1.dir\core\cpu.cpp.obj -c "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\core\cpu.cpp"
 
 CMakeFiles/Proj1.dir/core/cpu.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proj1.dir/core/cpu.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\core\cpu.cpp" > CMakeFiles\Proj1.dir\core\cpu.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\core\cpu.cpp" > CMakeFiles\Proj1.dir\core\cpu.cpp.i
 
 CMakeFiles/Proj1.dir/core/cpu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/core/cpu.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\core\cpu.cpp" -o CMakeFiles\Proj1.dir\core\cpu.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\core\cpu.cpp" -o CMakeFiles\Proj1.dir\core\cpu.cpp.s
 
 CMakeFiles/Proj1.dir/core/cpu.cpp.obj.requires:
 
@@ -144,7 +144,7 @@ Proj1.exe: CMakeFiles/Proj1.dir/build.make
 Proj1.exe: CMakeFiles/Proj1.dir/linklibs.rsp
 Proj1.exe: CMakeFiles/Proj1.dir/objects1.rsp
 Proj1.exe: CMakeFiles/Proj1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Proj1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Proj1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Proj1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -163,6 +163,6 @@ CMakeFiles/Proj1.dir/clean:
 .PHONY : CMakeFiles/Proj1.dir/clean
 
 CMakeFiles/Proj1.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj1\cmake-build-debug\CMakeFiles\Proj1.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug" "D:\Documents\University-Assignments\CS4348 - Operating Systems\Proj2\cmake-build-debug\CMakeFiles\Proj1.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Proj1.dir/depend
 

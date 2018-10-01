@@ -164,6 +164,7 @@ private:
     // switch statement. Works in the same way except for a special
     // case for the exit function
     typedef void (cpu::*InstructionSet)();
+
     InstructionSet instructions[31] = {
             &cpu::load_value,
             &cpu::load_address,
