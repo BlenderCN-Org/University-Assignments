@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tikz}
+\usepackage{tabto}
+\usetikzlibrary{automata,positioning}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\title{CS4384 : Automata Theory\\Homework Assignment 3}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+
+\begin{enumerate}
+	\item Given the following CFG G, give the derivations for each string.\\ \\
+	
+	(a.) \begin{itemize}
+		\item[] E $\rightarrow$ T $\rightarrow$ F $\rightarrow$ a
+	\end{itemize}
+	
+	(b.) \begin{itemize}
+		\item[] E $\rightarrow$ E + T $\rightarrow$ E + T + T $\rightarrow$ T + T + T  $\rightarrow$ F + T + T $\rightarrow$ F + F + T $\rightarrow$ F + F + F $\rightarrow$ a + F + F  $\rightarrow$ a + a + F $\rightarrow$ a + a + a
+	\end{itemize}
+	
+	(c.)\begin{itemize}
+		\item[] E $\rightarrow$ E + T $\rightarrow$ T + T $\rightarrow$ F + T $\rightarrow$ F + F $\rightarrow$ a + F $\rightarrow$ a + a
+	\end{itemize}
+	
+	(d.) \begin{itemize}
+		\item[] E $\rightarrow$ T $\rightarrow$ F $\rightarrow$ (E) $\rightarrow$ (T) $\rightarrow$ (F) (F) $\rightarrow$ ((E)) $\rightarrow$ ((T)) $\rightarrow$ ((F))  $\rightarrow$ ((a))
+	\end{itemize}
+	
+	\item Construct a CFG that generates $\{$ w $|$ w starts and ends with the same symbol.$\}$, given $\Sigma$ = $\{0,1\}$. 
+	\begin{itemize}
+		\item[] S $\rightarrow$ 0A0 $|$ 1A1
+		\item[] A $\rightarrow$ 0A $|$ A0 $|$ 1A $|$ A1 $|$ 1 $|$ 0 \\
+	\end{itemize}
+	
+	\item Construct a CFG that generates  $\{$ w $|$ w is a palindrome. $\}$, given $\Sigma$ = $\{0,1\}$. 
+	\begin{itemize}
+		\item[] S $\rightarrow$ 0A0 $|$ 1A1
+		\item[] A $\rightarrow$ 1 $|$ 0 $|$ S \\
+	\end{itemize}
+	
+	\item Construct a CFG that generates $\{$ $a^ib^jc^k$ $|$ i=j or j=k $\}$
+	\begin{itemize}
+		\item[] S $\rightarrow$ A $|$ B
+		\item[] A $\rightarrow$ aA $|$ X
+		\item[] B $\rightarrow$ Bb $|$ Y
+		\item[] X $\rightarrow$ bXc $|$ $\epsilon$
+		\item[] Y $\rightarrow$ aYb $|$ $\epsilon$
+	\end{itemize}
+	
+	\item Show that the following grammars are ambiguous by demonstrating two different left-most derivations.
+	\begin{itemize}
+		\item[a.)] S $\rightarrow$ SS $\rightarrow$ SSS $\rightarrow$ aSS $\rightarrow$ aaS $\rightarrow$ aaa \\
+		S $\rightarrow$ SS $\rightarrow$ aS $\rightarrow$ aSS $\rightarrow$ aaS $\rightarrow$ aaa \\
+		We have found two different left-most derivations that result in the same derivation. \\
+		\item[b.)] S $\rightarrow$ A $\rightarrow$ ab \\
+		S $\rightarrow$ B $\rightarrow$ abB $\rightarrow$ ab \\
+		We have found two different left-most derivations that result in the same derivation. 
+	\end{itemize}
+	
+	\item Let G be the CFG S $\rightarrow$ aS $|$ Sb $|$ a $|$ b. Show that no string in L(G) contains ba as a substring. (Hint: This can be shown by induction on the length of the string in G.)\\\\
+	Base Case: Derivation with one step, S $\rightarrow$ aS $|$ Sb $|$ a $|$ b. Neither of these initial steps contain the substring 'ba'.\\
+	IH: Assume that for every derivation, S $\rightarrow^*$ w with n $\geq$ 1 steps, that 'ba' is not a substring.\\
+	IS: Prove that for every derivation with n+1 steps generates a string in L. Let S $\rightarrow^*$ w be a derivation with n+1 steps. We can see that with any case we are given, it is impossible to end up with a string that has a substring 'ba'. Since the transitions that end up with 'a' and 'b' can only transition once so they can never have a substring 'ba'. 
+	\begin{itemize}
+		\item[] Case 1: aS:  If we start with aS, for any n+1 derivations we will end up with a string of the form aS such that a is the starting character of the string. In this case, there is no way to obtain a string that have ba.
+		\item[] Case 2: Sb: If we start with Sb, for any n+1 derivations will will end up with a string of the form Sb such that b is the ending character of the string. Similarly to the last case, there is not a string that we can create where b comes before a.
+	\end{itemize}
+	Thus we have proven that for no matter how many n+1 steps, it is impossible to generate a string that has a substring 'ba'.
+\end{enumerate}
+
+\end{document}
