@@ -1,0 +1,2 @@
+insert into Employee(Fname, Minit, Lname, Ssn, Bdate, Address, Sex, Salary, Super_ssn, Dno)
+		values ('John", 'B', 'Smith', 123456789, '1965-01-09', '731 Fondren, Houston Tx', 'M', 30000, 333445555, 5)

@@ -1,49 +1,45 @@
 \documentclass[12pt]{article}
 
 \usepackage[margin=1.0in]{geometry}
+\usepackage{tabto}
 
 \begin{document}
 
-\title{CS4348 : Operating Systems Concepts\\Homework Assignment 2}
+\title{CS4348 : Operating Systems Concepts\\Homework Assignment 3}
 \author{Matthew McMillian\\mgm160130@utdallas.edu}
 \maketitle
 
 \begin{enumerate}
-	
-	\item Explain how a process moves between the running, ready, and blocked states. \\ \\
-	When a process gets created it begins in a NEW state. When the OS is ready to accept the new process, it moves to the READY state, and eventually the RUNNING state. While running, the process can release itself and EXIT, timeout and move back to the READY state, or accept an event (an interrupt) and move to a BLOCKED state. Once the event (interrupt) has ended, the program goes back into a READY state until it is ready to begin RUNNING again. \\
-	
-	\item There are three main sections of a Process Control Block.  For each section, 
-   give an example of something it contains. \\ \\   
-   The three main sections of a process control block are PROCESS IDENTIFICATION, PROCESS STATE INFORMATION, and PROCESS CONTROL INFORMATION, each one providing a different job for the process control block.
-   \begin{itemize}
-   		\item The PROCESS IDENTIFICATION section includes the numeric IDs for the process, the parent process, and the user of the process. This ID might be useful for cross-referencing other tables in later stages, or  it could be used as an index.
-   		\item The PROCESS STATE INFORMATION section includes user-visible registers, control and status registers, and stack pointers.
-   		\item The PROCESS CONTROL INFORMATION sections is in charge of many tasks such as scheduling and state information (including process state, priority, etc.), data structuring the necessary pointers around the parent-child or queuing, privileges of the process for resources, manages the memory of the segment of memory, and interprocess communication. \\
-   \end{itemize}
-   \pagebreak
-   \item Explain the steps of a process switch. \\ \\
-	A process switch occurs when the OS gains control from a current process (or in other words, whenever control of resources moves from a process back to the OS). This could happen due to an interrupt timeout, an exception, or a supervisor call. To swap modes, you must:
-	\begin{itemize}
-		\item Save the process context (state).
-		\item Update the PCB of the current process to a non-running state.
-		\item Move the PCB of the process to an appropriate queue for the state.
-		\item Select another process to run (whichever the scheduler has next in queue).
-		\item Update the PCB of the selected process to a running state.
-		\item Updated the memory-management data structures of the new process.
-		\item Restore the state of the newly selected process to its previous context. \\
-	\end{itemize}
 
-	\item  Why are multiple threads usually preferred to multiple processes? \\ \\
-	Multiple threads, in general, are better than multiple processes. Threads offer low creation time than spawning a new process and they take less time to terminate. On top of creation, threads are far faster at switching than processes and they can communicate far faster than processes can to each other. This is due to the fact that threads share the same memory, while processes occupy different parts of memory. IPC (Inter-process Communication) is known to be slow in comparison to a monolithic approach (in micro-kernel, micro-service, and multi-process approaches), so it makes sense that since all the memory is shared (connected) that the communication and swapping time is far faster. \\
+	\item How does interrupt disabling provide mutual exclusion? \\ \\
+	Assuming that we are not threading, interrupt disabling proves mutual exclusion since there is only one way line of execution for the program to perform. This means that control over a resource can never be 'taken away'. Take for example if we are currently in a write operation to a file. If an interrupt were to happen, we would lose our access to that resource and data could get corrupted. By disabling interrupts, we can enforce the idea that if we are in critical sections that we will only have one way to exit the critical section; by completing the task.
+	
+	\item In the Compare$\&$Swap instruction, why must the instruction execute atomically? \\ \\
+	Since we are using using our dynamic variable $x$ inside the compare$\_$and$\_$swap method and setting it afterwords, there is a chance that we set $x$ before the comparison has even been made. Therefore in order to preserve the integrity of our data, we must make each method atomic so that our data doesn't get interleaved / interchanged by accident.
+	
+	\item Coordinate the actions of the two threads below by inserting wait/signal commands on semaphores so that the Give$\_$order() happens first, then the Take$\_$order(), then the Serve$\_$meal(), then the Eat$\_$meal().  You can assume one thread each.
+    \begin{center}
+    binary$\_$semaphore s.order = 1 \\
+    binary$\_$sempahore s.order.delay = 0 \\ 
+    binary$\_$semaphore s.meal = 0 \\
+     Customer  \tabto{4cm}         Waiter\\
+	 wait(s.order)	\tabto{4cm}		  wait(s.order.delay) \\
+     Give$\_$order() \tabto{4cm}      Take$\_$order() \\
+	 signal(s.order.delay) \tabto{4cm} Serve$\_$meal()\\
+	 wait(s.meal)	\tabto{4cm}		  signal(s.meal)\\
+     Eat$\_$meal()   \tabto{4cm}      Serve$\_$meal()\\
+	 signal(s.meal) \tabto{4cm}	      signal(s.order) \\
+    \end{center}
+    
+   \item Why is the mutual exclusion condition necessary for deadlock to occur? \\ \\
+   The whole reason behind a deadlock is that other processes are waiting on each other to use a resource. If there is no mutual exclusion, then there is no need to wait on other processes, and as such there wouldn't be any deadlock. Consider the case used in the first problem where we are waiting on a file to read/write from. If there is no mutual exclusion, then another process could just write to the file at the same time as the original process (though this is unsafe, a deadlock wouldn't occur). 
    
-   \item Why do thread activities sometimes require coordinating? \\ \\
-	Imagine a toy scenario where you have two parts of a program we'll denote PART A and PART B. PART B depends on PART A for a certain piece of information. If we thread the process into two threads and we arrive PART B before we run PART A, we will be missing the value that we depend on. In general, thread coordination is used to make sure resources are managed properly when threads are being executed within a process (i.e. making sure that dependencies are met during process execution). Also if two threads are accessing the same resources of the program, data might get corrupted if the threads interfere with each other. \\
-	\pagebreak
-	\item Which kind of threads can be scheduled across multiple processors?  Explain why. \\ \\
-	Kernel-Level Threads can run across multiple processors. They are advantageous as they can schedule the same task across multiple processors for increased performance, so not only can a processes me multi-threaded but it can be spread across multiple processors! Kernel-Level Threads come from the design of the OS, and the OS schedules and manages these threads instead of entire processes. However, mode switching within these threads (especially different threads) can be very time consuming and it can significantly slow down a system.
+   \item Suppose there are three processes, P1, P2, and P3, and three files, FileA, FileB, and FileC. P1 has FileA and wants FileC.  P2 has FileB and wants FileA.  P3 has FileC and wants FileB.  \\
+   a) Draw a resource allocation graph for this situation. \\
+   b) Does the graph represent a deadlock?  Why or why not? Explain.
    
+   \item Is the following setup safe or unsafe according to the Banker's algorithm? Show your work and explain your result. \\ \\
+	The following setup is unsafe according to the Banker's algorithm. Since we currently have no available R1 resources, and because we cannot free up any other process with the resources we have available, there will be a potential deadlock (unsafe) operation that could occur.       
+      
 \end{enumerate}
-	
-
 \end{document}

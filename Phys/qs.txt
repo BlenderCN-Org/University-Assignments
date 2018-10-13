@@ -1,0 +1,4 @@
+Trig identities?
+Matlab FORMAT HEX
+fixed point -> arrow notation?
+book find x, is that the same as sayin x_(n+1)?

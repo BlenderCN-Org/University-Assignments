@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/core/cpu.cpp" "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/CMakeFiles/Proj1.dir/core/cpu.cpp.obj"
-  "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/core/memory.cpp" "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/CMakeFiles/Proj1.dir/core/memory.cpp.obj"
-  "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/main.cpp" "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/CMakeFiles/Proj1.dir/main.cpp.obj"
+  "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/core/cpu.cpp" "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/CMakeFiles/Proj1.dir/core/cpu.cpp.obj"
+  "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/core/memory.cpp" "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/CMakeFiles/Proj1.dir/core/memory.cpp.obj"
+  "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/main.cpp" "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/CMakeFiles/Proj1.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

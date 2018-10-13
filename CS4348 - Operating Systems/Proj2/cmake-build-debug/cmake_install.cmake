@@ -1,4 +1,4 @@
-# Install script for directory: D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2
+# Install script for directory: C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/zoolo/Documents/University-Assignments/CS4348 - Operating Systems/Proj2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
