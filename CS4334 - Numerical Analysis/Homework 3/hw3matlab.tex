@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tabto}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+
+
+
+\begin{document}
+
+\title{CS / MATH 4334 : Numerical Analysis\\Homework Assignment 3}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\section*{MatLab Problems}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\pagebreak
+
+	\begin{enumerate}
+	
+	\item[] Problem 1 : gaelpp.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputpath{P1}
+	\lstinputlisting{gaelpp.m}
+	
+	\item[] Problem 1 : gaelppscript.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{gaelppscript.m}	
+	
+	\item[] Problem 1 : gaelscript.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{gaelscript.m}	
+	
+	\pagebreak	
+	
+	$>>$ gaelppscript.m + gaelscript.m
+	\begin{framed}
+	(In gaelppscript.m)\\
+	A =\\
+     6.110000000000000e+00    -1.420000000000000e+01     2.100000000000000e+01\\
+    -4.959083469721767e-01     5.058101472995091e+00     3.414075286415711e+00\\
+     4.959083469721767e-01    -1.000000000000000e+00     7.000000000000000e+00\\
+
+
+	P =\\
+     0     0     1\\
+     0     1     0\\
+     1     0     0\\
+
+
+	y =\\
+    -1.190000000000000e+02\\
+     6.098690671031097e+01\\
+    -1.899999999999999e+01\\
+
+(In gaelscript.m)\\
+	s =\\
+     2.213234104513831e+01\\
+     1.388933829477430e+01\\
+    -2.714285714285713e+00\\
+    
+    x =\\
+                       Inf\\
+                       Inf\\
+    -1.396257416704701e+01\\
+
+
+ans =\\
+   NaN\\
+   NaN\\
+   NaN\\
+
+We can tell from our answer that partial pivoting helps avoid swamping errors that regular Gaussian Elimination cannot deal with.
+	\end{framed}
+	
+	\end{enumerate}
+	
+\pagebreak	
+	
+	\begin{enumerate}
+	
+	\item[] Problem 2 : hw2.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputpath{P2}
+	\lstinputlisting{hw2.m}	
+	
+	\pagebreak	
+	
+	$>>$ hw2.m
+	\begin{framed}
+relBkwdErr =\\
+     6.329171661699566e-17\\
+
+condA =\\
+     2.106245945721575e+12\\
+
+
+boundOnFwrdError =\\
+     1.333079215223059e-04\\
+
+
+relFwrdErr =\\
+     6.074920350417704e-06\\
+
+Since we are using double percision, our answer is only accurate to 16 digits
+	\end{framed}
+	
+	\end{enumerate}
+	
+\pagebreak	
+	
+	\begin{enumerate}
+	
+	\item[] Problem 3 : newt3d.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputpath{P3}
+	\lstinputlisting{newt3d.m}	
+	
+	\item[] Problem 3 : genmatrix.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{genmatrix.m}	
+	
+	\item[] Problem 3 : genrhs.m \noindent\rule{\textwidth}{1.0pt} \\
+	\lstinputlisting{genrhs.m}	
+	
+	\pagebreak	
+	
+	$>>$ newt3d.m
+	\begin{framed}
+	x =\\
+     8.771286446121147e+00\\
+     2.596954489674528e-01\\
+    -1.372281323269016e+00\\
+
+ans =\\
+     3.901377355679192e-07
+	\end{framed}
+	
+	\end{enumerate}
+	
+\end{document}

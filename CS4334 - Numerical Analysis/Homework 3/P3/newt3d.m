@@ -1,5 +1,6 @@
 format long e
 
+% Clear console for easy testing
 clc
 
 %relative error tolerance
@@ -12,21 +13,20 @@ x = [1; 1; 1;];
 xp = x;
 
 %call function to generate right-hand-side, -f
-rhs = genrhs(x)
+rhs = genrhs(x);
     
 %call function to generate matrix, DF
-DF = genmatrix(x)
-
+DF = genmatrix(x);
 
 %Use MATLAB function to do PA=LU factorization
 [L,U,P] = lu(DF);
         
 %Use our functions in elearning, forsub and backsub, as appropriate
-y = forsub(L, P*rhs)
-s = backsub(U, y)
+y = forsub(L, P*rhs);
+s = backsub(U, y);
 
-x = xp + s
-    
+% Calculating the next iterate
+x = xp + s;    
     
 %x is the current iterate
 %s is the difference between current and previous iterate
@@ -48,8 +48,7 @@ while norm(s)/norm(x) >= TOL
     y = forsub(L, P*rhs);
     s = backsub(U, y);
     
-    x = xp + s
-    
+    x = xp + s;   
      
 end
 

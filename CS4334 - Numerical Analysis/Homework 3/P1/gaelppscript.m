@@ -1,37 +1,33 @@
-% format long e
+format long e
 
+% Clears console for clean testing
 clc
 
-
+% Given A Matrix
 A = [3.03 -12.1 14;
     -3.03 12.1 -7;
     6.11 -14.2 21];
 
-b = [-119, 120, -139];
+% Vector of values we want to solve for
+b = [-119; 120; -139;];
 
-A = [1 2 6;
-4 8 -1;
--2 3 5;];
+% Calling Gaussian Elimination with Partial Pivoting
+[A, P] = gaelpp(A);
 
+A
+P
 
-[A1, b, M] = gael(A, b);
-[A2, P] = gaelpp(A);
+% This checks to make sure that our PA=LU worked
+% Forms L Matrix
+L = [1 0 0
+    A(2,1) 1 0 
+    A(3,1) A(3,2) 1];
+% Forms U Matrix
+U = [A(1,1) A(1,2) A(1,3)
+    0   A(2,2)  A(2,3) 
+    0   0   A(3,3)];
 
-A1
-MA1 = M*A1
-A2
+% Forward Sub and Backward Sub Output
+y = forsub(L,b)
+s = backsub(U, y)
 
-%T = [1 0 0;
-%    -0.4959 1 0;
-%   0.4959 -1 1;];
-
-T = [1 0 0;
-    -0.5000 1 0;
-   0.2500 0 1;];
-
-A2(2,1) = 0;
-A2(3,2) = 0;
-A2(3,1) = 0;
-
-PA = P*A
-TA2 = T * A2
