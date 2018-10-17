@@ -66,17 +66,18 @@
      1     0     0\\
 
 
-	y =\\
+	y (forsub) =\\
     -1.190000000000000e+02\\
      6.098690671031097e+01\\
     -1.899999999999999e+01\\
 
-(In gaelscript.m)\\
-	s =\\
+
+	s (backsub) =\\
      2.213234104513831e+01\\
      1.388933829477430e+01\\
     -2.714285714285713e+00\\
     
+   (In gaelscript.m)\\ 
     x =\\
                        Inf\\
                        Inf\\
@@ -148,7 +149,9 @@ Since we are using double percision, our answer is only accurate to 16 digits
     -1.372281323269016e+00\\
 
 ans =\\
-     3.901377355679192e-07
+     3.901377355679192e-07 \\ 
+     
+     Note that if we do not log-transform the equations before hand we will have an ill-conditioned matrix.
 	\end{framed}
 	
 	\end{enumerate}

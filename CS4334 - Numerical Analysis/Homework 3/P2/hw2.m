@@ -22,7 +22,7 @@ xa = A\b;
 
 % Calculating the errors based upon the actual solutiopn
 % x, and the approx solution xa
-relBkwdErr = (norm(A*x - A*xa))/norm(b)f
+relBkwdErr = (norm(A*x - A*xa))/norm(b)
 condA = cond(A)
 boundOnFwrdError = condA*relBkwdErr
 relFwrdErr = (norm(x - xa))/norm(x)
