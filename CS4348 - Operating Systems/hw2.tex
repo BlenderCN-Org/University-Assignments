@@ -1,7 +1,9 @@
 \documentclass[12pt]{article}
 
 \usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
 \usepackage{tabto}
+\graphicspath{ {./} }
 
 \begin{document}
 
@@ -35,8 +37,12 @@
    The whole reason behind a deadlock is that other processes are waiting on each other to use a resource. If there is no mutual exclusion, then there is no need to wait on other processes, and as such there wouldn't be any deadlock. Consider the case used in the first problem where we are waiting on a file to read/write from. If there is no mutual exclusion, then another process could just write to the file at the same time as the original process (though this is unsafe, a deadlock wouldn't occur). 
    
    \item Suppose there are three processes, P1, P2, and P3, and three files, FileA, FileB, and FileC. P1 has FileA and wants FileC.  P2 has FileB and wants FileA.  P3 has FileC and wants FileB.  \\
-   a) Draw a resource allocation graph for this situation. \\
-   b) Does the graph represent a deadlock?  Why or why not? Explain.
+   a) Draw a resource allocation graph for this situation.
+   \begin{center}
+   	\includegraphics[scale=0.35]{dependency}
+   \end{center}
+   b) Does the graph represent a deadlock?  Why or why not? Explain.\\ \\
+   Yes, this resource allocation graph represents a deadlock. Each process (independently) has every resource available, and each process wants an resource currently being held by another process, and as such was have resulting in a deadlock.
    
    \item Is the following setup safe or unsafe according to the Banker's algorithm? Show your work and explain your result. \\ \\
 	The following setup is unsafe according to the Banker's algorithm. Since we currently have no available R1 resources, and because we cannot free up any other process with the resources we have available, there will be a potential deadlock (unsafe) operation that could occur.       

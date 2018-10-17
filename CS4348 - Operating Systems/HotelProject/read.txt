@@ -1,0 +1,24 @@
+Guest:
+
+Visit Desk
+Get Room
+if bags > 2:
+	get bellhop
+enter room
+if bags > 2:
+	get bags
+tip bellhop
+Retire
+
+FrontDesk:
+Get Guest
+Check Guest
+Find Room, Give Room
+Give Key
+
+
+BellHop:
+Get Bags
+Give to guest
+get tip
+leave
