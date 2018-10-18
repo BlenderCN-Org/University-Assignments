@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabto}
+\graphicspath{ {./} }
+
+\begin{document}
+
+\title{CS4348 : Operating Systems Concepts\\Homework Assignment 4}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\begin{enumerate}
+
+	\item Discuss two problems in fixed partitioning.\\ \\
+	One of the problems with fixed partitioning is the underuse of resources. If you have n fixed partitions of size 16 megabyts and you have n processes in memory of size 2 megabytes, you waste a 14$n$ megabytes of space. Another problem is that fixed partitions limit the number of processes you have running to the partitioned number n. In both of these cases, we are under utilizing our resources. \\
+	
+	\item Explain how relative addressing supports relocation. \\ \\
+	The relative address is a part of the logical address that points to the address's location in the program (the location relative from the start of the program). The relative address is added to some other address location (its paged location or absolute address), and we get our final (actual) address. This way, no matter where the page of memory is moved, the relative address holds the offset needed to the real address.\\
+	
+	\item  Given a 32 Megabyte memory space, illustrate the memory configuration after the each of the following requests using the Buddy System.  Use a rule of first allocating the left block of a split pair or when
+more than one block of the same size is available.\\	
+	Note that * represents occupied .
+	\begin{itemize}	
+		\item 32
+		\item 2* 2 4 8 16
+		\item 2* 2 4* 8 16
+		\item 2* 2 4* 8* 16
+		\item 2* 2 4* 8* 4* 4 8
+		\item 4 4* 8* 4* 4 8
+	\end{itemize}
+
+	\pagebreak
+
+	\item In the segmentation scheme, how is a virtual address translated into a physical address? \\ \\
+	Segments contain a segment number and a offset. These segments are determined by the programmer which allows for variable block sizes. The virtual address is taken to a lookup table that contains the base address of the segment followed by some length variable (how big that segment is). Then the segment offset gets checked to make sure that it is within the bounds of the segment. If not an error is thrown. This gets combined with a base and is returned as a location in main memory (the physical address space). \\
+	
+	\item Explain What happens when a page fault occurs. \\ \\
+	A page fault occurs when a lookup for a page inside cache fails. This process requires that the OS accesses main memory to obtain that page. This is costly since we have to search (at worst case) all of our slow memory to obtain a page. Depending on how many frames we have in memory can determine how many page faults occur. If we have more frames in memory, less page faults will occur but the more frames we have will reduce the number of processes we can run. 
+	 \\
+	\item For the figure below, using the Clock policy of page replacements,
+   show the figure after each of the following page requests:  3, 2, 1, 5. \\
+	
+	\begin{enumerate}				
+		\item   $\_\_$3*\\
+				$>$4*\\
+				$\_\_$2\\
+				
+		\item   $\_\_$3*\\
+				$\_\_$4\\
+				$>$2*\\
+				
+		\item   $\_\_$3\\
+				$>$1*\\
+				$\_\_$2*\\
+				
+		\item  $>$5\\
+				$\_\_$1*\\
+				$\_\_$2\\
+	\end{enumerate}
+	
+      
+\end{enumerate}
+\end{document}
