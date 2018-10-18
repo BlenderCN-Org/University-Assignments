@@ -1,4 +1,4 @@
-Guest:
+Classes.Guest:
 
 Visit Desk
 Get Room
@@ -11,8 +11,8 @@ tip bellhop
 Retire
 
 FrontDesk:
-Get Guest
-Check Guest
+Get Classes.Guest
+Check Classes.Guest
 Find Room, Give Room
 Give Key
 

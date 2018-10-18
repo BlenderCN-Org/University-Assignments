@@ -1,88 +1,56 @@
+import Classes.Bellhop;
+import Classes.Clerk;
+import Classes.Guest;
+import interfaces.HotelHelper;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
 public class Main {
 
     private static HashMap<String, Semaphore> semaphoreHashMap;
-    protected static ArrayList<Clerk> clerkArrayList = new ArrayList<>();
-    protected static ArrayList<Guest> guestArrayList = new ArrayList<>();
 
-    protected static ArrayList<Integer> finished = new ArrayList<>();
-
-    public static int retired = 0;
+    private static HotelHelper helper;
 
     public static void main(String[] args) throws InterruptedException {
-        semaphoreHashMap = initializeSemaphoreHashMap();
-        getSemaphoreStatus();
 
-        for (int i = 0; i < 2; i++) {
-            clerkArrayList.add(new Clerk(semaphoreHashMap, i + 1));
-            clerkArrayList.get(i).start();
+        int guestCount = 25;
+        int clerkCount = 2;
+        int bellhopCount = 2;
+
+        helper = new HotelHelper();
+        helper.generateGlobalHashMap();
+
+        for (int i = 0; i < clerkCount; i++) {
+            helper.addToClerks(new Clerk(i + 1, helper));
         }
 
-        for (int i = 0; i < 25; i++) {
-            guestArrayList.add(new Guest(semaphoreHashMap, i + 1));
-            guestArrayList.get(i).start();
+        for (int i = 0; i < bellhopCount; i++) {
+            helper.addToBellhops(new Bellhop(i + 1, helper));
+        }
+
+        for (int i = 0; i < guestCount; i++) {
+            helper.addToGuests(new Guest(i + 1, helper));
+        }
+
+        for (int i = 0; i < clerkCount; i++) {
+            helper.getClerk(i).start();
+        }
+
+        for (int i = 0; i < bellhopCount; i++) {
+            helper.getBellhop(i).start();
+        }
+
+        for (int i = 0; i < guestCount; i++) {
+            helper.getGuest((i)).start();
         }
 
         Thread.sleep(1000);
-        System.out.println("Retired Guests: " + finished.size());
-        Collections.sort(finished);
-        System.out.println(finished);
-        System.exit(0);
+        System.out.println();
+        System.out.println(helper.getTotalRetired());
+        System.out.println(helper.getRetiredArrayList());
     }
 
-    static HashMap<String, Semaphore> newClerkGuestHashMap() throws InterruptedException {
-        HashMap<String, Semaphore> hashMap = new HashMap<>();
 
-        hashMap.put("forRoom", new Semaphore(1, true));
-        hashMap.put("hasRoom", new Semaphore(1, true));
-        hashMap.put("forKey", new Semaphore(1, true));
-        hashMap.put("hasKey", new Semaphore(1, true));
-
-        hashMap.get("forRoom").acquire();
-        hashMap.get("hasRoom").acquire();
-
-        hashMap.get("forKey").acquire();
-        hashMap.get("hasKey").acquire();
-
-        return hashMap;
-    }
-
-    private static HashMap<String, Semaphore> initializeSemaphoreHashMap() throws InterruptedException {
-        HashMap<String, Semaphore> hashMap = new HashMap<>();
-        hashMap.put("guests", new Semaphore(25));
-        hashMap.put("clerks", new Semaphore(2));
-        hashMap.put("bellhops", new Semaphore(2));
-
-        hashMap.put("sync", new Semaphore(1, true));
-        hashMap.put("acquiredGuest", new Semaphore(1, true));
-
-        hashMap.put("getBags", new Semaphore(1, true));
-        hashMap.put("enterRoom", new Semaphore(1, true));
-        hashMap.put("doTip", new Semaphore(1, true));
-        hashMap.put("acquireBags", new Semaphore(1, true));
-
-
-        hashMap.get("guests").acquire(25);
-        hashMap.get("clerks").acquire(2);
-        hashMap.get("getBags").acquire();
-        hashMap.get("enterRoom").acquire();
-        hashMap.get("doTip").acquire();
-
-        hashMap.get("acquiredGuest").acquire();
-        hashMap.get("sync").acquire();
-
-        return hashMap;
-    }
-
-    public static void getSemaphoreStatus() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String key : semaphoreHashMap.keySet()) {
-            stringBuilder.append(key + ": " + semaphoreHashMap.get(key).availablePermits() + " ");
-        }
-        System.out.println(stringBuilder.toString());
-    }
 }

@@ -1,4 +1,4 @@
-Guest:
+Classes.Guest:
 guests.release()
 clerks.acquire()
 sync.acquire()
@@ -14,7 +14,7 @@ hasKey.release();
 % Retired
 
 
-Clerk:
+Classes.Clerk:
 while True:
     guests.acquire()
     clerks.release()
