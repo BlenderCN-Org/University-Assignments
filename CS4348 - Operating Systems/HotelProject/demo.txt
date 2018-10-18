@@ -1,31 +1,29 @@
-from guest: wait(guest)
-from guest: wait(forClerk)
-from guest: wait(forRoom)
-from guest: wait(forKey)
-from clerk: wait(forCustomer)
-from clerk: signal(forRoom)
-from clerk: signal(forKey)
-from guest: signal(forClerk)
--> jump bellhop
+Guest:
+guests.release()
+clerks.acquire()
+sync.acquire()
+    % Do things
+    % Give hashmap
+sync.release()
+acquiredGuest.release()
+forRoom.acquire();
+hasRoom.release();
+forKey.acquire();
+hasKey.release();
 
-NO BELLHOP:
-
-if bags > 2 : from guest: signal(enterRoom)
-else: wait(enterRoom), signal(enterRoom)
-from guest: wait(retire)
-
-BELLHOP:
-if bags > 2:
-from guest: wait(forBellhop)
-from guest: wait(getBags)
-from bellhop: signal(getBags)
-from bellhop: wait(enterRoom)
-from guest: signal(getBags)
-from bellhop: wait(getBags)
-from bellhop: wait(doTip)
-from guest: signal(doTip)
+% Retired
 
 
+Clerk:
+while True:
+    guests.acquire()
+    clerks.release()
+    acquiredGuests.acquire()
+    forRoom.release()
+    hasRoom.acquire()
+    forKey.release()
+    hasKey.acquire()
 
+    % Reset Vars
 
 

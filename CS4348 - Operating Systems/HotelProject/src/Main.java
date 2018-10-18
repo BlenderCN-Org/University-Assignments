@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
@@ -7,6 +8,8 @@ public class Main {
     private static HashMap<String, Semaphore> semaphoreHashMap;
     protected static ArrayList<Clerk> clerkArrayList = new ArrayList<>();
     protected static ArrayList<Guest> guestArrayList = new ArrayList<>();
+
+    protected static ArrayList<Integer> finished = new ArrayList<>();
 
     public static int retired = 0;
 
@@ -25,8 +28,9 @@ public class Main {
         }
 
         Thread.sleep(1000);
-        System.out.println("Retired Guests: " + retired);
-
+        System.out.println("Retired Guests: " + finished.size());
+        Collections.sort(finished);
+        System.out.println(finished);
         System.exit(0);
     }
 
@@ -69,6 +73,7 @@ public class Main {
         hashMap.get("doTip").acquire();
 
         hashMap.get("acquiredGuest").acquire();
+        hashMap.get("sync").acquire();
 
         return hashMap;
     }

@@ -35,9 +35,7 @@ public class Guest extends Thread {
             System.out.println(id + ": is waiting for a [Clerk]");
             semaphoreHashMap.get("clerks").acquire();
 
-            semaphoreHashMap.get("sync").acquire();
-            System.out.println(id + ": in Sync");
-
+//            System.out.println(id + ": in Sync");
             for (Clerk c : Main.clerkArrayList) {
                 if (!c.beingUsed) {
                     c.beingUsed = true;
@@ -46,18 +44,17 @@ public class Guest extends Thread {
                 }
             }
 
-            System.out.println(id + ": size " + Main.clerkArrayList.size() + ", " + clerkNo);
+//            System.out.println(id + ": size " + Main.clerkArrayList.size() + ", " + clerkNo);
             Main.clerkArrayList.get(clerkNo).setGuestNo(threadId);
             System.out.println(id + ": is approaching [Clerk " + (clerkNo + 1) + "]");
 
             clerkGuestHashMap = Main.newClerkGuestHashMap();
-            System.out.println(id + ": " + clerkGuestHashMap);
+//            System.out.println(id + ": " + clerkGuestHashMap);
             Main.clerkArrayList.get(clerkNo).setClerkGuestHashMap(clerkGuestHashMap);
-            System.out.println(id + ": gave to " + (clerkNo + 1) + ", " + clerkNo);
+//            System.out.println(id + ": gave to " + (clerkNo + 1) + ", " + clerkNo);
 
-            System.out.println(id + ": out Sync");
+//            System.out.println(id + ": out Sync");
             semaphoreHashMap.get("sync").release();
-
             semaphoreHashMap.get("acquiredGuest").release();
 
             clerkGuestHashMap.get("forRoom").acquire();
@@ -76,7 +73,7 @@ public class Guest extends Thread {
                 semaphoreHashMap.get("doTop").release();
             }
 
-            Main.retired++;
+            Main.finished.add(threadId);
             System.out.println(id + ": has retired");
 
         } catch (InterruptedException e) {

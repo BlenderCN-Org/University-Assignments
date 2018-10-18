@@ -41,12 +41,8 @@ public class Clerk extends Thread {
 
                 System.out.println(id + ": is finding a room for [Guest " + (guestNo + 1) + "]");
                 System.out.println(id + ": has found a room for [Guest " + (guestNo + 1) + "]");
-                try {
-                    // Right here, we have a case of about 1 guest messing up
-                    clerkGuestHashMap.get("forRoom").release();
-                } catch (Exception e) {
-                    System.out.println("Error at Clerk/Guest: " + threadId + ", " + (guestNo + 1));
-                }
+
+                clerkGuestHashMap.get("forRoom").release();
 
                 clerkGuestHashMap.get("hasRoom").acquire();
                 System.out.println(id + ": is finding a key for [Guest " + (guestNo + 1) + "]");
@@ -55,7 +51,6 @@ public class Clerk extends Thread {
 
 
                 clerkGuestHashMap.get("hasKey").acquire();
-                this.clerkGuestHashMap = null;
                 this.beingUsed = false;
                 System.out.println(id + ": is now available for another [Guest]");
 
