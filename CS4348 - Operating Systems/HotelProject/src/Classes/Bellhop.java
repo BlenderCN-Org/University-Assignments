@@ -42,32 +42,36 @@ public class Bellhop extends Thread {
 
     @Override
     public void run() {
-        System.out.println(toStringId + "is ready to help a guest");
+        printStringToConsole(toStringId, "is ready to help a guest");
         while (this.isAlive()) {
             try {
+                this.semaphoreHashMap.get("bellhopVars").acquire();
                 this.beingUsed = false;
+                this.guestNo = -1;
+                this.bellhopGuestHashMap = null;
+                this.semaphoreHashMap.get("bellhopVars").release();
 
                 this.semaphoreHashMap.get("bellhops").release();
 
                 this.semaphoreHashMap.get("bellhopSync").acquire();
 
-                System.out.println(toStringId + "has obtained the bags of [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "has obtained the bags of [Guest ", guestNo + "", "]");
                 this.bellhopGuestHashMap.get("hasBags").release();
 
                 this.bellhopGuestHashMap.get("guestNeedsBags").acquire();
 
                 this.bellhopGuestHashMap.get("inRoom").acquire();
-                System.out.println(toStringId + "has entered the room of [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "has entered the room of [Guest ", guestNo + "", "]");
 
-                System.out.println(toStringId + "has given the bags to [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "has given the bags to [Guest ", guestNo + "", "]");
                 this.bellhopGuestHashMap.get("giveBags").release();
 
                 this.bellhopGuestHashMap.get("giveTip").acquire();
-                System.out.println(toStringId + "has gotten their tip and leaves from [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "has gotten their tip and leaves from [Guest ", guestNo + "", "]");
 
                 this.bellhopGuestHashMap.get("gotTip").release();
 
-                System.out.println(toStringId + "is ready to help a guest");
+                printStringToConsole(toStringId, "is ready to help a guest");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -77,5 +81,15 @@ public class Bellhop extends Thread {
     @Override
     public String toString() {
         return toStringId + ", " + beingUsed;
+    }
+
+    private void printStringToConsole(String ... strings) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : strings) {
+            sb.append(s);
+        }
+
+        System.out.println(sb.toString());
+
     }
 }

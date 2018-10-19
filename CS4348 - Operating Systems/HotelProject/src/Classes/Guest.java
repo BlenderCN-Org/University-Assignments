@@ -44,7 +44,7 @@ public class Guest extends Thread {
     @Override
     public void run() {
         try {
-            System.out.println(toStringId + "has entered the hotel");
+            printStringToConsole(toStringId, "has entered the hotel");
 
             this.semaphoreHashMap.get("guests").release();
 
@@ -58,23 +58,24 @@ public class Guest extends Thread {
 
             this.semaphoreHashMap.get("guestClerkMutex").release();
 
-            System.out.println(toStringId + "is approaching [Clerk " + clerkNo + "]");
+            printStringToConsole(toStringId, "is approaching [Clerk ", clerkNo + "", "]");
 
             this.semaphoreHashMap.get("sync").release();
 
             this.clerkGuestHashMap.get("forRoom").acquire();
-            System.out.println(toStringId + "has gotten the room number from [Clerk " + clerkNo + "]");
+            printStringToConsole(toStringId, "has gotten the room number from [Clerk ", clerkNo + "", "]");
 
             this.clerkGuestHashMap.get("hasRoom").release();
 
             this.clerkGuestHashMap.get("forKey").acquire();
-            System.out.println(toStringId + "has gotten the room key from [Clerk " + clerkNo + "]");
+            printStringToConsole(toStringId, "has gotten the room key from [Clerk ", clerkNo + "", "]");
 
             this.clerkGuestHashMap.get("hasKey").release();
 
             this.clerkGuestHashMap.get("completed").acquire();
 
             if (this.bags > 2) {
+
                 this.semaphoreHashMap.get("guestBellhopMutex").acquire();
                 this.semaphoreHashMap.get("bellhops").acquire();
 
@@ -84,37 +85,47 @@ public class Guest extends Thread {
 
                 this.semaphoreHashMap.get("guestBellhopMutex").release();
 
-                System.out.println(toStringId + "is approaching [Bellhop " + bellhopNo + "]");
+                printStringToConsole(toStringId, "is approaching [Bellhop ", bellhopNo + "", "]");
 
                 this.semaphoreHashMap.get("bellhopSync").release();
 
-                System.out.println(toStringId + "has given their bags to [Bellhop " + bellhopNo + "]");
+                printStringToConsole(toStringId, "has given their bags to [Bellhop ", bellhopNo + "", "]");
 
                 this.bellhopGuestHashMap.get("hasBags").acquire();
 
                 this.bellhopGuestHashMap.get("guestNeedsBags").release();
             }
 
-            System.out.println(toStringId + "has gone to their room");
+            printStringToConsole(toStringId, "has gone to their room");
 
             if (this.bags > 2) {
                 this.bellhopGuestHashMap.get("inRoom").release();
 
                 this.bellhopGuestHashMap.get("giveBags").acquire();
-                System.out.println(toStringId + "has gotten their bags from [Bellhop " + bellhopNo + "]");
+                printStringToConsole(toStringId, "has gotten their bags from [Bellhop ", bellhopNo + "", "]");
 
-                System.out.println(toStringId + "has given a tip to [Bellhop " + bellhopNo + "]");
+                printStringToConsole(toStringId, "has given a tip to [Bellhop ", bellhopNo + "", "]");
                 this.bellhopGuestHashMap.get("giveTip").release();
 
                 this.bellhopGuestHashMap.get("gotTip").acquire();
             }
 
-            System.out.println(toStringId + "has retired for the night");
+            printStringToConsole(toStringId, "has retired for the night");
             this.helper.guestRetired(guestNo);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
+
+    }
+
+    private void printStringToConsole(String ... strings) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : strings) {
+            sb.append(s);
+        }
+
+        System.out.println(sb.toString());
 
     }
 }

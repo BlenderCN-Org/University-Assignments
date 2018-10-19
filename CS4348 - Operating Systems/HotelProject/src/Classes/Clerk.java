@@ -41,39 +41,56 @@ public class Clerk extends Thread {
         this.guestNo = guestNo;
     }
 
+    public int getGuestNo() {
+        return guestNo;
+    }
+
     @Override
     public void run() {
-        System.out.println(toStringId + "is ready to help a guest");
+        printStringToConsole(toStringId + "is ready to help a guest");
 
         while (this.isAlive()) {
             try {
+                this.semaphoreHashMap.get("clerkVars").acquire();
                 this.beingUsed = false;
+                this.guestNo = -1;
+                this.clerkGuestHashMap = null;
+                this.semaphoreHashMap.get("clerkVars").release();
 
                 this.semaphoreHashMap.get("clerks").release();
                 this.semaphoreHashMap.get("guests").acquire();
 
-
                 this.semaphoreHashMap.get("sync").acquire();
-                System.out.println(toStringId + "is helping [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "is helping [Guest ", guestNo + "", "]");
 
-                System.out.println(toStringId + "has found a room for [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "has found a room for [Guest ", guestNo + "", "]");
                 this.clerkGuestHashMap.get("forRoom").release();
 
                 this.clerkGuestHashMap.get("hasRoom").acquire();
 
-                System.out.println(toStringId + "has found a key for [Guest " + guestNo + "]");
+                printStringToConsole(toStringId, "has found a key for [Guest ", guestNo + "", "]");
                 this.clerkGuestHashMap.get("forKey").release();
 
                 this.clerkGuestHashMap.get("hasKey").acquire();
 
                 this.clerkGuestHashMap.get("completed").release();
 
-                System.out.println(toStringId + "is ready to help a guest");
+                printStringToConsole(toStringId, "is ready to help a guest");
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void printStringToConsole(String ... strings) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : strings) {
+            sb.append(s);
+        }
+
+        System.out.println(sb.toString());
+
     }
 
     @Override

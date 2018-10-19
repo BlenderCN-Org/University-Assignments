@@ -50,6 +50,7 @@ public class Main {
         System.out.println();
         System.out.println(helper.getTotalRetired());
         System.out.println(helper.getRetiredArrayList());
+        System.exit(0);
     }
 
 

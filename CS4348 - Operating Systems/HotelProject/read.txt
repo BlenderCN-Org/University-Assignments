@@ -22,3 +22,5 @@ Get Bags
 Give to guest
 get tip
 leave
+
+javac src/Main.java src/interfaces/HotelHelper.java src/Classes/Bellhop.java src/Classes/Clerk.java src/Classes/Guest.java

@@ -36,6 +36,7 @@ public class HotelHelper {
         int clerkLoc = getFreeClerk();
         clerkArrayList.get(clerkLoc).setClerkGuestHashMap(hashMap);
         clerkArrayList.get(clerkLoc).setGuestNo(guestNo);
+
         guestArrayList.get(guestNo - 1).setClerkGuestHashMap(hashMap);
 
         return clerkLoc + 1;
@@ -120,6 +121,9 @@ public class HotelHelper {
         hashMap.put("guestBellhopSync", new Semaphore(1, true));
         hashMap.put("sync", new Semaphore(1, true));
         hashMap.put("bellhopSync", new Semaphore(1, true));
+
+        hashMap.put("clerkVars", new Semaphore(1, true));
+        hashMap.put("bellhopVars", new Semaphore(1, true));
 
         hashMap.put("guestClerkMutex", new Semaphore(1, true));
         hashMap.put("guestBellhopMutex", new Semaphore(1, true));
