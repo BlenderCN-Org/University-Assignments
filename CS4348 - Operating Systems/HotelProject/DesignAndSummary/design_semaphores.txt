@@ -1,0 +1,61 @@
+Semaphores and their usage --:
+
+    *Global Semaphores*:
+        Guests:
+            description: Holds the total number of guests at a time
+            init value: 25
+        Clerks:
+            description: Holds the total number of clerks at a time
+            init value: 2
+        Bellhops:
+            description: Holds the total number of bellhops at a time
+            init value: 2
+        Lock:
+            description: Used as a mutex to handle events in critical
+                         sections regarding all subclasses
+            init value: 1
+        guestClerkMutex:
+            description: Used as a mutex to handle events in critical
+                         sections regarding guests and clerks
+            init value: 1
+        guestBellhopMutex:
+            description: Used as a mutex to handle events in critical
+                         sections regarding guests and bellhops
+            init value: 1
+
+    *Clerk - Guest Semaphores*:
+        forRoom:
+            description: Checks whether the guest is waiting for a room or not
+            init value: 1
+        hasRoom:
+            description: Checks whether the guest has a room or not
+            init value: 1
+        forKey:
+            description: Checks whether the guest is waiting for a key or not
+            init value: 1
+        hasKey:
+            description: Checks whether the guest has a key or not
+            init value: 1
+        completed:
+            description: Checks whether the guest is done with that clerk
+            init value: 1
+
+    *Bellhop - Guest Semaphores*:
+        guestNeedsBags:
+            description: Checks whether the bellhop is allowed to get the guests bags
+            init value: 1
+        hasBags:
+            description: Checks whether the bellhop has the guests bags or not
+            init value: 1
+        inRoom:
+            description: Checks whether the guest is in their room or not
+            init value: 1
+        giveBags:
+            description: Checks whether the bellhop has given the guest their bags
+            init value: 1
+        giveTip:
+            description: Checks whether the guest has given the bellhop a tip
+            init value: 1
+        gotTip:
+            description: Checks whether the bellhop has gotten a tip or nto
+            init value: 1
