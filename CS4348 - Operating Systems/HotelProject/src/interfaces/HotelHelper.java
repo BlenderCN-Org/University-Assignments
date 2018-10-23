@@ -34,8 +34,10 @@ public class HotelHelper {
         hashMap.get("completed").acquire();
 
         int clerkLoc = getFreeClerk();
+
         clerkArrayList.get(clerkLoc).setClerkGuestHashMap(hashMap);
         clerkArrayList.get(clerkLoc).setGuestNo(guestNo);
+        clerkArrayList.get(clerkLoc).triggerMutex();
 
         guestArrayList.get(guestNo - 1).setClerkGuestHashMap(hashMap);
 
@@ -62,6 +64,8 @@ public class HotelHelper {
         int bellhopLoc = getFreeBellhop();
         bellhopArrayList.get(bellhopLoc).setBellhopGuestHashMap(hashMap);
         bellhopArrayList.get(bellhopLoc).setGuestNo(guestNo);
+        bellhopArrayList.get(bellhopLoc).triggerMutex();
+
         guestArrayList.get(guestNo - 1).setBellhopGuestHashMap(hashMap);
 
         return bellhopLoc + 1;
@@ -117,9 +121,10 @@ public class HotelHelper {
         hashMap.put("guests", new Semaphore(25, true));
         hashMap.put("guestSync", new Semaphore(1, true));
         hashMap.put("clerks", new Semaphore(2, true));
+        hashMap.put("clerkSync", new Semaphore(1, true));
         hashMap.put("bellhops", new Semaphore(2, true));
         hashMap.put("guestBellhopSync", new Semaphore(1, true));
-        hashMap.put("sync", new Semaphore(1, true));
+        hashMap.put("lock", new Semaphore(1, true));
         hashMap.put("bellhopSync", new Semaphore(1, true));
 
         hashMap.put("clerkVars", new Semaphore(1, true));
@@ -131,7 +136,7 @@ public class HotelHelper {
         hashMap.get("guests").acquire(25);
         hashMap.get("clerks").acquire(2);
         hashMap.get("bellhops").acquire(2);
-        hashMap.get("sync").acquire();
+        hashMap.get("clerkSync").acquire();
         hashMap.get("bellhopSync").acquire();
 
         globalHashMap = hashMap;

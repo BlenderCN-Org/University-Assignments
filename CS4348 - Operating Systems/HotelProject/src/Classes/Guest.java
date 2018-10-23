@@ -48,19 +48,16 @@ public class Guest extends Thread {
 
             this.semaphoreHashMap.get("guests").release();
 
-            this.semaphoreHashMap.get("guestClerkMutex").acquire();
-
             this.semaphoreHashMap.get("clerks").acquire();
 
-            this.semaphoreHashMap.get("guestSync").acquire();
-            this.clerkNo = helper.newClerkGuestHashMap(guestNo);
-            this.semaphoreHashMap.get("guestSync").release();
+            this.semaphoreHashMap.get("lock").acquire();
 
-            this.semaphoreHashMap.get("guestClerkMutex").release();
+            this.clerkNo = helper.newClerkGuestHashMap(guestNo);
+
+            this.semaphoreHashMap.get("lock").release();
 
             printStringToConsole(toStringId, "is approaching [Clerk ", clerkNo + "", "]");
-
-            this.semaphoreHashMap.get("sync").release();
+            this.semaphoreHashMap.get("clerkSync").release();
 
             this.clerkGuestHashMap.get("forRoom").acquire();
             printStringToConsole(toStringId, "has gotten the room number from [Clerk ", clerkNo + "", "]");

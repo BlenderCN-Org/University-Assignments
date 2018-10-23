@@ -9,6 +9,8 @@ public class Bellhop extends Thread {
     private HashMap<String, Semaphore> semaphoreHashMap;
     private HashMap<String, Semaphore> bellhopGuestHashMap;
 
+    private Semaphore mutex;
+
     private String toStringId;
     private int guestNo;
 
@@ -16,8 +18,10 @@ public class Bellhop extends Thread {
 
     private HotelHelper helper;
 
-    public Bellhop(Integer bellhopNo, HotelHelper helper) {
+    public Bellhop(Integer bellhopNo, HotelHelper helper) throws InterruptedException {
         this.helper = helper;
+        this.mutex = new Semaphore(1, true);
+        this.mutex.acquire();
 
         this.semaphoreHashMap = helper.initializeSemaphoreHashMap();
         this.toStringId = "Bellhop " + bellhopNo + ": ";
@@ -40,23 +44,38 @@ public class Bellhop extends Thread {
         this.guestNo = guestNo;
     }
 
+    public void triggerMutex() {
+        if (mutex.availablePermits() == 0) {
+            mutex.release();
+        } else {
+            try {
+                mutex.acquire();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public void run() {
         printStringToConsole(toStringId, "is ready to help a guest");
         while (this.isAlive()) {
             try {
-                this.semaphoreHashMap.get("bellhopVars").acquire();
+                this.semaphoreHashMap.get("lock").acquire();
                 this.beingUsed = false;
                 this.guestNo = -1;
                 this.bellhopGuestHashMap = null;
-                this.semaphoreHashMap.get("bellhopVars").release();
-
                 this.semaphoreHashMap.get("bellhops").release();
+                this.semaphoreHashMap.get("lock").release();
 
-                this.semaphoreHashMap.get("bellhopSync").acquire();
+                this.mutex.acquire();
 
                 printStringToConsole(toStringId, "has obtained the bags of [Guest ", guestNo + "", "]");
-                this.bellhopGuestHashMap.get("hasBags").release();
+                try{
+                    this.bellhopGuestHashMap.get("hasBags").release();
+                } catch (Exception e){
+                    printStringToConsole(toStringId, ", error at ", guestNo+"");
+                }
 
                 this.bellhopGuestHashMap.get("guestNeedsBags").acquire();
 

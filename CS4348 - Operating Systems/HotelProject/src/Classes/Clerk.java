@@ -10,6 +10,8 @@ public class Clerk extends Thread {
     private HashMap<String, Semaphore> semaphoreHashMap;
     private HashMap<String, Semaphore> clerkGuestHashMap;
 
+    private Semaphore mutex;
+
     private String toStringId;
     private int guestNo;
 
@@ -17,8 +19,10 @@ public class Clerk extends Thread {
 
     private HotelHelper helper;
 
-    public Clerk(Integer clerkNo, HotelHelper helper) {
+    public Clerk(Integer clerkNo, HotelHelper helper) throws InterruptedException {
         this.helper = helper;
+        this.mutex = new Semaphore(1, true);
+        this.mutex.acquire();
 
         this.semaphoreHashMap = helper.initializeSemaphoreHashMap();
         this.toStringId = "Clerk " + clerkNo + ": ";
@@ -41,6 +45,18 @@ public class Clerk extends Thread {
         this.guestNo = guestNo;
     }
 
+    public void triggerMutex() {
+        if (mutex.availablePermits() == 0) {
+            mutex.release();
+        } else {
+            try {
+                mutex.acquire();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public int getGuestNo() {
         return guestNo;
     }
@@ -51,20 +67,25 @@ public class Clerk extends Thread {
 
         while (this.isAlive()) {
             try {
-                this.semaphoreHashMap.get("clerkVars").acquire();
+                this.semaphoreHashMap.get("lock").acquire();
                 this.beingUsed = false;
                 this.guestNo = -1;
                 this.clerkGuestHashMap = null;
-                this.semaphoreHashMap.get("clerkVars").release();
-
                 this.semaphoreHashMap.get("clerks").release();
+                this.semaphoreHashMap.get("lock").release();
+
                 this.semaphoreHashMap.get("guests").acquire();
 
-                this.semaphoreHashMap.get("sync").acquire();
+                this.mutex.acquire();
                 printStringToConsole(toStringId, "is helping [Guest ", guestNo + "", "]");
 
                 printStringToConsole(toStringId, "has found a room for [Guest ", guestNo + "", "]");
-                this.clerkGuestHashMap.get("forRoom").release();
+                try {
+                    this.clerkGuestHashMap.get("forRoom").release();
+                } catch (Exception e) {
+                    System.out.println("Error at Guest: " + guestNo + ", Clerk: " + toStringId);
+                    System.exit(0);
+                }
 
                 this.clerkGuestHashMap.get("hasRoom").acquire();
 
@@ -83,7 +104,7 @@ public class Clerk extends Thread {
         }
     }
 
-    private void printStringToConsole(String ... strings) {
+    private void printStringToConsole(String... strings) {
         StringBuilder sb = new StringBuilder();
         for (String s : strings) {
             sb.append(s);
