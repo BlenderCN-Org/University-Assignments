@@ -39,7 +39,7 @@ dt = dt.train
 dt <- data.frame(dt)
 
 # Feature Engineering
-dt[,c("Id", "Alley", "PoolQC", "Fence", "MiscFeature", "FireplaceQu", "BsmtUnfSF", "MisFeature", "MiscVal")] <- NULL
+dt[,c("Id", "Alley", "PoolQC", "Fence", "MiscFeature", "FireplaceQu", "BsmtUnfSF", "MiscVal")] <- NULL
 
 dt$MasVnrType <- tidyr::replace_na(dt$MasVnrType, "NM")
 
