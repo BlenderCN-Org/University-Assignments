@@ -1,0 +1,200 @@
+guests:
+    guests.run():
+        signal(guest) to be released (available) to use
+        wait(clerks) for a clerk to be available
+        wait(lock) to enter a critical section
+        % get and assign clerk-guest vars
+        signal(lock) to leave critical section
+        print: approaching clerk $clerkno
+        wait(forRoom) to get a room from the clerk
+        signal(hasRoom) that the guests has the room specified
+        print: has gotten room from clerk
+        wait(forKey) to wait for a key from the clerk
+        print: got key from clerk
+        signal(hasKey) that the guest has gotten the key
+        wait(completed) that the guest and clerk are officially done
+
+        if num_of_bags > 2 -> get bellhop:
+            wait(bellhops) to get a bellhop
+            % do bellhop setup with $bellhopNo
+            print: approaching bellhop
+            print: given bags
+            wait(hasBags) for the bellhop to get the guest's bags
+            signal(guestNeedsBags) so that the guest doesn't need their bags anymore
+
+        print: gone to room
+
+        if num_of_bags > 2 -> do bellhop:
+            signal(inRoom) to show that the guest is in the room
+            wait(giveBags) for the bellhop to give the guest thier bags
+            print: gotten bags
+            print: given tip
+            signal(giveTip) for the bellhop to receive their tip
+            wait(gotTip) for the bellhop to acquire their tip
+
+        print: retired
+
+    guest():
+        do init
+
+    setClerkGuestHashMap():
+        set the hash map for clerk-guest interactions
+
+    setBellhopGuestHashMap():
+        set the hash map for bellhop-guest interactions
+
+    printStringToConsole():
+        print using string-builder instead of normal output
+
+
+
+
+clerks:
+    clerks.run():
+        wait(lock) to enter critical section
+        % do variable reset
+        signal(lock) to leave critical section
+        print: ready
+        wait(guests) to get a guest
+        wait(mutex) to sync with guest, waits until triggered to move on
+        print: helping Guest
+        print: found room
+        signal(forRoom) to show that the clerk has found a room
+        wait(hasRoom) to wait until the guest has the room
+        print: found a key
+        signal(forKey) to give the key to the guest
+        wait(hasKey) for the guest to obtain their key
+        signal(completed) for the clerk-guest interaction to complete
+
+    clerk():
+        variable init
+
+    setClerkGuestHashMap():
+            set the hash map for clerk-guest interactions
+
+    setGuestNo():
+        sets the guest number
+
+    triggerMutex():
+        flips a binary semaphore to handle when a clerk should run past a point
+
+    getClerkNo():
+        gets the clerk no
+
+    printStringToConsole():
+        prints using String Builder
+
+    toString():
+        toString override for debug
+
+
+
+
+bellhop:
+    bellhops.run():
+         wait(lock) to enter critical section
+         % do variable reset
+         signal(lock) to leave critical section
+         print: ready
+         wait(mutex) to sync with guest, waits until triggered to move on
+         print: helping Guest
+         print: obtained bags
+         signal(hasBags) to show that the bellhop has gotten the guest's bags
+         wait(inRoom) to wait until the guest is in the room
+         print: entered room
+         print: given bags to guest
+         signal(giveBags) to give the bags to the guest
+         wait(giveTip) to wait until the guest has given a tip
+         print: got tip
+         signal(gotTip) to end guest-bellhop interaction
+
+        bellhop():
+            variable init
+
+        setBellhopGuestHashMap():
+                set the hash map for bellhop-guest interactions
+
+        setGuestNo():
+            sets the guest number
+
+        triggerMutex():
+            flips a binary semaphore to handle when a clerk should run past a point
+
+        getBellhopNo():
+            gets the bellhop no
+
+        printStringToConsole():
+            prints using String Builder
+
+        toString():
+            toString override for debug
+
+
+
+
+main:
+    loops through all the guests, clerks, bellhops and starts threads accordingly
+
+
+
+
+HotelHelper:
+    HotelHelper():
+        variable init
+
+    newClerkGuestHashMap():
+        sets up a hashmap of semaphores for clerk-guest interactions
+
+    newBellhopGuestHashMap():
+        sets up a hashmap of semaphores for bellhop-guest interactions
+
+    getFreeClerk():
+        gets a free clerk from the clerk queue
+
+    getFreeBellhop():
+        gets a free bellhop from the bellhop queue
+
+    getNextGuest():
+        gets the next guest in line
+
+    addToClerkQueue():
+        adds a clerk to a clerk queue
+
+    addToBellhopQueue():
+        adds a bellhop to a bellhop queue
+
+    addToGuestQueue():
+        adds a guest to the guest queue
+
+    addToClerks():
+        adds a clerk to the clerk list
+
+    addToBellhops():
+        adds a Bellhop to the Bellhop list
+
+    addToGuests():
+        adds a guest to the guest list
+
+    getClerk():
+        gets a clerk from a list
+
+    getGuest():
+        gets a guest from a list
+
+    getBellhop():
+        gets a bellhop from a list
+
+    generateGlobalHashMap():
+        creates the global hashmap needed for all subclasses
+
+    initializeSemaphoreHashMap():
+        returns the global hashmap
+
+    guestRetired():
+        Adds the guest to the retired guests, used for debug
+
+    guestTotalRetired():
+        Returns the total number of retired guests, used for debug
+
+    getRetiredArrayList():
+        Returns the retiredGuestArrayList, used for debug
