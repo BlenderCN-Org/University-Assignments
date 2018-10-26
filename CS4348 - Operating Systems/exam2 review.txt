@@ -1,0 +1,29 @@
+Coding Questions - Busy Waiting (First Attempt)
+		   Busy Waiting (Second Attempt)
+		   Dekker's Algorithm (Pros / Cons)
+	           Peterson's Algorithm (Pros / Cons)
+		   Compare and Swap Instruction(s) - (Pros and Cons)
+		   Sempahore Queue Example (Possible Test Q)
+		   Counting Sempahore - Buffer Overflow
+		   Monitors
+
+-- Matts note: Add a queue so that the guests execute in the correct order
+
+Coding Questions - Banker's Algoirthm:
+		   	Claim, Alloc, C-A. Sub resource vector from
+		   	C-A and sastify a process. Then add its materials
+	           	to the available vector V. Keep doinging this till OK,
+		   	then be aware if any processes are unsafe.
+		   Deadlock Detection: Modified Banker's Algorithm
+		   Recovery
+		   Dining Philospher Problem
+                   NO UNIX CHP 6
+
+Coding Questions - Buddy System
+		   Paging Concats ; Segmentation Adds (Review)
+		   
+
+Coding Questions - Page Size / Fault Graphs
+		   OPT vs LRU vs FIFO vs CLOCK (Opt < LRU < CLOCK < FIFO)
+		   Working set strategy
+		   

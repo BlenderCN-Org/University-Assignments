@@ -1,26 +1,15 @@
 package Classes;
 
-import Globals.HotelHelper;
+import interfaces.HotelHelper;
 
 import java.util.HashMap;
-import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-
-/**
- * @semaphoreHashMap - Global HashMap shared by all classes
- * @clerkGuestHashMap - Used to handle specific interactions between guests and clerks
- * @bellhopGuestHashMap - Used to handle specific interactions between guests and bellhops
- * @toStringId, @guestNo, @clerkNo, @bellhopNo, @bags - Defining variables of the class
- * @helper - Global helper function used among all classes
- */
 public class Guest extends Thread {
 
     private HashMap<String, Semaphore> semaphoreHashMap;
     private HashMap<String, Semaphore> clerkGuestHashMap;
     private HashMap<String, Semaphore> bellhopGuestHashMap;
-
-    private Semaphore mutex;
 
     private String toStringId;
     private int guestNo;
@@ -30,97 +19,48 @@ public class Guest extends Thread {
 
     private HotelHelper helper;
 
-
-    /**
-     * @param guestNo - The 'relative' guest number used in output
-     * @param helper  - Global helper function shared among all classes
-     *                <p>
-     *                Initializes the guest object
-     */
     public Guest(Integer guestNo, HotelHelper helper) throws InterruptedException {
 
         this.helper = helper;
         this.semaphoreHashMap = helper.initializeSemaphoreHashMap();
 
-        this.mutex = new Semaphore(1, true);
-        this.mutex.acquire();
-
-        Random random = new Random();
-        random.setSeed(100);
-
         this.guestNo = guestNo;
         this.clerkNo = -1;
 
-        this.bags = new Random().nextInt(5);
+        this.bags = 3;
 
         this.toStringId = "Guest " + guestNo + ": ";
 
     }
 
-    /**
-     * @param clerkGuestHashMap - Sets the clerkGuestHashMap of this thread to that
-     *                          of whatever is passed into it
-     */
     public void setClerkGuestHashMap(HashMap<String, Semaphore> clerkGuestHashMap) {
         this.clerkGuestHashMap = clerkGuestHashMap;
     }
 
-    /**
-     * @param bellhopGuestHashMap - Sets the bellhopGuestHashMap of this thread to that
-     *                            of whatever is passed into it
-     */
     public void setBellhopGuestHashMap(HashMap<String, Semaphore> bellhopGuestHashMap) {
         this.bellhopGuestHashMap = bellhopGuestHashMap;
     }
 
-    /**
-     *
-     * @return - Returns the guest number
-     */
-    public int getGuestNo() {
-        return guestNo;
-    }
-
-    /**
-     *
-     * @param clerkNo - ClerkNo to set
-     */
-    public void setClerkNo(int clerkNo) {
-        this.clerkNo = clerkNo;
-    }
-
-    /**
-     * Acts as a mutex, handles interaction between classes so that the guests and
-     * clerks get assigned correctly. Used outside of this class.
-     */
-    public void triggerMutex() {
-        if (mutex.availablePermits() == 0) {
-            mutex.release();
-        } else {
-            try {
-                mutex.acquire();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * Runs the thread, contains the main code for handling interactions between the objects.
-     * In particular, each thread waits on *thread - 3* threads to complete. This simulates the
-     * queueing system. Each guest enters the hotel, but cannot go out of line. Thread is killed
-     * at the end of the run method.
-     */
     @Override
     public void run() {
         try {
             printStringToConsole(toStringId, "has entered the hotel");
 
+            this.semaphoreHashMap.get("guests").release();
+
+            this.semaphoreHashMap.get("guestClerkMutex").acquire();
+
             this.semaphoreHashMap.get("clerks").acquire();
 
-            this.mutex.acquire();
+            this.semaphoreHashMap.get("guestSync").acquire();
+            this.clerkNo = helper.newClerkGuestHashMap(guestNo);
+            this.semaphoreHashMap.get("guestSync").release();
+
+            this.semaphoreHashMap.get("guestClerkMutex").release();
 
             printStringToConsole(toStringId, "is approaching [Clerk ", clerkNo + "", "]");
+
+            this.semaphoreHashMap.get("sync").release();
 
             this.clerkGuestHashMap.get("forRoom").acquire();
             printStringToConsole(toStringId, "has gotten the room number from [Clerk ", clerkNo + "", "]");
@@ -136,11 +76,18 @@ public class Guest extends Thread {
 
             if (this.bags > 2) {
 
+                this.semaphoreHashMap.get("guestBellhopMutex").acquire();
                 this.semaphoreHashMap.get("bellhops").acquire();
 
+                this.semaphoreHashMap.get("guestBellhopSync").acquire();
                 bellhopNo = helper.newBellhopGuestHashMap(guestNo);
+                this.semaphoreHashMap.get("guestBellhopSync").release();
+
+                this.semaphoreHashMap.get("guestBellhopMutex").release();
 
                 printStringToConsole(toStringId, "is approaching [Bellhop ", bellhopNo + "", "]");
+
+                this.semaphoreHashMap.get("bellhopSync").release();
 
                 printStringToConsole(toStringId, "has given their bags to [Bellhop ", bellhopNo + "", "]");
 
@@ -165,20 +112,14 @@ public class Guest extends Thread {
 
             printStringToConsole(toStringId, "has retired for the night");
             this.helper.guestRetired(guestNo);
-            this.interrupt();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 
-    /**
-     * @param strings - Variable Strings as input, allows for multiple input
-     *                <p>
-     *                This function concats the strings in an output message and prints at the
-     *                same time using StringBuilder so that the async nature of String concat is
-     *                held.
-     */
-    private void printStringToConsole(String... strings) {
+    private void printStringToConsole(String ... strings) {
         StringBuilder sb = new StringBuilder();
         for (String s : strings) {
             sb.append(s);

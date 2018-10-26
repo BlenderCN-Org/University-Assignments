@@ -1,0 +1,26 @@
+Classes.Guest:
+
+Visit Desk
+Get Room
+if bags > 2:
+	get bellhop
+enter room
+if bags > 2:
+	get bags
+tip bellhop
+Retire
+
+FrontDesk:
+Get Classes.Guest
+Check Classes.Guest
+Find Room, Give Room
+Give Key
+
+
+BellHop:
+Get Bags
+Give to guest
+get tip
+leave
+
+javac src/Main.java src/interfaces/HotelHelper.java src/Classes/Bellhop.java src/Classes/Clerk.java src/Classes/Guest.java

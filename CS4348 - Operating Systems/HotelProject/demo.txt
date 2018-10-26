@@ -1,0 +1,29 @@
+Classes.Guest:
+guests.release()
+clerks.acquire()
+sync.acquire()
+    % Do things
+    % Give hashmap
+sync.release()
+acquiredGuest.release()
+forRoom.acquire();
+hasRoom.release();
+forKey.acquire();
+hasKey.release();
+
+% Retired
+
+
+Classes.Clerk:
+while True:
+    guests.acquire()
+    clerks.release()
+    acquiredGuests.acquire()
+    forRoom.release()
+    hasRoom.acquire()
+    forKey.release()
+    hasKey.acquire()
+
+    % Reset Vars
+
+

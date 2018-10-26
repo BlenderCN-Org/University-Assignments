@@ -1,0 +1,32 @@
+25 Guests w/ random bags:
+
+Checkin
+get room number and key
+enters room
+retires
+
+get a clerk if available
+wait and get room number
+wait and get room key
+enter room
+retire
+
+clerks.acquire()
+roomNumber.acquire()
+roomKey.acquire()
+enterRoom.release()
+% retires
+
+
+
+Clerks:
+Checks in guest
+finds room for guest + gives
+finds key for guest + gives
+takes new person
+
+guests.acquire()
+roomNumber.release()
+roomKey.release()
+clerks.release()
+% can take next guest
