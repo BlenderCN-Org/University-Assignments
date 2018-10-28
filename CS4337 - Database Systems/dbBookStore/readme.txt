@@ -65,3 +65,31 @@ create table cart (
     foreign key (userid) references members,
     foreign key (isbn) references books
 );
+
+
+<tr>
+                <th>
+                    <div class="wrapper">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+                    </div>
+                </th>
+                <th>
+                    <div class="wrapper">
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                    </div>
+                </th>
+                <th>
+                    <div class="wrapper">
+                        <label for="creditcardtype"><b>Credit Card Holder</b></label>
+                        <input type="text" placeholder="Enter Credit Card Holder" name="creditcardtype" required>
+                    </div>
+                </th>
+                <th>
+                    <div class="wrapper">
+                        <label for="creditcardnumber"><b>Credit Card Number</b></label>
+                        <input type="text" placeholder="Enter Credit Card Number" name="creditcardnumber" required>
+                    </div>
+                </th>
+            </tr>
