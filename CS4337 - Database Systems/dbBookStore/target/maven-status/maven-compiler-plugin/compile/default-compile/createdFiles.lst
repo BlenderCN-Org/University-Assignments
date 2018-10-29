@@ -1,6 +1,8 @@
 web\servlets\AccountCreationServlet.class
 db\Orders.class
+web\servlets\CartAddServlet.class
 springdb\CartRepository.class
+web\servlets\IndexServlet.class
 db\Odetails.class
 db\Members.class
 springdb\MembersRepository.class

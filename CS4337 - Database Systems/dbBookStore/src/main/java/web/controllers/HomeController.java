@@ -9,7 +9,7 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = {"/", "/index"})
+    @RequestMapping(value = {"/", "/index", "/index/loaded"})
     public String homePage(Model model) {
         return "index";
     }

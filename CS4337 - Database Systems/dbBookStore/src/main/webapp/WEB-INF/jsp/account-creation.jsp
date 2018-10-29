@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,13 +65,13 @@
                     <th>
                         <div class="wrapper">
                             <label for="fname"><b>First Name</b></label>
-                            <input type="text" placeholder="Enter First Name" name="fname" required>
+                            <input type="text" minlength="1" maxlength="20" placeholder="Enter First Name" name="fname" required>
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="lname"><b>Last Name</b></label>
-                            <input type="text" placeholder="Enter Last Name" name="lname" required>
+                            <input type="text" minlength="1" maxlength="20" x placeholder="Enter Last Name" name="lname" required>
                         </div>
                     </th>
                 </tr>
@@ -76,13 +79,13 @@
                     <th>
                         <div class="wrapper">
                             <label for="phone"><b>Phone Number</b></label>
-                            <input type="text" placeholder="Enter Phone Number" name="phone" required maxlength="10">
+                            <input type="text" placeholder="Enter Phone Number" name="phone" required maxlength="10" minlength="10">
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="email"><b>Email Address</b></label>
-                            <input type="email" placeholder="Enter Email Address" name="email" required>
+                            <input type="email" maxlength="50" minlength="1" placeholder="Enter Email Address" name="email" required>
                         </div>
                     </th>
                 </tr>
@@ -90,13 +93,13 @@
                     <th>
                         <div class="wrapper">
                             <label for="address"><b>Address</b></label>
-                            <input type="text" placeholder="Enter Address" name="address" required>
+                            <input type="text" minlength="1" maxlength="50" placeholder="Enter Address" name="address" required>
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="city"><b>City</b></label>
-                            <input type="text" placeholder="Enter City" name="city" required>
+                            <input type="text" placeholder="Enter City" name="city" required minlength="1" maxlength="30">
                         </div>
                     </th>
                 </tr>
@@ -178,13 +181,13 @@
                     <th>
                         <div class="wrapper">
                             <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="uname" required>
+                            <input type="text" minlength="1" maxlength="20" placeholder="Enter Username" name="uname" required>
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <input type="password" minlength="1" maxlength="20" placeholder="Enter Password" name="psw" required>
                         </div>
                     </th>
                 </tr>

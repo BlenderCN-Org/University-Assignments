@@ -48,8 +48,8 @@ public class Books implements Serializable {
         return title;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getPrice() {
+        return String.format("%.2f", price);
     }
 
     public String getSubject() {

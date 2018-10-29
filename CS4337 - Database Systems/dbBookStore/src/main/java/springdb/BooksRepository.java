@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.awt.print.Book;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +21,9 @@ public interface BooksRepository extends CrudRepository<Books, String> {
     // SELECT * is implicit in the query
     @Query(value = "FROM Books b WHERE b.subject=subject")
     List<Books> findBySubject(@Param("subject") String subject);
+
+    @Query(value = "FROM Books b")
+    List<Books> findAllBooks();
 
 }
 

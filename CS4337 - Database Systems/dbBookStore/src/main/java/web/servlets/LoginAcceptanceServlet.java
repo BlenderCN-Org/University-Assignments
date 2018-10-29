@@ -46,6 +46,7 @@ public class LoginAcceptanceServlet extends HttpServlet {
 
     private void doLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("usertype", "notlogged");
+        request.getSession().setAttribute("userid", null);
         request.setAttribute("errorMessage", "User has been logged out!");
         request.getRequestDispatcher("/index").include(request, response);
     }
@@ -66,6 +67,7 @@ public class LoginAcceptanceServlet extends HttpServlet {
         } else {
             request.setAttribute("errorMessage", "You Are Now Logged In!!");
             request.getSession().setAttribute("usertype", "logged");
+            request.getSession().setAttribute("userid", userid);
             request.getRequestDispatcher("/index").include(request, response);
         }
     }

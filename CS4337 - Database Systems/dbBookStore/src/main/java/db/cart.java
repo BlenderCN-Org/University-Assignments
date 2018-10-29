@@ -25,6 +25,10 @@ public class Cart implements Serializable {
         private String userid;
         private String isbn;
 
+        public CartId() {
+            
+        }
+
         public CartId(String userid, String isbn) {
             this.userid = userid;
             this.isbn = isbn;
