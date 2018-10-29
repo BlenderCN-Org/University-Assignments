@@ -21,7 +21,7 @@ public class IndexServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebApplication.class);
 
     @Autowired
-    BooksRepository booksRepository;
+    private BooksRepository booksRepository;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

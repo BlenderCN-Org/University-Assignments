@@ -1,12 +1,20 @@
-ï»¿isbn,author,title,price,subject
-1461471370,Gareth James,An Introduction to Statistical Learning: with Applications in R,49.6,Statistics
-4650265620,Douglas R. Hofstadter,"Godel, Escher, Bach: An Eternal Golden Braid",18.99,Mathematics
-4334134123,George Orwell,1984,5.99,Fantasty
-6224234301,Gareth James,Numerical Analysis 2nd Edition,134.99,Mathematics
-2411241412,Herman Merville,Moby Dick,4.99,Fantasty
-4234243424,Johnaothon Swift,Guliver's Travel,10.99,Fantasty
-3242423423,Dr. Who,Green Eggs and Ham,3.99,Fantasty
-1241241214,Some Math Nerd,Vector Calculus,89.99,Mathematics
-9094105508,Gilbert LeStrange,Linear Algebra,79.99,Mathematics
-9048440184,Some CS Nerd,Operating Systems,104.99,Computer Science
-3141241924,Some Smart Guy,Database Systems 7th Edition,115.99,Computer Science
+isbn	author	title	price	subject
+1461471370	Gareth James	An Introduction to Statistical Learning: with Applications in R	49.6	Statistics
+4650265620	Douglas R. Hofstadter	"Godel, Escher, Bach: An Eternal Golden Braid"	18.99	Mathematics
+4334134123	George Orwell	1984	5.99	Fantasty
+6224234301	Gareth James	Numerical Analysis 2nd Edition	134.99	Mathematics
+2411241412	Herman Merville	Moby Dick	4.99	Fantasty
+4234243424	Johnaothon Swift	Guliver's Travel	10.99	Fantasty
+3242423423	Dr. Who	Green Eggs and Ham	3.99	Fantasty
+1241241214	Some Math Nerd	Vector Calculus	89.99	Mathematics
+9094105508	Gilbert LeStrange	Linear Algebra	79.99	Mathematics
+9048440184	Some CS Nerd	Operating Systems	104.99	Computer Science
+3141241924	Some Smart Guy	Database Systems 7th Edition	115.99	Computer Science
+1346964540	Timothy Sauer	"Numerical Analysis, 3rd Edition"	184.11	Mathematics
+1341086054	Arthur Sherburne Hardy	Elements of Quaternions	25.95	Mathematics
+6911212730	Rudy Rucker	Infinity and the Mind: The Science and Philosophy of the Infinite 	32.99	Mathematics
+1118531648	John Duckett	JavaScript and JQuery: Interactive Front-End Web Development	27.99	Computer Science
+2014412460	John E. Hopcroft	"Introduction to Automata Theory, Languages, and Computation "	17.88	Computer Science
+1323099810	William Stallings	"Operating Systems: Internals and Design Principles, 7th Edition "	122.89	Computer Science
+5349509720	Michael Sipser	Introduction to the Theory of Computation	30.16	Computer Science
+3878485700	Trevor Hastie	"The Elements of Statistical Learning: Data Mining, Inference, and Prediction"	63.92	Statistics 

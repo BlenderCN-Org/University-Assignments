@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/cart.css">
 
 <body>
 
@@ -51,38 +51,16 @@
     };
 </script>
 
-<form id="loginForm" action="LoginAcceptanceServlet" method="get">
-    <div class="register-container">
-        <div class="login">
-            <div class="greeting">
-                <h1>Login to the Bookstore</h1>
-            </div>
-            <div class="table-container">
-                <table>
-                    <tr>
-                        <th>
-                            <div class="wrapper">
-                                <label for="uname"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" required>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="wrapper">
-                                <label for="psw"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="bottom-register">
-            <button type="submit" name="next-button" id="next-button">Login</button>
-        </div>
+<div class="page-container">
+    <div id="cart-container" class="cart-container">
 
     </div>
-</form>
+    <div id="details-container" class="details-container">
+
+    </div>
+</div>
+
+
 
 </body>
 </html>

@@ -106,13 +106,17 @@ h2 {
     color: white;
 }
 
-.shopping-list {
-    position: absolute;
-    left: 0%;
+#header-container {
     width: 100%;
     max-width: 100%;
+}
+
+.shopping-list {
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    bottom: 0;
     border-spacing: 0 30px;
-    padding: 1%;
     background-color: #d7cec764;
     background-opacity: .3;
 }
@@ -120,6 +124,14 @@ h2 {
 #shopping-table {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
+    padding: 1%;
+}
+
+#bookstoreheader {
+    left: 0%;
+    width: 100%;
+    max-width: 100%;
+
 }
 
 #regular-row th, td {
@@ -132,4 +144,29 @@ h2 {
     border-bottom: 1px solid #000000;
     padding-top: 0px;
     padding-right: 60px;
+}
+
+#sorttype {
+    width: 100%;
+    height: 30px;
+    padding: 0px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+}
+
+#sortby {
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+    height: 30px;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#Options-Bar {
+    padding: 1%;
+    background-color: #d7cec790;
 }

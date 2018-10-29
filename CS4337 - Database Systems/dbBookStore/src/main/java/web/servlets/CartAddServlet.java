@@ -26,21 +26,25 @@ public class CartAddServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<String> params = Collections.list(request.getParameterNames());
 
+        if (request.getSession().getAttribute("usertype") != null && request.getSession().getAttribute("usertype").equals("logged")) {
+            List<String> params = Collections.list(request.getParameterNames());
 
-        String userid = params.get(1);
-        String isbn = params.get(2);
-        Integer qty = 1;
+            LOGGER.info(params.toString());
+            String userid = params.get(1);
+            String isbn = params.get(2);
+            Integer qty = 1;
 
-        Cart c = cartRepository.getCartByIsbn(isbn);
+            Cart c = cartRepository.getCartByIsbn(isbn);
 
-        if (c != null) {
-            qty = c.getQty() + 1;
-            cartRepository.deleteById(isbn);
+            if (c != null) {
+                qty = c.getQty() + 1;
+                cartRepository.deleteById(isbn);
+            }
+
+            cartRepository.save(new Cart(userid, isbn, qty));
         }
-
-        cartRepository.save(new Cart(userid, isbn, qty));
         request.getRequestDispatcher("/index/loaded").forward(request, response);
     }
+
 }

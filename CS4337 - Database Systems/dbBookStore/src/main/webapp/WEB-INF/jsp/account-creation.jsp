@@ -19,7 +19,7 @@
             <a class="active" href="index">Home</a>
             <div class="topnav-right">
                 <a href="#account">Account</a>
-                <a href="#card">Cart</a>
+                <a href="cart">Cart</a>
                 <a href="LoginAcceptanceServlet?logout-button">Logout</a>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="tab">
             <!--Begin Form Table-->
             <div class="greeting">
-                <h1>Lets Get To Know You</h1>
+                <h1>Let's Get To Know You</h1>
             </div>
             <table>
                 <tr>

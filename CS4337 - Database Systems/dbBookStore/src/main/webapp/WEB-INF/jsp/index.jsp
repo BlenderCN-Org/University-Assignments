@@ -19,7 +19,7 @@
             <a class="active" href="index">Home</a>
             <div class="topnav-right">
                 <a href="#account">Account</a>
-                <a href="#card">Cart</a>
+                <a href="cart">Cart</a>
                 <a href="LoginAcceptanceServlet?logout-button">Logout</a>
             </div>
         </div>
@@ -35,8 +35,49 @@
     </c:otherwise>
 </c:choose>
 
-<div class=header-container>
+<div id=header-container>
     <img id="bookstoreheader" src="img/img_bookstoreheader.png" alt="Bookstore Header">
+    <div id="Options-Bar">
+        <form name="optionsForm" action="OptionsServlet" method="get">
+            <table id="navTable">
+                <tr>
+                    <td><label for="sortby"><b>Sort By:</b></label></td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${selectedSort == 'author'}">
+                                <select name="sorttype" id="sorttype" onchange="setValue()">
+                                    <option value="subject">Subject</option>
+                                    <option selected value="author">Author / Title</option>
+                                </select>
+                            </c:when>
+                            <c:otherwise>
+                                <select name="sorttype" id="sorttype" onchange="setValue()">
+                                    <option selected value="subject">Subject</option>
+                                    <option value="author">Author / Title</option>
+                                </select>
+                            </c:otherwise>
+                        </c:choose>
+                        <script type="text/javascript">
+                            function setValue() {
+                                document.optionsForm.submit();
+                                return true;
+                            }
+                        </script>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${selectedSort == 'author'}">
+                                <input id="sortby" type="text" minlength="1" maxlength="20" placeholder="Author / Title Substring" name="aname"
+                                       required>
+                            </c:when>
+                            <c:otherwise>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
     <div class="shopping-list">
         <table id="shopping-table">
             <tr id="title-row">

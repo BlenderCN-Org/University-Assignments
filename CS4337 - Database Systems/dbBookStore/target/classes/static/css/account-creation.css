@@ -1,6 +1,7 @@
 body {
     background-image: url("/img/img_background_account.png");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Add a black background color to the top navigation */
