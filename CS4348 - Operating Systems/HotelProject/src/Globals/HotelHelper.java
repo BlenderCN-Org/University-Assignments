@@ -31,6 +31,7 @@ public class HotelHelper {
     private Queue<Bellhop> availableBellhops = new LinkedList<>();
     private ArrayList<Integer> retiredArrayList = new ArrayList<>();
 
+    private int room = 1;
 
     /**
      * @param clerkNo - The clerk Number that we want to generate this for
@@ -62,12 +63,12 @@ public class HotelHelper {
         guestArrayList.get(guestNo).setClerkGuestHashMap(hashMap);
         guestArrayList.get(guestNo).setClerkNo(clerkNo);
         guestArrayList.get(guestNo).triggerMutex();
+        guestArrayList.get(guestNo).setRoomNum(getRoom());
+        incRoom();
 
         clerkArrayList.get(clerkNo - 1).setClerkGuestHashMap(hashMap);
 
         return guestNo + 1;
-
-
     }
 
     /**
@@ -142,7 +143,7 @@ public class HotelHelper {
      *
      * @return - Returns the guest who is next in line
      */
-    public Guest getNextGuest() {
+    private Guest getNextGuest() {
         if (availableGuests.size() > 0)
             return availableGuests.remove();
         else
@@ -217,6 +218,17 @@ public class HotelHelper {
      */
     public Guest getGuest(Integer loc) {
         return guestArrayList.get(loc);
+    }
+
+    /**
+     * @return - returns the room number
+     */
+    private int getRoom() {
+        return room;
+    }
+
+    private void incRoom() {
+        room++;
     }
 
     /**
