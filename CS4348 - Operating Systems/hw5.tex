@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{graphicx}
+\usepackage{tabto}
+\graphicspath{ {./} }
+
+\begin{document}
+
+\title{CS4348 : Operating Systems Concepts\\Homework Assignment 5}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\begin{enumerate}
+
+	\item What is the difference between a preemptive scheduler and a non-preemptive scheduler, and which of the six algorithms we looked at were preemptive? \\ \\
+	Preemptive scheduling takes place when a processes switches from running-ready or from waiting-ready. Non-Preemptive scheduling wait for a process to terminate or switching from running to waiting to schedule. In general, scheduling attempts to allocate process resources and give each process an optimal amount of run time. First-Come-First-Serve, and Shortest-Process-Next, and Highest-Response-Ratio are non-preemptive. Round-robin, shortest remaining time, and feedback are all preemptive.\\
+	
+	\item The feedback algorithm favored short processes without having service time estimates.  How is it able to do that? \\ \\ 
+	After a process executes for a certain amount of time, it gets put in a lower priority queue. Since all new entering processes get placed in a higher priority queue, they will execute first before any items in a lower priority queue. This is how feedback favors shorter processes, since shorter processes have quick run-times, they will run through the queues faster.\\
+	\pagebreak  
+	\item Use the following table of processes and perform the scheduling algorithms below.
+   Show each one as shown in the book/slides, where there is a graphical view of how the jobs run, as well as a table showing the Finish Time, Tr, and Tr/Ts of each one. \\ \\
+	 	
+   	\begin{enumerate}
+   		\item Round Robin \\ \\
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+A & \cellcolor[HTML]{32CB00} &  & \cellcolor[HTML]{32CB00}{\color[HTML]{32CB00} } &  &  &  &  &  &  &  &  & \cellcolor[HTML]{32CB00}{\color[HTML]{32CB00} } & {\color[HTML]{32CB00} } &  &  &  &  \\ \hline
+B &  & \cellcolor[HTML]{32CB00} & \cellcolor[HTML]{FFFFFF} &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  & \cellcolor[HTML]{32CB00}{\color[HTML]{32CB00} } &  &  &  & \cellcolor[HTML]{32CB00} &  &  \\ \hline
+C &  &  &  & \cellcolor[HTML]{32CB00}{\color[HTML]{32CB00} } &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} &  &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00}{\color[HTML]{32CB00} } \\ \hline
+D &  &  &  &  &  & \cellcolor[HTML]{32CB00}{\color[HTML]{32CB00} } &  &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  &  &  &  \\ \hline
+E &  &  &  &  &  &  &  & \cellcolor[HTML]{32CB00} &  &  &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} &  \\ \hline
+\end{tabular} \\ \\ \\
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Process & A & B & C & D & E & Mean \\ \hline
+Arrival Time & 0 & 1 & 3 & 5 & 7 &  \\ \hline
+Service Time & 3 & 4 & 5 & 2 & 3 &  \\ \hline
+Finish Time & 11 & 14 & 16 & 8 & 15 &  \\ \hline
+Turnaround Time & 11 & 13 & 13 & 3 & 8 & 9.6 \\ \hline
+Tr / Ts & 3.6 & 3.25 & 2.6 & 1.5 & 2.6 & 2.71 \\ \hline
+\end{tabular}
+	\\ \\
+	
+	\item Feedback \\ \\
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+A & \cellcolor[HTML]{32CB00} &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  &  &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  &  \\ \hline
+B &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} &  &  \\ \hline
+C &  &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} & \cellcolor[HTML]{32CB00} \\ \hline
+D &  &  &  &  &  & \cellcolor[HTML]{32CB00} &  &  & \cellcolor[HTML]{32CB00} &  &  &  &  &  &  &  &  \\ \hline
+E &  &  &  &  &  &  &  & \cellcolor[HTML]{32CB00} &  & \cellcolor[HTML]{32CB00} &  &  &  & \cellcolor[HTML]{32CB00} &  &  &  \\ \hline
+\end{tabular}
+\\ \\
+
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Process & A & B & C & D & E & Mean \\ \hline
+Arrival Time & 0 & 1 & 3 & 5 & 7 &  \\ \hline
+Service Time & 3 & 4 & 5 & 2 & 3 &  \\ \hline
+Finish Time & 10 & 13 & 16 & 8 & 13 &  \\ \hline
+Turnaround Time & 10 & 12 & 13 & 3 & 6 & 8.8 \\ \hline
+Tr / Ts & 3.33 & 3 & 2.6 & 1 & 2 & 2.39 \\ \hline
+\end{tabular}
+   	\end{enumerate}
+   	
+   	\pagebreak
+   	\item What are some considerations in static versus variable assignment of processes to processors? \\ \\
+   	Static assignment is when a process is assigned to a processor until its finished. This has a few advantages such that it may require less overhead while scheduling since the assignment is only made once, and it permits gang scheduling. However, this doesn't distribute the workload well (a process could wait while a CPU is free). Variable assignment can be assigned from any queue to any free processor, freeing the constraint from static where a process must stay on a processor until it's finished. This can lead to a more even distribution of the workload among processors, but the cost of scheduling could be problematic. \\
+   	
+   	\item What is gang scheduling? \\ \\
+   	Gang scheduling allows the scheduling multiple threads belonging to the same application. This avoids have a thread wait on another while the other thread is not running. If you schedule threads ate the same time, you can avoid the overhead of context switching or waiting for synchronization. \\
+   	
+   	\item What is earliest deadline scheduling? \\ \\
+   	Earliest deadline scheduling is a type of scheduling technique that attempts to run programs based on the distance to their deadline. This attempts to make sure that each process can execute by the end of it's deadline. Even if a program enters after another, if its deadline is closer than it will have run priority and it will execute before the older process.
+   	
+      
+\end{enumerate}
+\end{document}

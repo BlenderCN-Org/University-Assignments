@@ -1,0 +1,194 @@
+1.
+a) The relation is in 2nd normal form because non-key columns are not dependent on the primary key. The is in 3rd normal form since we have a transitive dependence between book_title and book_type to get listprice, since list_price is a descriptor of book_title and since we are in 2nd normal form.
+
+b) There is no need to normalise this any further
+
+
+2.
+Patient -> doctor
+Doctor -> diagosis
+diagosis -> treat_code
+Treat_code -> charge
+
+This relation is in 2nd normal form since all non-key elements are dependent on the table's primary key(s)
+
+
+3.
+ACID properties include Atomicity, Consistency, Isolation, and Durability. Atomicity says that a operation (transaction) must occur completely, or not at all, meaning we cannot have any partial transictions to prevent data corruption. Consistency states that any crud operation is consistient with the rules of the database, that is, a crud operation cannot violate the database conditions. Isolation is another form of mutual exclusion, that is, transactions cannot interfere with eachother otherwise data may get corrupted. Durability means that transactions will persist in the database, that is, a transaction will remain committed (not partially committed) even if a database fails. If a transaction commit fails mid commit, the commit will not fully go through to preserve the data.
+
+
+4.
+A query tree represents a relation algebra expression. Similiar to a parse tree in automata theory, it breaks down an expression and exectures the desired query. The query trees primary purpose (following database rules) attempts to execute the most efficient queries (least amount of operations, calls, joins, etc.)
+
+
+5.
+2 phase locking is a deadlock prevention measure that attempts a no-preemption strategy, that is, no process is ever in a state where it is holding shared resources. There are two parts to this strategy, the growing and shrinking phase. The growing phase allows new locks to be put on data items but does not allow for locks to be replaced. The shrinking phase allows for existing locks to be released by for no new locks to be acquired. This makes sure that if a process is gaining or releasing their locks, that no other process can access it until all their resources are given up.
+
+
+6.
+(512+128)*20 = 12800bytes -> Total Capacity
+(512)*20 = 10240bytes -> Useful Capacity
+Cylinders = 400 (same as tracks)
+(512+128)*20*30 = 384000bytes -> Total Capacity of a cylinder
+(512)*20*30 = 307200bytes -> Useful Capacity of a cylinder
+(512+128)*20*30*400 = 153600000bytes -> Total Capacity of a disk pack
+(512)*20*30*400 = 122880000bytes -> Useful Capacity of a disk pack
+transfer rate = track capacity / rpm*60*1000 -> 12800 / 2400*60*1000 = 88.9 bytes a second
+block transfer time = blocks/tr = 512/88.9 = 5.76 millsec
+rot delay = 1/2(1/2400)*60*1000 = 12.5 millsec
+average seek time is blocktrans + rot del + seek time = 5.76 + 12.5 + 30 = 48.26 millisec
+20 random blocks = blocks*(seek + rot + block trans) = (48.26 millisec) * 20 = 965.2 millisec
+20 consecutive w/ bufffer = (seek + rot + blocks*block trans) = 157.7 millisec
+
+7.
+record = name + ssn + deptcode + addr + phone + bdate + sex + jobcode + sal = 30 + 9 + 9 + 40 + 9 + 8 + 1 + 4 + 4 + 1 = 115 bytes per record
+blk fctr = average record per block = 115 / 512 = 4.45, or about 4 records per block
+numofblks = 30000/4 approx 7500
+index blk = index block size + key size = 6 + 9 = 15 bytes
+index blk fctr = blk / index blk = 512/15 = 34
+7500 entries in blk, 7500 first level keys
+num of first-index-blks = 7500/34 = 221 blocks
+num of 2nd-levelindex-ent = firstlvlblocks = 221
+numof2ndlevelblocks = ceil(2ndlevelentries/1stblkfckt) = 221/34 = 7
+numof3rdlevelindexblocks = 7
+3rdlevelindex = ceil(blocks/blkfctr) = ceil(7/34) = 1 -> we have 3 levels
+total num of blocks = 221 + 7 + 1 = 229
+number of blk accesses = x + 3 = 1 + 3 = 4
+
+8.
+student:
+sname, snum, sssn, scaddr, scphone, apaddr, spphone, bdate, sex, class, majordeptdcode, minordeptcode, prog
+
+dept:
+deptname, deptcode, deptoffice, deptphhone, deptcollege
+
+course:
+cname, cdesc, cnum, cdept,
+
+section:
+instructorname, semester, year, seccourse, sectionnum
+
+grade:
+ssn, grade
+
+relations:
+deptcode-> majordeptcode, minordeptcode, cdept 
+seccourse -> course
+ssn -> sectionnum
+
+functional dependencies:
+snum -> sname, scaddr, scphone, apaddr, spphone, bdate, sex, class, majordeptdcode, minordeptcode, prog, sssn
+sssn -> sname, scaddr, scphone, apaddr, spphone, bdate, sex, class, majordeptdcode, minordeptcode, prog, snum
+deptname -> deptcode, deptoffice, deptphhone, deptcollege
+deptcode -> deptname, deptoffice, deptphhone, deptcollege
+cnum -> cname, cdesc, cdept
+sectionnum, seccourse, year, semester -> instructor
+sectionnum, seccourse, year, semester, ssn -> grade
+
+3rd normal form:
+(draw this out)
+(see http://www.just.edu.jo/~amerb/teaching/1-9-10/cs728/hw1sol.pdf)
+
+9.
+Where (a) and (b) with m=2 and n=2 could be problematic. If the value of x is greater than 90 (since the addition and subtraction of m and n cancel out), then we have a missing commit issue since the thread will exit before writing X. There is not really a change, since even though we are not writing the added value back, we are writing it back before the if statement is called, making our addition useless.
+
+10.
+No, in this case it would not make a difference. Since A has not been written yet, only read, the rollback process doesnt not need to change.
+
+11.
+(Haven't learned yet)
+
+12. 
+A table scan iterates over all the rows of a table instead of using some indexed table. An example is if you are are trying to do a SELECT (elements) from a table, instead of selecting indexes from a page table and getting their exact location the table scan will go through the entire table.
+
+13.
+Table scans are undeserible because they do unessacary work, that is, they have a large time complexity.
+
+14.
+Table scans can be avoided by using a page table, or some other indexing strategy for direct lookup rather than scanning through the entire table
+
+15.
+a.) A schema holds relations
+b.) A relation has attributes
+c.) A relation applies to groups of tuples
+
+16.
+(THIS HAS MISSING RELATIONAL OPERATORS?)
+SELECT PNO FROM (WORKS_ON JOIN (SELECT E.Ssn FROM EMPLOYEE E WHERE E.Lname = 'Smith')
+)
+
+SELECT PNO FROM (( SELECT Dnumber FROM ( SELECT Lname, Dnumber FROM EMPLOYEE E WHERE E.Lname = 'mith' ))) JOIN (SELECT D FROM DEPARTMENT D WHERE D.)
+
+17.
+DML
+
+18.
+DDL is the data definition language used to define tables, and other structural elements of the database
+
+19.
+You authorize a user by calling the GRANT keyword, followed by the user and the list of privledges you wish to give them
+
+20.
+One way to remove duplicate elements from SELECT's result set is to apply the unique keyword, which will return only unique rows from the result set.
+
+
+21. **There is no following?
+
+22.
+a. Primary to Foreign Key
+
+23.
+(MISSING INFO)
+
+24.
+D is not neccessaraly true, there for it is not true of views
+
+25.
+The record blocking factor is the amount of records that fit into a block of memory.
+
+26.
+(Not Taught Yet)
+
+27.
+There are 4 isolation levels, uncommitted read, committed read, repeatable read, and serializable.
+Uncommited read allows for data reading while a commit is taking place. Committed Read states that a read will never occur while uncommitted changes have been made. Repeatable read states that if a read operaton is issues twice with the same query, that both read operations will return the same value. Serializable ensures that if a query is issued again, that no data will no new data / rows will appear. This is mainy used for concurrent operations
+
+
+28.
+Since 2 phase locking takes a no preemption strategy, this on its own states that processes cannot hold shared resources. If all processes are under this strategy, it means that no deadlocks can occur, which implies that all transations can run concurrently. i.e. all their transactions can complete correctly without fear of deadlock.
+
+
+29.
+
+
+30.
+Typically to get into 2nd and 3rd normal form, you must go through a process. First, you must convert a table into first normal form before converting to 2nd or 3rd. Once in 2nd normal form, then you can convert to 3rd normal form.
+
+31.
+no, it is not true that all functional dependencies are symmetric
+
+32.
+normal form
+
+33.
+Indexing and other optimizations help reduce the time needed to search for items in select statements
+
+34.
+Unspanned records create gaps within blocks. Since you cannot span a record across multiple blocks, you create spaces within the blocks of memory that are unused
+
+35.
+unordered data files do not have index tables, which save space
+
+36.
+The main purpose of using an index is to keep track of where records are stored, and it allows for a faster lookup time
+
+37.
+A second index could be used in a 2 layered key system
+
+38.
+ The schedule itself is not schedule serializable since all actions of a single transcation do not occur consequetively, however there are no conflicts within the schedule so with a little rearranging we can make the schedule serializable.
+
+39.
+(No complete)
+
+

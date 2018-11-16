@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1477954530 source:d:\cs\10-31-16\btr.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+	"BTR.h"
+
+1477954634 d:\cs\10-31-16\btr.h
+
+1446671344 source:d:\cs\10-31-16\main.cpp
+	<iostream>
+
+1478126584 source:d:\cs2336\10-31-16\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+	"BTR.h"
+
+1478126528 source:d:\cs2336\10-31-16\btr.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+	"BTR.h"
+
+1478128424 d:\cs2336\10-31-16\btr.h
+	<functional>
+

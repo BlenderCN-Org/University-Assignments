@@ -1,0 +1,6 @@
+Name:: Malakili  | Area:: -864.00
+Name:: General Grievous | Area:: -100.00
+Name:: Baron Papanoida | Area:: -53.00
+Name:: General Hux | Area:: 6.00
+Name:: Captain Phasma | Area:: 84.00
+Name:: Palpatine | Area:: 778.00

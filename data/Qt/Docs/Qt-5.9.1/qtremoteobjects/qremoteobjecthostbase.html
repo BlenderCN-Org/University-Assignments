@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qremoteobjectnode.cpp -->
+  <title>QRemoteObjectHostBase Class | Qt Remote Objects 5.9</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    window.onload = function(){document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");};
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="../qtdoc/supported-platforms-and-configurations.html#qt-5-9">Qt 5.9</a></td><td ><a href="qtremoteobjects-index.html">Qt Remote Objects</a></td><td ><a href="qtremoteobjects-module.html">C++ Classes</a></td><td >QRemoteObjectHostBase</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qt 5.9.1 Reference Documentation</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">QRemoteObjectHostBase Class</h1>
+<!-- $$$QRemoteObjectHostBase-brief -->
+<p>The <a href="qremoteobjecthostbase.html">QRemoteObjectHostBase</a> class provides base functionality common to <a href="qremoteobjecthost.html">Host</a> and <a href="qremoteobjectregistryhost.html">RegistryHost</a> classes. <a href="#details">More...</a></p>
+<!-- @@@QRemoteObjectHostBase -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;QRemoteObjectHostBase&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> qmake:</td><td class="memItemRight bottomAlign"> QT += remoteobjects</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="qremoteobjectnode.html">QRemoteObjectNode</a></td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="qremoteobjecthost.html">QRemoteObjectHost</a> and <a href="qremoteobjectregistryhost.html">QRemoteObjectRegistryHost</a></p>
+</td></tr></table></div><ul>
+<li><a href="qremoteobjecthostbase-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qremoteobjecthostbase.html#disableRemoting">disableRemoting</a></b>(QObject *<i>remoteObject</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qremoteobjecthostbase.html#enableRemoting">enableRemoting</a></b>(ObjectType *<i>object</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qremoteobjecthostbase.html#enableRemoting-1">enableRemoting</a></b>(QObject *<i>object</i>, const QString &amp;<i>name</i> = QString())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qremoteobjecthostbase.html#enableRemoting-2">enableRemoting</a></b>(QAbstractItemModel *<i>model</i>, const QString &amp;<i>name</i>, const QVector&lt;int&gt; <i>roles</i>, QItemSelectionModel *<i>selectionModel</i> = nullptr)</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="qremoteobjecthostbase.html#setName">setName</a></b>(const QString &amp;<i>name</i>) override</td></tr>
+</table></div>
+<ul>
+<li class="fn">14 public functions inherited from <a href="qremoteobjectnode.html#public-functions">QRemoteObjectNode</a></li>
+<li class="fn">32 public functions inherited from <a href="../qtcore/qobject.html#public-functions">QObject</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">1 property inherited from <a href="qremoteobjectnode.html#properties">QRemoteObjectNode</a></li>
+<li class="fn">1 property inherited from <a href="../qtcore/qobject.html#properties">QObject</a></li>
+<li class="fn">1 public slot inherited from <a href="../qtcore/qobject.html#public-slots">QObject</a></li>
+<li class="fn">3 signals inherited from <a href="qremoteobjectnode.html#signals">QRemoteObjectNode</a></li>
+<li class="fn">2 signals inherited from <a href="../qtcore/qobject.html#signals">QObject</a></li>
+<li class="fn">1 public variable inherited from <a href="../qtcore/qobject.html#public-variables">QObject</a></li>
+<li class="fn">10 static public members inherited from <a href="../qtcore/qobject.html#static-public-members">QObject</a></li>
+<li class="fn">9 protected functions inherited from <a href="../qtcore/qobject.html#protected-functions">QObject</a></li>
+<li class="fn">2 protected variables inherited from <a href="../qtcore/qobject.html#protected-variables">QObject</a></li>
+</ul>
+<a name="details"></a>
+<!-- $$$QRemoteObjectHostBase-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="qremoteobjecthostbase.html">QRemoteObjectHostBase</a> class provides base functionality common to <a href="qremoteobjecthost.html">Host</a> and <a href="qremoteobjectregistryhost.html">RegistryHost</a> classes.</p>
+<p><a href="qremoteobjecthostbase.html">QRemoteObjectHostBase</a> is a base class that cannot be instantiated directly. It provides the <a href="qremoteobjecthostbase.html#enableRemoting">enableRemoting</a> and <a href="qremoteobjecthostbase.html#disableRemoting">disableRemoting</a> functionality shared by all host nodes (<a href="qremoteobjecthost.html">Host</a> and <a href="qremoteobjectregistryhost.html">RegistryHost</a>) as well as the logic required to expose <a href="qtremoteobjects-source.html#source">Source</a> objects on the Remote Objects network.</p>
+</div>
+<!-- @@@QRemoteObjectHostBase -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$disableRemoting[overload1]$$$disableRemotingQObject* -->
+<h3 class="fn" id="disableRemoting"><a name="disableRemoting"></a><span class="type">bool</span> QRemoteObjectHostBase::<span class="name">disableRemoting</span>(<span class="type"><a href="../qtcore/qobject.html#QObject">QObject</a></span> *<i>remoteObject</i>)</h3>
+<p>Disables remote access for the <a href="../qtcore/qobject.html">QObject</a> <i>remoteObject</i>. Returns <code>false</code> if the current node is a client node or if the <i>remoteObject</i> is not registered, and returns <code>true</code> if remoting is successfully disabled for the Source object.</p>
+<p><b>Warning:</b> Replicas of this object will no longer be valid after calling this method.</p>
+<p><b>See also </b><a href="qremoteobjecthostbase.html#enableRemoting">enableRemoting</a>().</p>
+<!-- @@@disableRemoting -->
+<!-- $$$enableRemoting[overload1]$$$enableRemotingObjectType* -->
+<h3 class="fn" id="enableRemoting"><a name="enableRemoting"></a><span class="type">bool</span> QRemoteObjectHostBase::<span class="name">enableRemoting</span>(<span class="type">ObjectType</span> *<i>object</i>)</h3>
+<p>This templated function overload enables a host node to provide remote access to a <a href="../qtcore/qobject.html">QObject</a> <i>object</i> with a specified (and compile-time checked) interface. Client nodes connected to the node hosting this object may obtain Replicas of this Source.</p>
+<p>This is best illustrated by example:</p>
+<pre class="cpp">
+
+  <span class="preprocessor">#include &quot;rep_TimeModel_source.h&quot;</span>
+  MinuteTimer timer;
+  hostNode<span class="operator">.</span>enableRemoting<span class="operator">&lt;</span>MinuteTimerSourceAPI<span class="operator">&gt;</span>(<span class="operator">&amp;</span>timer);
+
+</pre>
+<p>Here the MinuteTimerSourceAPI is the set of Signals/Slots/Properties defined by the TimeModel.rep file. Compile time checks are made to verify the input <a href="../qtcore/qobject.html">QObject</a> can expose the requested API, it will fail to compile otherwise. This allows a subset of <i>object</i> 's interface to be exposed, and allows the types of conversions supported by Signal/Slot connections.</p>
+<p>Returns <code>false</code> if the current node is a client node, or if the <a href="../qtcore/qobject.html">QObject</a> is already registered to be remoted, and <code>true</code> if remoting is successfully enabled for the <a href="../qtcore/qobject.html">QObject</a>.</p>
+<p><b>See also </b><a href="qremoteobjecthostbase.html#disableRemoting">disableRemoting</a>().</p>
+<!-- @@@enableRemoting -->
+<!-- $$$enableRemoting$$$enableRemotingQObject*constQString& -->
+<h3 class="fn" id="enableRemoting-1"><a name="enableRemoting-1"></a><span class="type">bool</span> QRemoteObjectHostBase::<span class="name">enableRemoting</span>(<span class="type"><a href="../qtcore/qobject.html#QObject">QObject</a></span> *<i>object</i>, const <span class="type"><a href="../qtcore/qstring.html">QString</a></span> &amp;<i>name</i> = QString())</h3>
+<p>Enables a host node to dynamically provide remote access to the <a href="../qtcore/qobject.html">QObject</a> <i>object</i>. Client nodes connected to the node hosting this object may obtain Replicas of this Source.</p>
+<p>The <i>name</i> defines the lookup-name under which the <a href="../qtcore/qobject.html">QObject</a> can be acquired using <a href="qremoteobjectnode.html#acquire">QRemoteObjectNode::acquire</a>() . If not explicitly set then the name given in the QCLASSINFO_REMOTEOBJECT_TYPE will be used. If no such macro was defined for the <a href="../qtcore/qobject.html">QObject</a> then the <a href="../qtcore/qobject.html#objectName-prop">QObject::objectName</a>() is used.</p>
+<p>Returns <code>false</code> if the current node is a client node, or if the <a href="../qtcore/qobject.html">QObject</a> is already registered to be remoted, and <code>true</code> if remoting is successfully enabled for the dynamic <a href="../qtcore/qobject.html">QObject</a>.</p>
+<p><b>See also </b><a href="qremoteobjecthostbase.html#disableRemoting">disableRemoting</a>().</p>
+<!-- @@@enableRemoting -->
+<!-- $$$enableRemoting$$$enableRemotingQAbstractItemModel*constQString&constQVector<int>QItemSelectionModel* -->
+<h3 class="fn" id="enableRemoting-2"><a name="enableRemoting-2"></a><span class="type">bool</span> QRemoteObjectHostBase::<span class="name">enableRemoting</span>(<span class="type"><a href="../qtcore/qabstractitemmodel.html">QAbstractItemModel</a></span> *<i>model</i>, const <span class="type"><a href="../qtcore/qstring.html">QString</a></span> &amp;<i>name</i>, const <span class="type"><a href="../qtcore/qvector.html">QVector</a></span>&lt;<span class="type">int</span>&gt; <i>roles</i>, <span class="type"><a href="../qtcore/qitemselectionmodel.html">QItemSelectionModel</a></span> *<i>selectionModel</i> = nullptr)</h3>
+<p>This overload of <a href="qremoteobjecthostbase.html#enableRemoting">enableRemoting</a>() is specific to <a href="../qtcore/qabstractitemmodel.html">QAbstractItemModel</a> types (or any type derived from <a href="../qtcore/qabstractitemmodel.html">QAbstractItemModel</a>). This is useful if you want to have a model and the HMI for the model in different processes.</p>
+<p>The three required parameters are the <i>model</i> itself, the <i>name</i> by which to lookup the model, and the <i>roles</i> that should be exposed on the Replica side. If you want to synchronize selection between <a href="qtremoteobjects-source.html#source">Source</a> and <a href="qtremoteobjects-replica.html#replica">Replica</a>, the optional <i>selectionModel</i> parameter can be used. This is only recommended when using a single Replica.</p>
+<p>Behind the scenes, Qt Remote Objects batches data() lookups and prefetches data when possible to make the model interaction as responsive as possible.</p>
+<p>Returns <code>false</code> if the current node is a client node, or if the <a href="../qtcore/qobject.html">QObject</a> is already registered to be remoted, and <code>true</code> if remoting is successfully enabled for the <a href="../qtcore/qabstractitemmodel.html">QAbstractItemModel</a>.</p>
+<p><b>See also </b><a href="qremoteobjecthostbase.html#disableRemoting">disableRemoting</a>().</p>
+<!-- @@@enableRemoting -->
+<!-- $$$setName[overload1]$$$setNameconstQString& -->
+<h3 class="fn" id="setName"><a name="setName"></a><code>[override virtual] </code><span class="type">void</span> QRemoteObjectHostBase::<span class="name">setName</span>(const <span class="type"><a href="../qtcore/qstring.html">QString</a></span> &amp;<i>name</i>)</h3>
+<p>Reimplemented from <a href="qremoteobjectnode.html#setName">QRemoteObjectNode::setName</a>().</p>
+<p>Similar to <a href="../qtcore/qobject.html#objectName-prop">QObject::setObjectName</a>() (which this method calls), but this version also applies the <i>name</i> to internal classes as well, which are used in some of the debugging output.</p>
+<!-- @@@setName -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

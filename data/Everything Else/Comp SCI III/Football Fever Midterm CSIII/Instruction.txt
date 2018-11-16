@@ -1,0 +1,29 @@
+Football Fever
+
+
+You have been tasked with generating a season play schedule for our Youth Football League.
+
+Currently we have 15 teams separated into two divisions.  
+Each team must play all teams in their division and the remainder out of division/Alliance teams.  If three or more out of division teams are played, half MUST come from the opposite division. No one will play the same team twice.
+
+The season will be 9 weeks long and each team will play 10 games.
+
+
+Most games will be played on our home field in the woodlands on Saturdays, but some may be played away at Alliance fields, or on Wednesdays.  Our teams will be visitors when away.
+
+
+Generate a 9 week schedule of ten games for each team.
+Game times on our field are:
+Saturdays:::  8:00 am, 10:00 am, noon, 2:00 pm, 4:00 pm, 6:00 pm
+Wednesdays::  5:30 pm and 7:30 pm
+Game times at Alliance fields are similar, but will not be played on Wednesdays.
+
+Each team should have an equal number of games where they are listed as Home and Visitor. ( Alliance and out of division opponents are always visitor when on our fields ) The number of early, middle, and late day games should balance.
+
+There will not be Wednesday game the first or last week of the season, but two games will be played all other Wednesdays. No team will play on more than one Wednesday.
+
+
+Input:  See file for format
+        5< # of teams per division < 10
+
+Output: Generate a season play ticket for each team in a separate file.

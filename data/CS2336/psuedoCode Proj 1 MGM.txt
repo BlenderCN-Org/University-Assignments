@@ -1,0 +1,33 @@
+int main()
+	-Create File Reader
+	-Create Vars to get a line, a name, and to gather how many cases we will be running through
+	
+	for(i = lines)
+	-lines = how many cases in the file
+		-getCoor(line) //Takes in a line param and seperates it into coordinate arrays
+		-getArea(xCoor,yCoor)
+	
+
+	-toString // After everything is done, outprints results
+
+void getCoor(string line)
+	-Create a temp string to cycle through the variables on the line
+	-Create a var to cycle through potential arrays
+	-Create an Array for X-Coors
+	-Create an Array for Y-Coors
+
+	while(line != "")
+	-Cycles through the line to seperate the x and y coors via substr
+	-Assign temp to the first pair of coors
+	-Substr temp up into the xCoor and yCoor Arrays
+	-When the coors get put into the arrays, stop the loop, grab the next line
+
+float getArea(array xCoor, array yCoor)
+	-Calculates the area based on passed vars
+	-Plugs into the function given and returns the value
+
+	for(i < array.length)
+	-Cycle through the series 
+
+void toString()
+	-Outprints the given data acoording to the rubric

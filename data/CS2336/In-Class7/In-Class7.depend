@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1477349328 source:d:\cs\in-class7\main.cpp
+	<iostream>
+	<fstream>
+
+1477348310 source:d:\cs\in-class7\src\node.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"node.h"
+
+1477348256 d:\cs\in-class7\include\node.h
+
+1477350116 source:d:\cs\in-class7\src\queue.cpp
+	"queue.h"
+	<iostream>
+
+1477348894 d:\cs\in-class7\include\queue.h
+	"node.h"
+

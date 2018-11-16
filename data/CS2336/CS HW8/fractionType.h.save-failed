@@ -1,0 +1,20 @@
+#ifndef FRACTIONTYPE_H
+#define FRACTIONTYPE_H
+
+
+class fractionType
+{
+    public:
+        fractionType();
+        virtual ~fractionType();
+        void inputNorm(string l);
+        void solve(int,int,int,int);
+        int a,b,c,d;
+        string op;
+
+
+
+
+};
+
+#endif // FRACTIONTYPE_H

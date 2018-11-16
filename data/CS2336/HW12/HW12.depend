@@ -1,0 +1,94 @@
+# depslib dependency file v1.0
+1478480601 source:c:\users\matt\desktop\hw12\binarysearchtree.cpp
+	"binarysearchtree.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+
+1478480418 c:\users\matt\desktop\hw12\binarysearchtree.h
+	<functional>
+	<node.h>
+
+1478472058 c:\users\matt\desktop\hw12\\node.h
+
+1478482403 source:c:\users\matt\desktop\hw12\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+	"node.h"
+	"binarysearchtree.h"
+
+1478471448 source:c:\users\matt\desktop\hw12\node.cpp
+	"node.h"
+
+1478472058 c:\users\matt\desktop\hw12\node.h
+
+1478553672 source:d:\hw12\binarysearchtree.cpp
+	"binarysearchtree.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+
+1478556928 d:\hw12\binarysearchtree.h
+	<functional>
+	<node.h>
+
+1478471450 source:d:\hw12\node.cpp
+	"node.h"
+
+1478472060 d:\hw12\node.h
+
+1478472060 d:\hw12\\node.h
+
+1478554244 source:d:\hw12\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+	"node.h"
+	"binarysearchtree.h"
+
+1478471450 source:e:\cs2336\hw12\node.cpp
+	"node.h"
+
+1478472060 e:\cs2336\hw12\node.h
+
+1479323896 source:e:\cs2336\hw12\binarysearchtree.cpp
+	"binarysearchtree.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<functional>
+
+1478556928 e:\cs2336\hw12\binarysearchtree.h
+	<functional>
+	<node.h>
+

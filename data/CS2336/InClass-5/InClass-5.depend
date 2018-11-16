@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1474499540 source:d:\cs\inclass-5\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"largeIntegers.h"
+
+1474499460 d:\cs\inclass-5\largeintegers.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"largeIntegers.h"
+
+1474499012 d:\cs\inclass-5\largeintegers.h
+	<iostream>
+	<string>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1474499676 source:d:\cs\inclass-5\largeintegers.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"largeIntegers.h"
+

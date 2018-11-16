@@ -1,0 +1,25 @@
+JAVA vs C++
+
+You can use intenger values in boolean statements, however it only looks at 0,1.
+**Loops are very similar to Java in C++.
+You can print out an array of chars if it ends with "\o" [a,b,c,d,e,\o].
+
+PSEUDO CODE::
+
+-Lay out the logic of the program.
+EX) Function, Logic of a function, nothing specific but what its going to do.
+-How to get from Point A to Point B. 
+-It's a map instead of a trial / error approach.
+-It's not always supposed to be correct, its just to show your understanding of how to tackle a problem.
+
+**IN THE PSEUDO CODE**
+-Every Function you plan to create.
+	-What are you passing in.
+	-What are you getting out.
+	-What is it going to return.
+	-What is the function going to do? (STEP BY STEP).
+-Comment on what each variable is going to do, why its there.
+-Submit as a PDF or Word Document or .txt
+-You get 3 attempts to submit your Pseudo Code and your Project
+
+**Look up pass by ref VS pass by val

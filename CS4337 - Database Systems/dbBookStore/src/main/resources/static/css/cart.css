@@ -50,7 +50,8 @@ body {
 
     max-width: 100%;
     max-height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
+
 
     width: 60%;
     height: 55%;
@@ -76,3 +77,132 @@ body {
     background-color: #d7cec764;
 }
 
+thead th {
+    font-size: 20px;
+}
+
+#cart-table  {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    padding: 1%;
+    max-width: 100%;
+    width: 100%;
+}
+
+.b-header {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    margin: auto;
+
+    border-radius: 5px;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    font-size: 30px;
+
+    width: 60%;
+    padding: 16px;
+    background-color: #d7cec764;
+}
+
+.b-header2 {
+    position: absolute;
+    left: 70%;
+    top: 15%;
+    margin: auto;
+
+    border-radius: 5px;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    font-size: 30px;
+
+    width: 25%;
+    padding: 16px;
+    background-color: #d7cec764;
+}
+
+#summary-table {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    padding: 1%;
+    max-width: 100%;
+    width: 100%;
+    height: 60%;
+}
+
+
+
+#cart-table td {
+    padding-top: 3%;
+    padding-right: 5%;
+    font-size: 16px;
+}
+
+.identifier {
+    padding-top: 15%;
+    padding-right: 60px;
+    font-size: 20px;
+    border-bottom: 1px solid #000000;
+}
+
+.h-identifier {
+    padding-top: 15%;
+    padding-right: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid #000000;
+}
+
+#cart-header td {
+    border-bottom: 1px solid #000000;
+    font-size: 24px;
+}
+
+/* Set a style for all buttons */
+#next-button {
+
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+
+    padding: 14px 0px;
+    margin: auto;
+
+    border: 2px solid #565656;
+    border-radius: 5px;
+    cursor: pointer;
+
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align:center;
+    background-color: #d7cec7;
+
+}
+
+#smart-button {
+
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+
+    padding: 14px 0px;
+    margin: auto;
+
+    border: 2px solid #565656;
+    border-radius: 5px;
+    cursor: pointer;
+
+    width: 100%;
+    position: absolute;
+    bottom: 7%;
+    left: 0;
+    text-align:center;
+    background-color: #d7cec7;
+
+}

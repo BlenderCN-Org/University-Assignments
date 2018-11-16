@@ -1,0 +1,145 @@
+# depslib dependency file v1.0
+1479017692 source:c:\users\matt\desktop\project4\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+	"node.h"
+	"binarysearchtree.h"
+
+1478985822 source:c:\users\matt\desktop\project4\node.cpp
+	"node.h"
+
+1478998440 c:\users\matt\desktop\project4\node.h
+
+1479017692 source:c:\users\matt\desktop\project4\binarysearchtree.cpp
+	"binarysearchtree.h"
+
+1479016426 c:\users\matt\desktop\project4\binarysearchtree.h
+	"node.h"
+
+1479329942 source:d:\cs2336\project4\binarysearchtree.cpp
+	"binarysearchtree.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+
+1479329942 d:\cs2336\project4\binarysearchtree.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+	"node.h"
+
+1479324486 d:\cs2336\project4\node.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+
+1479324220 source:d:\cs2336\project4\node.cpp
+	"node.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+
+1479332422 source:d:\cs2336\project4\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+	"node.h"
+	"binarysearchtree.h"
+
+1479359218 source:e:\cs2336\project4\binarysearchtree.cpp
+	"binarysearchtree.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+
+1479358996 e:\cs2336\project4\binarysearchtree.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+	"node.h"
+
+1479358810 e:\cs2336\project4\node.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+
+1479358926 source:e:\cs2336\project4\node.cpp
+	"node.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+
+1479415118 source:e:\cs2336\project4\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<queue>
+	"node.h"
+	"binarysearchtree.h"
+

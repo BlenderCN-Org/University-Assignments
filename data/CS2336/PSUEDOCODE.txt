@@ -1,0 +1,78 @@
+
+void main
+// Call Read
+// Create array for complex numbers
+// Create array for Operators
+// Create a string; answers
+
+void Read(arr1,arr2,ans)
+//Read in the file, store data into several arrays
+
+void solve(arr1,arr2,ans)
+//Takes the two arrays and solves the complex funct
+
+for(i < arr.size-1)
+	if(1)
+	//if real + Imag
+		if(1)
+		//if real + Imag
+		//Solves for (real+Imag) + (real+Imag)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+		if(2)
+		//if real
+		//Solves for (real+Imag) + (real)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+		if(3)
+		//if Imag
+		//Solves for (real+Imag) + (Imag)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+	if(2)
+	//if real
+		if(1)
+		//if real + Imag
+		//Solves for (real) + (real+Imag)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+		if(2)
+		//if real
+		//Solves for (real) + (real)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+		if(3)
+		//if Imag
+		//Solves for (real) + (Imag)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+	if(3)
+	//if Imag
+		if(1)
+		//if real + Imag
+		//Solves for (Imag) + (real+Imag)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+		if(2)
+		//if real
+		//Solves for (Imag) + (real)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+		if(3)
+		//if Imag
+		//Solves for (Imag) + (Imag)
+		//Converts and solves according the imaginary num rules
+		//Adds to final string
+
+// Put into the final string and sets it equal to val
+
+void outprint(arr1,arr2,ans)
+//Save into complex.txt, rounded to 2 decimal places

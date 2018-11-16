@@ -1,0 +1,214 @@
+# depslib dependency file v1.0
+1477430128 source:d:\cs\project3\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<BaseNode.h>
+	<DoubleLinkNode.h>
+	<LinkedList.h>
+
+1476739076 source:d:\cs\project3\src\basenode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+
+1476948688 d:\cs\project3\include\basenode.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1476994848 source:d:\cs\project3\src\doublelinknode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"DoubleLinkNode.h"
+
+1476996698 d:\cs\project3\include\doublelinknode.h
+	<BaseNode.h>
+
+1477431424 source:d:\cs\project3\src\linkedlist.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"LinkedList.h"
+
+1477427146 d:\cs\project3\include\linkedlist.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+	"DoubleLinkNode.h"
+
+1477445406 source:e:\cs\project3\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<BaseNode.h>
+	<DoubleLinkNode.h>
+	<LinkedList.h>
+
+1476739076 source:e:\cs\project3\src\basenode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+
+1476948688 e:\cs\project3\include\basenode.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1477445530 source:e:\cs\project3\src\linkedlist.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"LinkedList.h"
+
+1477445246 e:\cs\project3\include\linkedlist.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+	"DoubleLinkNode.h"
+
+1476994848 source:e:\cs\project3\src\doublelinknode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"DoubleLinkNode.h"
+
+1476996698 e:\cs\project3\include\doublelinknode.h
+	<BaseNode.h>
+
+1476739076 source:d:\cs2336\project3\src\basenode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+
+1476948688 d:\cs2336\project3\include\basenode.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1476994848 source:d:\cs2336\project3\src\doublelinknode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"DoubleLinkNode.h"
+
+1476996698 d:\cs2336\project3\include\doublelinknode.h
+	<BaseNode.h>
+
+1479080208 source:d:\cs2336\project3\src\linkedlist.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"LinkedList.h"
+
+1477445246 d:\cs2336\project3\include\linkedlist.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+	"DoubleLinkNode.h"
+
+1479080350 source:d:\cs2336\project3\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<BaseNode.h>
+	<DoubleLinkNode.h>
+	<LinkedList.h>
+

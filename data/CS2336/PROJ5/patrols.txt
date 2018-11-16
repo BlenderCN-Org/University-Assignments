@@ -1,0 +1,23 @@
+BAD une		InValid
+BAD duo		InValid
+BAD aed		InValid
+BAD fur		InValid
+BAD five		InValid
+BAD zoo		InValid
+BAD yoo		InValid
+BAD lol		InValid
+BAD csgo		InValid
+BAD tey		InValid
+BAD ley		InValid
+BAD wow		InValid
+BAD doge		InValid
+BAD tewr		InValid
+BAD dasd		InValid
+BAD bae		InValid
+BAD lop		InValid
+BAD bop		InValid
+Matthew "Tamiyo" McMillian	5	Valid
+Seong "TastyMidget" Wang	6	Valid
+Jordan "nOthing" Gilbert	8	Valid
+Jason Smith	13	Valid
+Mike "shroud" Grzesiek	14	Valid

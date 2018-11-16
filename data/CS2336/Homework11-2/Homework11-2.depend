@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1477458684 source:e:\cs\homework11-2\node.cpp
+	"node.h"
+	<string>
+
+1477458702 e:\cs\homework11-2\node.h
+	<string>
+
+1477458416 source:e:\cs\homework11-2\main.cpp
+	<iostream>
+	<string>
+
+1477458416 source:d:\cs\homework11-2\main.cpp
+	<iostream>
+	<string>
+
+1477458684 source:d:\cs\homework11-2\node.cpp
+	"node.h"
+	<string>
+
+1477458702 d:\cs\homework11-2\node.h
+	<string>
+
+1477458956 source:d:\cs\homework11-2\queue.cpp
+	"Queue.h"
+
+1477459140 d:\cs\homework11-2\queue.h
+	<node.h>
+

@@ -52,6 +52,10 @@ public class Books implements Serializable {
         return String.format("%.2f", price);
     }
 
+    public Double getPriceDouble() {
+        return price;
+    }
+
     public String getSubject() {
         return subject;
     }

@@ -1,0 +1,8 @@
+Matthew "Tamiyo" McMillian 22 14 1
+Seong "TastyMidget" Wang 28 35 22
+Jason Smith 1 35 22 28
+Jordan "nOthing" Gilbert 14 22 35 28
+Mike "shroud" Grzesiek 35 28 22 14 1
+BAD 35 28 1
+BAD 7 38 930
+BAD 14 22 28 35 28 81 3

@@ -11,7 +11,61 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="792a0fb5-e8de-45ee-a083-4fbc760e3268" name="Default" comment="" />
+    <list default="true" id="792a0fb5-e8de-45ee-a083-4fbc760e3268" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/classes/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/controllers/MemberOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/controllers/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/ActiveOrdersServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/CartRemoveServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/CartServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/OrderDetailsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/SubmitOrderServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/css/checkout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/css/orders.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/js/hidden.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/checkout.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 4/p1.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 4/p1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175/storage_v2/_src_/schema/ADMIN.Lwu0Aw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175/storage_v2/_src_/schema/ADMIN.Lwu0Aw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/db/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/db/Books.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/db/members.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/db/members.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/db/orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/db/orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/springdb/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/springdb/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/springdb/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/springdb/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/controllers/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/CartAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/java/web/servlets/CartAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/css/cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/resources/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/account-creation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/account-creation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/db/Books.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/db/Books.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/db/Members.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/db/Members.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/db/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/db/Orders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/springdb/CartRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/springdb/CartRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/springdb/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/springdb/OrdersRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/static/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/static/css/cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/web/controllers/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/web/controllers/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/web/servlets/CartAddServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/web/servlets/CartAddServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/web/servlets/LoginAcceptanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/target/classes/web/servlets/LoginAcceptanceServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw3.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw4.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw4.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw4.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/hw4.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelProject.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelProject.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelProject/out/production/HotelProject/Classes/Bellhop.java.rej" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelProject/out/production/HotelProject/interfaces/HotelHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelProject/src/Classes/Bellhop.java.rej" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -290,11 +344,12 @@
       <workItem from="1539363234213" duration="100000" />
       <workItem from="1539364100343" duration="360000" />
       <workItem from="1540354521297" duration="53000" />
+      <workItem from="1542321764097" duration="36000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97904000" />
+    <option name="totallyTimeSpent" value="97940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -328,6 +383,34 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/core/cpu.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/cpu.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">

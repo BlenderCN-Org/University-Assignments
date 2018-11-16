@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{graphicx}
+\usepackage{tabto}
+\graphicspath{ {./} }
+
+\begin{document}
+
+\title{CS4348 : Operating Systems Concepts\\Homework Assignment 6}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\begin{enumerate}
+
+	\item What is double buffering? \\ \\
+	To understand double buffering we first need to take a look at single buffering. When an I/O request is made, we need a single buffer to transfer data between the device and the OS. The use of this buffer allows for other units to be read while processing the buffer. A double buffer expands on this concept. We instead use two buffers so that a process can transfer data to/from one buffer while filling the other. This can lead to a performance increase since we are essentially doubling our buffers, allowing for faster reads and processing.\\
+	
+	\item Why is disk scheduling important? \\ \\
+	Disk scheduling is important because without proper scheduling requests can take a long time due to their relative position on the disk, priority of request, and type of request. For example if we have multiple accesses that are very far apart on the disk, the read / seek time to move from each parts of the disk would be very time consuming.\\
+	
+	\item How does the C-SCAN disk scheduling policy improve on a random policy?  \\ \\
+	C-SCAN restricts the scanning to only one direction on the disk. when the last track in the schedule is visited, it returns to the starting position. This approach is better than random since random search can have a very spastic, however with a C-SCAN we can forfeit the random approach. The circular scan will eventually get to some of the value around the disk. This way instead of having a variable access time dependent on the position, we can have a constant time that's dependent on the starting position of the read/write head. Though this approach is still slow since items far from the starting position have a long access time.
+	\pagebreak
+	
+	\item What is a file management system?  \\ \\
+	A file management system is a set of software services that provide file services to users. This includes optimizing file performance, data stability, a plethora of I/O interface routines, as well as providing data management needs such as read, write, delete, modify, and access permissions.\\
+	
+	\item What is an indexed sequential file? \\ \\
+	An indexed sequential file is like a sequential file, having same record lengths and fields, however in this strategy we implement a key-data strategy. This indexed lookup (similar to a hashtable) provides quick lookup of the desired record. An overflow file can periodically merge with the main file if we need to add any new data items (since we need to key them in).\\
+	
+	\item What is a chained allocation? \\ \\
+	Chained allocation allocated particular blocks, and then has a 'chain' (a glorified pointer) that points to the next block in its sequence. Chained allocation is good since we don't have to have any outside structures dictating positions of memory blocks. However, we must at worst case go through all the linked blocks from the starting position to find the block we want.
+	
+      
+\end{enumerate}
+\end{document}

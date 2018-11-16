@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1475540636 source:d:\cs\project2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"complexNumber.h"
+
+1475557222 d:\cs\project2\include\complexnumber.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1475559172 source:d:\cs\project2\src\complexnumber.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"complexNumber.h"
+
+1475558888 source:e:\cs\project2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"complexNumber.h"
+
+1475557222 e:\cs\project2\include\complexnumber.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1475557150 source:e:\cs\project2\src\complexnumber.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"complexNumber.h"
+

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Members")
 public class Members implements Serializable {
 
     @Column(name = "fname")
@@ -129,4 +130,51 @@ public class Members implements Serializable {
                 '}';
     }
 
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setZip(Integer zip) {
+        this.zip = zip;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCreditcardtype(String creditcardtype) {
+        this.creditcardtype = creditcardtype;
+    }
+
+    public void setCreditcardnumber(String creditcardnumber) {
+        this.creditcardnumber = creditcardnumber;
+    }
 }

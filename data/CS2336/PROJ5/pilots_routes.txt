@@ -1,0 +1,23 @@
+Matthew "Tamiyo" McMillian 22 14 1
+Seong "TastyMidget" Wang 28 35 22
+Jason Smith 1 35 22 28
+Jordan "nOthing" Gilbert 14 22 35 28
+Mike "shroud" Grzesiek 35 28 22 14 1
+BAD une 35 28 1
+BAD duo 7 38 930
+BAD aed 14 22 28 35 28 81 3
+BAD fur 35 28 1
+BAD five 7 38 930
+BAD zoo 14 22 28 35 28 81 3
+BAD yoo 35 28 1
+BAD lol 7 38 930
+BAD csgo 14 22 28 35 28 81 3
+BAD tey 35 28 1
+BAD ley 7 38 930
+BAD wow 14 22 28 35 28 81 3
+BAD doge 35 28 1
+BAD tewr 7 38 930
+BAD dasd 14 22 28 35 28 81 3
+BAD bae 35 28 1
+BAD lop 7 38 930
+BAD bop 14 22 28 35 28 81 3

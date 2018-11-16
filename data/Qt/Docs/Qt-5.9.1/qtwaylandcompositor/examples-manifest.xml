@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instructionals module="QtWaylandCompositor">
+    <examples>
+        <example name="Qt Wayland Compositor Examples - Multi Output" docUrl="qthelp://org.qtproject.qtwaylandcompositor.591/qtwaylandcompositor/qtwaylandcompositor-multi-output-example.html" projectPath="wayland/multi-output/multi-output.pro">
+            <description><![CDATA[Multi Output is an example that demonstrates a compositor with multiple outputs.]]></description>
+            <tags>compositor,multi,output,wayland</tags>
+            <fileToOpen>wayland/multi-output/main.cpp</fileToOpen>
+            <fileToOpen mainFile="true">wayland/multi-output/qml/main.qml</fileToOpen>
+        </example>
+        <example name="Qt Wayland Compositor Examples - Pure QML" docUrl="qthelp://org.qtproject.qtwaylandcompositor.591/qtwaylandcompositor/qtwaylandcompositor-pure-qml-example.html" projectPath="wayland/pure-qml/pure-qml.pro">
+            <description><![CDATA[Pure QML is an example that demonstrates how to write a Wayland compositor in pure QML.]]></description>
+            <tags>compositor,pure,qml,wayland</tags>
+            <fileToOpen>wayland/pure-qml/main.cpp</fileToOpen>
+            <fileToOpen mainFile="true">wayland/pure-qml/qml/main.qml</fileToOpen>
+        </example>
+        <example name="Qt Wayland Compositor Examples - QWindow Compositor" docUrl="qthelp://org.qtproject.qtwaylandcompositor.591/qtwaylandcompositor/qtwaylandcompositor-qwindow-compositor-example.html" projectPath="wayland/qwindow-compositor/qwindow-compositor.pro">
+            <description><![CDATA[QWindow Compositor is an example that demonstrates how to write a Wayland compositor in C++.]]></description>
+            <tags>compositor,qwindow,wayland</tags>
+            <fileToOpen mainFile="true">wayland/qwindow-compositor/main.cpp</fileToOpen>
+        </example>
+    </examples>
+</instructionals>

@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1475103228 source:d:\cs\inclass6\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BasicShape.h"
+	"Circle.h"
+	"Rectangle.h"
+
+1475101642 source:d:\cs\inclass6\src\basicshape.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BasicShape.h"
+
+1475102394 d:\cs\inclass6\include\basicshape.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1475103198 source:d:\cs\inclass6\src\circle.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"Circle.h"
+
+1475101866 d:\cs\inclass6\include\circle.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	<BasicShape.h>
+
+1475103142 d:\cs\inclass6\include\rectangle.h
+	"BasicShape.h"
+

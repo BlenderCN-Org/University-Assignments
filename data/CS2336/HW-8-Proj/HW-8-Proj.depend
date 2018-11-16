@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1474430778 source:d:\cs\hw-8-proj\linetype.cpp
+	"lineType.h"
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1474428568 d:\cs\hw-8-proj\linetype.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1474493236 source:d:\cs\hw-8-proj\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"lineType.h"
+

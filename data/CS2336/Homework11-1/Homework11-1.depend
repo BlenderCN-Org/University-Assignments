@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1477462446 source:e:\cs\homework11-1\basenode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+
+1477462288 e:\cs\homework11-1\basenode.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+
+1477462446 source:d:\cs2336\homework11-1\basenode.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+	"BaseNode.h"
+
+1477462288 d:\cs2336\homework11-1\basenode.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<cstdlib>
+	<sstream>
+	<iomanip>
+

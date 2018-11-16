@@ -1,0 +1,13 @@
+import java.util.*;
+import java.io.*;
+import java.awt.*;
+
+
+private int Syndrome;
+
+public class pController(int SyndromeID)
+{
+	Syndrome = SyndromeID;
+}
+
+public static e();

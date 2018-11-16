@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tabto}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{array}% http://ctan.org/pkg/array
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\begin{document}
+
+\title{CS / MATH 4334 : Numerical Analysis\\Homework Assignment 4}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\section*{Theoretical Problems}
+\pagebreak
+
+\begin{enumerate}
+	\item For the 4 points, (-2,0), (-1,2), (1,-3), and (3,1), a) Set up the Lagrange form of the interpolating polynomial. You do not need to simplify the
+polynomial. b) Use Newton’s divided differences to write the Newton form of the interpolating polynomial. c) How many polynomials of degree 2 interpolate these 4 points? Explain. d) How many polynomials of degree 3 interpolate these 4 points? Explain. e) Find a polynomial of degree 100 that interpolates these 4 points. How many polynomials of
+degree 100 interpolate these 4 points? Explain. \\ \\
+
+	\begin{itemize}
+		\item[a.)] 	We have x = $\{-2, 1, 1, 3\}$, y = $\{0,2,-3,1\}$. We can define P(x) = y$_1$L$_1$ + y$_2$L$_2$ + y$_3$L$_3$ + y$_4$L$_4$, where: \\ \\
+		L$_1$ = $\cfrac{(x+1)(x-1)(x-3)}{(-1+2)(1+2)(3+2)}$ \\
+		L$_2$ = $\cfrac{(x+2)(x-1)(x-3)}{(-2+1)(1+1)(3+1)}$ \\
+		L$_3$ = $\cfrac{(x+2)(x+1)(x-3)}{(-1+-2)(-1+-1)(3-1)}$ \\
+		L$_4$ = $\cfrac{(x+2)(x+1)(x-1)}{(-2+-3)(-1+-3)(1-3)}$ \\ \\
+		
+Thus our polynomial P(x) = $0 + 2L_2 + -3L_3 + 1L_4$ = $\frac{1}{40}(-21x^3 +18x^2 +121x + 2)$ \\ 
+	\item[b.)] The table of coefficients is given below: \\
+		{\renewcommand{\arraystretch}{2}%
+	\begin{tabular}{lllll}
+	-2 & 0 & - & - & - \\
+	-1 & 2 & $\frac{2-0}{-1+2}$=2  & -  & -  \\
+	-1 & 3 &$\frac{-3+-2}{2}$=$\frac{-5}{2}$ & $\frac{\frac{-5}{2} - 2}{1+2}$= $\frac{-3}{2}$  & - \\
+	3 & 1 & $\frac{1+3}{3+1}$=2 & $\frac{2+\frac{5}{2}}{3+1}$=$\frac{9}{8}$  & $\frac{\frac{9}{8}+\frac{3}{2}}{5}$ = $\frac{21}{40}$
+\end{tabular}}\quad \\ \\
+Thus our polynomial P$_3$(x) =  $\frac{1}{40}(21x^3 - 18x^2 - 121x -42) + 1$\\
+	\item[c.)] Due to the uniqueness theorem, since we have found a polynomial of degree 3 that interpolates these 4 points, there does not exist and polynomial of degree 2 that interpolates these 3 points.\\
+	\item[d.)] Similarly due to the uniqueness theorem, we have found a polynomial of degree 3 that interpolates these 4 points, thus there exists a single polynomial of degree 1 that interpolates these points.\\
+	\item[e.)] We can find a polynomial of degree 100 defined by $\frac{1}{40}(-21x^3 +18x^2 +121x + 2) + (x+2)(x+1)(x-1)(x-3)x^{96}$. There are an infinitely many polynomials of degree 100 that pass through the 4 points since we can multiple our $x^{100}$ polynomial by any constants and still obtain a polynomial that passes through the 4 points.
+ 	\end{itemize}
+ 	
+ 	\item How many degree 3 polynomials can intersect a given degree 7 polynomial at 8 points? Explain. \\ \\
+ 	According to the uniqueness interpolation theorem, there is only a single polynomial of degree $\leq$ 7 that passes through the 8 points, therefore it is impossible to have both a degree 3 and degree polynomial intersect at 8 points. \\
+ 	
+ 	\item $\#$4(a), p.163, Sauer, 3rd ed. ($\#$4(a), p.156, Sauer, 2nd ed.) Also, find an upper bound on the error for any x-value between 0 and 10. \\
+ 	The error function is given by: f(x) - P$_5$(x) = $\cfrac{(x-0)(x-2)(x-4)(x-6)(x-8)(x-10)}{6!}$f$^6$(c). \\
+ 	Our max of our function $|$f$^6$(c)$|$ = $\cfrac{6!}{(c+5)^7}$, which occurs at c=0 $\in$ [0,10] $\rightarrow$ $|$f$^6$(0)$|$ = $\cfrac{6!}{(5)^7}$
+ 	$|$f(1) - P(1)$|$ = $\cfrac{1}{5^7}$(1-0)(1-2)(1-4)(1-6)(1-8)(1-10) $\approx$ 0.012 \\ \\
+ 	Our max upper bound is given by: $\cfrac{x_n-x_1}{n!}M_n$ = $\cfrac{10-0}{1}*\cfrac{1}{5^7}$ = 0.000128
+ 	
+ 	\item Consider the Chebyshev polynomial T$_5$(x). a) Find this polynomial using the recursive definition, starting with T$_0$(x)=1 and T$_1$(x) = x.  List the Chebyshev interpolation nodes on [-4,2] for n = 5. c.) Find an upper bound on the absolute value of the interpolation error if f(x)=e$^-3x$ is being interpolated on these nodes. \\
+	\begin{itemize}
+		\item[a.)] 	Recursively...\\
+ 	T$_2$(x) = 2x(x)-1 =2x$^2$-1 \\
+ 	T$_3$(x) = 2x(2x$^2$-1) - x = 4x$^3$-3x \\
+ 	T$_4$(x) = 2x(4x$^3$-3x) - 2x$^2$-1 = 8x$^4$-8x$^2$+1 \\
+ 	T$_t$(x) = 2x(8x$^4$-8x$^2$ +1) - 4x$^3$-3x = 16x$^6$-20x$^3$+5x \\
+ 		\item[b.)] Our nodes are given by x$_i$ = $\cfrac{b+a}{2} + \cfrac{b-a}{2}cos(\cfrac{(2i - 1)\pi}{2n})$ $\rightarrow$ 3cos($\cfrac{(odd \ \pi)}{2n}$) - 1. \\
+ 		Nodes: 3cos($\frac{\pi}{10}$)-1, 3cos($\frac{3\pi}{10}$)-1, 3cos($\frac{5\pi}{10}$)-1, 3cos($\frac{7\pi}{10}$)-1, 3cos($\frac{9\pi}{10}$)-1 \\
+ 		\item[c.)] Our error is $\leq$ $\cfrac{(\frac{b+a}{2})^5}{n!2^{n-1}} * max(f^5(c))$. We know that the max(f$^6$(c)) on our interval [-4,2] is $|$-243e$^{12}|$ = 39549414, so our error becomes $\cfrac{(\frac{2+4}{2})^5}{5!2^4}39549414$ = 5005472.749. 	\\
+	\end{itemize}
+	
+	\item Compute $\int^1_{-1}$ $\cfrac{[T_n(x)]^2}{\sqrt[2]{1-x^2}}$dx. \\ \\
+	With change of base, we get $\int^\pi_{0}$ $\cfrac{cos^2(n\theta)}{\sqrt[2]{1-cos^2(x)}}(-sin(\theta))d\theta$ \\
+	$-\int^\pi_{0}$ $cos^2(n\theta)d\theta$ $\rightarrow$ $-\int^\pi_{0}$ $\cfrac{1+cos(2n\theta)}{2}d\theta$ $\rightarrow$ $-\frac{1}{2}\int^\pi_{0}$ $1+cos(2n\theta)d\theta$ \\
+	$-\frac{1}{2}\int^\pi_{0}$ $1+cos(2n\theta)d\theta$ = $-\cfrac{1}{2}$[$\pi$] = $\cfrac{-\pi}{2}$	\\
+	
+	\item $\#$8b, p. 184, Sauer, 3rd ed. ($\#$8b, p. 176, Sauer, 2nd ed.) \\ \\
+	Given our points (0,0), (1,1), (2,6) \\
+	$a_1 = y_1 = 0, a_2 = y_2 = 1$ \\
+	$\delta_1$ = x$_2$-x$_1$ = 1, $\delta_2$ = x$_3$-x$_2$ = 1 \\
+	$\Delta_1$ = y$_2$-y$_1$ = 1, $\Delta_2$ = y$_3$-y$_2$ = 5 \\ \\
+	$\begin{bmatrix}
+   1 & 0 & 0 \\
+   1 & 4 & 0 \\
+   0 & 0 & 1 \\
+\end{bmatrix}$ 	$\begin{bmatrix}
+   c_1  \\
+   c_2  \\
+   c_3  \\
+\end{bmatrix}$ = $\begin{bmatrix}
+   0  \\
+   12  \\
+   0  \\
+\end{bmatrix}$ $\rightarrow$ $c_1 = c_3 = 0, c_2 = 3$ \\ \\
+$d_1 = \cfrac{c_2 - c_1}{3\delta_1} = 1$, $d_2 = \cfrac{c_3 - c_2}{3\delta_2} = -1$\\
+$b_1 = \cfrac{\Delta_1}{\delta_1} - \cfrac{\delta_1}{3}(2c_1+c_2) = 0$, $\cfrac{\Delta_2}{\delta_2} - \cfrac{\delta_2}{3}(2c_2+c_3) = 3$. \\ \\
+Our splines are given by... \\
+$S_1(x) = 0 + 0x + 0x^2 + x^3$ \\
+$S_2(x) = 1 + 3x + 3x^3 - x^3$ \\ 
+	
+	\item A cubic spline is defined by [pic]. a) Find a, b, c, and d if there are natural end-conditions. b) Is the spline in part (a) parabolically terminated? Is the spline in part (a) not-a-knot? Explain. \\ \\
+	
+	
+	$S_1(x_i) = S_2(x_i)$ for i=2,...,n-1 $\rightarrow$ $S_1(2) = S_2(2)$. \\
+	$S_1(2) = 1+a-b$, $S_2(2)$ = $1$ $\rightarrow$ $b=a$. \\ \\
+	
+	$S^1_1(x_i) = S^1_2(x_i)$ for i=2,...,n-1 $\rightarrow$ $S^1_1(2) = S^1_2(2)$. \\
+	$S^1_1(2) = a-3b$, $S^1_2(2)$ = c $\rightarrow$ $c = a-3b$. \\ \\
+	
+	$S^2_1(x_i) = S^2_2(x_i)$ for i=2,...,n-1 from natural end conditions. \\
+	$S^2_1(x) = 0$, $S^2_2(x)$ = $\frac{-3}{2} + 6d$ $\rightarrow$ $d = \frac{1}{4}$. \\ 
+	
+	$S^2_1(x_i) = S^2_2(x_i)$ for i=2,...,n-1 $\rightarrow$ $S^2_1(2) = S^2_2(2)$. \\
+	$S^2_1(2) = 0$, $S^2_2(2)$ = $-6b = \frac{-3}{2}$ $\rightarrow$ $b=a=\frac{1}{4}$. \\ \\
+	$c = -2b = \frac{1}{2}$, Therefore $a = \cfrac{1}{4}, b = \cfrac{1}{4}, d = \cfrac{1}{4}, c = \cfrac{-1}{2}$. \\
+	
+	\item How many evenly-spaced knots (nodes), including the endpoints, are needed so that the absolute error between a linear spline and the function f(x)=cos(5x)it approximates on [-3, 4] is less than 10$^{-2}$ for any x. \\ \\
+	The error is given by $|$E$_{n-1}(x)|$ $\leq$ $\cfrac{M_nh^n}{k_n}$ $\rightarrow$ $\cfrac{h^{n+1}}{4(n+1)}M_n$ $\leq$ $10^{-2}$, where $M_n$ = $MAX_{x \in [-3, 4]}(f^n(x))$ \\
+	$M_n$ = $5^n$, so our error is $\cfrac{h^{n+1}}{4(n+1)}5^n$ $\leq$ $10^-2$. Solving for n, we get that we need at least 35 nodes to obtain an error $\leq$ $10^-2$.
+
+
+
+
+\end{enumerate}
+\end{document}

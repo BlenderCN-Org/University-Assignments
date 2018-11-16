@@ -4,255 +4,212 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{tabto}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{mwe}
+\usepackage{tikz}
+\usepackage{tabto}
+\usetikzlibrary{automata,positioning}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \graphicspath{ {./} }
 
 
 \begin{document}
 
-\title{CS4347 : Database SystemsHomework Assignment 4}
+\title{CS4347 : Database Systems\\Homework Assignment 6}
 \author{Matthew McMillianmgm160130@utdallas.edu}
 \maketitle
 
 
 
 \begin{enumerate}
-	\item Repeat Exercise 6.5, but use the AIRLINE database schema of Figure 5.8.
-	\begin{enumerate}
-		\item[a.)] Flight$\_$number has a referential constraint that needs to be checked / monitored when editing the database. Leg$\_$number shares Flight$\_$leg and Leg$\_$instance. Airplane$\_$type$\_$name also shares a referential constraint.
-		\item[b.)] 
-		\begin{lstlisting}[language=sql]
-CREATE TABLE AIRPORT (
-	Airport_code	VARCHAR(10) NOT NULL,
-	Name		VARCHAR(15) NOT NULL,
-	City		VARCHAR(15) NOT NULL,
-	State 		VARCHAR(15) NOT NULL,
-	
-	PRIMARY KEY Airport_code
-);
 
-CREATE TABLE FLIGHT (
-	Flight_number	VARCHAR(10) NOT NULL,
-	Airline		VARCHAR(15) NOT NULL,
-	Weekdays	VARCHAR(15) NOT NULL,
+	\item  Add the operation commit at the end of each of the transactions T1 and T2 in Figure 20.2, and then list all possible schedules for the modified transactions. Determine which of the schedules are recoverable, which are cascadeless, and which are strict. \\ \\
 	
-	PRIMARY KEY Flight_number
-);
 
-CREATE TABLE FLIGHT_LEG (
-	Flight_number		VARCHAR(10) NOT NULL,
-	Leg_number		VARCHAR(10) NOT NULL,
-	Depature_airport_code	VARCHAR(10) NOT NULL,
-	Scheduled_depature_time	DATE NOT NULL,
-	Arrival_airport_code	VARCHAR(15) NOT NULL,
-	Scheduled_arrival_time	DATE NOT NULL,
-	
-	PRIMARY KEY Flight_number, Leg_number,
-	FOREIGN KEY Flight_number REFERENCES FLIGHT
-);
+ 	\begin{center}
+ 		Recoverable Schedules
+ 	\end{center}
+    \begin{minipage}{.5\linewidth}
 
-CREATE TABLE LEG_INSTANCE (
-	Flight_number		VARCHAR(10) NOT NULL,
-	Leg_number		VARCHAR(10) NOT NULL,
-	Date			DATE NOT NULL,
-	Number_of_avaliable_seats NUMBER NOT NULL,
-	Airplane_id		VARCHAR(15) NOT NULL,
-	Depature_airport_code	VARCHAR(10) NOT NULL,
-	Departure_time		DATE	NOT NULL,
-	Arrival_airport_code	VARCHAR(15) NOT NULL,
-	Arrival_time		DATE	NOT NULL,
-	
-	PRIMARY KEY Flight_number, Leg_number, Date,
-	FOREIGN KEY Flight_number REFERENCES FLIGHT,
-	FOREIGN KEY Leg_number REFERENCES FLIGHT_LEG
-);
+      \centering
+       \begin{tabular}{|l|l|}
+\hline
+T1 & T2 \\ \hline
+read\_item(x) &  \\ \hline
+x := x - n &  \\ \hline
+write\_item(x) &  \\ \hline
+read\_item(y) &  \\ \hline
+y := y + n &  \\ \hline
+write\_item(y) &  \\ \hline
+commit; &  \\ \hline
+ & read\_item(x) \\ \hline
+ & x := x + m \\ \hline
+ & write\_item(x) \\ \hline
+ & commit; \\ \hline
+\end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+      
+        \begin{tabular}{|l|l|}
+\hline
+T1 & T2 \\ \hline
+read\_item(x) &  \\ \hline
+x := x - n &  \\ \hline
+write\_item(x) &  \\ \hline
+read\_item(y) &  \\ \hline
+ & read\_item(x) \\ \hline
+y := y + n &  \\ \hline
+write\_item(y) &  \\ \hline
+commit; &  \\ \hline
+ & x := x + m \\ \hline
+ & write\_item(x) \\ \hline
+ & commit; \\ \hline
+\end{tabular}
+    \end{minipage} 
 
-CREATE TABLE FARE (
-	Flight_number		VARCHAR(10) NOT NULL,
-	Fare_code		VARCHAR(15) NOT NULL,
-	Amount			NUMBER NOT NULL,
-	Restrictions		VARCHAR(15) NOT NULL,
 	
-	PRIMARY KEY Flight_number, Fare_code,
-	FOREIGN KEY Flight_number REFERENCES FLIGHT
-);
-
-CREATE TABLE AIRPLANE_TYPE (
-	Airplane_type_name	VARCHAR(10) NOT NULL,
-	Max_Seats		NUMBER NOT NULL,
-	Company			VARCHAR(15) NOT NULL,
-	
-	
-	PRIMARY KEY Airplane_type_name
-);
-
-CREATE TABLE CAN_LAND (
-	Airplane_type_name	VARCHAR(10) NOT NULL,
-	Airport_code		VARCHAR(10) NOT NULL,
-	
-	
-	PRIMARY KEY Airplane_type_name,
-	FOREIGN KEY Airplane_type_name REFERENCES AIRPLANE_TYPE
-);
-
-CREATE TABLE AIRPLANE (
-	Airplane_id		VARCHAR(10) NOT NULL,
-	Total_number_of_seats	NUMBER NOT NULL,
-	
-	
-	PRIMARY KEY Airplane_id
-);
-
-CREATE TABLE SEAT_RESERVATION (
-	Flight_number		VARCHAR(10) NOT NULL,
-	Leg_number		VARCHAR(10) NOT NULL,
-	Date			DATE NOT NULL,
-	Seat_number		NUMBER	NOT NULL,
-	Customer_name		VARCHAR(15) NOT NULL,
-	Customer_phone		VARCHAR(15) NOT NULL
-	
-	
-	PRIMARY KEY Flight_number, Leg_number, Date, Seat_number
-);
-		\end{lstlisting}
-	\end{enumerate}
 	\pagebreak
-	\item Write appropriate SQL DDL statements for declaring the LIBRARY relational database schema of Figure 6.6. Specify the keys and referential triggered actions.
-		\begin{lstlisting}[language=sql]
-CREATE TABLE BOOK (
-	Book_id		VARCHAR(15) NOT NULL,
-	Title		VARCHAR(30) NOT NULL,
-	Publisher_name	VARCHAR(15) NOT NULL,
-	
-	PRIMARY KEY Book_id,
-	FOREIGN KEY Publisher_name REFERENCES PUBLISHER
-);
+\begin{center}
+ 		Cascadless Schedules
+ \end{center}
+    \begin{minipage}{.5\linewidth}
+  
+      \centering
+       \begin{tabular}{|l|l|}
+\hline
+T1 & T2 \\ \hline
+read\_item(x) &  \\ \hline
+x := x - n &  \\ \hline
+write\_item(x) &  \\ \hline
+read\_item(y) &  \\ \hline
+y := y + n &  \\ \hline
+write\_item(y) &  \\ \hline
+commit; &  \\ \hline
+ & read\_item(x) \\ \hline
+ & x := x + m \\ \hline
+ & write\_item(x) \\ \hline
+ & commit; \\ \hline
+\end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
 
-CREATE TABLE BOOK_AUTHORS (
-	Book_id		VARCHAR(15) NOT NULL,
-	Author_name	VARCHAR(15) NOT NULL,
-	
-	PRIMARY KEY Book_id, Author_name,
-	FOREIGN KEY Book_id REFERENCES BOOK
-);
+\begin{tabular}{|l|l|}
+\hline
+T1 & T2 \\ \hline
+ & read\_item(x) \\ \hline
+ & x := x + m \\ \hline
+ & write\_item(x) \\ \hline
+ & commit; \\ \hline
+read\_item(x) &  \\ \hline
+x := x - n &  \\ \hline
+write\_item(x) &  \\ \hline
+read\_item(y) &  \\ \hline
+y := y + n &  \\ \hline
+write\_item(y) &  \\ \hline
+commit; &  \\ \hline
+\end{tabular}
+    \end{minipage} 
 
-CREATE TABLE PUBLISHER (
-	Name		VARCHAR(15) NOT NULL,
-	Address		VARCHAR(15) NOT NULL,
-	Phone		VARCHAR(10) NOT NULL,
-	
-	PRIMARY KEY Name
-);
 
-CREATE TABLE BOOK_COPIES(
-	Book_id		VARCHAR(15) NOT NULL,
-	Branch_id	VARCHAR(15) NOT NULL,
-	No_of_copies	VARCHAR(15) NOT NULL,
-	
-	PRIMARY KEY Book_id, Branch_id,
-	FOREIGN KEY Book_id REFERENCES BOOK,
-	FOREIGN KEY Branch_id REFERENCES LIBRARY_BRANCH
-);
+\begin{center}
+ 		Strict Schedules
+ \end{center}
+    \begin{minipage}{.5\linewidth}
+  
+      \centering
+       \begin{tabular}{|l|l|}
+\hline
+T1 & T2 \\ \hline
+read\_item(x) &  \\ \hline
+x := x - n &  \\ \hline
+write\_item(x) &  \\ \hline
+read\_item(y) &  \\ \hline
+y := y + n &  \\ \hline
+write\_item(y) &  \\ \hline
+commit; &  \\ \hline
+ & read\_item(x) \\ \hline
+ & x := x + m \\ \hline
+ & write\_item(x) \\ \hline
+ & commit; \\ \hline
+\end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
 
-CREATE TABLE BOOK_LOANS (
-	Book_id		VARCHAR(15) NOT NULL,
-	Branch_id	VARCHAR(15) NOT NULL,
-	Card_no		VARCHAR(15) NOT NULL,
-	Date_out	DATE 	NOT NULL,
-	Due_out		DATE 	NOT NULL,
-	
-	PRMIMARY KEY Book_id, Branch_id,
-	FOREIGN KEY Book_id REFERENCES BOOK,
-	FOREIGN KEY Branch_id REFERENCES LIBRARY_BRANCH,
-	FOREIGN KEY Card_no REFERENCES BORROWER
-);
+\begin{tabular}{|l|l|}
+\hline
+T1 & T2 \\ \hline
+ & read\_item(x) \\ \hline
+ & x := x + m \\ \hline
+ & write\_item(x) \\ \hline
+ & commit; \\ \hline
+read\_item(x) &  \\ \hline
+x := x - n &  \\ \hline
+write\_item(x) &  \\ \hline
+read\_item(y) &  \\ \hline
+y := y + n &  \\ \hline
+write\_item(y) &  \\ \hline
+commit; &  \\ \hline
+\end{tabular}
+    \end{minipage} 
+\\ \\ \\
+Interestingly enough, for this example we can use the same cascading schedule to define our strict schedule. We could vary if it we had a commit before the read$\_$item(y) part. \\ 
 
-CREATE TABLE LIBRARY_BRANCH(
-	Branch_id	VARCHAR(15) NOT NULL,
-	Branch_name	VARCHAR(15) NOT NULL,
-	Address		VARCHAR(15) NOT NULL,
+	\item  List all possible schedules for transactions T1 and T2 in Figure 20.2, and determine which are conflict serializable (correct) and which are not. \\ \\
+	In the schedules listed above, the cascading and strict schedules are conflict equivalent. The recoverable schedules are conflict equivalent to themselves, however in general the recoverable and cascadeless solutions are not conflict equivalent to the recoverable schedules.
+	\pagebreak
+	\item Consider the three transactions T1, T2, and T3, and the schedules S1 and S2 given below. Draw the serializability (precedence) graphs for S1 and S2, and state whether each schedule is serializable or not. If a schedule is serializable, write down the equivalent serial schedule(s). \\ 
 	
-	PRIMARY KEY Branch_id
-);
+	\begin{center}
+ 		Precedence Graphs for S1 and S2 \\
+ \end{center}
+    \begin{minipage}{.5\linewidth}
+  
+      \centering
+\begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto] 
+   \node[state] (T1)   {$T1$}; 
+   \node[state] (T2) [below left=of T1] {$T2$}; 
+   \node[state] (T3) [below right=of T1] {$T3$}; 
+    \path[->] 
+    (T1) edge  node {Z} (T2)
+    (T2) edge [bend left=10, above] node {Y} (T3)          
+    (T3) edge [bend left=10, below]  node {Y} (T2) 
+          edge node {X} (T1);
+\end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
 
-CREATE TABLE BORROWER (
-	Card_no		VARCHAR(15) NOT NULL,
-	Name		VARCHAR(15) NOT NULL,
-	Address 	VARCHAR(20) NOT NULL,
-	Phone		VARCHAR(10) NOT NULL
+
+\begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto] 
+   \node[state] (T1)   {$T1$}; 
+   \node[state] (T2) [below left=of T1] {$T2$}; 
+   \node[state] (T3) [below right=of T1] {$T3$}; 
+    \path[->] 
+    (T1) edge  node {Z} (T2)
+    (T2) edge [bend left=10, above] node {Y} (T3)          
+    (T3) edge [bend left=10, below]  node {Y} (T2) 
+          edge node {X} (T1);
+\end{tikzpicture}
+    \end{minipage} 
+\\ \\ \\
+Both of the precedence graphs are the same. We can conclude that since there is a cycle between two nodes that neither processes are serializable. \\
 	
-	PRIMARY KEY Card_no
-);
-		\end{lstlisting}
-		\pagebreak	
+
+	\item  Consider schedules S3, S4, and S5 below. Determine whether each schedule is strict, cascadeless, recoverable, or nonrecoverable. (Determine the strictest recoverability condition that each schedule satisfies.)
+	\begin{itemize}
+		\item A recoverable schedule is one where if a transaction reads an item previously written by another transaction, the commit operation must occur for the first transaction first. This is true of the first sequence. w3(y) happens before r2(y), however T3 commits before T2 so this makes this a recoverable solution.
+		\item This is a non-recoverable schedule. It is not cascadeless since no items are read only after committed transactions, items do not follow a strict schedule since a commit doesn't occur before other reads,, and it is not recoverable since nothing reads after write operations.
+			\item This is a non-recoverable schedule. It is not cascadeless since no items are read only after committed transactions, items do not follow a strict schedule since a commit doesn't occur before other reads, and it is not recoverable since nothing reads after write operations.
+	\end{itemize}
+
 	
-	\item How can the key and foreign key constraints be enforced by the DBMS? Is the enforcement technique you suggest difficult to implement? Can the constraint checks be executed efficiently when updates are applied to the database? \\ \\
-	The key constraints can be enforced by adding triggers onto each foreign and primary key. This type of technique is not difficult to implement since when a constraint is violated an error is thrown, however it would require the person who is using and DML queries to know how to fix their query. When updates are applied to the database, as long as all the constraints are not violated then there should not be any problems to efficiently update the database.\\
-	
-	\item Specify the following queries in SQL on the database schema of Figure 1.2
-	\begin{enumerate}
-		\item[a.)] Retrieve the names of all senior students majoring in 'COSC' (Computer Science)
-		\begin{lstlisting}[language=sql]
-SELECT S.Name FROM Student S WHERE S.Major=COSC AND S.Class=4; 
-		\end{lstlisting}
-		\item[b.)] Retrieve the names of all courses taught by professor King in 85 and 86.
-		\begin{lstlisting}[language=sql]
-SELECT C.Course_name FROM COURSE C, SECTION S WHERE C.Course_number 
-= S.Course_number AND (S.Year=85 OR S.Year=86);
-		\end{lstlisting}
-		\item[c.)] For each section taught by professor King, retrieve the course number, semester, year, and number of students who took the section.
-		\begin{lstlisting}[language=sql]
-SELECT S.Course_number, S.Semester, S.Year, GR.Student_number 
- FROM SECTION S, GRADE_REPORT GR WHERE S.Instructor='King' AND
- GR.Section_identifier=S.Section_identifier;
-		\end{lstlisting}
-		\item[d.)] Retrieve the name and transcript of each senior student (Class=5) majoring in COSC. Transcript includes course name, course number, credit hours, semester, year, and grade for each course completed by the student.
-		\begin{lstlisting}[language=sql]
-SELECT C.Course_name, C.Course_number, C.Credit_hours, S.Semester, 
-S.Year, GR.Grade FROM STUDENT ST, COURSE C, SEMESTER S, 
-GRADE_REPORT GR WHERE ST.Class=5 AND 
-ST.Student_number=GR.Student_number AND 
-GR.Section_identifier=S.Section_identifier;
-		\end{lstlisting}
-		\item[e.)] Retrieve the names and major departments of all straight A students (students who have a grade of A in all their courses)
-		\begin{lstlisting}[language=sql]
-SELECT S.Name S.Major FROM STUDENT ST, GRADE_REPORT 
-GR WHERE NOT EXISTS ( SELECT * FROM GRADE_REPORT
-WHERE GR.Student_number= ST.Student_number AND NOT(Grade='A'))
-		\end{lstlisting}
-		\item[f.)] Retrieve the names and major departments of all students who do not have any grade of A in any of their courses.		
-		\begin{lstlisting}[language=sql]
-SELECT S.Name S.Major FROM STUDENT ST, GRADE_REPORT 
-GR WHERE NOT EXISTS ( SELECT * FROM GRADE_REPORT
-WHERE GR.Student_number= ST.Student_number AND (Grade='A'))
-		\end{lstlisting}		
-	\end{enumerate}		
-	
-	\item Write SQL update statements to do the following on the database schema shown in Figure 1.2.
-	\begin{enumerate}
-		\item Insert a new student, $<$‘Johnson’, 25, 1, ‘Math’$>$, in the database.
-		\begin{lstlisting}[language=sql]
-INSERT INTO STUDENT (Name, Student_number, Class, Major) 
-VALUES ('Johnson', 25, 1, 'Math');
-		\end{lstlisting}	
-		\item Change the class of student ‘Smith’ to 2.
-		\begin{lstlisting}[language=sql]
-UPDATE STUDENTS SET Class=2 WHERE Name='Smith';
-		\end{lstlisting}	
-		\item Insert a new course, $<$‘Knowledge Engineering’, ‘cs4390’, 3, ‘cs’$>$.
-		\begin{lstlisting}[language=sql]
-INSERT INTO COURSE (Course_name, Course_number, Credit_hours, 
-Department) VALUES ('Knowledge Engineering', 'CS4390', 3, 'CS');
-		\end{lstlisting}	
-		\item Delete the record for the student whose name is ‘Smith’ and whose student number is 17.
-		\begin{lstlisting}[language=sql]
-DELETE FROM STUDENT WHERE Name='Smith' AND Student_number=17;
-		\end{lstlisting}	
-	\end{enumerate}
-	
-	\item Write SQL statements to create a table EMPLOYEE$\_$BACKUP to back up the EMPLOYEE table shown in Figure 5.6.
-			\begin{lstlisting}[language=sql]
-CREATE TABLE EMPLOYEE_BACKUP AS SELECT * FROM EMPLOYEE;
-		\end{lstlisting}
 
 \end{enumerate}
 

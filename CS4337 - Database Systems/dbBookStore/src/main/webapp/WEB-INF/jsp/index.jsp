@@ -18,7 +18,7 @@
         <div class="topnav">
             <a class="active" href="index">Home</a>
             <div class="topnav-right">
-                <a href="#account">Account</a>
+                <a href="order">Orders</a>
                 <a href="cart">Cart</a>
                 <a href="LoginAcceptanceServlet?logout-button">Logout</a>
             </div>
@@ -78,7 +78,7 @@
             </table>
         </form>
     </div>
-    <div class="shopping-list">
+    <div id="shopping-list">
         <table id="shopping-table">
             <tr id="title-row">
                 <td>Isbn</td>

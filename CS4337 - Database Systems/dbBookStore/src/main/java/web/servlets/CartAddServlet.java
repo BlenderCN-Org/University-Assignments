@@ -35,11 +35,16 @@ public class CartAddServlet extends HttpServlet {
             String isbn = params.get(2);
             Integer qty = 1;
 
-            Cart c = cartRepository.getCartByIsbn(isbn);
+            try {
+                Cart c = cartRepository.getCartByIsbn(isbn);
 
-            if (c != null) {
-                qty = c.getQty() + 1;
-                cartRepository.deleteById(isbn);
+
+                if (c != null) {
+                    qty = c.getQty() + 1;
+                    cartRepository.deleteById(isbn);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
             cartRepository.save(new Cart(userid, isbn, qty));
