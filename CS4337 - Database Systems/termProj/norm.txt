@@ -1,0 +1,53 @@
+Product
+  ProductId -> ProductType, ListPrice, Size, Weight, Style
+
+
+
+Sale
+ SaleId -> ProductId, SaleTime, CustomerId, SalesmanId
+ SalesmanId -> SiteId
+
+
+Vendor
+  VendorId -> Name, Address, AccountNumber, CreditRating, WebURL
+
+
+MarketingSite
+  SiteId -> SiteName, SiteLocation
+
+
+Part
+  PartId -> VendorId
+
+
+Person
+  PersonId -> Name, Age, Gender, Address, Phone
+
+
+Customer
+  CustomerId -> PreferredSalesmanId
+
+
+Employee
+  EmployeeId  -> Rank, Title, SupervisorId, SiteId
+
+
+PotentialEmployee
+  PotentialEmployeeId
+
+
+Department
+  DepartmentId -> DepartmentName
+
+Job
+  JobId -> JobDescription, PostedDate, DepartmentId
+
+
+Salary
+  EmployeeId -> TransactionNumber
+  TransactionNumber -> PayDate, Amount
+
+
+Interview
+  InterviewId -> InterviewerId, ApplicantId, JobId, InterviewTime, Grade
+  InterviewTime -> RoundNumber

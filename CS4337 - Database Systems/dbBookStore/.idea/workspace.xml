@@ -2,58 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a79ec7a6-4437-4b0b-951e-4540dbcbc4c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/classes/CartItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/controllers/MemberOrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/controllers/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/servlets/ActiveOrdersServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/servlets/CartRemoveServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/servlets/CartServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/servlets/OrderDetailsServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web/servlets/SubmitOrderServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/checkout.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/orders.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/hidden.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 4/p1.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4334 - Numerical Analysis/Homework 4/p1.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175/storage_v2/_src_/schema/ADMIN.Lwu0Aw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175/storage_v2/_src_/schema/ADMIN.Lwu0Aw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/e.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/over.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/overflow.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/pic_backup.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/re.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/re_backup.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/y.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/members.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/members.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springdb/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springdb/CartRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springdb/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springdb/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/servlets/CartAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/servlets/CartAddServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account-creation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account-creation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/orders.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/Books.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/Books.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/Members.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/Members.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/Orders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springdb/CartRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springdb/CartRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springdb/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springdb/OrdersRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/controllers/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/controllers/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/servlets/CartAddServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/servlets/CartAddServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw4.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw4.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../hw4.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../hw4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject/out/production/HotelProject/Classes/Bellhop.java.rej" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject/out/production/HotelProject/interfaces/HotelHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/HotelProject/src/Classes/Bellhop.java.rej" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/orders.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/Proj3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/Proj3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/linklibs.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/objects.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/objects1.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/feature_tests.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/feature_tests.cxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/Proj3.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3/t.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,15 +88,15 @@
     <session id="-2076470568">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="5" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -101,9 +109,9 @@
           <entry key="class" value="2" />
           <entry key="css" value="35" />
           <entry key="csv" value="3" />
-          <entry key="java" value="121" />
+          <entry key="java" value="122" />
           <entry key="js" value="4" />
-          <entry key="jsp" value="57" />
+          <entry key="jsp" value="60" />
           <entry key="properties" value="2" />
           <entry key="rnc" value="1" />
           <entry key="sql" value="1" />
@@ -116,8 +124,8 @@
           <entry key="CLASS" value="2" />
           <entry key="CSS" value="35" />
           <entry key="Database Element" value="24" />
-          <entry key="JAVA" value="121" />
-          <entry key="JSP" value="57" />
+          <entry key="JAVA" value="122" />
+          <entry key="JSP" value="60" />
           <entry key="JavaScript" value="4" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="2" />
@@ -129,20 +137,20 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="51" />
-          <entry key="css" value="1496" />
+          <entry key="css" value="1517" />
           <entry key="csv" value="1" />
-          <entry key="java" value="5087" />
+          <entry key="java" value="5095" />
           <entry key="js" value="93" />
-          <entry key="jsp" value="3064" />
+          <entry key="jsp" value="3082" />
           <entry key="properties" value="1" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1496" />
-          <entry key="JAVA" value="5087" />
-          <entry key="JSP" value="3064" />
+          <entry key="CSS" value="1517" />
+          <entry key="JAVA" value="5095" />
+          <entry key="JSP" value="3082" />
           <entry key="JavaScript" value="93" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="1" />
@@ -156,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+            <state relative-caret-position="121">
+              <caret line="59" column="41" lean-forward="true" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -165,8 +173,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-680">
-              <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            <state relative-caret-position="187">
+              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/IndexServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -174,8 +191,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/login.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="460">
+              <caret line="126" column="18" lean-forward="true" selection-start-line="111" selection-start-column="4" selection-end-line="126" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -183,17 +200,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+            <state relative-caret-position="325">
+              <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/orders.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+            <state relative-caret-position="476">
+              <caret line="169" column="27" lean-forward="true" selection-start-line="169" selection-start-column="27" selection-end-line="169" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -228,9 +263,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>aname</find>
-      <find>addtocart</find>
-      <find>Lets</find>
       <find>servlet</find>
       <find>shopping-table</find>
       <find>shopping-l</find>
@@ -258,6 +290,9 @@
       <find>wrapper</find>
       <find>input</find>
       <find>panel</find>
+      <find>login</find>
+      <find>reg</find>
+      <find>register</find>
     </findStrings>
     <dirStrings>
       <dir>D:\Documents\University-Assignments\CS4337 - Database Systems\dbBookStore\src\main\webapp\WEB-INF\jsp</dir>
@@ -273,12 +308,10 @@
         <option value="$PROJECT_DIR$/src/main/java/springdb/BooksRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/OptionsServlet.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/account-creation.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/login.css" />
         <option value="$PROJECT_DIR$/src/main/java/db/Cart.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/CartAddServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/CartController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/index.css" />
-        <option value="$PROJECT_DIR$/src/main/java/web/servlets/IndexServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/classes/CartItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/CartServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/CartRemoveServlet.java" />
@@ -293,18 +326,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/css/cart.css" />
         <option value="$PROJECT_DIR$/src/main/java/springdb/CartRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account-creation.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/OrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/MemberOrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/springdb/OrdersRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/ActiveOrdersServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/SubmitOrderServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/orders.css" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/login.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/orders.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/web/servlets/IndexServlet.java" />
       </list>
     </option>
   </component>
@@ -344,6 +379,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -498,8 +535,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -511,7 +546,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Documents/University-Assignments/CS4337 - Database Systems/dbBookStore/src/main/webapp/WEB-INF/jsp/index.jsp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542091757807" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543004189306" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -578,17 +613,22 @@
       <workItem from="1542084657197" duration="1343000" />
       <workItem from="1542131509739" duration="625000" />
       <workItem from="1542148174829" duration="2746000" />
+      <workItem from="1542402828853" duration="23000" />
+      <workItem from="1542488610581" duration="124000" />
+      <workItem from="1542499123054" duration="413000" />
+      <workItem from="1542515238895" duration="607000" />
+      <workItem from="1543003696698" duration="360000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61263000" />
+    <option name="totallyTimeSpent" value="62790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19989339" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20202559" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -598,7 +638,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32952183" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32952183" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -764,13 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/IndexServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="32" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -799,13 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/MemberOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -830,13 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="36" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -903,27 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -938,17 +936,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+        <state relative-caret-position="121">
+          <caret line="59" column="41" lean-forward="true" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="126" column="18" lean-forward="true" selection-start-line="111" selection-start-column="4" selection-end-line="126" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/orders.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        <state relative-caret-position="476">
+          <caret line="169" column="27" lean-forward="true" selection-start-line="169" selection-start-column="27" selection-end-line="169" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checkout.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/IndexServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>

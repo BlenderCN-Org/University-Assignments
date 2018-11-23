@@ -18,6 +18,7 @@
         <div class="topnav">
             <a class="active" href="index">Home</a>
             <div class="topnav-right">
+                <a href="profile">Profile</a>
                 <a href="order">Orders</a>
                 <a href="cart">Cart</a>
                 <a href="LoginAcceptanceServlet?logout-button">Logout</a>

@@ -1,0 +1,58 @@
+Project Questions
+  · Can you think 5 more rules (other than the one explicitly described above) that are likely to be used in a company.
+    - Departments would have teams of employees. In leu of this, employees would also belong to teams.
+    - As well as marketing sites, there could be offices that different (and sometimes the same departments) and employees
+      would work at, and it might be useful to keep track of this information.
+    - As we've seen in the textbook, for insurance reasons it may be beneficial to keep track of employees dependents.
+    - As we've seen in the textbook, teams or groups of employees have projects to work on. Adding a project entity to
+      keep track of the work done by employees would be beneficial.
+    - If we have projects, we would need a relation for a department to control a project (since it has to be assigned somewhere).
+
+  · Is the ability to model super-class/subclass relationships likely to be important in such an environment? Why or why not?
+    - It is important to model this superclass / subclass relationship. In this environment, we have many different types of people
+      that we can interact with at the company. These people also have differing attributes to them. For example, we would not want
+      a customer to have a salary. More generally, we don't want or care to keep track of a customers information such as their name,
+      sex, birth date, ... since it would be useless information. Having the ability to categorize these types of potential people
+      can make it easy to store data efficiently and not overpopulate tables.
+
+  · Justify using a Relational DBMS like Oracle for this project.
+    - In a company it is important to have consistent information. Especially in an enterprise environment, data is flowing in and out
+      at rapid speeds. Because of this we need a database structure that supports atomic operations (CRUD operations) so that we can
+      preserve the integrity of our fast-paced data. Another thing that a company structure has is a variety of data. Since almost all
+      the entities in our database are related in some way, it may be useful to perform joins to get specific subsets of data. In a
+      Non-Relational DBMS joins are nonexistent. To even simulate what a join can do, you would have to perform multiple queries which
+      can be very inefficient. Due to our atomicity and relational constraints listed above, it is safe to say that in this scenario a
+      Relational DBMS can be used to store our data.
+
+
+Project Exercises
+  I. Draw an EER to accurately represent this set of requirement. This will be your Conceptual
+     Design. Clearly specify any assumption that you are making. You can use any tools (software) to
+     draw the EER. You don’t need describe the value constraints of the attributions in the EER
+     diagram. (25%)
+      - <Done>
+
+  II. Use a relational DBMS to implement the database. Perform the following steps. (20%)
+    a) Convert your Conceptual model to a Logical model that can be implemented in a
+       relational DBMS like Oracle.
+       <Done>
+
+    b) Convert the EER to a database design. Document your design in Database Schema
+       format like the one we discussed in the class.
+       <Done>
+
+III. Use appropriate naming conventions for all of your tables and attributes. (40%)
+    a) Normalize all of your tables to third normal form. Make any necessary changes to the
+       EER. Explain why these changes needed to be made.
+
+       <Some Questions?>
+       - Employee Rank vs Title: Whats the difference?
+
+
+    b) Draw a dependency diagram for each table
+      <Done>
+
+    c) Write SQL statements to create database, tables and all other structures. Primary
+       keys and foreign keys must be defined appropriately. The quantity constraints of the
+       relation between the entities, which should be described in EER diagram, are not
+       required

@@ -1,0 +1,191 @@
+CREATE TABLE PRODUCT (  
+  ProductId NUMBER(9) NOT NULL,
+  ProductType VARCHAR2(20) NOT NULL,
+  ProductSize NUMBER(9,2) NOT NULL,
+  ListPrice NUMBER(9,2) NOT NULL,
+  Weight NUMBER(9,2) NOT NULL,
+  ProductStyle VARCHAR2(20) NOT NULL,
+  
+  PRIMARY KEY (ProductId)
+);
+--DROP TABLE PRODUCT CASCADE CONSTRAINTS;
+
+CREATE TABLE PERSON (
+  PersonId NUMBER(9) NOT NULL,
+  Name VARCHAR2(40) NOT NULL,
+  Age NUMBER(3) NOT NULL,
+  Gender VARCHAR2(15) NOT NULL,
+  Address VARCHAR2(60) NOT NULL,
+  Phone NUMBER(10) NOT NULL,
+  Email VARCHAR2(30) NOT NULL,
+  
+  PRIMARY KEY (PersonId)
+);
+--DROP TABLE PERSON CASCADE CONSTRAINTS;
+
+CREATE TABLE EMPLOYEE (
+  EmployeeId NUMBER(9) NOT NULL,
+  Rank VARCHAR2(40) NOT NULL,
+  Title VARCHAR2(40) NOT NULL,
+  SupervisorId NUMBER(9),
+  SiteId NUMBER(9) NOT NULL,
+  
+  PRIMARY KEY (EmployeeId)
+);
+--DROP TABLE EMPLOYEE CASCADE CONSTRAINTS;
+
+CREATE TABLE Customer (
+  CustomerId NUMBER(9) NOT NULL,
+  PreferredSalesman NUMBER(9) NOT NULL,  
+  
+  PRIMARY KEY (CustomerId)
+);
+
+CREATE TABLE PotentialEmployee (
+  PotentialEmployeeId NUMBER(9) NOT NULL,
+  
+  PRIMARY KEY (PotentialEmployeeId)
+);
+
+CREATE TABLE Interview (
+  InterviewId NUMBER(9) NOT NULL,
+  InterviewerId NUMBER(9) NOT NULL,
+  ApplicantId NUMBER(9) NOT NULL,
+  JobId NUMBER(9) NOT NULL,
+  
+  PRIMARY KEY (InterviewId)  
+);
+--DROP TABLE Interview CASCADE CONSTRAINTS;
+
+CREATE TABLE Sale (
+  SaleId NUMBER(9) NOT NULL,
+  ProductId NUMBER(9) NOT NULL,
+  CustomerId NUMBER(9) NOT NULL,
+  SalesmanId NUMBER(9) NOT NULL,
+  SaleTime DATE NOT NULL,
+  
+  PRIMARY KEY (SaleId)  
+);
+
+--CREATE TABLE Sale_Site (
+--  SalesmanId NUMBER(9) NOT NULL,
+--  SiteId NUMBER(9) NOT NULL,
+--  
+--  PRIMARY KEY (SalesmanId)  
+--);
+--DROP TABLE SALE_SITE CASCADE CONSTRAINTS;
+
+CREATE TABLE MarketingSite (
+  SiteId NUMBER(9) NOT NULL,
+  SiteName VARCHAR2(20) NOT NULL,
+  SiteLocation VARCHAR2(30) NOT NULL,
+  
+  PRIMARY KEY (SiteId)    
+);
+
+CREATE TABLE Salary (
+  EmployeeId NUMBER(9) NOT NULL,
+  TransactionNumber NUMBER(9) NOT NULL,
+  PayDate DATE NOT NULL,
+  Amount NUMBER(9,2) NOT NULL,
+  
+  CONSTRAINT EMP_TRS_UNI UNIQUE (EmployeeId, TransactionNumber)
+--  PRIMARY KEY (EmployeeId)  
+);
+--DROP TABLE SALARY CASCADE CONSTRAINTS;
+
+--CREATE TABLE Salary_Transaction (
+--  TransactionNumber NUMBER(9) NOT NULL,
+--  PayDate DATE NOT NULL,
+--  Amount NUMBER(9,2) NOT NULL
+--);
+
+--DROP TABLE SALARY_TRANSACTION CASCADE CONSTRAINTS;
+
+CREATE TABLE Vendor (
+  VendorId NUMBER(9) NOT NULL,
+  Name VARCHAR2(30) NOT NULL,
+  Address VARCHAR2(60) NOT NULL,
+  AccountNumber NUMBER(9) NOT NULL,
+  CreditRating NUMBER(6) NOT NULL,
+  WebURL VARCHAR2(30) NOT NULL,  
+  
+  PRIMARY KEY (VendorId)  
+);
+--DROP TABLE VENDOR CASCADE CONSTRAINTS;
+
+CREATE TABLE Job (
+  JobId NUMBER(9) NOT NULL,
+  JobDescription VARCHAR2(60) NOT NULL,
+  PostedDate DATE NOT NULL,
+  DepartmentId NUMBER(9) NOT NULL,
+  
+  PRIMARY KEY (JobId)    
+);
+
+CREATE TABLE Interview_Grade (
+  InterviewID NUMBER(9) NOT NULL,
+  RoundNumber NUMBER(1) NOT NULL,
+  Grade NUMBER(3) NOT NULL,
+  
+  CONSTRAINT INT_GRADE_UNI UNIQUE (InterviewID, RoundNumber)
+--  PRIMARY KEY (InterviewID)    
+);
+--DROP TABLE INTERVIEW_GRADE CASCADE CONSTRAINTS;
+
+
+CREATE TABLE Part (
+  PartId NUMBER(9) NOT NULL,
+  PartName VARCHAR(30) NOT NULL,
+  Price NUMBER(5,2) NOT NULL,
+  VendorId NUMBER(9) NOT NULL,
+  
+  PRIMARY KEY (PartId)   
+);
+--DROP TABLE PART CASCADE CONSTRAINTS;
+
+CREATE TABLE Department (
+  DepartmentId NUMBER(9) NOT NULL,
+  DepartmentName VARCHAR2(30) NOT NULL,
+  
+  PRIMARY KEY (DepartmentId) 
+);
+
+CREATE TABLE Product_Parts (
+  ProductId NUMBER(9) NOT NULL,
+  Quantity NUMBER(9) NOT NULL,
+  PartId NUMBER(9) NOT NULL
+);
+--DROP TABLE PRODUCT_PARTS CASCADE CONSTRAINTS;
+
+ALTER TABLE Employee ADD FOREIGN KEY (EmployeeId) REFERENCES Person(PersonId);
+ALTER TABLE Employee ADD FOREIGN KEY (SiteId) REFERENCES MarketingSite(SiteId);
+
+ALTER TABLE Customer ADD FOREIGN KEY (CustomerId) REFERENCES Person(PersonId);
+ALTER TABLE Customer ADD FOREIGN KEY (PreferredSalesman) REFERENCES Employee(EmployeeId);
+
+ALTER TABLE PotentialEmployee ADD FOREIGN KEY (PotentialEmployeeId) REFERENCES Person(PersonId);
+
+ALTER TABLE Sale ADD FOREIGN KEY (ProductId) REFERENCES Product(ProductId);
+ALTER TABLE Sale ADD FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId);
+ALTER TABLE Sale ADD FOREIGN KEY (SalesmanId) REFERENCES Employee(EmployeeId);
+
+ALTER TABLE Sale_Site ADD FOREIGN KEY (SalesmanId) REFERENCES Employee(EmployeeId);
+ALTER TABLE Sale_Site ADD FOREIGN KEY (SiteId) REFERENCES MarketingSite(SiteId);
+
+ALTER TABLE Salary ADD FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId);
+
+--ALTER TABLE Salary_Transaction ADD FOREIGN KEY (TransactionNumber) REFERENCES Salary(TransactionNumber);
+
+ALTER TABLE Interview ADD FOREIGN KEY (InterviewerId) REFERENCES Employee(EmployeeId);
+ALTER TABLE Interview ADD FOREIGN KEY (ApplicantId) REFERENCES PotentialEmployee(PotentialEmployeeId);
+ALTER TABLE Interview ADD FOREIGN KEY (JobId) REFERENCES Job(JobId);
+
+ALTER TABLE Job ADD FOREIGN KEY (DepartmentId) REFERENCES Department(DepartmentId);
+
+ALTER TABLE Part ADD FOREIGN KEY (VendorID) REFERENCES VENDOR(
+
+ALTER TABLE Interview_Grade ADD FOREIGN KEY (InterviewId) REFERENCES Interview(InterviewId);
+
+ALTER TABLE Product_Parts ADD FOREIGN KEY (ProductId) REFERENCES Product(ProductId);
+ALTER TABLE Product_Parts ADD FOREIGN KEY (PartId) REFERENCES Part(PartId);

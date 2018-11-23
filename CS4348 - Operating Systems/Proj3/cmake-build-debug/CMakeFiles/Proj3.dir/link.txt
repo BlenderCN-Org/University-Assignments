@@ -1,3 +1,0 @@
-"D:\IDES\CLion 2017.3.4\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\Proj3.dir/objects.a
-C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\Proj3.dir/objects.a @CMakeFiles\Proj3.dir\objects1.rsp
-C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\Proj3.dir/objects.a -Wl,--no-whole-archive  -o Proj3.exe -Wl,--out-implib,libProj3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Proj3.dir\linklibs.rsp
