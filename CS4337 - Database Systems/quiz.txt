@@ -1,28 +1,36 @@
 1.
-a) The relation is in 2nd normal form because non-key columns are not dependent on the primary key. The is in 3rd normal form since we have a transitive dependence between book_title and book_type to get listprice, since list_price is a descriptor of book_title and since we are in 2nd normal form.
-
-b) There is no need to normalise this any further
+a) The relation is in 1st normal form. We have a transitive relationship, however some of the 'Y' functional dependencies are not dependent on the 'X' values (as in 'X -> 'Y').
+b) There is no need to normalize this any further
 
 
 2.
-Patient -> doctor
-Doctor -> diagosis
-diagosis -> treat_code
-Treat_code -> charge
+Doctor Number, Patient Number, Date -> Diagnosis
+Diagnosis -> Treat_code
+Treat_code -> Charge
 
-This relation is in 2nd normal form since all non-key elements are dependent on the table's primary key(s)
+This relation is in 2nd normal form since all non-key elements are dependent on the table's primary key(s), since the Patient number depends on which doctor
+they have, and the diagnosis of the patient depends on what the patient has. The charge and Treat code are dependent on the diagnosis. This is not in 3rd
+normal form since a nonkey attribute is defined by another nonkey attribute (Treat_code -> Charge)
 
 
 3.
-ACID properties include Atomicity, Consistency, Isolation, and Durability. Atomicity says that a operation (transaction) must occur completely, or not at all, meaning we cannot have any partial transictions to prevent data corruption. Consistency states that any crud operation is consistient with the rules of the database, that is, a crud operation cannot violate the database conditions. Isolation is another form of mutual exclusion, that is, transactions cannot interfere with eachother otherwise data may get corrupted. Durability means that transactions will persist in the database, that is, a transaction will remain committed (not partially committed) even if a database fails. If a transaction commit fails mid commit, the commit will not fully go through to preserve the data.
+ACID properties include Atomicity, Consistency, Isolation, and Durability. Atomicity says that a operation (transaction) must occur completely, or not at all,
+meaning we cannot have any partial transictions to prevent data corruption. Consistency states that any crud operation is consistient with the rules of the
+database, that is, a crud operation cannot violate the database conditions. Isolation is another form of mutual exclusion, that is, transactions cannot interfere
+with eachother otherwise data may get corrupted. Durability means that transactions will persist in the database, that is, a transaction will remain committed
+(not partially committed) even if a database fails. If a transaction commit fails mid commit, the commit will not fully go through to preserve the data.
 
 
 4.
-A query tree represents a relation algebra expression. Similiar to a parse tree in automata theory, it breaks down an expression and exectures the desired query. The query trees primary purpose (following database rules) attempts to execute the most efficient queries (least amount of operations, calls, joins, etc.)
+A query tree represents a relation algebra expression. Similar to a parse tree in automata theory, it breaks down an expression and executes the desired query.
+The query trees primary purpose (following database rules) attempts to execute the most efficient queries (least amount of operations, calls, joins, etc.)
 
 
 5.
-2 phase locking is a deadlock prevention measure that attempts a no-preemption strategy, that is, no process is ever in a state where it is holding shared resources. There are two parts to this strategy, the growing and shrinking phase. The growing phase allows new locks to be put on data items but does not allow for locks to be replaced. The shrinking phase allows for existing locks to be released by for no new locks to be acquired. This makes sure that if a process is gaining or releasing their locks, that no other process can access it until all their resources are given up.
+2 phase locking is a deadlock prevention measure that attempts a no-preemption strategy, that is, no process is ever in a state where it is holding shared resources.
+There are two parts to this strategy, the growing and shrinking phase. The growing phase allows new locks to be put on data items but does not allow for locks to be replaced.
+The shrinking phase allows for existing locks to be released by for no new locks to be acquired. This makes sure that if a process is gaining or releasing their locks,
+that no other process can access it until all their resources are given up.
 
 
 6.
@@ -72,52 +80,84 @@ grade:
 ssn, grade
 
 relations:
-deptcode-> majordeptcode, minordeptcode, cdept 
+deptcode-> majordeptcode, minordeptcode, cdept
 seccourse -> course
 ssn -> sectionnum
 
 functional dependencies:
-snum -> sname, scaddr, scphone, apaddr, spphone, bdate, sex, class, majordeptdcode, minordeptcode, prog, sssn
-sssn -> sname, scaddr, scphone, apaddr, spphone, bdate, sex, class, majordeptdcode, minordeptcode, prog, snum
-deptname -> deptcode, deptoffice, deptphhone, deptcollege
-deptcode -> deptname, deptoffice, deptphhone, deptcollege
+snum, sssn -> sname, scaddr, scphone, apaddr, spphone, bdate, sex, class, majordeptdcode, minordeptcode, prog
+deptname, deptcode -> deptoffice, deptphhone, deptcollege
 cnum -> cname, cdesc, cdept
 sectionnum, seccourse, year, semester -> instructor
 sectionnum, seccourse, year, semester, ssn -> grade
 
-3rd normal form:
-(draw this out)
-(see http://www.just.edu.jo/~amerb/teaching/1-9-10/cs728/hw1sol.pdf)
+This relation is in 3rd normal form, however there are multiple defining keys that are not primary keys.
 
 9.
-Where (a) and (b) with m=2 and n=2 could be problematic. If the value of x is greater than 90 (since the addition and subtraction of m and n cancel out), then we have a missing commit issue since the thread will exit before writing X. There is not really a change, since even though we are not writing the added value back, we are writing it back before the if statement is called, making our addition useless.
+Where (a) and (b) with m=2 and n=2 could be problematic. If the value of x is greater than 90 (since the addition and subtraction of m and n cancel out),
+then we have a missing commit issue since the thread will exit before writing X. There is not really a change, since even though we are not writing the
+added value back, we are writing it back before the if statement is called, making our addition useless.
 
 10.
-No, in this case it would not make a difference. Since A has not been written yet, only read, the rollback process doesnt not need to change.
+No, in this case it would not make a difference. Since A has not been written yet, only read, the rollback process doesn't not need to change.
 
 11.
-(Haven't learned yet)
+A deferred update strategy doesn't log and write operations until the transaction commits. The log would change since all the write transactions would come after
+the commits, as seen below:
 
-12. 
-A table scan iterates over all the rows of a table instead of using some indexed table. An example is if you are are trying to do a SELECT (elements) from a table, instead of selecting indexes from a page table and getting their exact location the table scan will go through the entire table.
+start_transaction T1
+read_item T1 A
+read_item T1 D
+commit T1
+write_item t1 D 20 25
+checkpoint
+start_transaction T2
+read_item T2 B
+start_transaction T44
+read-item T4 D
+start_transaction T3
+read_item T4 A
+commit T4
+write_item T4 D 25 15
+write_item T4 A 30 20
+read_item T2 D
+
+however, the following operations are ignored...
+write_item T2 D 15 25
+write_item T3 C 30 40
+write_item T2 B 12 18
+
+12.
+A table scan iterates over all the rows of a table instead of using some indexed table. An example is if you are trying to do a SELECT (elements) from a table,
+instead of selecting indexes from a page table and getting their exact location the table scan will go through the entire table.
 
 13.
-Table scans are undeserible because they do unessacary work, that is, they have a large time complexity.
+Table scans are undesirable because they do unneeded work. That is, they have a large time complexity (linear).
 
 14.
 Table scans can be avoided by using a page table, or some other indexing strategy for direct lookup rather than scanning through the entire table
 
 15.
-a.) A schema holds relations
+a.) A schema defines relations
 b.) A relation has attributes
 c.) A relation applies to groups of tuples
 
 16.
-(THIS HAS MISSING RELATIONAL OPERATORS?)
-SELECT PNO FROM (WORKS_ON JOIN (SELECT E.Ssn FROM EMPLOYEE E WHERE E.Lname = 'Smith')
-)
-
-SELECT PNO FROM (( SELECT Dnumber FROM ( SELECT Lname, Dnumber FROM EMPLOYEE E WHERE E.Lname = 'mith' ))) JOIN (SELECT D FROM DEPARTMENT D WHERE D.)
+SELECT PNO
+  FROM ((WORKS_ON) JOIN (SELECT Ssn FROM ( SELECT *
+                           FROM EMPLOYEE E WHERE E.Lname = 'Smith' )))
+                           UNION
+                           (SELECT PNO
+                              FROM ((SELECT Dnumber (SELECT *
+                                       FROM (SELECT Lname, Dnumber
+                                               FROM EMPLOYEE E)
+                                              WHERE Lname = 'Smith')))
+                                              JOIN (SELECT *
+                                                      FROM DEPARTMENT
+                                                     WHERE Ssn=Mgr_ssn))
+                                                     JOIN (SELECT *
+                                                             FROM PROJECT
+                                                            WHERE Dnumber=Dnum)
 
 17.
 DML
@@ -126,49 +166,58 @@ DML
 DDL is the data definition language used to define tables, and other structural elements of the database
 
 19.
-You authorize a user by calling the GRANT keyword, followed by the user and the list of privledges you wish to give them
+You authorize a user by calling the GRANT keyword, followed by the user and the list of privileges you wish to give them. To create a user
+you call CREATE USER [username] IDENTIFIED BY [password].
 
 20.
-One way to remove duplicate elements from SELECT's result set is to apply the unique keyword, which will return only unique rows from the result set.
+One way to remove duplicate elements from SELECT's result set is to apply the distinct keyword, which will return only unique rows from the result set.
 
-
-21. **There is no following?
+21.
+D, the commit operation. When you make a change to the database it does not fully 'change' the database until you execute a commit command.
 
 22.
 a. Primary to Foreign Key
 
 23.
-(MISSING INFO)
+A. Group By. When doing aggregate functions, you need to specify (if you choose to return more than just the aggregate) what subset of data you wish to specify the aggregate function by.
 
 24.
-D is not neccessaraly true, there for it is not true of views
+D is not necessarily true, there for it is not true of views
 
 25.
 The record blocking factor is the amount of records that fit into a block of memory.
 
 26.
-(Not Taught Yet)
+The query tree will try to derive an optimal tree heuristically in hopes to obtain a parsing pattern. Alternatively dynamic programming can be used when searching for multiple attributes
+to save processing time when rescanning for another attribute.
 
 27.
 There are 4 isolation levels, uncommitted read, committed read, repeatable read, and serializable.
-Uncommited read allows for data reading while a commit is taking place. Committed Read states that a read will never occur while uncommitted changes have been made. Repeatable read states that if a read operaton is issues twice with the same query, that both read operations will return the same value. Serializable ensures that if a query is issued again, that no data will no new data / rows will appear. This is mainy used for concurrent operations
+Uncommitted read allows for data reading while a commit is taking place. Committed Read states that
+a read will never occur while uncommitted changes have been made. Repeatable read states that if a
+read operation is issues twice with the same query, that both read operations will return the same value.
+Serializable ensures that if a query is issued again, that no data will no new data / rows will appear.
+This is mainly used for concurrent operations.
 
 
 28.
-Since 2 phase locking takes a no preemption strategy, this on its own states that processes cannot hold shared resources. If all processes are under this strategy, it means that no deadlocks can occur, which implies that all transations can run concurrently. i.e. all their transactions can complete correctly without fear of deadlock.
+Since 2 phase locking takes a no preemption strategy, this on its own states that processes cannot hold shared resources. If all processes are under this strategy,
+it means that no deadlocks can occur, which implies that all transactions can run concurrently. i.e. all their transactions can complete correctly without fear of deadlock.
 
 
 29.
-
+File layout (and file allocation) is typically handled by the Operating System, i.e. these operations are done at a physical database level.
 
 30.
-Typically to get into 2nd and 3rd normal form, you must go through a process. First, you must convert a table into first normal form before converting to 2nd or 3rd. Once in 2nd normal form, then you can convert to 3rd normal form.
+Typically to get into 2nd and 3rd normal form, you must go through a normalization process. First, you must convert a table into first normal
+form before converting to 2nd or 3rd. Once in 2nd normal form, then you can convert to 3rd normal form, etc. This process continues for each normal
+form you convert to.
 
 31.
-no, it is not true that all functional dependencies are symmetric
+No, it is not true that all functional dependencies are symmetric.  A -> B does not imply B -> A, especially in key/nonkey relations
 
 32.
-normal form
+'an unrepeated data' form
 
 33.
 Indexing and other optimizations help reduce the time needed to search for items in select statements
@@ -177,7 +226,7 @@ Indexing and other optimizations help reduce the time needed to search for items
 Unspanned records create gaps within blocks. Since you cannot span a record across multiple blocks, you create spaces within the blocks of memory that are unused
 
 35.
-unordered data files do not have index tables, which save space
+Unordered data files do not have index tables, which save space
 
 36.
 The main purpose of using an index is to keep track of where records are stored, and it allows for a faster lookup time
@@ -186,9 +235,16 @@ The main purpose of using an index is to keep track of where records are stored,
 A second index could be used in a 2 layered key system
 
 38.
- The schedule itself is not schedule serializable since all actions of a single transcation do not occur consequetively, however there are no conflicts within the schedule so with a little rearranging we can make the schedule serializable.
+ The schedule itself is not schedule serializable since all actions of a single transaction do not occur consecutively, however there are no conflicts within the
+ schedule so with a little rearranging we can make the schedule serializable.
 
 39.
-(No complete)
+B. A read lock is considered a shared lock since other transactions are allowed to read the item.
 
+.
+.
+.
 
+42. C is wrong, since there is an optional subclass split with no parent class
+
+44. A commit operation makes a database's actions permanent.

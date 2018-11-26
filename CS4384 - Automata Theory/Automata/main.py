@@ -80,7 +80,7 @@ class PDA:
                         # If we have a pop operation
                         else:
                             # If we can pop, pop, increase ptr, and transition and try again
-                            if stack[len(stack) - 1] == transition[1]:
+                            if len(stack) > 1 and stack[len(stack) - 1] == transition[1]:
                                 # print('popping', transition)
                                 stack.pop()
                                 complete += self.verify_transition(string[1:], transition[4], stack[:])
@@ -101,7 +101,7 @@ class PDA:
 
             # If we have a pop operation that does not end the $
             elif transition[0] == '' and (transition[1] != '$' and transition[1] != '') and transition[2] == '' and (
-                    stack[len(stack) - 1] != '$' and stack[len(stack) - 1] != ''):
+                    len(stack) > 0 and stack[len(stack) - 1] != '$' and stack[len(stack) - 1] != ''):
                 stack.pop()
                 complete += self.verify_transition(string, transition[4], stack[:])
 
@@ -116,7 +116,8 @@ class PDA:
 
 
 def main():
-    f = open(sys.argv[1])
+    # f = open(sys.argv[1])
+    f = open('input2.txt')
     flines = f.readlines()
 
     pda = None
@@ -154,7 +155,8 @@ def main():
     pda = PDA(num_of_states, start_state, final_states, transitions)
     f.close()
 
-    f = open(sys.argv[2])
+    # f = open(sys.argv[2])
+    f = open('testInput2.txt')
     flines = f.readlines()
     for x in range(1, int(flines[0]) + 1):
         line = flines[x]
