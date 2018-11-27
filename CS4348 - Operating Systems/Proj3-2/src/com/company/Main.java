@@ -1,11 +1,7 @@
 package com.company;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -13,7 +9,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 import static com.company.Main.getBinaryString;
-import static com.company.Main.getStringFromBinary;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Main {
@@ -86,9 +81,22 @@ public class Main {
         try {
 
             String text;
-            text = new String(Files.readAllBytes(Paths.get(fileName)), StandardCharsets.UTF_8);
+//            text = new String(Files.readAllBytes(Paths.get(fileName)), StandardCharsets.UTF_8);
+            byte bytes[] = Files.readAllBytes(Paths.get(fileName));
+            System.out.println(Arrays.toString(bytes));
 
-            int fileSize = text.length() * 8;
+            StringBuilder outtxt = new StringBuilder();
+            for (byte b : bytes) {
+                System.out.println(b);
+                outtxt.append(String.format("%8s", Integer.toBinaryString((b & 0xFF) + 0x100).substring(1)));
+            }
+//            System.out.println(outtxt);
+            byte test[] = new BigInteger(outtxt.toString(), 2).toByteArray();
+            System.out.println(Arrays.toString(test));
+//            System.out.println(outtxt);
+
+//            int fileSize = text.length() * 8;
+            int fileSize = outtxt.length() / 8;
             int blockSpan = (int) Math.ceil(fileSize / 8.0 / 512.0);
 
             System.out.println("File: " + fileName + ", Filesize: " + fileSize + "bytes, Blocksize: " + blockSpan);
@@ -105,7 +113,7 @@ public class Main {
                 return "Maximum blockspan exceeded, cannot insert file";
             }
 
-            return disk.write(fileName, text, blockSpan);
+            return disk.write(fileName, outtxt.toString(), blockSpan);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -416,8 +424,9 @@ class Disk {
         System.out.println("Wrote: " + fixedSizeBitSet.__toString());
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(((fileName2.equals("") ? fileName : fileName2))));
-            bw.write(fixedSizeBitSet.__toString());
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(((fileName2.equals("") ? fileName : fileName2))));
+            bw.write(fixedSizeBitSet.toByteArray());
+            bw.flush();
             bw.close();
             return "\n" + fileName + " successfully saved onto your machine in a continuous manner";
         } catch (IOException e) {
@@ -531,8 +540,9 @@ class Disk {
         }
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(((fileName2.equals("") ? fileName : fileName2))));
-            bw.write(fixedSizeBitSet.__toString());
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(((fileName2.equals("") ? fileName : fileName2))));
+            bw.write(fixedSizeBitSet.toByteArray());
+            bw.flush();
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -640,6 +650,7 @@ class Disk {
         int iteration = 0;
         while (iteration < span) {
             FixedSizeBitSet file = diskDrive.get(indexRows.get(iteration));
+            System.out.println("Got block @: " + indexRows.get(iteration));
             for (int j = 0; j < file.getFreeLocation(); j++) {
                 fixedSizeBitSet.set(j + ((iteration) * 512 * 8), file.get(j));
             }
@@ -651,8 +662,8 @@ class Disk {
         }
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(((fileName2.equals("") ? fileName : fileName2))));
-            bw.write(fixedSizeBitSet.__toString());
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(((fileName2.equals("") ? fileName : fileName2))));
+            bw.write(fixedSizeBitSet.toByteArray());
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -748,7 +759,7 @@ class Disk {
     }
 
     private String continuousAllocation(String fileName, String s, int blockSpan) {
-        s = getBinaryString(s, 0);
+//        s = getBinaryString(s, 0);
         List<AllocationRow> allocationRows = readFileAllocationTable();
         allocationRows.sort(Comparator.comparing(AllocationRow::getFileIndex));
         System.out.println(allocationRows);
@@ -818,7 +829,7 @@ class Disk {
 
 
     private String chainedAllocation(String fileName, String s, int blockSpan) {
-        s = getBinaryString(s, 0);
+//        s = getBinaryString(s, 0);
         int free = getNumOfFreeSpace();
 
 
@@ -883,7 +894,7 @@ class Disk {
 
 
     private String indexedAllocation(String fileName, String s, int blockSpan) {
-        s = getBinaryString(s, 0);
+//        s = getBinaryString(s, 0);
         int free = getNumOfFreeSpace();
 
         if (blockSpan > free) {
@@ -905,13 +916,13 @@ class Disk {
             }
         }
 
-        int rand = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size() + 1));
+        int rand = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
         blockIndexLoc = openSpots.get(rand);
         openSpots.remove(blockIndexLoc);
 
 //            System.out.println(spots);
 
-        int blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size() + 1));
+        int blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
         spots.add(blockNo);
         StringBuilder temp = new StringBuilder();
         for (int r = 0; r < s.length(); r++) {
@@ -941,11 +952,13 @@ class Disk {
             diskDrive.get(blockIndexLoc).append(1, Integer.toString(l));
         }
 
+        blockSpan = spots.size();
+
         diskDrive.get(0).append(1, fileName, Integer.toString(blockIndexLoc), Integer.toString(blockSpan));
         System.out.println(fileName + ", " + Integer.toString(blockIndexLoc) + ", " + Integer.toString(blockSpan));
 
 
-        return "\nInserted file at block(s) " + spots + ", spanning " + blockSpan + " indexed blocks at index file " + blockIndexLoc;
+        return "\nInserted file at block(s) " + spots + ", spanning " + spots.size() + " indexed blocks at index file " + blockIndexLoc;
     }
 }
 
@@ -1074,10 +1087,32 @@ class FixedSizeBitSet extends BitSet {
         return Integer.toString(index);
     }
 
+    public byte[] toByteArray() {
+        byte bytes[] = new BigInteger(this._toString(), 2).toByteArray();
+        byte outbytes[] = new byte[bytes.length - 1];
+        if (bytes[0] == 0) {
+            for (int i = 1; i < bytes.length; i++) {
+                outbytes[i - 1] = bytes[i];
+            }
+            bytes = outbytes;
+        }
+        return bytes;
+    }
+
     public String __toString() {
-        final StringBuilder buffer = new StringBuilder(nbits);
-        IntStream.range(0, nbits).mapToObj(i -> get(i) ? '1' : '0').forEach(buffer::append);
-        return getStringFromBinary(buffer.toString());
+        byte bytes[] = new BigInteger(this._toString(), 2).toByteArray();
+
+        byte outbytes[] = new byte[bytes.length - 1];
+        if (bytes[0] == 0) {
+            for (int i = 1; i < bytes.length; i++) {
+                outbytes[i - 1] = bytes[i];
+            }
+            bytes = outbytes;
+        }
+
+        System.out.println(Arrays.toString(bytes));
+
+        return new String(bytes);
     }
 
     @Override
@@ -1086,6 +1121,9 @@ class FixedSizeBitSet extends BitSet {
         StringBuilder out = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {
+            if (i % 8 == 0 && i != 0) {
+                out.append(" ");
+            }
             if (i % 128 == 0) {
                 out.append("\n\r");
             }

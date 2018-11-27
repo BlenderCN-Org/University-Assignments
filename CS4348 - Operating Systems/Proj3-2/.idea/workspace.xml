@@ -2,60 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7de522a-4ecb-4456-b3c1-6d83f2a9e8e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/over.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/overflow.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pic_backup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/re.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/re_backup.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/y.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/.idea/Proj3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proj3/.idea/Proj3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proj3/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proj3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeRCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/linklibs.rsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/objects.a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/objects1.rsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/Proj3.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/feature_tests.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/feature_tests.cxx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/Proj3.cbp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proj3/t.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/AllocationRow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Disk.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/FixedSizeBitSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,19 +74,72 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="138609434">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="png" value="10" />
+          <entry key="txt" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Image" value="10" />
+          <entry key="PLAIN_TEXT" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1123" />
+          <entry key="txt" value="167" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1123" />
+          <entry key="PLAIN_TEXT" value="167" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="85">
+              <caret line="665" column="52" selection-start-line="665" selection-start-column="52" selection-end-line="665" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#8367#8368#0" expanded="true" />
+                <element signature="e#8421#8422#0" expanded="true" />
                 <element signature="class#AllocationRow#0" />
                 <element signature="method#toString#0;class#AllocationRow#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/overflow.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="57" selection-start-column="57" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -142,13 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>:</find>
-      <find>reinforcement learning</find>
-      <find>readCon</find>
-      <find>protein</find>
-      <find>diskDrive.get(0).append</find>
-      <find>subject and</find>
-      <find>chainedA</find>
       <find>.set(blockNo</find>
       <find>true</find>
       <find>spots.add(in</find>
@@ -156,7 +155,6 @@
       <find>filename</find>
       <find>spots.add(index);</find>
       <find>a well</find>
-      <find>span</find>
       <find>disk</find>
       <find>new di</find>
       <find>chained</find>
@@ -165,12 +163,20 @@
       <find>case &quot;7&quot;</find>
       <find>append</find>
       <find>readcon</find>
-      <find>save</find>
       <find>continuous manner</find>
       <find>saveCon</find>
       <find>BufferedWriter bw</find>
       <find>d</find>
       <find>write</find>
+      <find>case &quot;4</find>
+      <find>indexedA</find>
+      <find>indexed</find>
+      <find>span</find>
+      <find>save</find>
+      <find>saveindexed</find>
+      <find>savecon</find>
+      <find>savech</find>
+      <find>savechain</find>
       <find>saveindex</find>
     </findStrings>
   </component>
@@ -189,6 +195,7 @@
         <option value="$PROJECT_DIR$/re_backup.txt" />
         <option value="$PROJECT_DIR$/re.txt" />
         <option value="$PROJECT_DIR$/y.txt" />
+        <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
       </list>
     </option>
@@ -211,7 +218,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -235,13 +241,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542689538292" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -303,16 +310,17 @@
       <workItem from="1542682273178" duration="4887000" />
       <workItem from="1542748490460" duration="316000" />
       <workItem from="1543002825055" duration="618000" />
+      <workItem from="1543275253282" duration="6776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45354000" />
+    <option name="totallyTimeSpent" value="52130000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2739872" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27785236" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -321,7 +329,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28690228" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28652483" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -338,7 +346,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Database" order="7" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="7" weight="0.3295302" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32995737" />
     </layout>
@@ -350,10 +358,48 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/lang/NumberFormatException.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/lang/NumberFormatException.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/io/PrintStream.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/util/ArrayList.java" />
+    <entry file="file://$PROJECT_DIR$/over.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="196">
+          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/lang/Integer.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/util/BitSet.java" />
+    <entry file="file://$PROJECT_DIR$/re_backup.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pic_backup.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/h.txt" />
+    <entry file="file://$PROJECT_DIR$/h.png" />
+    <entry file="file://$PROJECT_DIR$/e.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/t.txt" />
+    <entry file="file://$PROJECT_DIR$/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="106" lean-forward="true" selection-end-line="5" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pic.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -364,47 +410,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/io/PrintStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="803" column="16" selection-start-line="803" selection-start-column="16" selection-end-line="803" selection-end-column="16" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/p.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="495" selection-start-line="495" selection-end-line="495" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/over.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="396" column="25" selection-start-line="396" selection-start-column="25" selection-end-line="396" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_152/src.zip!/java/util/BitSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="461" column="16" selection-start-line="461" selection-start-column="16" selection-end-line="461" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/re_backup.txt">
+    <entry file="file://$PROJECT_DIR$/p.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="5" selection-end-column="5" />
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/re2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/re.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -413,15 +430,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pic_backup.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="106" lean-forward="true" selection-end-line="5" selection-end-column="106" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/y2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/y.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -430,22 +440,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/h.txt" />
-    <entry file="file://$PROJECT_DIR$/h.png" />
-    <entry file="file://$PROJECT_DIR$/e.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/t.txt" />
-    <entry file="file://$PROJECT_DIR$/pic.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/p.png" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="85">
+          <caret line="665" column="52" selection-start-line="665" selection-start-column="52" selection-end-line="665" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8367#8368#0" expanded="true" />
+            <element signature="e#8421#8422#0" expanded="true" />
             <element signature="class#AllocationRow#0" />
             <element signature="method#toString#0;class#AllocationRow#0" />
           </folding>
@@ -510,6 +512,18 @@
               <list>
                 <option value="0.2" />
                 <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
