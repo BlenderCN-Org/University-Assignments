@@ -266,7 +266,10 @@ class Disk {
         System.out.println("Beginning Disk Initialization...");
 
         this.type = type;
-        this.diskDrive = new ArrayList<>(Collections.nCopies(numOfBlocks, new FixedSizeBitSet(blockSize)));
+        this.diskDrive = new ArrayList<>();
+        for(int i = 0; i < numOfBlocks; i++){
+            this.diskDrive.add(new FixedSizeBitSet(blockSize));
+        }
         createFileAllocationTable();
         createFreeSpaceTable();
 
@@ -961,7 +964,7 @@ class Disk {
 
         int blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
         spots.add(blockNo);
-        diskDrive.get(new Integer(blockIndexLoc)).append(1, Integer.toString(blockNo));
+        diskDrive.get(blockIndexLoc).append(1, Integer.toString(blockNo));
         StringBuilder temp = new StringBuilder();
         for (int r = 0; r < s.length(); r++) {
             if (r % (512 * 8) == 0 && r != 0) {
@@ -974,7 +977,7 @@ class Disk {
                 spots.add(blockNo);
                 diskDrive.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
                 diskDrive.get(1).set(blockPrev, true);
-//                diskDrive.get(blockIndexLoc).append(1, Integer.toString(blockNo));
+                diskDrive.get(blockIndexLoc).append(1, Integer.toString(blockNo));
                 temp = new StringBuilder();
             }
             temp.append(s.charAt(r));
