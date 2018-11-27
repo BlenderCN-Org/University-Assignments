@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7de522a-4ecb-4456-b3c1-6d83f2a9e8e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/h.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4337 - Database Systems/dbBookStore/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/AllocationRow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Disk.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/FixedSizeBitSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/AllocationRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proj3-2/com/company/AllocationRow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Disk.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Disk.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/FixedSizeBitSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proj3-2/com/company/FixedSizeBitSet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proj3-2/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,39 +42,39 @@
     <session id="271809987">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.5" value="5" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.5" value="6" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="13482" />
-          <entry key="txt" value="253" />
+          <entry key="java" value="15296" />
+          <entry key="txt" value="377" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13482" />
-          <entry key="PLAIN_TEXT" value="253" />
+          <entry key="JAVA" value="15296" />
+          <entry key="PLAIN_TEXT" value="377" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="9" />
-          <entry key="png" value="10" />
-          <entry key="txt" value="41" />
+          <entry key="png" value="20" />
+          <entry key="txt" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Image" value="10" />
+          <entry key="Image" value="20" />
           <entry key="JAVA" value="9" />
-          <entry key="PLAIN_TEXT" value="41" />
+          <entry key="PLAIN_TEXT" value="82" />
         </counts>
       </usages-collector>
     </session>
@@ -113,33 +117,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="665" column="52" selection-start-line="665" selection-start-column="52" selection-end-line="665" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#8367#8368#0" expanded="true" />
-                <element signature="e#8421#8422#0" expanded="true" />
-                <element signature="class#AllocationRow#0" />
-                <element signature="method#toString#0;class#AllocationRow#0" />
-              </folding>
+            <state relative-caret-position="353">
+              <caret line="964" column="49" lean-forward="true" selection-start-line="964" selection-start-column="49" selection-end-line="964" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overflow.txt">
+        <entry file="file://$PROJECT_DIR$/re2.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/re.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="57" selection-start-column="57" selection-end-column="57" />
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/readme.txt">
+        <entry file="file://$PROJECT_DIR$/y.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+            <state>
+              <caret column="100" selection-start-column="100" selection-end-line="5" selection-end-column="106" />
             </state>
           </provider>
         </entry>
@@ -148,36 +150,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.set(blockNo</find>
-      <find>true</find>
-      <find>spots.add(in</find>
-      <find>file:</find>
-      <find>filename</find>
-      <find>spots.add(index);</find>
-      <find>a well</find>
-      <find>disk</find>
-      <find>new di</find>
-      <find>chained</find>
-      <find>deep-learning mac</find>
-      <find>fileall</find>
-      <find>case &quot;7&quot;</find>
-      <find>append</find>
-      <find>readcon</find>
-      <find>continuous manner</find>
-      <find>saveCon</find>
-      <find>BufferedWriter bw</find>
-      <find>d</find>
-      <find>write</find>
-      <find>case &quot;4</find>
-      <find>indexedA</find>
-      <find>indexed</find>
-      <find>span</find>
-      <find>save</find>
-      <find>saveindexed</find>
       <find>savecon</find>
-      <find>savech</find>
       <find>savechain</find>
+      <find>a month</find>
+      <find>byte</find>
+      <find>[i]</find>
+      <find>System.out.println</find>
+      <find>case 2</find>
       <find>saveindex</find>
+      <find>index</find>
+      <find>saveinde</find>
+      <find>spots</find>
+      <find>case '4</find>
+      <find>o align</find>
+      <find>new d</find>
+      <find>saveal</find>
+      <find>chaineda</find>
+      <find>savech</find>
+      <find>chainedall</find>
+      <find>The rubik</find>
+      <find>save chain</find>
+      <find>sc</find>
+      <find>chained</find>
+      <find>colorMo</find>
+      <find>chainedAll</find>
+      <find>save ch</find>
+      <find>new disck</find>
+      <find>savechained</find>
+      <find>appending</find>
+      <find>indexed</find>
+      <find>indexedal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -196,6 +198,7 @@
         <option value="$PROJECT_DIR$/re.txt" />
         <option value="$PROJECT_DIR$/y.txt" />
         <option value="$PROJECT_DIR$/readme.txt" />
+        <option value="$PROJECT_DIR$/y2.txt" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
       </list>
     </option>
@@ -218,7 +221,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,13 +244,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542689538292" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543341722409" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -311,16 +314,18 @@
       <workItem from="1542748490460" duration="316000" />
       <workItem from="1543002825055" duration="618000" />
       <workItem from="1543275253282" duration="6776000" />
+      <workItem from="1543296772234" duration="7248000" />
+      <workItem from="1543336456544" duration="5263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52130000" />
+    <option name="totallyTimeSpent" value="64641000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27785236" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28411514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -329,7 +334,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28652483" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28586277" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -380,7 +385,6 @@
     <entry file="file://$PROJECT_DIR$/pic_backup.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/h.txt" />
     <entry file="file://$PROJECT_DIR$/h.png" />
     <entry file="file://$PROJECT_DIR$/e.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -396,13 +400,7 @@
     <entry file="file://$PROJECT_DIR$/pic.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/p.txt" />
     <entry file="file://$PROJECT_DIR$/overflow.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -410,18 +408,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/p.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/p.txt">
+    <entry file="file://$PROJECT_DIR$/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/re2.txt">
+    <entry file="file://$PROJECT_DIR$/h.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/p.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/y2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="204" lean-forward="true" selection-start-line="2" selection-start-column="204" selection-end-line="2" selection-end-column="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/y.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="100" selection-start-column="100" selection-end-line="5" selection-end-column="106" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/re.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -430,27 +442,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/y2.txt">
+    <entry file="file://$PROJECT_DIR$/re2.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/y.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="665" column="52" selection-start-line="665" selection-start-column="52" selection-end-line="665" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8367#8368#0" expanded="true" />
-            <element signature="e#8421#8422#0" expanded="true" />
-            <element signature="class#AllocationRow#0" />
-            <element signature="method#toString#0;class#AllocationRow#0" />
-          </folding>
+        <state relative-caret-position="353">
+          <caret line="964" column="49" lean-forward="true" selection-start-line="964" selection-start-column="49" selection-end-line="964" selection-end-column="49" />
         </state>
       </provider>
     </entry>

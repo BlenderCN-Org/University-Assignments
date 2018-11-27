@@ -23,6 +23,8 @@ public class Main {
         String response = "";
 
         while (true) {
+            System.gc();
+            System.runFinalization();
             System.out.println("What would you like to do?");
             System.out.println("1) Display a file");
             System.out.println("2) Display the file table");
@@ -46,7 +48,7 @@ public class Main {
                     response = getFileFromDisk(tokens[1]);
                     break;
                 case "2":
-                    response = disk.getBlock(0);
+                    response = displayFileAlloc();
                     break;
                 case "3":
                     response = disk.getBlock(1);
@@ -83,21 +85,20 @@ public class Main {
             String text;
 //            text = new String(Files.readAllBytes(Paths.get(fileName)), StandardCharsets.UTF_8);
             byte bytes[] = Files.readAllBytes(Paths.get(fileName));
-            System.out.println(Arrays.toString(bytes));
+//            System.out.println(Arrays.toString(bytes));
 
             StringBuilder outtxt = new StringBuilder();
             for (byte b : bytes) {
-                System.out.println(b);
                 outtxt.append(String.format("%8s", Integer.toBinaryString((b & 0xFF) + 0x100).substring(1)));
             }
-//            System.out.println(outtxt);
-            byte test[] = new BigInteger(outtxt.toString(), 2).toByteArray();
-            System.out.println(Arrays.toString(test));
+            System.out.println(outtxt);
+//            byte test[] = new BigInteger(outtxt.toString(), 2).toByteArray();
+//            System.out.println(Arrays.toString(test));
 //            System.out.println(outtxt);
 
 //            int fileSize = text.length() * 8;
             int fileSize = outtxt.length() / 8;
-            int blockSpan = (int) Math.ceil(fileSize / 8.0 / 512.0);
+            int blockSpan = (int) Math.ceil(fileSize / 512.0);
 
             System.out.println("File: " + fileName + ", Filesize: " + fileSize + "bytes, Blocksize: " + blockSpan);
 
@@ -120,6 +121,17 @@ public class Main {
         }
 
         return "There was an error writing to the disk";
+    }
+
+    private static String displayFileAlloc() {
+        List<AllocationRow> allocationRows = disk.readFileAllocationTable();
+        StringBuilder out = new StringBuilder();
+
+        for (AllocationRow row : allocationRows) {
+            out.append("\nFile Name: ").append(row.getFileName()).append(", File Index: ").append(row.getFileIndex()).append(", File Span: ").append(row.getFileSpan());
+        }
+
+        return out.toString();
     }
 
     private static String deleteFileFromDisk(String fileName) {
@@ -510,7 +522,7 @@ class Disk {
         int span = -1;
         for (AllocationRow row : allocationRows) {
             if (row.getFileName().equals(fileName)) {
-                index = Integer.parseInt(row.getFileIndex());
+                index = Integer.parseInt(row.getFileIndex()); // Starting Index
                 span = Integer.parseInt(row.getFileSpan());
             }
         }
@@ -526,11 +538,17 @@ class Disk {
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
         int iteration = 0;
-        while (iteration < span) {
+        int iter = 0;
+        while (iteration < span && index > 0) {
+//            System.out.println("read @ " + index);
             FixedSizeBitSet file = diskDrive.get(index);
-            for (int j = 0; j < ((file.getFreeLocation() == 4096) ? file.getFreeLocation() - 8 : file.getFreeLocation()); j++) {
-                fixedSizeBitSet.set(j + ((iteration) * 512 * 8), file.get(j));
+            System.out.println("freloc " + file.getFreeLocation() + " at " + index);
+            for (int j = 0; j < (file.getFreeLocation() == 4096 ? 4088 : file.getFreeLocation()); j++) {
+                fixedSizeBitSet.set((iter), file.get(j));
+                iter++;
             }
+            System.out.println(fixedSizeBitSet.__toString());
+//            System.out.println("moving from " + index + " to " + file.getFromRange(4088, 4096).__intToString());
             index = Integer.parseInt(file.getFromRange(4088, 4096).__intToString());
             iteration++;
         }
@@ -547,6 +565,8 @@ class Disk {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
 
         return "\n" + fileName + " successfully saved onto your machine from a chained method";
 
@@ -638,6 +658,7 @@ class Disk {
 
 //        int size = (span) * (512 * 8);
         List<Integer> indexRows = readIndexTable(index, span);
+        System.out.println("index: " + index + ", " + indexRows);
 
         int size = 0;
         for (int i = 0; i < span; i++) {
@@ -645,21 +666,28 @@ class Disk {
             size += file.getFreeLocation();
         }
 
+        System.out.println("Size: " + size);
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
         int iteration = 0;
+        int iter = 0;
         while (iteration < span) {
             FixedSizeBitSet file = diskDrive.get(indexRows.get(iteration));
-            System.out.println("Got block @: " + indexRows.get(iteration));
+            System.out.println(iteration + ", read from file " + indexRows.get(iteration) + " with free space " + file.getFreeLocation());
             for (int j = 0; j < file.getFreeLocation(); j++) {
-                fixedSizeBitSet.set(j + ((iteration) * 512 * 8), file.get(j));
+                fixedSizeBitSet.set(iter, file.get(j));
+                iter++;
             }
             iteration++;
         }
 
+//        System.out.println("Totfresp: " + fixedSizeBitSet.getFreeLocation());
+
         if (index == -1 || span == -1) {
             return "\nCould not find the file in the file system";
         }
+
+//        System.out.println(fixedSizeBitSet.toString());
 
         try {
             BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(((fileName2.equals("") ? fileName : fileName2))));
@@ -669,17 +697,21 @@ class Disk {
             e.printStackTrace();
         }
 
+        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
+
         return "\n" + fileName + " successfully saved onto your machine from a indexed method";
     }
 
     private List<Integer> readIndexTable(int index, int span) {
         FixedSizeBitSet indexTable = diskDrive.get(index);
+        System.out.println(indexTable.toString());
         List<Integer> spots = new ArrayList<>();
 
         for (int i = 0; i < span; i++) {
-            spots.add(Integer.parseInt(indexTable.getFromRange(i * 8, (i + 1) * 8).__intToString()));
+            spots.add(Integer.parseInt(indexTable.getFromRange((i) * 8, (i + 1) * 8).__intToString()));
         }
 
+        System.out.println(spots);
         return spots;
     }
 
@@ -721,7 +753,7 @@ class Disk {
         return b;
     }
 
-    private List<AllocationRow> readFileAllocationTable() {
+    public List<AllocationRow> readFileAllocationTable() {
         FixedSizeBitSet fixedSizeBitSet = diskDrive.get(0);
         List<AllocationRow> allocationRows = new ArrayList<>();
 
@@ -859,30 +891,35 @@ class Disk {
 
         int blockNo = index;
         StringBuilder temp = new StringBuilder();
+        int iter = 1;
         for (int r = 0; r < s.length(); r++) {
-            if ((r + 8) % (512 * 8) == 0 && r != 0) {
+            if ((r) % (4088) == 0 && r != 0) {
+                System.out.println("We're breaking at R = " + r);
+                iter++;
                 blockPrev = blockNo;
-                openSpots.remove(blockNo);
+                openSpots.remove(new Integer(blockNo));
                 if (openSpots.size() > 0) {
                     blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
                 }
                 spots.add(blockNo);
+                System.out.println(FixedSizeBitSet.fromBinary(temp.toString()).__toString() + " at " + r);
                 diskDrive.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
                 diskDrive.get(blockPrev).append(1, Integer.toString(blockNo));
+//                System.out.println("Appended " + blockNo + " to the end of " + blockPrev);
                 diskDrive.get(1).set(blockPrev, true);
                 temp = new StringBuilder();
             }
             temp.append(s.charAt(r));
         }
 
-        blockSpan = ((blockSpan > 0) ? blockSpan : 1);
+//        blockSpan = ((blockSpan > 0) ? blockSpan : 1);
 
-        if (!spots.contains(blockSpan)) {
+        if (diskDrive.get(blockNo).getFreeLocation() < 4096) {
             diskDrive.get(1).set(blockNo, true);
             diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
             diskDrive.get(blockNo).append(1, Integer.toString(0));
+            System.out.println("Appended " + 0 + " to the end of " + blockNo);
         }
-
 
         diskDrive.get(0).append(1, fileName, Integer.toString(spots.get(0)), Integer.toString(blockSpan));
         System.out.println(fileName + ", " + Integer.toString(spots.get(0)) + ", " + Integer.toString(blockSpan));
@@ -902,7 +939,6 @@ class Disk {
         }
 
         int index;
-        int blockIndexLoc;
         int blockPrev;
 
         List<Integer> openSpots = new ArrayList<>();
@@ -916,41 +952,39 @@ class Disk {
             }
         }
 
-        int rand = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
-        blockIndexLoc = openSpots.get(rand);
-        openSpots.remove(blockIndexLoc);
+        int blockIndexLoc = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
+        openSpots.remove(new Integer(blockIndexLoc));
+        System.out.println(blockIndexLoc);
+        diskDrive.get(1).set(blockIndexLoc, true);
 
 //            System.out.println(spots);
 
         int blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
         spots.add(blockNo);
+        diskDrive.get(new Integer(blockIndexLoc)).append(1, Integer.toString(blockNo));
         StringBuilder temp = new StringBuilder();
         for (int r = 0; r < s.length(); r++) {
             if (r % (512 * 8) == 0 && r != 0) {
-                openSpots.remove(blockNo);
+                openSpots.remove(new Integer(blockNo));
                 blockPrev = blockNo;
+
                 if (openSpots.size() > 0) {
                     blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
                 }
                 spots.add(blockNo);
                 diskDrive.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
-                diskDrive.get(blockPrev).append(1, Integer.toString(blockNo));
                 diskDrive.get(1).set(blockPrev, true);
+//                diskDrive.get(blockIndexLoc).append(1, Integer.toString(blockNo));
                 temp = new StringBuilder();
             }
             temp.append(s.charAt(r));
         }
 
-        blockSpan = ((blockSpan > 0) ? blockSpan : 1);
-
-        if (!spots.contains(blockSpan)) {
-            diskDrive.get(1).set(blockNo, true);
-            diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
-        }
-
-        for (Integer l : spots) {
-            diskDrive.get(blockIndexLoc).append(1, Integer.toString(l));
-        }
+//        if (!spots.contains(blockNo)) {
+//            diskDrive.get(1).set(blockNo, true);
+//            diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
+//            diskDrive.get(blockNo).append(1, Integer.toString(0));
+//        }
 
         blockSpan = spots.size();
 
@@ -1037,16 +1071,17 @@ class FixedSizeBitSet extends BitSet {
     void append(Integer type, String... strings) {
 
         for (String s : strings) {
+
             String binary = getBinaryString(s, type);
 
             for (int i = 0; i < binary.length(); i++) {
                 if (binary.charAt(i) == '1') {
-                    this.set(freeLocation + i, true);
+                    this.set(this.freeLocation + i, true);
                 } else if (binary.charAt(i) == '0') {
-                    this.set(freeLocation + i, false);
+                    this.set(this.freeLocation + i, false);
                 }
             }
-            freeLocation += binary.length();
+            this.freeLocation += binary.length();
         }
     }
 
@@ -1109,8 +1144,6 @@ class FixedSizeBitSet extends BitSet {
             }
             bytes = outbytes;
         }
-
-        System.out.println(Arrays.toString(bytes));
 
         return new String(bytes);
     }
