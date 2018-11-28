@@ -14,11 +14,11 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class Main {
 
     private static Scanner kb = new Scanner(System.in);
-    private static Disk disk;
+    private static DiskHelper DiskHelper;
 
     public static void main(String[] args) {
 
-        disk = new Disk(2);
+        DiskHelper = new DiskHelper(0);
 
         String response = "";
 
@@ -45,24 +45,40 @@ public class Main {
 
             switch (tokens[0]) {
                 case "1":
+                    if (tokens.length < 2) {
+                        response = "\nThere was an error, no file specified!";
+                        break;
+                    }
                     response = getFileFromDisk(tokens[1]);
                     break;
                 case "2":
                     response = displayFileAlloc();
                     break;
                 case "3":
-                    response = disk.getBlock(1);
+                    response = DiskHelper.getBlock(1);
                     break;
                 case "4":
-                    response = disk.getBlock(Integer.parseInt(tokens[1]));
+                    if (tokens.length < 2) {
+                        response = "\nThere was an error, no file specified!";
+                        break;
+                    }
+                    response = DiskHelper.getBlock(Integer.parseInt(tokens[1]));
                     break;
                 case "5":
                     response = saveFromDisk(tokens[1], ((tokens.length > 2) ? tokens[2] : ""));
                     break;
                 case "6":
+                    if (tokens.length < 2) {
+                        response = "\nThere was an error, no file specified!";
+                        break;
+                    }
                     response = writeToDiskFromFile(tokens[1]);
                     break;
                 case "7":
+                    if (tokens.length < 2) {
+                        response = "\nThere was an error, no file specified!";
+                        break;
+                    }
                     response = deleteFileFromDisk(tokens[1]);
                     break;
                 case "8":
@@ -74,6 +90,12 @@ public class Main {
 
     }
 
+    /**
+     * Writes a file from the system to the disk
+     *
+     * @param fileName - Target File
+     * @return - Returns a console message
+     */
     private static String writeToDiskFromFile(String fileName) {
 
         if (fileName.length() > 8) {
@@ -91,7 +113,7 @@ public class Main {
             for (byte b : bytes) {
                 outtxt.append(String.format("%8s", Integer.toBinaryString((b & 0xFF) + 0x100).substring(1)));
             }
-            System.out.println(outtxt);
+//            System.out.println(outtxt);
 //            byte test[] = new BigInteger(outtxt.toString(), 2).toByteArray();
 //            System.out.println(Arrays.toString(test));
 //            System.out.println(outtxt);
@@ -100,7 +122,7 @@ public class Main {
             int fileSize = outtxt.length() / 8;
             int blockSpan = (int) Math.ceil(fileSize / 512.0);
 
-            System.out.println("File: " + fileName + ", Filesize: " + fileSize + "bytes, Blocksize: " + blockSpan);
+//            System.out.println("File: " + fileName + ", Filesize: " + fileSize + "bytes, Blocksize: " + blockSpan);
 
             if (fileName.length() < 8) {
                 StringBuilder fileNameBuilder = new StringBuilder(fileName);
@@ -114,17 +136,20 @@ public class Main {
                 return "Maximum blockspan exceeded, cannot insert file";
             }
 
-            return disk.write(fileName, outtxt.toString(), blockSpan);
+            return DiskHelper.write(fileName, outtxt.toString(), blockSpan);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            return "There was an error writing to the DiskHelper";
         }
-
-        return "There was an error writing to the disk";
     }
 
+    /**
+     * Displays the file allocation table in row form
+     *
+     * @return - Returns a console message
+     */
     private static String displayFileAlloc() {
-        List<AllocationRow> allocationRows = disk.readFileAllocationTable();
+        List<AllocationRow> allocationRows = DiskHelper.readFileAllocationTable();
         StringBuilder out = new StringBuilder();
 
         for (AllocationRow row : allocationRows) {
@@ -134,33 +159,59 @@ public class Main {
         return out.toString();
     }
 
+    /**
+     * Deletes a file from the disk using DiskHelper
+     *
+     * @param fileName - Target File to Delete
+     * @return - Returns a console message
+     */
     private static String deleteFileFromDisk(String fileName) {
 
         if (fileName.length() > 8) {
             return "\nThere was an error, file name too long!";
         }
 
-        return disk.delete(fileName);
+        return DiskHelper.delete(fileName);
     }
 
+    /**
+     * Saves a file to the disk using DiskHelper
+     *
+     * @param fileName  - Target file on disk
+     * @param fileName2 - Optional new FileName
+     * @return - Returns a console message
+     */
     private static String saveFromDisk(String fileName, String fileName2) {
 
         if (fileName.length() > 8) {
             return "\nThere was an error, file name too long!";
         }
 
-        return disk.save(fileName, fileName2);
+        return DiskHelper.save(fileName, fileName2);
     }
 
+    /**
+     * Attempts to read a file from the disk
+     *
+     * @param fileName -  The input file for the disk
+     * @return - Returns a console message
+     */
     private static String getFileFromDisk(String fileName) {
 
         if (fileName.length() > 8) {
             return "\nThere was an error, file name too long!";
         }
 
-        return disk.read(fileName);
+        return DiskHelper.read(fileName);
     }
 
+    /**
+     * Returns a binary string from a ascii string s
+     *
+     * @param s    - A String input
+     * @param type - A type
+     * @return - Returns a console message
+     */
     static String getBinaryString(String s, Integer type) {
 
         if (type == 1) {
@@ -226,78 +277,85 @@ public class Main {
         }
     }
 
-    static String getStringFromBinary(String s) {
-
-        StringBuilder out = new StringBuilder();
-        StringBuilder temp = new StringBuilder();
-
-
-        for (int i = 0; i < s.length(); i++) {
-            temp.append(s.charAt(i));
-            if (temp.length() == 8) {
-                out.append(processBinaryString(temp.toString()));
-                temp = new StringBuilder();
-            }
-        }
-        return out.toString();
-    }
-
-    private static String processBinaryString(String s) {
-        int charCode = 0;
-        for (int i = 0; i < 8; i++) {
-            if (s.charAt(i) == '1') {
-                charCode += Math.pow(2, 7 - i);
-            }
-        }
-        return String.valueOf((char) charCode);
-    }
-
 }
 
-class Disk {
+/**
+ * The DiskHelper class serves as a vessel for the blocks. The DiskHelper class holds 256 blocks (FixedBitSets)
+ * each with a size of 512bytes (4096bits). The actual disk is simulated as an ArrayList of blocks, and only
+ * it's get (read block) and set (write block) methods are used.
+ */
+class DiskHelper {
 
-    private ArrayList<FixedSizeBitSet> diskDrive;
+    private ArrayList<FixedSizeBitSet> disk;
 
     private int numOfBlocks = 256;
     private int blockSize = 512 * 8;
     private int type;
 
-    Disk(int type) {
-        System.out.println("Beginning Disk Initialization...");
+    /**
+     * Default Constructor
+     *
+     * @param type - Type of Allocation Method
+     */
+    DiskHelper(int type) {
+        System.out.println("Beginning DiskHelper Initialization...");
 
         this.type = type;
-        this.diskDrive = new ArrayList<>();
-        for(int i = 0; i < numOfBlocks; i++){
-            this.diskDrive.add(new FixedSizeBitSet(blockSize));
+        this.disk = new ArrayList<>();
+        for (int i = 0; i < numOfBlocks; i++) {
+            this.disk.add(new FixedSizeBitSet(blockSize));
         }
         createFileAllocationTable();
         createFreeSpaceTable();
 
-        System.out.println("...Disk Initialization Complete\n");
+        System.out.println("...DiskHelper Initialization Complete\n");
     }
 
+    /**
+     * Part of the default constructor, creates the file alloc table
+     */
     private void createFileAllocationTable() {
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(blockSize);
 
         fixedSizeBitSet.append(1, "filetabl", "0", "1");
         fixedSizeBitSet.append(1, "freetabl", "1", "1");
 
-        diskDrive.set(0, fixedSizeBitSet);
+        disk.set(0, fixedSizeBitSet);
     }
 
+    /**
+     * Part of the default constructor, creates the free space table
+     */
     private void createFreeSpaceTable() {
         FixedSizeBitSet freeTableSpace = new FixedSizeBitSet(numOfBlocks);
 
         freeTableSpace.set(0, true);
         freeTableSpace.set(1, true);
 
-        diskDrive.set(1, freeTableSpace);
+        disk.set(1, freeTableSpace);
     }
 
+    /**
+     * Returns a block at a specified index
+     *
+     * @param index - Block number you wish to get
+     * @return - Returns the block to the console
+     */
     String getBlock(int index) {
-        return diskDrive.get(index).toString();
+        if (index < 0 || index > 255) {
+            return "\nThere was an error, index out of bounds!";
+        }
+        return disk.get(index).toString();
     }
 
+    /**
+     * Write a file to the disk
+     *
+     * @param fileName  - The file name
+     * @param s         - The file as a binary string
+     * @param blockSpan - how many blocks this file spans
+     * @return - returns a console message
+     */
     String write(String fileName, String s, int blockSpan) {
         if (type == 0) {
             return continuousAllocation(fileName, s, blockSpan);
@@ -310,6 +368,12 @@ class Disk {
         }
     }
 
+    /**
+     * Read a file based on a type
+     *
+     * @param fileName - target file
+     * @return - returns a console message
+     */
     String read(String fileName) {
         if (type == 0) {
             return readContinuous(fileName);
@@ -322,6 +386,13 @@ class Disk {
         }
     }
 
+    /**
+     * Saves a file based on a type
+     *
+     * @param fileName  - Target File
+     * @param fileName2 - Optional File Rename
+     * @return - Returns a console message
+     */
     String save(String fileName, String fileName2) {
         if (type == 0) {
             return saveContinuous(fileName, fileName2);
@@ -334,6 +405,12 @@ class Disk {
         }
     }
 
+    /**
+     * Deletes a file based on a type
+     *
+     * @param fileName - Target File
+     * @return - Returns a console message
+     */
     String delete(String fileName) {
         if (type == 0) {
             return deleteContinuous(fileName);
@@ -346,6 +423,12 @@ class Disk {
         }
     }
 
+    /**
+     * Reads from a block in a continuous manner
+     *
+     * @param fileName - target file
+     * @return - Returns a console message
+     */
     private String readContinuous(String fileName) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
 //        System.out.println(allocationRows);
@@ -361,22 +444,28 @@ class Disk {
 
         int size = (span) * (512 * 8);
 
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
+        }
+
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
         for (int i = index; i < index + span; i++) {
-            FixedSizeBitSet file = diskDrive.get(i);
+            FixedSizeBitSet file = disk.get(i);
             for (int j = 0; j < file.getFreeLocation(); j++) {
                 fixedSizeBitSet.set(j + ((i - index) * 512 * 8), file.get(j));
             }
         }
 
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
-        }
-
         return "\n" + fileName + ":\n" + fixedSizeBitSet.toString();
     }
 
+    /**
+     * Deletes from the file system in a continuous manner
+     *
+     * @param fileName - target file
+     * @return - Returns a console message
+     */
     private String deleteContinuous(String fileName) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
 //        System.out.println(allocationRows);
@@ -390,19 +479,27 @@ class Disk {
             }
         }
 
-        for (int i = index; i < index + span; i++) {
-            diskDrive.get(1).set(i, false);
-            diskDrive.set(i, new FixedSizeBitSet(512 * 8));
-        }
-
         if (index == -1 || span == -1) {
             return "\nCould not find the file in the file system";
         }
+
+        for (int i = index; i < index + span; i++) {
+            disk.get(1).set(i, false);
+            disk.set(i, new FixedSizeBitSet(512 * 8));
+        }
+
 
         deleteFromAllocationTable(fileName);
         return "\n" + fileName + " successfully deleted from the filesystem in a continuous manner";
     }
 
+    /**
+     * Saves to the file system in a continuous manner
+     *
+     * @param fileName  - target file
+     * @param fileName2 - optional file rename
+     * @return - Returns a console message
+     */
     private String saveContinuous(String fileName, String fileName2) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
 //        System.out.println(allocationRows);
@@ -416,27 +513,28 @@ class Disk {
             }
         }
 
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
+        }
+
         int size = 0;
 
         for (int i = index; i < index + span; i++) {
-            FixedSizeBitSet file = diskDrive.get(i);
+            FixedSizeBitSet file = disk.get(i);
             size += file.getFreeLocation();
         }
 
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
         for (int i = index; i < index + span; i++) {
-            FixedSizeBitSet file = diskDrive.get(i);
+            FixedSizeBitSet file = disk.get(i);
             for (int j = 0; j < file.getFreeLocation(); j++) {
                 fixedSizeBitSet.set(j + ((i - index) * 512 * 8), file.get(j));
             }
         }
 
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
-        }
 
-        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
+//        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
 
         try {
             BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(((fileName2.equals("") ? fileName : fileName2))));
@@ -451,9 +549,15 @@ class Disk {
 
     }
 
+    /**
+     * Reads a file in a chained way
+     *
+     * @param fileName - target file
+     * @return - Returns a console message
+     */
     private String readChained(String fileName) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
         int index = -1;
         int span = -1;
@@ -466,12 +570,16 @@ class Disk {
 
         int size = (span) * (512 * 8);
 
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
+        }
+
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
 
         int iteration = 0;
         while (iteration < span) {
-            FixedSizeBitSet file = diskDrive.get(index);
+            FixedSizeBitSet file = disk.get(index);
             for (int j = 0; j < (512 * 8) - 8; j++) {
                 fixedSizeBitSet.set(j + ((iteration) * 512 * 8), file.get(j));
             }
@@ -479,16 +587,18 @@ class Disk {
             iteration++;
         }
 
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
-        }
-
         return "\n" + fileName + ":\n" + fixedSizeBitSet.toString();
     }
 
+    /**
+     * Deletes a file in a chained way
+     *
+     * @param fileName - target file
+     * @return - Returns a console message
+     */
     private String deleteChained(String fileName) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
         int index = -1;
         int span = -1;
@@ -499,27 +609,34 @@ class Disk {
             }
         }
 
-        int iteration = 0;
-        while (iteration < span) {
-            FixedSizeBitSet file = diskDrive.get(index);
-            diskDrive.get(1).set(index, false);
-            diskDrive.set(index, new FixedSizeBitSet(512 * 8));
-            index = Integer.parseInt(file.getFromRange(4088, 4096).__intToString());
-            System.out.println("new loc: " + index);
-            iteration++;
-        }
-
         if (index == -1 || span == -1) {
             return "\nCould not find the file in the file system";
+        }
+
+        int iteration = 0;
+        while (iteration < span) {
+            FixedSizeBitSet file = disk.get(index);
+            disk.get(1).set(index, false);
+            disk.set(index, new FixedSizeBitSet(512 * 8));
+            index = Integer.parseInt(file.getFromRange(4088, 4096).__intToString());
+//            System.out.println("new loc: " + index);
+            iteration++;
         }
 
         deleteFromAllocationTable(fileName);
         return "\n" + fileName + " successfully deleted from the filesystem in a chained manner";
     }
 
+    /**
+     * Saves a file in a chained way
+     *
+     * @param fileName  - target file
+     * @param fileName2 - optional file rename
+     * @return - Returns a console message
+     */
     private String saveChained(String fileName, String fileName2) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
         int index = -1;
         int span = -1;
@@ -530,10 +647,14 @@ class Disk {
             }
         }
 
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
+        }
+
         int size = 0;
         int tmpIndex = index;
         for (int i = 0; i < span; i++) {
-            FixedSizeBitSet file = diskDrive.get(tmpIndex);
+            FixedSizeBitSet file = disk.get(tmpIndex);
             size += file.getFreeLocation();
             tmpIndex = Integer.parseInt(file.getFromRange(4088, 4096).__intToString());
         }
@@ -544,20 +665,16 @@ class Disk {
         int iter = 0;
         while (iteration < span && index > 0) {
 //            System.out.println("read @ " + index);
-            FixedSizeBitSet file = diskDrive.get(index);
-            System.out.println("freloc " + file.getFreeLocation() + " at " + index);
+            FixedSizeBitSet file = disk.get(index);
+//            System.out.println("freloc " + file.getFreeLocation() + " at " + index);
             for (int j = 0; j < (file.getFreeLocation() == 4096 ? 4088 : file.getFreeLocation()); j++) {
                 fixedSizeBitSet.set((iter), file.get(j));
                 iter++;
             }
-            System.out.println(fixedSizeBitSet.__toString());
+//            System.out.println(fixedSizeBitSet.__toString());
 //            System.out.println("moving from " + index + " to " + file.getFromRange(4088, 4096).__intToString());
             index = Integer.parseInt(file.getFromRange(4088, 4096).__intToString());
             iteration++;
-        }
-
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
         }
 
         try {
@@ -569,15 +686,21 @@ class Disk {
             e.printStackTrace();
         }
 
-        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
+//        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
 
         return "\n" + fileName + " successfully saved onto your machine from a chained method";
 
     }
 
+    /**
+     * Reads a file in an indexed way
+     *
+     * @param fileName - Target file
+     * @return - Returns a console message
+     */
     private String readIndexed(String fileName) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
         int index = -1;
         int span = -1;
@@ -590,30 +713,36 @@ class Disk {
 
         int size = (span) * (512 * 8);
 
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
+        }
+
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
         List<Integer> indexRows = readIndexTable(index, span);
-        System.out.println(indexRows);
+//        System.out.println(indexRows);
 
         int iteration = 0;
         while (iteration < span) {
-            FixedSizeBitSet file = diskDrive.get(indexRows.get(iteration));
+            FixedSizeBitSet file = disk.get(indexRows.get(iteration));
             for (int j = 0; j < (512 * 8); j++) {
                 fixedSizeBitSet.set(j + ((iteration) * 512 * 8), file.get(j));
             }
             iteration++;
         }
 
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
-        }
-
         return "\n" + fileName + ":\n" + fixedSizeBitSet.toString();
     }
 
+    /**
+     * Deletes a file in an indexed way
+     *
+     * @param fileName - target file
+     * @return - Returns a console message
+     */
     private String deleteIndexed(String fileName) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
         int index = -1;
         int span = -1;
@@ -622,33 +751,41 @@ class Disk {
                 index = Integer.parseInt(row.getFileIndex());
                 span = Integer.parseInt(row.getFileSpan());
             }
+        }
+
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
         }
 
         int size = (span) * (512 * 8);
 
         List<Integer> indexRows = readIndexTable(index, span);
-        System.out.println(indexRows);
+//        System.out.println(indexRows);
 
         int iteration = 0;
         while (iteration < span) {
-            diskDrive.get(1).set(indexRows.get(iteration), false);
-            diskDrive.set(indexRows.get(iteration), new FixedSizeBitSet(512 * 8));
+            disk.get(1).set(indexRows.get(iteration), false);
+            disk.set(indexRows.get(iteration), new FixedSizeBitSet(512 * 8));
             iteration++;
         }
 
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
-        }
-
-        diskDrive.set(index, new FixedSizeBitSet(512 * 8));
+        disk.get(1).set(index, false);
+        disk.set(index, new FixedSizeBitSet(512 * 8));
         deleteFromAllocationTable(fileName);
 
         return "\n" + fileName + " successfully deleted from the filesystem in a indexed manner";
     }
 
+    /**
+     * Deletes a file in an indexed way
+     *
+     * @param fileName  - target filename
+     * @param fileName2 - optional file rename
+     * @return - Returns a console message
+     */
     private String saveIndexed(String fileName, String fileName2) {
         List<AllocationRow> allocationRows = readFileAllocationTable();
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
         int index = -1;
         int span = -1;
@@ -659,24 +796,28 @@ class Disk {
             }
         }
 
+        if (index == -1 || span == -1) {
+            return "\nCould not find the file in the file system";
+        }
+
 //        int size = (span) * (512 * 8);
         List<Integer> indexRows = readIndexTable(index, span);
-        System.out.println("index: " + index + ", " + indexRows);
+//        System.out.println("index: " + index + ", " + indexRows);
 
         int size = 0;
         for (int i = 0; i < span; i++) {
-            FixedSizeBitSet file = diskDrive.get(indexRows.get(i));
+            FixedSizeBitSet file = disk.get(indexRows.get(i));
             size += file.getFreeLocation();
         }
 
-        System.out.println("Size: " + size);
+//        System.out.println("Size: " + size);
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(size);
 
         int iteration = 0;
         int iter = 0;
         while (iteration < span) {
-            FixedSizeBitSet file = diskDrive.get(indexRows.get(iteration));
-            System.out.println(iteration + ", read from file " + indexRows.get(iteration) + " with free space " + file.getFreeLocation());
+            FixedSizeBitSet file = disk.get(indexRows.get(iteration));
+//            System.out.println(iteration + ", read from file " + indexRows.get(iteration) + " with free space " + file.getFreeLocation());
             for (int j = 0; j < file.getFreeLocation(); j++) {
                 fixedSizeBitSet.set(iter, file.get(j));
                 iter++;
@@ -685,10 +826,6 @@ class Disk {
         }
 
 //        System.out.println("Totfresp: " + fixedSizeBitSet.getFreeLocation());
-
-        if (index == -1 || span == -1) {
-            return "\nCould not find the file in the file system";
-        }
 
 //        System.out.println(fixedSizeBitSet.toString());
 
@@ -700,26 +837,38 @@ class Disk {
             e.printStackTrace();
         }
 
-        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
+//        System.out.println("Wrote: " + fixedSizeBitSet.__toString());
 
         return "\n" + fileName + " successfully saved onto your machine from a indexed method";
     }
 
+    /**
+     * Reads from the index table
+     *
+     * @param index - target index table location
+     * @param span  - span on the file
+     * @return - the blocks from an index table
+     */
     private List<Integer> readIndexTable(int index, int span) {
-        FixedSizeBitSet indexTable = diskDrive.get(index);
-        System.out.println(indexTable.toString());
+        FixedSizeBitSet indexTable = disk.get(index);
+//        System.out.println(indexTable.toString());
         List<Integer> spots = new ArrayList<>();
 
         for (int i = 0; i < span; i++) {
             spots.add(Integer.parseInt(indexTable.getFromRange((i) * 8, (i + 1) * 8).__intToString()));
         }
 
-        System.out.println(spots);
+//        System.out.println(spots);
         return spots;
     }
 
+    /**
+     * Gets the number of free spaces from the freespacetable
+     *
+     * @return - an integer of the number of free spaces
+     */
     private int getNumOfFreeSpace() {
-        FixedSizeBitSet fixedSizeBitSet = diskDrive.get(1);
+        FixedSizeBitSet fixedSizeBitSet = disk.get(1);
 
         int free = 0;
         for (int i = 0; i < fixedSizeBitSet.size(); i++) {
@@ -731,22 +880,13 @@ class Disk {
         return free;
     }
 
-//    private int getNextFreeSpace() {
-//        FixedSizeBitSet fixedSizeBitSet = diskDrive.get(1);
-//
-//        int spot = 0;
-//        for (int i = 0; i < fixedSizeBitSet.size(); i++) {
-//            if (!fixedSizeBitSet.get(i)) {
-//                spot = i;
-//                break;
-//            }
-//        }
-//
-//        return spot;
-//    }
-
+    /**
+     * Returns the free space table as a bool array
+     *
+     * @return - a bool array
+     */
     private boolean[] readFreeSpaceTable() {
-        FixedSizeBitSet fixedSizeBitSet = diskDrive.get(1);
+        FixedSizeBitSet fixedSizeBitSet = disk.get(1);
 
         boolean b[] = new boolean[256];
 
@@ -756,8 +896,13 @@ class Disk {
         return b;
     }
 
-    public List<AllocationRow> readFileAllocationTable() {
-        FixedSizeBitSet fixedSizeBitSet = diskDrive.get(0);
+    /**
+     * Reads the file allocation table for operations
+     *
+     * @return the file allocation table in side a helper object
+     */
+    List<AllocationRow> readFileAllocationTable() {
+        FixedSizeBitSet fixedSizeBitSet = disk.get(0);
         List<AllocationRow> allocationRows = new ArrayList<>();
 
         for (int i = 0; i < fixedSizeBitSet.getFreeLocation(); i += 80) {
@@ -772,6 +917,11 @@ class Disk {
         return allocationRows;
     }
 
+    /**
+     * Deletes an object from the file allocation table
+     *
+     * @param fileName - target file you wish to delete
+     */
     private void deleteFromAllocationTable(String fileName) {
 
         FixedSizeBitSet fixedSizeBitSet = new FixedSizeBitSet(512 * 8);
@@ -785,19 +935,38 @@ class Disk {
             }
         }
 
+//        System.out.println(allocationRows);
+
         for (AllocationRow row : allocationRows) {
-            fixedSizeBitSet.append(1, row.getFileName(), row.getFileIndex(), row.getFileIndex());
+            String fname = row.getFileName();
+            if (fname.length() < 8) {
+                StringBuilder fileNameBuilder = new StringBuilder(fname);
+                for (int i = fileNameBuilder.length(); i < 8; i++) {
+                    fileNameBuilder.insert(0, " ");
+                }
+                fname = fileNameBuilder.toString();
+            }
+            fixedSizeBitSet.append(1, fname, row.getFileIndex(), row.getFileSpan());
         }
 
-        diskDrive.set(0, fixedSizeBitSet);
+//        System.out.println(fixedSizeBitSet.toString());
+        disk.set(0, fixedSizeBitSet);
 
     }
 
+    /**
+     * Stores a file in a continuous way
+     *
+     * @param fileName  - target file
+     * @param s         - binary string
+     * @param blockSpan - span
+     * @return - Returns a console message
+     */
     private String continuousAllocation(String fileName, String s, int blockSpan) {
 //        s = getBinaryString(s, 0);
         List<AllocationRow> allocationRows = readFileAllocationTable();
         allocationRows.sort(Comparator.comparing(AllocationRow::getFileIndex));
-        System.out.println(allocationRows);
+//        System.out.println(allocationRows);
 
 
         // Find max open spot,
@@ -806,24 +975,17 @@ class Disk {
 
         int dist = 0;
         int iter = 0;
-        for (int i = 0; i < 256; i++) {
-            dist++;
-            for (AllocationRow row : allocationRows) {
-                if (Integer.parseInt(row.getFileIndex()) == i) {
-                    if (dist > max) {
-                        max = dist;
-                        index = i;
-                    }
-                    dist = 0;
-                    iter = i + 1;
-                    break;
-                }
-            }
+        boolean free[] = readFreeSpaceTable();
 
-            if (dist >= blockSpan && blockSpan > 0) {
-                max = dist;
-                index = iter;
-                break;
+        for (int i = 0; i < free.length; i++) {
+            dist++;
+            if (free[i]) {
+                if (dist > max) {
+                    max = dist;
+                    index = i;
+                }
+                dist = 0;
+                iter = i + 1;
             }
         }
 
@@ -844,8 +1006,8 @@ class Disk {
         StringBuilder temp = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             if (i % (512 * 8) == 0 && i != 0) {
-                diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
-                diskDrive.get(1).set(blockNo, true);
+                disk.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
+                disk.get(1).set(blockNo, true);
                 blockNo++;
                 temp = new StringBuilder();
             }
@@ -854,15 +1016,22 @@ class Disk {
 
         blockSpan = ((blockSpan > 0) ? blockSpan : 1);
 
-        diskDrive.get(1).set(blockNo, true);
-        diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
+        disk.get(1).set(blockNo, true);
+        disk.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
 
 //        System.out.println("appending " + fileName + ", " + index + ", " + blockSpan + " to the alloc table");
-        diskDrive.get(0).append(1, fileName, Integer.toString(index), Integer.toString(blockSpan));
+        disk.get(0).append(1, fileName, Integer.toString(index), Integer.toString(blockSpan));
         return "\nInserted file at block " + index + ", spanning " + blockSpan + " contiguous blocks";
     }
 
-
+    /**
+     * Saves a string in a chained way
+     *
+     * @param fileName  - target fil
+     * @param s         - binary string
+     * @param blockSpan - span
+     * @return - Returns a console message
+     */
     private String chainedAllocation(String fileName, String s, int blockSpan) {
 //        s = getBinaryString(s, 0);
         int free = getNumOfFreeSpace();
@@ -897,7 +1066,7 @@ class Disk {
         int iter = 1;
         for (int r = 0; r < s.length(); r++) {
             if ((r) % (4088) == 0 && r != 0) {
-                System.out.println("We're breaking at R = " + r);
+//                System.out.println("We're breaking at R = " + r);
                 iter++;
                 blockPrev = blockNo;
                 openSpots.remove(new Integer(blockNo));
@@ -905,11 +1074,11 @@ class Disk {
                     blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
                 }
                 spots.add(blockNo);
-                System.out.println(FixedSizeBitSet.fromBinary(temp.toString()).__toString() + " at " + r);
-                diskDrive.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
-                diskDrive.get(blockPrev).append(1, Integer.toString(blockNo));
+//                System.out.println(FixedSizeBitSet.fromBinary(temp.toString()).__toString() + " at " + r);
+                disk.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
+                disk.get(blockPrev).append(1, Integer.toString(blockNo));
 //                System.out.println("Appended " + blockNo + " to the end of " + blockPrev);
-                diskDrive.get(1).set(blockPrev, true);
+                disk.get(1).set(blockPrev, true);
                 temp = new StringBuilder();
             }
             temp.append(s.charAt(r));
@@ -917,22 +1086,29 @@ class Disk {
 
 //        blockSpan = ((blockSpan > 0) ? blockSpan : 1);
 
-        if (diskDrive.get(blockNo).getFreeLocation() < 4096) {
-            diskDrive.get(1).set(blockNo, true);
-            diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
-            diskDrive.get(blockNo).append(1, Integer.toString(0));
-            System.out.println("Appended " + 0 + " to the end of " + blockNo);
+        if (disk.get(blockNo).getFreeLocation() < 4096) {
+            disk.get(1).set(blockNo, true);
+            disk.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
+            disk.get(blockNo).append(1, Integer.toString(0));
+//            System.out.println("Appended " + 0 + " to the end of " + blockNo);
         }
 
-        diskDrive.get(0).append(1, fileName, Integer.toString(spots.get(0)), Integer.toString(blockSpan));
-        System.out.println(fileName + ", " + Integer.toString(spots.get(0)) + ", " + Integer.toString(blockSpan));
+        disk.get(0).append(1, fileName, Integer.toString(spots.get(0)), Integer.toString(blockSpan));
+//        System.out.println(fileName + ", " + Integer.toString(spots.get(0)) + ", " + Integer.toString(blockSpan));
 
 
         return "\nInserted file at block(s) " + spots + ", spanning " + blockSpan + " chained blocks";
 
     }
 
-
+    /**
+     * Saves a string in a indexed way
+     *
+     * @param fileName  - target file
+     * @param s         - binary string
+     * @param blockSpan - span
+     * @return - Returns a console message
+     */
     private String indexedAllocation(String fileName, String s, int blockSpan) {
 //        s = getBinaryString(s, 0);
         int free = getNumOfFreeSpace();
@@ -941,7 +1117,6 @@ class Disk {
             return "\nThere was an error when inserting the file, no room on the file system.";
         }
 
-        int index;
         int blockPrev;
 
         List<Integer> openSpots = new ArrayList<>();
@@ -957,14 +1132,14 @@ class Disk {
 
         int blockIndexLoc = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
         openSpots.remove(new Integer(blockIndexLoc));
-        System.out.println(blockIndexLoc);
-        diskDrive.get(1).set(blockIndexLoc, true);
+//        System.out.println(blockIndexLoc);
+        disk.get(1).set(blockIndexLoc, true);
 
 //            System.out.println(spots);
 
         int blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
         spots.add(blockNo);
-        diskDrive.get(blockIndexLoc).append(1, Integer.toString(blockNo));
+        disk.get(blockIndexLoc).append(1, Integer.toString(blockNo));
         StringBuilder temp = new StringBuilder();
         for (int r = 0; r < s.length(); r++) {
             if (r % (512 * 8) == 0 && r != 0) {
@@ -975,64 +1150,55 @@ class Disk {
                     blockNo = openSpots.get(ThreadLocalRandom.current().nextInt(0, openSpots.size()));
                 }
                 spots.add(blockNo);
-                diskDrive.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
-                diskDrive.get(1).set(blockPrev, true);
-                diskDrive.get(blockIndexLoc).append(1, Integer.toString(blockNo));
+                disk.set(blockPrev, FixedSizeBitSet.fromBinary(temp.toString()));
+                disk.get(1).set(blockPrev, true);
+                disk.get(blockIndexLoc).append(1, Integer.toString(blockNo));
                 temp = new StringBuilder();
             }
             temp.append(s.charAt(r));
         }
 
-//        if (!spots.contains(blockNo)) {
-//            diskDrive.get(1).set(blockNo, true);
-//            diskDrive.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
-//            diskDrive.get(blockNo).append(1, Integer.toString(0));
-//        }
+        if (disk.get(blockNo).getFreeLocation() < 4096) {
+            disk.get(1).set(blockNo, true);
+            disk.set(blockNo, FixedSizeBitSet.fromBinary(temp.toString()));
+            disk.get(blockNo).append(1, Integer.toString(0));
+        }
 
         blockSpan = spots.size();
 
-        diskDrive.get(0).append(1, fileName, Integer.toString(blockIndexLoc), Integer.toString(blockSpan));
-        System.out.println(fileName + ", " + Integer.toString(blockIndexLoc) + ", " + Integer.toString(blockSpan));
+        disk.get(0).append(1, fileName, Integer.toString(blockIndexLoc), Integer.toString(blockSpan));
+//        System.out.println(fileName + ", " + Integer.toString(blockIndexLoc) + ", " + Integer.toString(blockSpan));
 
 
         return "\nInserted file at block(s) " + spots + ", spanning " + spots.size() + " indexed blocks at index file " + blockIndexLoc;
     }
 }
 
+/**
+ * A helper class that a parsed file allocation row is put into for easier manipulation
+ */
 class AllocationRow {
 
     private String fileName;
     private String fileIndex;
     private String fileSpan;
 
-    public AllocationRow(String fileName, String fileIndex, String fileSpan) {
+    AllocationRow(String fileName, String fileIndex, String fileSpan) {
         this.fileName = fileName.trim();
         this.fileIndex = fileIndex.trim();
         this.fileSpan = fileSpan.trim();
     }
 
-    public String getFileName() {
+    String getFileName() {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFileIndex() {
+    String getFileIndex() {
         return fileIndex;
     }
 
-    public void setFileIndex(String fileIndex) {
-        this.fileIndex = fileIndex;
-    }
-
-    public String getFileSpan() {
+    String getFileSpan() {
         return fileSpan;
-    }
-
-    public void setFileSpan(String fileSpan) {
-        this.fileSpan = fileSpan;
     }
 
     @Override
@@ -1045,6 +1211,11 @@ class AllocationRow {
     }
 }
 
+/**
+ * A class that extends the java bitset class. This external class is used to manage blocks.
+ * This class includes methods as a 'quality of life' upgrade for inserting and manipulating the
+ * bits once off the DiskHelper.
+ */
 class FixedSizeBitSet extends BitSet {
     private final int nbits;
 
@@ -1104,13 +1275,19 @@ class FixedSizeBitSet extends BitSet {
         freeLocation++;
     }
 
-    public String _toString() {
+    /**
+     * @return - the binary string
+     */
+    private String _toString() {
         final StringBuilder buffer = new StringBuilder(nbits);
         IntStream.range(0, nbits).mapToObj(i -> get(i) ? '1' : '0').forEach(buffer::append);
         return buffer.toString();
     }
 
-    public String __intToString() {
+    /**
+     * @return - the binary string of a pure int
+     */
+    String __intToString() {
         final StringBuilder buffer = new StringBuilder(nbits);
         IntStream.range(0, nbits).mapToObj(i -> get(i) ? '1' : '0').forEach(buffer::append);
 
@@ -1125,6 +1302,9 @@ class FixedSizeBitSet extends BitSet {
         return Integer.toString(index);
     }
 
+    /**
+     * @return - the block as a byte array
+     */
     public byte[] toByteArray() {
         byte bytes[] = new BigInteger(this._toString(), 2).toByteArray();
         byte outbytes[] = new byte[bytes.length - 1];
@@ -1137,7 +1317,10 @@ class FixedSizeBitSet extends BitSet {
         return bytes;
     }
 
-    public String __toString() {
+    /**
+     * @return the block as a ascii string
+     */
+    String __toString() {
         byte bytes[] = new BigInteger(this._toString(), 2).toByteArray();
 
         byte outbytes[] = new byte[bytes.length - 1];
@@ -1168,11 +1351,11 @@ class FixedSizeBitSet extends BitSet {
         return out.toString();
     }
 
-    public int getFreeLocation() {
+    int getFreeLocation() {
         return freeLocation;
     }
 
-    public void setFreeLocation(int i) {
+    private void setFreeLocation(int i) {
         freeLocation = i;
     }
 }

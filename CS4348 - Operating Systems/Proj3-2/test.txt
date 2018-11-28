@@ -7,12 +7,6 @@ But attempts to automated the process have all relied on algorithms that have be
 More recently, computer scientists have tried to find ways for machines to solve the problem themselves. One idea is to use the same kind of approach that has been so successful with games like chess and Go.
 In these scenarios, a deep-learning machine is given the rules of the game and then plays against itself. Crucially, it is rewarded at each step according to how it performs. This reward process is hugely important because it helps the machine to distinguish good play from bad play. In other words, it helps the machine learn.
 But this doesn’t work in many real-world situations, because rewards are often rare or hard to determine.
-Recommended for You
-What is machine learning? We drew you another flowchart
-One of the fathers of AI is worried about its future
-This is fake news! China’s ‘AI news anchor’ isn’t intelligent at all
-The US military is testing stratospheric balloons that ride the wind so they never have to come down
-Is this AI? We drew you a flowchart to work it out
 For example, random turns of a Rubik’s Cube cannot easily be rewarded, since it is hard to judge whether the new configuration is any closer to a solution. And a sequence of random turns can go on for a long time without reaching a solution, so the end-state reward can only be offered rarely.
 In chess, by contrast, there is a relatively large search space but each move can be evaluated and rewarded accordingly. That just isn’t the case for the Rubik’s Cube.
 Enter Stephen McAleer and colleagues from the University of California, Irvine. These guys have pioneered a new kind of deep-learning technique, called “autodidactic iteration,” that can teach itself to solve a Rubik’s Cube with no human assistance. The trick that McAleer and co have mastered is to find a way for the machine to create its own system of rewards.

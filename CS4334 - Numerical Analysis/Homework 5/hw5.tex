@@ -1,0 +1,157 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tabto}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{array}% http://ctan.org/pkg/array
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\begin{document}
+
+\title{CS / MATH 4334 : Numerical Analysis\\Homework Assignment 5}
+\author{Matthew McMillian\\mgm160130@utdallas.edu}
+\maketitle
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\section*{Theoretical Problems}
+\pagebreak
+
+\begin{enumerate}
+
+	\item Given the approximation for $f^{2}(x) = \cfrac{5f(x-h)-7f(x)+f(x+h)+f(x+4h)}{11h^2}$ find the error term, along with the order of approximation. In other words, write the Taylor series for each of $5f(x-h)$, $f(x+h)$, and $f(x+4h)$, and take the appropriate linear combination of these to find a power series for the above expression.
+	\begin{itemize}
+		\item $f(x-h)$ = $f(x) - f^1(x)h + f^2(x)\frac{h^2}{2} - f^3(c_1)\frac{h^3}{6}$
+		\item $f(x+h)$ = $f(x) + f^1(x)h + f^2(x)\frac{h^2}{2} + f^3(c_2)\frac{h^3}{6}$
+		\item $f(x+4h)$ = $f(x) + 4f^1(x)h + 8f^2(x)h^2 - \frac{32}{3}f^3(c_3)h^3$
+		\item $b = 5f(x-h)-7f(x)$ = $-2f(x) - 5f^1(x) + \frac{5}{2}f^2(x)h^2 - \frac{5}{6}f^3(c_1)h^3$
+		\item $c = b+f(x+h) = -f(x) + 4f^1(x)h+3f^2(x)h^2-\frac{1}{6}f^3(c_1)h^3 + \frac{1}{6}f^3(c_2)h^3$ 
+		\item $d = c+f(x+4h) = 11f^2(x)h^2-\frac{32}{3}f^3(c_3)h^3 -\frac{1}{6}f^3(c_1)h^3 + \frac{1}{6}f^3(c_2)h^3$ 
+		\item Simplifying, we get... \\
+		$f^2(x) + [\frac{32}{33}f^3(c_3) + \frac{1}{66}f^3(c_2) - \frac{1}{66}f^3(c_1)]h$
+		\item \fbox{Our order of approximation is 1 and our error is $\frac{32}{33}f^3(c_3) + \frac{1}{66}f^3(c_2) - \frac{1}{66}f^3(c_1)$}
+	\end{itemize}
+	
+	\item Suppose $f^2(x)$ is approximated by a variation on the three-point centered difference formula with the following constraints (given in hw). Find the value of the step size h which minimizes the upper bound of $E(f,h)$.
+	\begin{itemize}
+		\item Plugging in our errors, we get $\cfrac{1}{4h^2}[y_- + \epsilon_- - 2(y_0 + \epsilon_0) + y_+ + \epsilon_+]$ = \\
+$\cfrac{y_- - 2y_0 + y_+}{4h^2}$ + $\cfrac{\epsilon_- - 2\epsilon_0 + \epsilon_+}{4h^2} - \cfrac{f^4(c)}{6}h^2$. 
+	\item Since $|$ $E_{total}$ $|$ = $|$ $E_r - E_t$ $|$,  $|$ $E_{total}$ $|$ = $|$ $\cfrac{\epsilon_- - 2\epsilon_0 + \epsilon_+}{4h^2} - \cfrac{f^4(c)}{6}h^2$ $|$ $\leq$ $\cfrac{\epsilon}{h^2} + \cfrac{f^2(c)}{6}h^2$
+	\item $\cfrac{d}{dh}(\cfrac{\epsilon}{h^2} + \cfrac{f^2(c)}{6}h^2) = \cfrac{-2\epsilon}{h^3} + \cfrac{f^2(c)}{3}h^2 = 0$ $\rightarrow$ $h =$ \fbox{$\sqrt[4]{\cfrac{6\epsilon}{f^2(c)}}$ is our step size}	
+	\end{itemize}
+	
+	\item Apply Richardson’s Extrapolation once, starting with the three-point centered difference formula given in Theoretical Problem $\#$2, to find a higher-order formula to approximate $f^2(x)$. This new formula is of what order?
+	\begin{itemize}
+		\item Richardson's Extrapolation gives us $\cfrac{2^2F_2(h/2)-F_2(h)}{2^2-1}$
+		\item Expanding, we obtain: \\
+		 $2^2[\cfrac{f(x-h) - 2f(x) + f(x+h)}{h^2} - \cfrac{f(x-2h) - 2f(x) + f(x+2h)}{4h^2}] * 3^{-1}$ =  \\
+		 $\cfrac{4f(x-h) - 8f(x) + 4f(x+h) - f(x-2h) - 2f(x) + f(x+2h)}{3h^2}$
+		 \item \fbox{Our order is $O(h^3)$} since our original order is $O(h^2)$, Richardson's Extrapolation adds one to the order.
+	\end{itemize}	
+	
+	
+	\item Integrate Newton's divided-difference interpolating polynomial to prove the formula (5.19).
+	\begin{itemize}
+		\item Given the points (-h,1), (0,0), (h,0), we can use newtdd to find our coefs, $1, \cfrac{-1}{h}, $ and $\cfrac{1}{2h^2}$. Thus, $P_2(x)$ = $1 - \frac{1}{h}(x+h)+\frac{1}{2h^2}(x+h)(x-0)$
+		\item $\int_{-h}^h P_2(x)dx$ = $|_{-h}^h$ $x-\cfrac{1}{2h}x^2-x+\cfrac{1}{6h^2}x^3+\cfrac{1}{4h}x^2$ = \fbox{$\cfrac{1}{3}h$, which is what we expected}
+	\end{itemize}
+	
+	\item Consider the quadrature rule given in the hw. Find $c_1, c_2, c_3$ such that the quadrature rule integrates the functions $f(x) = 1, x, x^2$ exactly. (Note that the points are not evenly spaced.) What is the degree of precision of this quadrature formula?
+	\begin{itemize}
+		\item We can form a linear system out of our function, as seen below: \\
+		$2 = c_1 + c_2 + c_3$ \\
+		$0 = -c_1 + \frac{1}{2}c_2+c_3$ \\
+		$\frac{2}{3} = c_1 + \frac{1}{4}c_2 + c_3$
+		
+		\item we can form a matrix as seen below: \\ \\
+		$\begin{bmatrix}
+   			1 & 1 & 1 \\
+   			-1 & \frac{1}{2} & 1 \\
+   			1 & \frac{1}{4} & 1 \\
+		\end{bmatrix}$ 	$\begin{bmatrix}
+   			c_1  \\
+   			c_2  \\
+   			c_3  \\
+		\end{bmatrix}$ = $\begin{bmatrix}
+   			2  \\
+   			0  \\
+   			\frac{2}{3}  \\
+		\end{bmatrix}$
+		
+		\item Solving the system, we get a solution vector of \\ \fbox{$\begin{bmatrix}
+   			\cfrac{5}{9}  \\
+   			\cfrac{16}{9}  \\
+   			\cfrac{-1}{3}  \\
+		\end{bmatrix}$. Since our third derivative is 0, our rule is of degree 3.}
+	\end{itemize}
+	
+	\item Recall that the error in a quadrature rule based on an interpolant $P(x)$ is written as given in the assignment. Find an upper bound for $|$ $E(x)$ $|$ in terms of h.
+	\begin{itemize}
+		\item Our bounds are given by: \\
+		$x_0$ = $x_0 + ht$ $\rightarrow t=0$ \\
+		$x_2$ = $x_0 + ht$ $\rightarrow$ $x_2 - x_0 \ h$ $\rightarrow$ $t = 2$ \\
+		$dx = hdt$
+		\item Simplifying, we obtain the following integral: \\ \\
+		$\frac{1}{6}M_3$ $\int_0^2$ $(ht)(h(t-1))(h(t-2))dt$ $\rightarrow$ $\frac{1}{6}M_3h^4$ $[\frac{1}{4}t^4-t^3+\frac{1}{2}h^2]$ $|_0^2$
+		\item We get that our integral evaluates to \fbox{$\cfrac{-1}{3}h^4M_3$}, which is our upper bound in terms of h. 
+	\end{itemize}
+	
+	\item If $\int_0^1$ $e^{x^2}dx$ is approximated with the Composite Simpson’s Rule, determine the minimum number of panels m needed for the upper bound of the absolute value of the error term to be less than any positive real number E.
+	\begin{itemize}
+		\item Simpsons is given by: $\frac{h}{3}[y_0 + y_{2m}+4\Sigma_{i=1}^m y_{2i-1} + 2\Sigma_{i=1}^{m-1} y_{2i}]$
+		\item Simpsons error is given as $\cfrac{(b-a)h^4}{180}f^4(c)$
+		\item $\cfrac{(b-a)h^4}{180}f^4(c)$ $\rightarrow$ $\cfrac{(1)h^4}{180}f^4(c)$
+		\item Simplifying $f^4(c) = 2(8e^{x^2}x^4 +12e^{x^2}x^2 + 6e^{x^2})$ has a max of $76e$ on the interval. \\
+		Thus we obtain $\cfrac{h^4}{180}76e \leq E$
+		\item Simplifying, we obtain that \fbox{$h \leq \sqrt[4]{\cfrac{180}{76e}E}$}
+	\end{itemize}
+	
+	\item Apply the Composite Simpsons rule with m=4 panels to the integral $\int_0^{2\pi}$ $xsin(x)dx$ Compute the absolute error between the exact integral and the approximation. 
+	\begin{itemize}
+		\item Our 'nodes' are $0, \frac{\pi}{4}, \frac{\pi}{2}, \frac{3\pi}{4}, \pi, \frac{5\pi}{4}, \frac{3\pi}{2}, \frac{7\pi}{4}, 2\pi$.
+		\item Simpsons is given by: $\frac{h}{3}[y_0 + y_{2m}+4\Sigma_{i=1}^m y_{2i-1} + 2\Sigma_{i=1}^{m-1} y_{2i}]$. Our h is $(b-a)/2m$ = $\pi/4$.
+		\item Applying Simpsons, we get $\frac{\pi}{12}[sin(0) + sin(2\pi) + 4*[sin(\frac{\pi}{4})+sin(\frac{3\pi}{4})+sin(\frac{5\pi}{4})+sin(\frac{7\pi}{4})] + 2[sin(\frac{\pi}{2}) + sin(\pi) + sin(\frac{3\pi}{2})]]$ = -6.28319. Our actual is 6.29751. 
+		\item The abserr is given by $|$ $x - x_a$ $|$ = $|$ $-6.28319 - 6.29751$ $|$ = \fbox{0.01432}
+	\end{itemize}
+	
+	\item Apply Romberg Integration to find R$_{44}$ for the integral $\int_0^1$ $x^2dx$.
+	\begin{itemize}
+		\item Using the formula in the book, we can find the values of R. \\
+		$R_{11} = (b-a)\cfrac{f(a)+f(b)}{2}$ \\
+		$R_{j1} = \cfrac{1}{2}R_{j-1,1}+h_j\Sigma_{i=1}^{2^{2j-2}} f(a+(2i-1)h_j$ \\
+		$R_{jk} = \cfrac{4^{k-1}R_{j,k-1}-R_{j-1,k-1}}{4^{k-1}-1}$ 
+		\item Thus we solve for the following R's below: \\
+		$R_{11}$ = $1/2$ \\
+		$R_{21}$ = $3/8$ \\
+		$R_{22}$ = $1/3$ \\
+		$R_{31}$ = $11/32$ \\
+		$R_{32}$ = $1/3$ \\
+		$R_{33}$ = $1/3$ \\
+		$R_{41}$ = $43/128$ \\
+		$R_{42}$ = $1/3$ \\
+		$R_{43}$ = $1/3$ \\
+		$R_{44}$ = $1/3$ \\
+	\end{itemize}
+\end{enumerate}
+\end{document}
