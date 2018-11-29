@@ -1,0 +1,6 @@
+Yet another bastion of human skill and intelligence has fallen to the onslaught of the machines. A new kind of deep-learning machine has taught itself to solve a Rubik’s Cube without any human assistance.
+The milestone is significant because the new approach tackles an important problem in computer science—how to solve complex problems when help is minimal.
+First some background. The Rubik’s Cube is a three-dimensional puzzle developed in 1974 by the Hungarian inventor Erno Rubik, the object being to align all squares of the same color on the same face of the cube. It became an international best-selling toy and sold over 350 million units.
+The puzzle has also attracted considerable interest from computer scientists and mathematicians. One question that has intrigued them is the smallest number of moves needed to solve it from any position. The answer, proved in 2014, turns out to be 26.
+Another common challenge is to design algorithms that can solve the cube from any position. Rubik himself, within a month of inventing the toy, came up with an algorithm that could do this.
+But attempts to automated the process have all relied on algorithms that have been hand-crafted by humans.

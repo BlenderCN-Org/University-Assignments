@@ -114,6 +114,13 @@ INSERT INTO JOB (JobId, JobDescription, PostedDate, DepartmentId) VALUES (12345,
 INSERT INTO INTERVIEW (InterviewId, InterviewerId, ApplicantId, JobId) VALUES (83, 2048, 2049, 12345);
 INSERT INTO INTERVIEW (InterviewId, InterviewerId, ApplicantId, JobId) VALUES (82, 2048, 1048, 12345);
 
+--<Query 11>
+-- Insert Matt into each department for testing
+INSERT INTO DEPARTMENT_HISTORY(DepartmentId, EmployeeId) VALUES ();
+
+--<Query 13>
+-- Add person who applies for and passes all jobs, and add someone who applies for all jobs but does not pass them all
+
 --<Query 15>
 INSERT INTO VENDOR (VendorId, Name, Address, AccountNumber, CreditRating, WebURL) VALUES (2, 'Jacks Parts', '500 W Parker St', 999888777, 200, 'www.test.com');
 INSERT INTO PART (PartId, PartName,Price, VendorId) VALUES (15, 'Cup', 2.99, 2);

@@ -1,11 +1,11 @@
-CREATE TABLE PRODUCT (  
+CREATE TABLE PRODUCT (
   ProductId NUMBER(9) NOT NULL,
   ProductType VARCHAR2(20) NOT NULL,
   ProductSize NUMBER(9,2) NOT NULL,
   ListPrice NUMBER(9,2) NOT NULL,
   Weight NUMBER(9,2) NOT NULL,
   ProductStyle VARCHAR2(20) NOT NULL,
-  
+
   PRIMARY KEY (ProductId)
 );
 --DROP TABLE PRODUCT CASCADE CONSTRAINTS;
@@ -18,7 +18,7 @@ CREATE TABLE PERSON (
   Address VARCHAR2(60) NOT NULL,
   Phone NUMBER(10) NOT NULL,
   Email VARCHAR2(30) NOT NULL,
-  
+
   PRIMARY KEY (PersonId)
 );
 --DROP TABLE PERSON CASCADE CONSTRAINTS;
@@ -29,21 +29,21 @@ CREATE TABLE EMPLOYEE (
   Title VARCHAR2(40) NOT NULL,
   SupervisorId NUMBER(9),
   SiteId NUMBER(9) NOT NULL,
-  
+
   PRIMARY KEY (EmployeeId)
 );
 --DROP TABLE EMPLOYEE CASCADE CONSTRAINTS;
 
 CREATE TABLE Customer (
   CustomerId NUMBER(9) NOT NULL,
-  PreferredSalesman NUMBER(9) NOT NULL,  
-  
+  PreferredSalesman NUMBER(9) NOT NULL,
+
   PRIMARY KEY (CustomerId)
 );
 
 CREATE TABLE PotentialEmployee (
   PotentialEmployeeId NUMBER(9) NOT NULL,
-  
+
   PRIMARY KEY (PotentialEmployeeId)
 );
 
@@ -52,8 +52,8 @@ CREATE TABLE Interview (
   InterviewerId NUMBER(9) NOT NULL,
   ApplicantId NUMBER(9) NOT NULL,
   JobId NUMBER(9) NOT NULL,
-  
-  PRIMARY KEY (InterviewId)  
+
+  PRIMARY KEY (InterviewId)
 );
 --DROP TABLE Interview CASCADE CONSTRAINTS;
 
@@ -63,15 +63,15 @@ CREATE TABLE Sale (
   CustomerId NUMBER(9) NOT NULL,
   SalesmanId NUMBER(9) NOT NULL,
   SaleTime DATE NOT NULL,
-  
-  PRIMARY KEY (SaleId)  
+
+  PRIMARY KEY (SaleId)
 );
 
 --CREATE TABLE Sale_Site (
 --  SalesmanId NUMBER(9) NOT NULL,
 --  SiteId NUMBER(9) NOT NULL,
---  
---  PRIMARY KEY (SalesmanId)  
+--
+--  PRIMARY KEY (SalesmanId)
 --);
 --DROP TABLE SALE_SITE CASCADE CONSTRAINTS;
 
@@ -79,8 +79,8 @@ CREATE TABLE MarketingSite (
   SiteId NUMBER(9) NOT NULL,
   SiteName VARCHAR2(20) NOT NULL,
   SiteLocation VARCHAR2(30) NOT NULL,
-  
-  PRIMARY KEY (SiteId)    
+
+  PRIMARY KEY (SiteId)
 );
 
 CREATE TABLE Salary (
@@ -88,9 +88,9 @@ CREATE TABLE Salary (
   TransactionNumber NUMBER(9) NOT NULL,
   PayDate DATE NOT NULL,
   Amount NUMBER(9,2) NOT NULL,
-  
+
   CONSTRAINT EMP_TRS_UNI UNIQUE (EmployeeId, TransactionNumber)
---  PRIMARY KEY (EmployeeId)  
+--  PRIMARY KEY (EmployeeId)
 );
 --DROP TABLE SALARY CASCADE CONSTRAINTS;
 
@@ -108,9 +108,9 @@ CREATE TABLE Vendor (
   Address VARCHAR2(60) NOT NULL,
   AccountNumber NUMBER(9) NOT NULL,
   CreditRating NUMBER(6) NOT NULL,
-  WebURL VARCHAR2(30) NOT NULL,  
-  
-  PRIMARY KEY (VendorId)  
+  WebURL VARCHAR2(30) NOT NULL,
+
+  PRIMARY KEY (VendorId)
 );
 --DROP TABLE VENDOR CASCADE CONSTRAINTS;
 
@@ -119,17 +119,17 @@ CREATE TABLE Job (
   JobDescription VARCHAR2(60) NOT NULL,
   PostedDate DATE NOT NULL,
   DepartmentId NUMBER(9) NOT NULL,
-  
-  PRIMARY KEY (JobId)    
+
+  PRIMARY KEY (JobId)
 );
 
 CREATE TABLE Interview_Grade (
   InterviewID NUMBER(9) NOT NULL,
   RoundNumber NUMBER(1) NOT NULL,
   Grade NUMBER(3) NOT NULL,
-  
+
   CONSTRAINT INT_GRADE_UNI UNIQUE (InterviewID, RoundNumber)
---  PRIMARY KEY (InterviewID)    
+--  PRIMARY KEY (InterviewID)
 );
 --DROP TABLE INTERVIEW_GRADE CASCADE CONSTRAINTS;
 
@@ -139,16 +139,16 @@ CREATE TABLE Part (
   PartName VARCHAR(30) NOT NULL,
   Price NUMBER(5,2) NOT NULL,
   VendorId NUMBER(9) NOT NULL,
-  
-  PRIMARY KEY (PartId)   
+
+  PRIMARY KEY (PartId)
 );
 --DROP TABLE PART CASCADE CONSTRAINTS;
 
 CREATE TABLE Department (
   DepartmentId NUMBER(9) NOT NULL,
   DepartmentName VARCHAR2(30) NOT NULL,
-  
-  PRIMARY KEY (DepartmentId) 
+
+  PRIMARY KEY (DepartmentId)
 );
 
 CREATE TABLE Product_Parts (
@@ -157,6 +157,14 @@ CREATE TABLE Product_Parts (
   PartId NUMBER(9) NOT NULL
 );
 --DROP TABLE PRODUCT_PARTS CASCADE CONSTRAINTS;
+
+CREATE TABLE Department_History (
+    DepartmentId NUMBER(9) NOT NULL,
+    EmployeeId NUMBER(9) NOT NULL
+);
+
+ALTER TABLE Department_History ADD FOREIGN KEY (DepartmentId) REFERENCES Department(DepartmentId);
+ALTER TABLE Department_History ADD FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId);
 
 ALTER TABLE Employee ADD FOREIGN KEY (EmployeeId) REFERENCES Person(PersonId);
 ALTER TABLE Employee ADD FOREIGN KEY (SiteId) REFERENCES MarketingSite(SiteId);
