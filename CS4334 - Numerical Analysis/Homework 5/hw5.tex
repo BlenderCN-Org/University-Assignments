@@ -46,19 +46,19 @@
 		\item $f(x+h)$ = $f(x) + f^1(x)h + f^2(x)\frac{h^2}{2} + f^3(c_2)\frac{h^3}{6}$
 		\item $f(x+4h)$ = $f(x) + 4f^1(x)h + 8f^2(x)h^2 - \frac{32}{3}f^3(c_3)h^3$
 		\item $b = 5f(x-h)-7f(x)$ = $-2f(x) - 5f^1(x) + \frac{5}{2}f^2(x)h^2 - \frac{5}{6}f^3(c_1)h^3$
-		\item $c = b+f(x+h) = -f(x) + 4f^1(x)h+3f^2(x)h^2-\frac{1}{6}f^3(c_1)h^3 + \frac{1}{6}f^3(c_2)h^3$ 
-		\item $d = c+f(x+4h) = 11f^2(x)h^2-\frac{32}{3}f^3(c_3)h^3 -\frac{1}{6}f^3(c_1)h^3 + \frac{1}{6}f^3(c_2)h^3$ 
+		\item $c = b+f(x+h) = -f(x) + 4f^1(x)h+3f^2(x)h^2-\frac{5}{6}f^3(c_1)h^3 + \frac{1}{6}f^3(c_2)h^3$ 
+		\item $d = c+f(x+4h) = 11f^2(x)h^2-\frac{32}{3}f^3(c_3)h^3 -\frac{5}{6}f^3(c_1)h^3 + \frac{1}{6}f^3(c_2)h^3$ 
 		\item Simplifying, we get... \\
-		$f^2(x) + [\frac{32}{33}f^3(c_3) + \frac{1}{66}f^3(c_2) - \frac{1}{66}f^3(c_1)]h$
-		\item \fbox{Our order of approximation is 1 and our error is $\frac{32}{33}f^3(c_3) + \frac{1}{66}f^3(c_2) - \frac{1}{66}f^3(c_1)$}
+		$f^2(x) + [\frac{32}{33}f^3(c_3) + \frac{1}{66}f^3(c_2) -\frac{5}{66}f^3(c_1)]h$
+		\item \fbox{Our order of approximation is 1 and our error is $\frac{32}{33}f^3(c_3) + \frac{1}{66}f^3(c_2) - \frac{5}{66}f^3(c_1)$}
 	\end{itemize}
 	
 	\item Suppose $f^2(x)$ is approximated by a variation on the three-point centered difference formula with the following constraints (given in hw). Find the value of the step size h which minimizes the upper bound of $E(f,h)$.
 	\begin{itemize}
 		\item Plugging in our errors, we get $\cfrac{1}{4h^2}[y_- + \epsilon_- - 2(y_0 + \epsilon_0) + y_+ + \epsilon_+]$ = \\
 $\cfrac{y_- - 2y_0 + y_+}{4h^2}$ + $\cfrac{\epsilon_- - 2\epsilon_0 + \epsilon_+}{4h^2} - \cfrac{f^4(c)}{6}h^2$. 
-	\item Since $|$ $E_{total}$ $|$ = $|$ $E_r - E_t$ $|$,  $|$ $E_{total}$ $|$ = $|$ $\cfrac{\epsilon_- - 2\epsilon_0 + \epsilon_+}{4h^2} - \cfrac{f^4(c)}{6}h^2$ $|$ $\leq$ $\cfrac{\epsilon}{h^2} + \cfrac{f^2(c)}{6}h^2$
-	\item $\cfrac{d}{dh}(\cfrac{\epsilon}{h^2} + \cfrac{f^2(c)}{6}h^2) = \cfrac{-2\epsilon}{h^3} + \cfrac{f^2(c)}{3}h^2 = 0$ $\rightarrow$ $h =$ \fbox{$\sqrt[4]{\cfrac{6\epsilon}{f^2(c)}}$ is our step size}	
+	\item Since $|$ $E_{total}$ $|$ = $|$ $E_r - E_t$ $|$,  $|$ $E_{total}$ $|$ = $|$ $\cfrac{\epsilon_- - 2\epsilon_0 + \epsilon_+}{4h^2} - \cfrac{f^4(c)}{6}h^2$ $|$ $\leq$ $\cfrac{\epsilon}{h^2} + \cfrac{f^4(c)}{6}h^2$
+	\item $\cfrac{d}{dh}(\cfrac{\epsilon}{h^2} + \cfrac{f^4(c)}{6}h^2) = \cfrac{-2\epsilon}{h^3} + \cfrac{f^4(c)}{3}h^2 = 0$ $\rightarrow$ $h =$ \fbox{$\sqrt[4]{\cfrac{6\epsilon}{f^4(c)}}$ is our step size}	
 	\end{itemize}
 	
 	\item Apply Richardson’s Extrapolation once, starting with the three-point centered difference formula given in Theoretical Problem $\#$2, to find a higher-order formula to approximate $f^2(x)$. This new formula is of what order?
