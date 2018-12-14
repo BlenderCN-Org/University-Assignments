@@ -1,10 +1,8 @@
-Generalize Disk... void write(int blockloc, BitSet block);
+To compile / run the program:
+    javac Main.java
+    java Main [file allocation type]
 
-Make sure images workproperly (image encoding)
-bmp
-jpg
-png
-
-need to fixed chained and indexed alloc:
-- chained is in the writing
-- indexed has some pass-by-obj problems
+File Allocation Types:
+    0 - Continuous Allocation
+    1 - Chained Allocation
+    2 - Indexed Allocation

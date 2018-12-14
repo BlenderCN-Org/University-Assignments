@@ -31,7 +31,16 @@
 	An indexed sequential file is like a sequential file, having same record lengths and fields, however in this strategy we implement a key-data strategy. This indexed lookup (similar to a hashtable) provides quick lookup of the desired record. An overflow file can periodically merge with the main file if we need to add any new data items (since we need to key them in).\\
 	
 	\item What is a chained allocation? \\ \\
-	Chained allocation allocated particular blocks, and then has a 'chain' (a glorified pointer) that points to the next block in its sequence. Chained allocation is good since we don't have to have any outside structures dictating positions of memory blocks. However, we must at worst case go through all the linked blocks from the starting position to find the block we want.
+	Chained allocation allocated particular blocks, and then has a 'chain' (a glorified pointer) that points to the next block in its sequence. Chained allocation is good since we don't have to have any outside structures dictating positions of memory blocks. However, we must at worst case go through all the linked blocks from the starting position to find the block we want.\\
+	
+	\item Explain a type 1 VMM and a type 2 VMM. \\ \\
+	Type 1 VMMs run directly on a hosts hardware, similar to an OS. Type 1 VMMs also directly control the host resources. Type 2 VMMs runs on host OS, and it relies on the OS for hardware interactions. Type 1 typically performs better and more secure, however Type 2 has more scalability.\\
+	
+	\item What are some of the benefits of virtual machine consolidation? \\ \\ 
+	Consolidation is the number of VMs that run on a host system. With a better consolidation ratio, you can run more VMs on a host which implies that you can use less hardware to run the same amount of VMs. This reduces the cost for running servers.\\
+	
+	\item Explain memory overcommit. \\ \\
+	Memory overcommit is when you run multiple VMs that 'say' that they have more memory than is actually available. A server may overcommit 1.2 - 1.5 times its physical memory until it gets overburdened. This process is executed since VMs are allowed to borrow memory from eachother. This mechanism is called a balloon driver, as it request memory and inflates if the guest OS frees up pages no longer needed.
 	
       
 \end{enumerate}

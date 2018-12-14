@@ -29,6 +29,12 @@ INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (10, 3, 50)
 INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (10, 4, 80);
 INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (10, 5, 90);
 
+INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (82, 1, 60);
+INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (82, 2, 70);
+INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (82, 3, 50);
+INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (82, 4, 80);
+INSERT INTO INTERVIEW_GRADE (InterviewId, RoundNumber, Grade) VALUES (82, 5, 90);
+
 INSERT INTO PERSON (PersonId, Name, Age, Gender, Address, Phone, Email) VALUES (1049, 'Kion Smith', 20, 'Male', 'UT Dallas', 3454563456, 'testemail@ut.edu');
 INSERT INTO POTENTIALEMPLOYEE (POTENTIALEMPLOYEEID) VALUES (1049);
 
@@ -116,7 +122,9 @@ INSERT INTO INTERVIEW (InterviewId, InterviewerId, ApplicantId, JobId) VALUES (8
 
 --<Query 11>
 -- Insert Matt into each department for testing
-INSERT INTO DEPARTMENT_HISTORY(DepartmentId, EmployeeId) VALUES ();
+INSERT INTO DEPARTMENT_HISTORY(DepartmentId, EmployeeId) VALUES (3, 2048);
+INSERT INTO DEPARTMENT_HISTORY(DepartmentId, EmployeeId) VALUES (3, 2049);
+INSERT INTO DEPARTMENT_HISTORY(DepartmentId, EmployeeId) VALUES (12, 2048);
 
 --<Query 13>
 -- Add person who applies for and passes all jobs, and add someone who applies for all jobs but does not pass them all

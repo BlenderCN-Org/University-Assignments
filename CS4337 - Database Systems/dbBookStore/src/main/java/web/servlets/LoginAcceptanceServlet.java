@@ -66,6 +66,17 @@ public class LoginAcceptanceServlet extends HttpServlet {
             request.getRequestDispatcher("/login").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "You Are Now Logged In!!");
+            request.getSession().setAttribute("fname", m.getFname());
+            request.getSession().setAttribute("lname", m.getLname());
+            request.getSession().setAttribute("phone", m.getPhone());
+            request.getSession().setAttribute("email", m.getEmail());
+            request.getSession().setAttribute("city", m.getCity());
+            request.getSession().setAttribute("address", m.getAddress());
+            request.getSession().setAttribute("state", m.getState());
+            request.getSession().setAttribute("zip", m.getZip());
+            request.getSession().setAttribute("cch", m.getCreditcardtype());
+            request.getSession().setAttribute("ccn", m.getCreditcardnumber());
+//            request.getSession().setAttribute("member", m);
             request.getSession().setAttribute("usertype", "logged");
             request.getSession().setAttribute("userid", userid);
             request.getRequestDispatcher("/index").include(request, response);

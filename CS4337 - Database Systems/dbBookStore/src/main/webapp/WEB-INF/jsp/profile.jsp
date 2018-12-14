@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"/>
 
 <html lang="en">
 <meta charset="UTF-8">
@@ -36,7 +36,7 @@
 </c:choose>
 
 
-<div id ="error-container" class="error-container" style="display:block">
+<div id="error-container" class="error-container" style="display:block">
     <h2>
         <c:if test="${not empty errorMessage}">
             <c:out value="${errorMessage}"/>
@@ -46,7 +46,7 @@
 <script type="text/javascript">
     window.onload = function () {
         setTimeout(function () {
-            document.getElementById('error-container').style.display='none';
+            document.getElementById('error-container').style.display = 'none';
         }, 3000);
         return false;
     };
@@ -65,13 +65,15 @@
                     <th>
                         <div class="wrapper">
                             <label for="fname"><b>First Name</b></label>
-                            <input type="text" minlength="1" maxlength="20" placeholder="Enter First Name" name="fname">
+                            <input type="text" minlength="1" maxlength="20" placeholder=
+                            <c:out value="${fname}"/> name="fname">
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="lname"><b>Last Name</b></label>
-                            <input type="text" minlength="1" maxlength="20" x placeholder="Enter Last Name" name="lname">
+                            <input type="text" minlength="1" maxlength="20" x placeholder=
+                            <c:out value="${lname}"/> name="lname">
                         </div>
                     </th>
                 </tr>
@@ -79,13 +81,15 @@
                     <th>
                         <div class="wrapper">
                             <label for="phone"><b>Phone Number</b></label>
-                            <input type="text" placeholder="Enter Phone Number" name="phone" maxlength="10" minlength="10">
+                            <input type="text" placeholder=
+                            <c:out value="${phone}"/> name="phone" maxlength="10" minlength="10">
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="email"><b>Email Address</b></label>
-                            <input type="email" maxlength="50" minlength="1" placeholder="Enter Email Address" name="email">
+                            <input type="email" maxlength="50" minlength="1" placeholder=
+                            <c:out value="${email}"/> name="email">
                         </div>
                     </th>
                 </tr>
@@ -93,13 +97,15 @@
                     <th>
                         <div class="wrapper">
                             <label for="address"><b>Address</b></label>
-                            <input type="text" minlength="1" maxlength="50" placeholder="Enter Address" name="address">
+                            <input type="text" minlength="1" maxlength="50" placeholder=
+                            <c:out value="${address}"/> name="address">
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="city"><b>City</b></label>
-                            <input type="text" placeholder="Enter City" name="city" minlength="1" maxlength="30">
+                            <input type="text" placeholder=
+                            <c:out value="${city}"/> name="city" minlength="1" maxlength="30">
                         </div>
                     </th>
                 </tr>
@@ -107,7 +113,7 @@
                     <th>
                         <div class="wrapper">
                             <label for="state"><b>State</b></label>
-                            <select name="state">
+                            <select name="state" id="state">
                                 <option value="alabama">AL</option>
                                 <option value="alaska">AK</option>
                                 <option value="arizona">AZ</option>
@@ -159,33 +165,56 @@
                                 <option value="wisconsin">WI</option>
                                 <option value="wyoming">W</option>
                             </select>
+                            <script>
+                                var temp = document.session.getAttribute("state");
+                                var mySelect = document.getElementById('state');
+                                for (var i, j = 0; i = mySelect.options[j]; j++) {
+                                    if (i.value === temp) {
+                                        mySelect.selectedIndex = j;
+                                        break;
+                                    }
+                                }
+                            </script>
                         </div>
                     </th>
                     <th>
                         <div class="wrapper">
                             <label for="zip"><b>Zip</b></label>
-                            <input type="text" placeholder="Enter Zip" name="zip" minlength="5" maxlength="5">
+                            <input type="text" placeholder=
+                            <c:out value="${zip}"/> name="zip" minlength="5" maxlength="5">
                         </div>
                     </th>
                 </tr>
                 <tr>
-                <th>
-                    <div class="wrapper">
-                        <label for="creditcardtype"><b>Credit Card Holder</b></label>
-                        <select name="creditcardtype">
-                            <option value="amex">Amex</option>
-                            <option value="discover">Discover</option>
-                            <option value="mc">Master Card</option>
-                            <option value="visa">Visa</option>
-                        </select>
-                    </div>
-                </th>
-                <th>
-                    <div class="wrapper">
-                        <label for="creditcardnumber"><b>Credit Card Number</b></label>
-                        <input type="text" placeholder="Enter Credit Card Number" name="creditcardnumber" minlength="16" maxlength="16">
-                    </div>
-                </th>
+                    <th>
+                        <div class="wrapper">
+                            <label for="creditcardtype"><b>Credit Card Holder</b></label>
+                            <select name="creditcardtype" id="cch">
+                                <option value="amex">Amex</option>
+                                <option value="discover">Discover</option>
+                                <option value="mc">Master Card</option>
+                                <option value="visa">Visa</option>
+                            </select>
+
+                            <script>
+                                var temp = document.session.getAttribute("cch");
+                                var mySelect = document.getElementById('cch');
+                                for (var i, j = 0; i = mySelect.options[j]; j++) {
+                                    if (i.value === temp) {
+                                        mySelect.selectedIndex = j;
+                                        break;
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="wrapper">
+                            <label for="creditcardnumber"><b>Credit Card Number</b></label>
+                            <input type="text" placeholder=
+                            <c:out value="${ccn}"/> name="creditcardnumber" minlength="16" maxlength="16">
+                        </div>
+                    </th>
                 </tr>
             </table>
             <!--End Form Table-->

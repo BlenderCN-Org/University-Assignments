@@ -16,9 +16,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DiskHelper = new DiskHelper(0);
+        if(args.length < 1) {
+            System.out.println("Error: You didnt enter a Allocation Type!");
+            return;
+        }
+        
+        int type = Integer.parseInt(args[0]);
+
+        if(type > 2 || type < 0) {
+            System.out.println("Error: Wrong File Allocaton Parameter!");
+            return;
+        }
+
+        DiskHelper = new DiskHelper(type);
 
         String response = "";
+
+        if(type == 0) {
+            response = "\nLoaded Continuous File Allocation!";
+        } else if (type == 1) {
+            response = "\nLoaded Chained File Allocation!";
+        } else if (type == 2) {
+            response = "\nLoaded Indexed File Allocation!";
+        }
 
         while (true) {
             System.gc();

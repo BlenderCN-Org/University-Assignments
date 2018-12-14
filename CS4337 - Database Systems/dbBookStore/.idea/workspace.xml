@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a79ec7a6-4437-4b0b-951e-4540dbcbc4c5" name="Default Changelist" comment="" />
+    <list default="true" id="a79ec7a6-4437-4b0b-951e-4540dbcbc4c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175/storage_v2/_src_/schema/ADMIN.Lwu0Aw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/576dccab-d50e-49dc-ad1a-5c9de1e89175/storage_v2/_src_/schema/ADMIN.Lwu0Aw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/web/servlets/LoginAcceptanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/servlets/LoginAcceptanceServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quiz/quiz1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../quiz/quiz1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quiz/quiz1.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../quiz/quiz1.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quiz/quiz1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../quiz/quiz1.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../termProj/DBInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../termProj/DBInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../termProj/DBQueries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../termProj/DBQueries.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../termProj/DBViews.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../termProj/DBViews.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../termProj/completed_diags/ER Logical .png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../termProj/completed_diags/Relational Logical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-unix/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-unix/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-unix/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-unix/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/hw6.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/hw6.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/hw6.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/hw6.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4348 - Operating Systems/hw6.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4348 - Operating Systems/hw6.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4384 - Automata Theory/Automata/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4384 - Automata Theory/Automata/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CS4384 - Automata Theory/Automata/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CS4384 - Automata Theory/Automata/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,37 +43,53 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="ADMIN: schema" type="ac44c5e0:OracleImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="ADMIN: schema" type="ac44c5e0:OracleImplModel$Schema" />
+        <item name="MEMBERS: table" type="be4db629:OracleImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-2076470568">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="21" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.3" value="3" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="7" />
+          <entry key="project.open.time.7" value="8" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="BOOKS" value="6" />
           <entry key="CART" value="6" />
-          <entry key="MEMBERS" value="3" />
+          <entry key="MEMBERS" value="4" />
           <entry key="ODETAILS" value="3" />
           <entry key="ORDERS" value="6" />
           <entry key="class" value="2" />
           <entry key="css" value="41" />
           <entry key="csv" value="3" />
-          <entry key="java" value="129" />
+          <entry key="java" value="132" />
           <entry key="js" value="4" />
-          <entry key="jsp" value="70" />
+          <entry key="jsp" value="71" />
           <entry key="properties" value="2" />
           <entry key="rnc" value="1" />
           <entry key="sql" value="1" />
@@ -62,9 +101,9 @@
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="CSS" value="41" />
-          <entry key="Database Element" value="24" />
-          <entry key="JAVA" value="129" />
-          <entry key="JSP" value="70" />
+          <entry key="Database Element" value="25" />
+          <entry key="JAVA" value="132" />
+          <entry key="JSP" value="71" />
           <entry key="JavaScript" value="4" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="2" />
@@ -75,12 +114,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cell" value="51" />
+          <entry key="cell" value="56" />
           <entry key="css" value="1535" />
           <entry key="csv" value="1" />
-          <entry key="java" value="5365" />
+          <entry key="java" value="5643" />
           <entry key="js" value="93" />
-          <entry key="jsp" value="3295" />
+          <entry key="jsp" value="3559" />
           <entry key="properties" value="1" />
           <entry key="txt" value="6" />
         </counts>
@@ -88,12 +127,12 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1535" />
-          <entry key="JAVA" value="5365" />
-          <entry key="JSP" value="3295" />
+          <entry key="JAVA" value="5643" />
+          <entry key="JSP" value="3559" />
           <entry key="JavaScript" value="93" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="1" />
-          <entry key="Scratch" value="51" />
+          <entry key="Scratch" value="56" />
         </counts>
       </usages-collector>
     </session>
@@ -101,40 +140,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/profile.css">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="105" column="1" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
+            <state relative-caret-position="3434">
+              <caret line="202" column="46" selection-start-line="202" selection-start-column="46" selection-end-line="202" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="143" column="72" selection-start-line="143" selection-start-column="72" selection-end-line="143" selection-end-column="72" />
+        <entry file="das://576dccab-d50e-49dc-ad1a-5c9de1e89175/schema/ADMIN/table/MEMBERS">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/ProfileChangeServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account-creation.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="63" selection-start-line="63" selection-end-line="169" selection-end-column="21" />
+            <state relative-caret-position="340">
+              <caret line="20" column="45" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -142,8 +169,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+            <state relative-caret-position="748">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/db/Members.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1105">
+              <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+              <folding>
+                <element signature="e#1529#1530#0" expanded="true" />
+                <element signature="e#1557#1558#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -241,6 +281,7 @@
         <option value="$PROJECT_DIR$/src/main/java/web/servlets/ProfileChangeServlet.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/profile.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java" />
       </list>
     </option>
   </component>
@@ -449,7 +490,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543005616130" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CS4348 - Operating Systems/Proj3-2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -520,16 +561,18 @@
       <workItem from="1542515238895" duration="607000" />
       <workItem from="1543003696698" duration="1929000" />
       <workItem from="1543296664615" duration="106000" />
+      <workItem from="1543632370856" duration="2391000" />
+      <workItem from="1543823900519" duration="179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64465000" />
+    <option name="totallyTimeSpent" value="67035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20415778" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -578,13 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/Members.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561">
-          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -662,7 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://576dccab-d50e-49dc-ad1a-5c9de1e89175/schema/ADMIN/table/MEMBERS" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.0.5.RELEASE/spring-boot-2.0.5.RELEASE.jar!/org/springframework/boot/web/servlet/support/SpringBootServletInitializer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -781,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/cart.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -830,18 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ProfileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/account-creation.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -870,16 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/ProfileChangeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account-creation.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -887,17 +893,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+        <state relative-caret-position="221">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/ProfileChangeServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="37" column="65" lean-forward="true" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="143" column="72" selection-start-line="143" selection-start-column="72" selection-end-line="143" selection-end-column="72" />
+        <state relative-caret-position="3434">
+          <caret line="202" column="46" selection-start-line="202" selection-start-column="46" selection-end-line="202" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/orders.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlets/LoginAcceptanceServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/Members.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+          <folding>
+            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://576dccab-d50e-49dc-ad1a-5c9de1e89175/schema/ADMIN/table/MEMBERS">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

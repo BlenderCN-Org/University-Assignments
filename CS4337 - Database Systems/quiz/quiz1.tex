@@ -176,7 +176,7 @@ you call CREATE USER [username] IDENTIFIED BY [password].
 
 	\item D, the commit operation. When you make a change to the database it does not fully 'change' the database until you execute a commit command.
 
-	\item a. Primary to Foreign Key
+	\item c. Foreign key to Primary Key
 	
 	\item A. Group By. When doing aggregate functions, you need to specify (if you choose to return more than just the aggregate) what subset of data you wish to specify the aggregate function by.
 	
@@ -208,32 +208,32 @@ form you convert to.
 	
 	\item Indexing and other optimization help reduce the time needed to search for items in select statements
 	
-	\item Unspanned records create gaps within blocks. Since you cannot span a record across multiple blocks, you create spaces within the blocks of memory that are unused
+	\item Unspanned records create gaps within blocks. Since you cannot span a record across multiple blocks, you create spaces within the blocks of memory that are unused. This is also known as fragmentation.
 	
 	\item Unordered data files do not have index tables, which save space
 	
 	\item The main purpose of using an index is to keep track of where records are stored, and it allows for a faster lookup time (in most cases)
 	
-	\item A second index could be used in a 2 layered key system
+	\item A second index could be used in a 2 layered key system to simulate a B-Tree file system. This file structure would allow for log(n) lookups which keeping a linear space, a 'in the middle' strategy comparative to single indexing and unordered files.
 	
 	\item  The schedule itself is not schedule serializable since all actions of a single transaction do not occur consecutively, however there are no conflicts within the
  schedule so with a little rearranging we can make the schedule serializable.
 
 	\item B. A read lock is considered a shared lock since other transactions are allowed to read the item.
-	
+	\pagebreak
 	\item The EER Diagram: \\
 	\begin{center}
 			\includegraphics[scale=.06]{40}
 	\end{center} 
-	
-	\pagebreak
-	
+		
 	\item The ER Schema: \\
 	\begin{center}
 			\includegraphics[scale=.07]{41}
 	\end{center} 
 	
 	\item C is wrong, since there is an optional subclass split with no parent class
+	
+	\pagebreak	
 	
 	\item The Relational Schema: \\
 	\begin{center}
