@@ -4,15 +4,26 @@ clc
 clear
 
 n = 10000;
-Apx = linspace(0,4,n+1)';
-Apy = wtseries(Apx);
+t = linspace(0,4,n+1)';
 
-Acx = linspace(0,4,n+1)';
-Acy = actual(Acx);
+w = wtseries(t);    
+y = actual(t);
 
-plot(Apx, Apy, Acx, Acy)
+plot(t, w, t, y)
+title('approx v.s. actual')
 legend("Approx", "Actual") 
 xlabel("Input 't'")
 ylabel("Output")
+figure()
 
-fprintf('We are decresing our global error by a factor of 10 for each factor of 10 we increase n, thus it has a linear relation, O(h), as we expect.\n');
+err = abs(w - y);
+
+plot(t, err)
+title('error v.s t')
+legend("error")
+xlabel("t")
+ylabel("error")
+
+
+
+fprintf('If we increase the number of points by a factor of 10, then our global error decreases by a factor of 10. Thus it has a linear relation, O(h), as we expect.\n');
