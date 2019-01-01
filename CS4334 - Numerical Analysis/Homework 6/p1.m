@@ -3,23 +3,24 @@ format long e
 clc
 clear
 
-n = 10000;
-t = linspace(0,4,n+1)';
+for i=1:4
+    n = power(10,i);
+    t = linspace(0,4,n+1)';
 
-w = wtseries(t);    
-y = actual(t);
+    w = wtseries(t);    
+    y = actual(t);
 
-plot(t, w, t, y)
-title('approx v.s. actual')
-legend("Approx", "Actual") 
-xlabel("Input 't'")
-ylabel("Output")
-figure()
+    plot(t, w, t, y)
+    title(['approx v.s. actual @ n=' num2str(n)])
+    legend("Approx", "Actual") 
+    xlabel("Input 't'")
+    ylabel("Output")
+    figure() 
+end
 
 err = abs(w - y);
-
 plot(t, err)
-title('error v.s t')
+title('error v.s t @ n=10000')
 legend("error")
 xlabel("t")
 ylabel("error")
